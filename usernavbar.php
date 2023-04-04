@@ -29,7 +29,7 @@
 	
 	<link rel="stylesheet" href="css/style.css">
 <style>
-    #fh5co-header-section {
+    #header-section {
     padding: 0;
     position: relative;
     left: 0;
@@ -44,20 +44,20 @@
     width: 100%;
     }   
 
-    .fh5co-nav-toggle.active i::before, .fh5co-nav-toggle.active i::after {
+    .nav-toggle.active i::before, .nav-toggle.active i::after {
     background: #fff;
     }
 
-    .fh5co-nav-toggle.dark.active i::before, .fh5co-nav-toggle.dark.active i::after {
+    .nav-toggle.dark.active i::before, .nav-toggle.dark.active i::after {
     background: #fff;
     }
 
-    .fh5co-nav-toggle:hover, .fh5co-nav-toggle:focus, .fh5co-nav-toggle:active {
+    .nav-toggle:hover, .nav-toggle:focus, .nav-toggle:active {
     outline: none;
     border-bottom: none !important;
     }
 
-    .fh5co-nav-toggle i {
+    .nav-toggle i {
     position: relative;
     display: -moz-inline-stack;
     display: inline-block;
@@ -73,7 +73,7 @@
     transition: all .2s ease-out;
     }
 
-    .fh5co-nav-toggle i::before, .fh5co-nav-toggle i::after {
+    .nav-toggle i::before, .nav-toggle i::after {
     content: '';
     width: 30px;
     height: 2px;
@@ -85,41 +85,41 @@
     transition: 0.2s;
     }
 
-    .fh5co-nav-toggle.dark i {
+    .nav-toggle.dark i {
     position: relative;
     color: #000;
     background: #000;
     transition: all .2s ease-out;
     }
 
-    .fh5co-nav-toggle.dark i::before, .fh5co-nav-toggle.dark i::after {
+    .nav-toggle.dark i::before, .nav-toggle.dark i::after {
     background: #000;
     -webkit-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
     }
 
-    .fh5co-nav-toggle i::before {
+    .nav-toggle i::before {
     top: -7px;
     }
 
-    .fh5co-nav-toggle i::after {
+    .nav-toggle i::after {
     bottom: -7px;
     }
 
-    .fh5co-nav-toggle:hover i::before {
+    .nav-toggle:hover i::before {
     top: -10px;
     }
 
-    .fh5co-nav-toggle:hover i::after {
+    .nav-toggle:hover i::after {
     bottom: -10px;
     }
 
-    .fh5co-nav-toggle.active i {
+    .nav-toggle.active i {
     background: transparent;
     }
 
-    .fh5co-nav-toggle.active i::before {
+    .nav-toggle.active i::before {
     top: 0;
     -webkit-transform: rotateZ(45deg);
     -moz-transform: rotateZ(45deg);
@@ -128,7 +128,7 @@
     transform: rotateZ(45deg);
     }
 
-    .fh5co-nav-toggle.active i::after {
+    .nav-toggle.active i::after {
     bottom: 0;
     -webkit-transform: rotateZ(-45deg);
     -moz-transform: rotateZ(-45deg);
@@ -137,7 +137,7 @@
     transform: rotateZ(-45deg);
     }
 
-    .fh5co-nav-toggle {
+    .nav-toggle {
     position: absolute;
     top: 0px;
     right: 0px;
@@ -148,14 +148,14 @@
     cursor: pointer;
     }
     @media screen and (max-width: 768px) {
-    .fh5co-nav-toggle {
+    .nav-toggle {
         display: block;
         top: 0px;
         margin-top: 2em;
     }
     }
 
-    #fh5co-logo {
+    #logo {
     position: relative;
     z-index: 2;
     font-size: 28px;
@@ -166,7 +166,7 @@
     padding-left: 40px;
     }
 
-    #fh5co-logo i {
+    #logo i {
     position: absolute;
     top: 0;
     left: 0;
@@ -180,15 +180,15 @@
     border-radius: 50%;
     }
 
-    #fh5co-logo a {
+    #logo a {
     color: #4bb6b7;
     }
 
-    #fh5co-logo a:hover, #fh5co-logo a:focus {
+    #logo a:hover, #logo a:focus {
     color: #4bb6b7 !important;
     }
 
-    #fh5co-menu-wrap {
+    #menu-wrap {
     position: relative;
     z-index: 2;
     display: block;
@@ -196,20 +196,20 @@
     margin-top: 15px;
     }
 
-    #fh5co-menu-wrap .sf-menu a {
+    #menu-wrap .sf-menu a {
     padding: 1em .75em;
     }
 
     @media screen and (max-width: 768px) {
-    #fh5co-menu-wrap {
+    #menu-wrap {
         display: none;
     }
     }
 
-    #fh5co-primary-menu > li > ul li.active > a {
+    #primary-menu > li > ul li.active > a {
     color: #4bb6b7 !important;
     }
-    #fh5co-primary-menu > li > .sf-with-ul:after {
+    #primary-menu > li > .sf-with-ul:after {
     border: none !important;
     font-family: 'icomoon';
     speak: none;
@@ -230,10 +230,10 @@
     content: "\e922";
     color: rgba(0, 0, 0, 0.5);
     }
-    #fh5co-primary-menu > li > ul li {
+    #primary-menu > li > ul li {
     position: relative;
     }
-    #fh5co-primary-menu > li > ul li > .sf-with-ul:after {
+    #primary-menu > li > ul li > .sf-with-ul:after {
     border: none !important;
     font-family: 'icomoon';
     speak: none;
@@ -254,7 +254,7 @@
     color: rgba(0, 0, 0, 0.5);
     }
 
-    #fh5co-primary-menu .fh5co-sub-menu {
+    #primary-menu .sub-menu {
     padding: 10px 7px 10px;
     background: #fff;
     left: 0;
@@ -268,11 +268,11 @@
     -o-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     }
-    #fh5co-primary-menu .fh5co-sub-menu > li > .fh5co-sub-menu {
+    #primary-menu .sub-menu > li > .sub-menu {
     left: 100%;
     }
 
-    #fh5co-primary-menu .fh5co-sub-menu:before {
+    #primary-menu .sub-menu:before {
     position: absolute;
     top: -9px;
     left: 20px;
@@ -281,7 +281,7 @@
     content: '';
     }
 
-    #fh5co-primary-menu .fh5co-sub-menu:after {
+    #primary-menu .sub-menu:after {
     position: absolute;
     top: -8px;
     left: 21px;
@@ -294,12 +294,12 @@
     content: '';
     }
 
-    #fh5co-primary-menu .fh5co-sub-menu .fh5co-sub-menu:before {
+    #primary-menu .sub-menu .sub-menu:before {
     top: 6px;
     left: 100%;
     }
 
-    #fh5co-primary-menu .fh5co-sub-menu .fh5co-sub-menu:after {
+    #primary-menu .sub-menu .sub-menu:after {
     top: 7px;
     right: 100%;
     border: none !important;
@@ -317,7 +317,7 @@
     display: none;
     }
 
-    #fh5co-primary-menu .fh5co-sub-menu a {
+    #primary-menu .sub-menu a {
     letter-spacing: 0;
     padding: 0 15px;
     font-size: 18px;
@@ -326,7 +326,7 @@
     text-transform: none;
     background: none;
     }
-    #fh5co-primary-menu .fh5co-sub-menu a:hover {
+    #primary-menu .sub-menu a:hover {
     color: #4bb6b7 !important;}
     /* }` */
 
@@ -398,23 +398,64 @@
     .sf-menu ul li {
     background: transparent;
     }
+
+    .action .profile {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    }
+
+    .action .profile img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .action .menu {
+        position: absolute;
+        top: 80px;
+        right: -10px;
+        padding: 10px 20px;
+        background: #fff;
+        width: 200px;
+        box-sizing: 0 5px 25px #fff;
+        border-radius: 15px;
+        transition: 0.5s;
+    }
+
+    .action .menu h3 {
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        padding: 20px 0;
+        font-weight: 500;
+        font-size: 18px;
+        color: #555;
+        line-height: 1.2em;
+    }
 </style>
 
 <body>
-<div id="fh5co-wrapper">
-<div id="fh5co-page">
-    <header id="fh5co-header-section" class="sticky-banner">
+<div id="wrapper">
+<div id="page">
+    <header id="header-section" class="sticky-banner">
 			<div class="container">
 				<div class="nav-header">
-					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
-					<!-- START #fh5co-menu-wrap -->
-					<nav id="fh5co-menu-wrap" role="navigation">
-						<ul class="sf-menu" id="fh5co-primary-menu">
+					<a href="#" class="nav-toggle nav-toggle dark"><i></i></a>
+					<h1 id="logo"><a href="index.html"><i class="icon-airplane"></i>TPGS</a></h1>
+					<!-- START #menu-wrap -->
+					<nav id="menu-wrap" role="navigation">
+						<ul class="sf-menu" id="primary-menu">
 							<li class="active"><a href="index.html">Home</a></li>
 							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Vacations</a>
-								<ul class="fh5co-sub-menu">
+								<a href="vacation.html" class="sub-ddown">Vacations</a>
+								<ul class="sub-menu">
 									<li><a href="#">Family</a></li>
 									<li><a href="#">CSS3 &amp; HTML5</a></li>
 									<li><a href="#">Angular JS</a></li>
@@ -427,7 +468,23 @@
 							<li><a href="car.html">Car</a></li>
 							<li><a href="blog.html">Blog</a></li>
 							<li><a href="contact.html">Contact</a></li>
-						</ul>
+                        </ul>
+                            <div class="action">
+                                <div class="profile">
+                                    <img src="images/melaka.jpg">
+                                        <div class="menu">
+                                            <h3>Someone Famous<br><span>Website Designer</span></h3>
+                                            <ul>
+                                                <li><i class="lni lni-user"></i><a href="#">My Profile</a></li>
+                                                <li><i class="lni lni-pencil-alt"></i><a href="#">Edit Profile</a></li>
+                                                <li><i class="lni lni-popup"></i><a href="#">Inbox</a></li>
+                                                <li><i class="lni lni-cogs"></i><a href="#">Settings</a></li>
+                                                <li><i class="lni lni-question-circle"></i><a href="#">Helps</a></li>
+                                                <li><i class="lni lni-exit"></i><a href="#">Logout</a></li>
+                                            </ul>
+                                        </div>
+                                </div>
+                            </div>
 					</nav>
 				</div>
 			</div>
