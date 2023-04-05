@@ -66,6 +66,12 @@
 	<script src="js/respond.min.js"></script>
 	<![endif] -->
 </head>
+<style>
+	.img
+	{
+		position:absolute;
+	}
+</style>
 <body>
 <div id="fh5co-wrapper">
 <div id="fh5co-page">
@@ -92,12 +98,12 @@
 									<li><a href="#">Django &amp; Python</a></li>
 								</ul>
 							</li>
-							<li><a href="flight.html">Flights</a></li>
+							<li><a href="flight.html"></a></li>
 							<li><a href="hotel.html">Hotel</a></li>
 							<li><a href="car.html">Car</a></li>
 							<li><a href="blog.html">Blog</a></li>
 							<li><a href="contact.html">Contact</a></li>
-							<li><a href="registrationlogin.php">Login</a></li>
+							<li><a href="adminprofile.php"><img class="img" src="images/profile.jpg" width="35px" style="border-radius: 50%;" alt=""></a></li>
 						</ul>
 					</nav>
 				</div>
