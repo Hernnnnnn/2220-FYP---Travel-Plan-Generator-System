@@ -1,0 +1,51 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+}
+body
+{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.profile
+{
+    text-align: center;
+    margin-top:50px;
+    /* max-width: 100%; */
+    /* height: auto; */
+    background: rgba(252, 252, 252,90%);
+    border-radius: 20px;
+    padding: 40px 90px;
+    position: relative;
+}
+
+form img
+{
+    width: 15%;
+}
+.setting-icon
+{
+    width: 25px;
+    position: absolute;
+    right: 40px;
+    top: 40px; 
+
+}
+
+.profile-pic
+{
+    width: 150px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 6px;
+    margin-top: 40px;
+}
