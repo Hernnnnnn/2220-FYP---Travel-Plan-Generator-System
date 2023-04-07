@@ -22,7 +22,7 @@ body
     margin-top:50px;
     /* max-width: 100%; */
     /* height: auto; */
-    background: rgba(252, 252, 252,90%);
+    background: rgba(75, 182, 183,90%);
     border-radius: 20px;
     padding: 40px 90px;
     position: relative;
@@ -44,7 +44,7 @@ form img
 .profile-pic
 {
     width: 150px;
-    background: #fff;
+    
     border-radius: 50%;
     padding: 6px;
     margin-top: 40px;

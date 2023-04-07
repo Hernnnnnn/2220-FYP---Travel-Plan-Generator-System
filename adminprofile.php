@@ -12,6 +12,12 @@
     ?>
     <link rel="stylesheet" href="css/adminprofile.css">
 </head>
+<style>
+    .profile-pic
+    {
+        background: #4bb6b7;
+    }
+</style>
 <body style="background-image: url(images/image.gif);background-size: cover; ">
                 <div class="container2">
                         <div class="profile">
