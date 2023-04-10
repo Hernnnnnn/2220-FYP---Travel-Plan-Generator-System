@@ -4,74 +4,49 @@ include('dataconnection.php');
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset</title>
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css"/>
+    <link rel="stylesheet" href="css/registrationlogin.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="icon" href="Favicon.png">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-
-    <title>Login Form</title>
-</head>
 <body>
+    <div class="container" id="container">
+        
+        <div class="form-container login-container">
+		
+        <form action="" method="post">
+        
+            <h1>Reset Password</h1>
+            <i class='fa fa-triangle-exclamation'></i>
+            <input type="password" id="passwd" placeholder="Password">
+            <button name="submit" type="submit">Reset</button>
+        </form>
+        </div>
 
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-    <div class="container">
-        <a class="navbar-brand" href="#">Password Reset Form</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
-
-<main class="login-form">
-    <div class="cotainer">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Reset Your Password</div>
-                    <div class="card-body">
-                        <form action="#" method="POST" name="login">
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">New Password</label>
-                                <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control" name="password" required autofocus>
-                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="Reset" name="reset">
-                            </div>
-                    </div>
-                    </form>
-                </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1 class="title">Forgotten <br> your password ? </h1>
+                    <p>Not a problem</p>
+                </div> 
             </div>
         </div>
     </div>
-    </div>
 
-</main>
+    <script src="registrationlogin.js"></script>
+
 </body>
 </html>
 <?php
     if(isset($_POST["reset"])){
-        include('connect/connection.php');
+        include('dataconnection.php');
         $psw = $_POST["password"];
 
         $token = $_SESSION['token'];
@@ -88,8 +63,8 @@ include('dataconnection.php');
             mysqli_query($connect, "UPDATE login SET password='$new_pass' WHERE email='$Email'");
             ?>
             <script>
-                window.location.replace("index.php");
-                alert("<?php echo "your password has been succesful reset"?>");
+                window.location.replace("userregisterlogin.php");
+                alert("<?php echo "Your password has been succesful reset"?>");
             </script>
             <?php
         }else{
@@ -103,15 +78,13 @@ include('dataconnection.php');
 
 ?>
 <script>
-    const toggle = document.getElementById('togglePassword');
-    const password = document.getElementById('password');
-
-    toggle.addEventListener('click', function(){
+    toggle.onclick = function(){
         if(password.type === "password"){
-            password.type = 'text';
+            password.setAttribute('type','text');
+            toggleBtn.classlist.add('hide');
         }else{
-            password.type = 'password';
+            password.setAttribute('type','password');
+            toggleBtn.classlist.remove('hide');
         }
-        this.classList.toggle('bi-eye');
-    });
+    };
 </script>
