@@ -418,7 +418,7 @@
     }
 
     .action .menu {
-        position: absolute;
+        position: relative;
         top: 80px;
         right: -10px;
         padding: 10px 20px;
