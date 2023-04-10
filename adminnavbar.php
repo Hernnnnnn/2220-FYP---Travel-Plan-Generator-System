@@ -66,14 +66,34 @@
 	<script src="js/respond.min.js"></script>
 	<![endif] -->
 </head>
+<?php 
+	include 'dataconnection.php';
+	$email = $_GET['email'];
+	$sql = "SELECT * From `admin` where email = '$email'";
+	$r = mysqli_query($conn,$sql);
+	$re = mysqli_fetch_assoc($r);
+?>
+<style>
+	.img
+	{
+		/* position:absolute; */
+		width: 35px;
+		height: 35px;
+		 vertical-align: top;
+	}
+</style>
 <body>
 <div id="fh5co-wrapper">
 <div id="fh5co-page">
 <header id="fh5co-header-section" class="sticky-banner">
 			<div class="container">
+			
 				<div class="nav-header">
-					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
+						
+					
+				<!-- <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a> -->
+					
+				<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
@@ -88,12 +108,12 @@
 									<li><a href="#">Django &amp; Python</a></li>
 								</ul>
 							</li>
-							<li><a href="flight.html">Flights</a></li>
+							<li><a href="flight.html"></a></li>
 							<li><a href="hotel.html">Hotel</a></li>
 							<li><a href="car.html">Car</a></li>
 							<li><a href="blog.html">Blog</a></li>
 							<li><a href="contact.html">Contact</a></li>
-							<li><a href="registrationlogin.php">Login</a></li>
+							<li><a href="adminprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a></li>
 						</ul>
 					</nav>
 				</div>
@@ -104,9 +124,9 @@
 
 <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- <script src="js/jquery.easing.1.3.js"></script> -->
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<!-- <script src="js/bootstrap.min.js"></script> -->
 	<!-- Waypoints -->
 	<script src="js/jquery.waypoints.min.js"></script>
 	<script src="js/sticky.js"></script>
@@ -118,12 +138,12 @@
 	<script src="js/superfish.js"></script>
 	<!-- Magnific Popup -->
 	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/magnific-popup-options.js"></script>
+	<!-- <script src="js/magnific-popup-options.js"></script> -->
 	<!-- Date Picker -->
 	<script src="js/bootstrap-datepicker.min.js"></script>
 	<!-- CS Select -->
 	<script src="js/classie.js"></script>
-	<script src="js/selectFx.js"></script>
+	<!-- <script src="js/selectFx.js"></script> -->
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
