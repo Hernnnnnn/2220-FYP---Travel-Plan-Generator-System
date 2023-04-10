@@ -9,6 +9,45 @@
     <link rel="stylesheet" href="css/registrationlogin.css">
 </head>
 
+<?php
+    include('dataconnection.php');
+
+    if(isset($_POST["login"])){
+        $email = mysqli_real_escape_string($connect, trim($_POST['email']));
+        $password = trim($_POST['password']);
+
+        $sql = mysqli_query($connect, "SELECT * FROM login where email = '$email'");
+        $count = mysqli_num_rows($sql);
+
+            if($count > 0){
+                $fetch = mysqli_fetch_assoc($sql);
+                $hashpassword = $fetch["password"];
+    
+                if($fetch["status"] == 0){
+                    ?>
+                    <script>
+                        alert("Please verify email account before login.");
+                    </script>
+                    <?php
+                }else if(password_verify($password, $hashpassword)){
+                    ?>
+                    <script>
+                        alert("login in successfully");
+                    </script>
+                    <?php
+                }else{
+                    ?>
+                    <script>
+                        alert("email or password invalid, please try again.");
+                    </script>
+                    <?php
+                }
+            }
+                
+    }
+
+?>
+
 <body>
     <div class="container" id="container">
         <div class="form-container register-container">
@@ -74,7 +113,7 @@
         </div>
     </div>
 
-    <script src="registrationlogin.js"></script>
+    <script src="userregistrationlogin.js"></script>
 
 </body>
 </html>

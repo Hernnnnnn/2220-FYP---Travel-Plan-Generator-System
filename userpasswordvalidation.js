@@ -1,5 +1,5 @@
-Let passwd = document.getElementsById('passwd');
-Let toggleBtn = document.getElementsById('toggleBtn');
+const passwd = document.getElementsById('passwd');
+const toggleBtn = document.getElementsById('toggleBtn');
 
 //Show hide password
 toggleBtn.onclick = function(){
