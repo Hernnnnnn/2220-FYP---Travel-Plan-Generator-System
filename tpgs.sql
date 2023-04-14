@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- 主机： 127.0.0.1
--- 生成日期： 2023-03-28 18:58:17
--- 服务器版本： 10.4.27-MariaDB
--- PHP 版本： 8.2.0
+-- Host: 127.0.0.1
+-- Generation Time: Apr 14, 2023 at 06:48 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库： `tpgs`
+-- Database: `tpgs`
 --
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -33,35 +33,69 @@ CREATE TABLE `admin` (
   `password` text NOT NULL,
   `email` text NOT NULL,
   `image` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`ID`, `username`, `password`, `email`, `image`) VALUES
-(1, 'Teng', '345', 'dehui7051@gmail.com', ''),
-(2, 'Teng', '345', 'dehui7051@gmail.com', '');
+(1, 'Teng', '123', 'dehui7051@gmail.com', 'dehui.jpg'),
+(2, 'Teng', '123', 'dehui7051@gmail.com', '');
+
+-- --------------------------------------------------------
 
 --
--- 转储表的索引
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `ID` int(11) NOT NULL,
+  `username` text NOT NULL,
+  `email` text NOT NULL,
+  `password` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `image` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`ID`, `username`, `email`, `password`, `status`, `image`) VALUES
+(1, 'Hern', 'jlim2468101@gmail.com', 'Jlim2468101$', 1, '');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- 表的索引 `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ID`);
 
 --
--- 在导出的表使用AUTO_INCREMENT
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用表AUTO_INCREMENT `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

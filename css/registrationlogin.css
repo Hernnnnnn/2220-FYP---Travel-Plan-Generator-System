@@ -196,7 +196,7 @@ input {
 	font-family: FontAwesome;
 }
 
-#togglebtn.hide::before {
+#togglebtn .hide::before {
 	content: '\f070';
 }
 
