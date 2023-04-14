@@ -145,7 +145,7 @@ body
     position: absolute;
     /* right: 2px; */
     /* text-align: center; */
-    margin-left: 320px;
+    margin-left: 350px;
 }
 input[type="submit"]
 {
