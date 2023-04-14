@@ -41,6 +41,8 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	
 	<!-- Animate.css -->
 	<!-- <link rel="stylesheet" href="css/animate.css"> -->
@@ -101,21 +103,21 @@
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="index.html">Home</a></li>
 							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Vacations</a>
-								<ul class="fh5co-sub-menu">
+								<a href="usermanage.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
+							</li>
+							<!-- <li><a href="flight.html"></a></li> -->
+							<li><a href="hotel.html">Hotel</a></li>
+							<li><a href="car.html">Car</a></li>
+							<li><a href="blog.html">Blog</a></li>
+							<li><a href="contact.html">Contact</a></li>
+							<li><a href="adminprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a>
+							<ul class="fh5co-sub-menu">
 									<li><a href="#">Family</a></li>
 									<li><a href="#">CSS3 &amp; HTML5</a></li>
 									<li><a href="#">Angular JS</a></li>
 									<li><a href="#">Node JS</a></li>
 									<li><a href="#">Django &amp; Python</a></li>
-								</ul>
-							</li>
-							<li><a href="flight.html"></a></li>
-							<li><a href="hotel.html">Hotel</a></li>
-							<li><a href="car.html">Car</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
-							<li><a href="adminprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a></li>
+								</ul></li>
 						</ul>
 					</nav>
 				</div>
