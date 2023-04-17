@@ -55,27 +55,30 @@
             
             <table>
                 <tr>
-                    <th>1</th>
-                    <th>2</th>
-                    <th>2</th>
-                    <th>2</th>
-                    <th>2</th>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Email</th>
+                    <th>Status</th>
 
                 </tr>
             <?php
             // include 'dataconnection.php';
 
-            $p = "SELECT * From `users`";
+            $p = "SELECT * From `login`";
                 $query = mysqli_query($conn,$p);
                 while($user = mysqli_fetch_assoc($query))
                 {
             ?>
                 <tr>
-                    <td><?php echo $user['id']?></td>
+                    <td><?php echo $user['ID']?></td>
+                    <td><?php echo $user['image']?></td>
                     <td><?php echo $user['username']?></td>
                     <td><?php echo $user['password']?></td>
                     <td><?php echo $user['email']?></td>
                     <td><?php echo $user['status']?></td>
+
 
                 </tr>
             <?php

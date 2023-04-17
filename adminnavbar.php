@@ -103,7 +103,7 @@
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="index.html">Home</a></li>
 							<li>
-								<a href="usermanage.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
+								<a href="adminmanageuser.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
 							</li>
 							<!-- <li><a href="flight.html"></a></li> -->
 							<li><a href="hotel.html">Hotel</a></li>

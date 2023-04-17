@@ -149,14 +149,14 @@
     <script src="userregistrationlogin.js"></script>
     
     <script>
-    Let toggle = document.getElementById('togglePassword');
-    Let password = document.getElementById('password');
+    let toggle = document.getElementById('togglePassword');
+    let password = document.getElementById('password');
 
-    Let minlength = document.getElementById('length');
-    Let digit = document.getElementById('number');
-    Let lowercase = document.getElementById('lower');
-    Let uppercase = document.getElementById('upper');
-    Let specialchar = document.getElementById('special');
+    let minlength = document.getElementById('length');
+    let digit = document.getElementById('number');
+    let lowercase = document.getElementById('lower');
+    let uppercase = document.getElementById('upper');
+    let specialchar = document.getElementById('special');
 
     //check
     function checkPassword(data){
