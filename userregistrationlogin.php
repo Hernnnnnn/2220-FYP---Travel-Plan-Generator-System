@@ -90,7 +90,7 @@
             <input type="email" id="email" placeholder="Email">
             <div class="password">
                 <input type="password" id="passwd" placeholder="Password">
-                <span id="togglebtn"></span>
+                <span id="togglebtn" toggle="#psw"></span>
                 <div class="validation">
                     <ul>
                         <li id="length">Minimum 8 character</li>
@@ -150,7 +150,7 @@
     
     <script>
     let toggle = document.getElementById('togglePassword');
-    let password = document.getElementById('password');
+    let password = document.getElementById('passwd');
 
     let minlength = document.getElementById('length');
     let digit = document.getElementById('number');
