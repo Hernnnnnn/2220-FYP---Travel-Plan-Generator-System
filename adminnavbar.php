@@ -42,7 +42,7 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 	
 	<!-- Animate.css -->
 	<!-- <link rel="stylesheet" href="css/animate.css"> -->
@@ -85,6 +85,14 @@
 		height: 35px;
 		 vertical-align: top;
 	}
+	body
+    {
+        background-image: url(images/image.gif);
+        background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: auto;
+    }
 </style>
 <body>
 <div id="fh5co-wrapper">
@@ -121,10 +129,8 @@
 						</ul>
 					</nav>
 				</div>
-			</div>
-		</header>
+				
 
-</body>
 
 <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
