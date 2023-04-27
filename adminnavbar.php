@@ -78,6 +78,7 @@
 	$re = mysqli_fetch_assoc($r);
 ?>
 <style>
+	
 	.img
 	{
 		/* position:absolute; */
@@ -85,18 +86,25 @@
 		height: 35px;
 		 vertical-align: top;
 	}
+	*
+	{
+		margin: 0;
+		padding: 0;
+	}
+	
 	body
     {
         background-image: url(images/image.gif);
         background-size: cover; 
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: auto;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		box-sizing: border-box;
+		height: 150%;
     }
+	
 </style>
 <body>
-<div id="fh5co-wrapper">
-<div id="fh5co-page">
+<div class="background">
 <header id="fh5co-header-section" class="sticky-banner">
 			<div class="container">
 			
@@ -129,6 +137,9 @@
 						</ul>
 					</nav>
 				</div>
+			</div>
+	</header>
+
 				
 
 

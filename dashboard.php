@@ -9,11 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin || Dashboard</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
-    <link rel="stylesheet" href="css/adminprofile.css">
+    <!-- <link rel="stylesheet" href="css/adminprofile.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    <?php 
-    include 'adminnavbar.php';
-    ?>
+    
 
 <style>
     
@@ -96,18 +94,23 @@
         grid-template-columns: 60% auto;
         margin-top: 2rem; */
         height: 100%;
-        width: auto;
+        color: white;
+        width: 1000px;
+        margin: auto;
+        position: relative;
+        /* justify-content: center; */
+        /* text-align: center; */
+        background: white;
         text-align: center;
+        border-radius: 2px;
     }
 </style>
 
 </head>
-
-
-        </div>
-		</header>
-		<div>
-
+<?php 
+    include 'adminnavbar.php';
+    ?>
+<body>
     <!-- <header> -->
     <div class="header">
     <div class="search-wrapper">
@@ -167,6 +170,7 @@
             <div id="myfirstchart" style="height: 250px;"></div>
         </div>
     </div>
+</div>
 </div>
 </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
