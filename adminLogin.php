@@ -18,7 +18,7 @@
         $re2 = mysqli_fetch_assoc($result2);
         if($password == $re2["password"] && $email ==$re2["email"])
         {
-            header("location: adminpage.php?email=".$re['email']);
+            header("location: dashboard.php?email=".$re['email']);
         }
         else if(!$email)
         {

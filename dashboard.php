@@ -1,4 +1,7 @@
-
+<?php
+include 'dataconnection.php';
+    $email = $_GET['email'];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -95,7 +98,8 @@
         margin-top: 2rem; */
         height: 100%;
         color: white;
-        width: 1000px;
+        width: auto;
+        min-width: 450px;
         margin: auto;
         position: relative;
         /* justify-content: center; */
@@ -124,7 +128,20 @@
         <div class="cards">
             <div class="card-single">
                 <div>
-                <h1>12</h1>
+                <h1>
+                    <?php
+                    $r = "SELECT * from `admin`";
+                    $r_query = mysqli_query($conn,$r);
+                        if($user_total = mysqli_num_rows($r_query))
+                        {
+                            echo $user_total;
+                        }
+                        else
+                        {
+                            echo "No Data";
+                        }
+                    ?>
+                </h1>
                 <span>Users</span>
                 </div>
                 <div>
