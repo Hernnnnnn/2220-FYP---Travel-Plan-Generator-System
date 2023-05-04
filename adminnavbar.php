@@ -42,7 +42,7 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 	
 	<!-- Animate.css -->
 	<!-- <link rel="stylesheet" href="css/animate.css"> -->
@@ -78,6 +78,7 @@
 	$re = mysqli_fetch_assoc($r);
 ?>
 <style>
+	
 	.img
 	{
 		/* position:absolute; */
@@ -85,17 +86,32 @@
 		height: 35px;
 		 vertical-align: top;
 	}
+	*
+	{
+		margin: 0;
+		padding: 0;
+	}
+	
+	body
+    {
+        background-image: url(images/image.gif);
+        background-size: cover; 
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		box-sizing: border-box;
+		height: 150%;
+    }
+	
 </style>
 <body>
-<div id="fh5co-wrapper">
-<div id="fh5co-page">
+<div class="background">
 <header id="fh5co-header-section" class="sticky-banner">
 			<div class="container">
 			
 				<div class="nav-header">
 						
 					
-				<!-- <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a> -->
+				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
 					
 				<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
 					<!-- START #fh5co-menu-wrap -->
@@ -103,7 +119,7 @@
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="index.html">Home</a></li>
 							<li>
-								<a href="usermanage.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
+								<a href="adminmanageuser.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
 							</li>
 							<!-- <li><a href="flight.html"></a></li> -->
 							<li><a href="hotel.html">Hotel</a></li>
@@ -122,9 +138,10 @@
 					</nav>
 				</div>
 			</div>
-		</header>
+	</header>
 
-</body>
+				
+
 
 <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
