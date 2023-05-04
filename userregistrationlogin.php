@@ -89,8 +89,8 @@
             <input type="text" id="name" placeholder="Name">
             <input type="email" id="email" placeholder="Email">
             <div class="password">
-                <input type="password" id="passwd" placeholder="Password">
-                <span id="togglebtn"></span>
+                <input type="password" id="passwd" placeholder="Password" pattern="^\S+$">
+                <span id="togglebtn" class="fas fa-eye-slash"></span>
                 <div class="validation">
                     <ul>
                         <li id="length">Minimum 8 character</li>
@@ -110,7 +110,7 @@
         <form action="#">
             <h1>User Login</h1>
             <input type="email" id="email" placeholder="Email">
-            <input type="password" id="passwd" placeholder="Password">
+            <input type="password" id="passwd" placeholder="Password" pattern="^\S+$">
 
             <div class="content">
             <div class="checkbox">
@@ -148,67 +148,78 @@
 
     <script src="userregistrationlogin.js"></script>
     
-    <script>
-    Let toggle = document.getElementById('togglePassword');
-    Let password = document.getElementById('password');
+<script>
+        let togglePassword = document.getElementById('togglebtn');
+        let password = document.getElementById('passwd');
 
-    Let minlength = document.getElementById('length');
-    Let digit = document.getElementById('number');
-    Let lowercase = document.getElementById('lower');
-    Let uppercase = document.getElementById('upper');
-    Let specialchar = document.getElementById('special');
+        let minlength = document.getElementById('length');
+        let digit = document.getElementById('number');
+        let lowercase = document.getElementById('lower');
+        let uppercase = document.getElementById('upper');
+        let specialchar = document.getElementById('special');
+        let spaceerror = document.getElementById('space');
 
-    //check
-    function checkPassword(data){
-        const length = new RegExp('(?=.*{8,})')
-        const number = new RegExp('(?=.*[0-9])')
-        const lower = new RegExp('(?=.*[a-z])')
-        const upper = new RegExp('(?=.*[A-Z])')
-        const special = new RegExp('(?=.*[!@#\$%\^&\*])')
-    }
-    
-    if(length.test(data)){
-        minlength.classlist.add('valid');
-    }else{
-        minlength.classlist.remove('valid');
-    }
+        function checkPassword(data){
+            const length = new RegExp('(?=.{8,})');
+            const number = new RegExp('(?=.*[0-9])');
+            const lower = new RegExp('(?=.*[a-z])');
+            const upper = new RegExp('(?=.*[A-Z])');
+            const special = new RegExp('(?=.*[!@#$%^&*])');
+            const space = new RegExp('(?=.*[\\s])');
 
-    if(number.test(data)){
-        digit.classlist.add('valid');
-    }else{
-        digit.classlist.remove('valid');
-    }
-    
-    if(lower.test(data)){
-        lowercase.classlist.add('valid');
-    }else{
-        lowercase.classlist.remove('valid');
-    }
+            if(length.test(data)){
+                minlength.classList.add('valid');
+            }else{
+                minlength.classList.remove('valid');
+            }
 
-    if(upper.test(data)){
-        uppercase.classlist.add('valid');
-    }else{
-        uppercase.classlist.remove('valid');
-    }
+            if(number.test(data)){
+                digit.classList.add('valid');
+            }else{
+                digit.classList.remove('valid');
+            }
 
-    if(special.test(data)){
-        specialchar.classlist.add('valid');
-    }else{
-        specialchar.classlist.remove('valid');
-    }
+            if(lower.test(data)){
+                lowercase.classList.add('valid');
+            }else{
+                lowercase.classList.remove('valid');
+            }
 
-    //show & hide password
-    toggle.onclick = function(){
-        if(password.type === "password"){
-            password.setAttribute('type','text');
-            toggleBtn.classlist.add('hide');
-        }else{
-            password.setAttribute('type','password');
-            toggleBtn.classlist.remove('hide');
+            if(upper.test(data)){
+                uppercase.classList.add('valid');
+            }else{
+                uppercase.classList.remove('valid');
+            }
+
+            if(special.test(data)){
+                specialchar.classList.add('valid');
+            }else{
+                specialchar.classList.remove('valid');
+            }
+
+            if(space.test(data)){
+                spaceerror.classList.add('error');
+            }else{
+                spaceerror.classList.remove('error');
+            }
         }
-    };
 
-    </script>
+    password.addEventListener('input', function(){
+        checkPassword(password.value);
+    });
+
+    togglePassword.addEventListener('click', function(){
+        if(password.type === "password"){
+            password.type = "text";
+            togglePassword.classList.remove('fa-eye-slash');
+            togglePassword.classList.add('fa-eye');
+        }else{
+            password.type = "password";
+            togglePassword.classList.remove('fa-eye');
+            togglePassword.classList.add('fa-eye-slash');
+        }
+    });
+</script>
 </body>
 </html>
 
