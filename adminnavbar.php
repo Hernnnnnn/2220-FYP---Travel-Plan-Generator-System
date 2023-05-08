@@ -92,25 +92,15 @@
 		padding: 0;
 	}
 	
-	body {
-		position: relative;
-		height: 150%;
-	}
-
-	body::before {
-		content: "";
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-image: url(images/image.gif);
-		background-size: cover;
+	body
+    {
+        background-image: url(images/image.gif);
+        background-size: cover; 
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-		opacity: 0.5; /* Change the opacity value as per your requirement */
-	}
+		box-sizing: border-box;
+		height: 150%;
+    }
 </style>
 <body>
 <div class="background">
