@@ -7,6 +7,7 @@
     <title>User || Navbar</title>
 
 </head>
+
 <link rel="shortcut icon" href="favicon.ico">
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
@@ -32,53 +33,95 @@
 <?php 
 	include 'dataconnection.php';
 	$email = $_GET['email'];
-	$sql = "SELECT * From `admin` where email = '$email'";
+	$sql = "SELECT * From `login` where email = '$email'";
 	$r = mysqli_query($conn,$sql);
 	$re = mysqli_fetch_assoc($r);
 ?>
+
 <style>
 	.img
 	{
 		/* position:absolute; */
 		width: 35px;
 		height: 35px;
-		 vertical-align: top;
+		vertical-align: top;
+	}
+
+	.sub-menu-link
+	{
+		display: flex; 
+		align-items: center; 
+		color: #525252;
+	}
+
+	.sub-menu-link p
+	{
+		width: 100%;
+	}
+
+	.sub-menu-link img
+	{
+		width: 40px;
+		background: #e5e5e5;
+		border-radius: 50%;
+		padding: 8px;
+		margin-right: 15px;
+	}
+
+	.sub-menu-link span
+	{
+		font-size: 22px;
 	}
 </style>
-
 <body>
 <div id="fh5co-wrapper">
 <div id="fh5co-page">
 <header id="fh5co-header-section" class="sticky-banner">
 			<div class="container">
-			
 				<div class="nav-header">
-						
-					
-				<!-- <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a> -->
-					
-				<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>TPGS</a></h1>
+				<h1 id="fh5co-logo" style="color: #4bb6b7;"><i class="icon-airplane"></i>TPGS</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li class="active"><a href="index.html">Home</a></li>
-							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Vacations</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="#">Family</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
-								</ul>
-							</li>
-							<li><a href="flight.html"></a></li>
+							<li class="active"><a href="index.php">Home</a></li>
 							<li><a href="hotel.html">Hotel</a></li>
 							<li><a href="car.html">Car</a></li>
 							<li><a href="blog.html">Blog</a></li>
 							<li><a href="contact.html">Contact</a></li>
-							<li><a href="adminprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a></li>
-						</ul>
+							<li><a href="userprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a>
+								<ul class="fh5co-sub-menu" style="position: absolute;">
+									<li style="display: flex; align-items: center;"><a class="user-info">
+										<img class="prof" src="images/<?php echo $re['image']?>" width="45px" style="border-radius: 50%; margin-right: 10px;" alt="">
+										<h2 style="font-weight: bold; text-transform: uppercase; float: right;"><?php echo $re['username']?></h2>
+										<hr style="border: 0; height: 1px; width: 100%; background: #ccc; margin: 15px 0 10px;">
+									</li>
+
+									<li><a href="#" class="sub-menu-link">
+										<img src="images/profile.png">
+										<p>Edit Profile</p>
+										<span>></span>
+									</li>
+
+									<li><a href="#" class="sub-menu-link">
+										<img src="images/setting-copy.png">
+										<p>Settings & Privacy</p>
+										<span>></span>
+									</li>
+
+									<li><a href="#" class="sub-menu-link">
+										<img src="images/help.png">
+										<p>Help & Support</p>
+										<span>></span>
+									</li>
+
+
+									<li><a href="#" class="sub-menu-link">
+										<img src="images/logout.png">
+										<p>Logout</p>
+										<span>></span>
+									</li>
+								</ul>
+							</li>
 					</nav>
 				</div>
 			</div>
