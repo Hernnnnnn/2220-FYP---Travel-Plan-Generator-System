@@ -18,6 +18,7 @@
     
 </head>
 <style>
+    
     body
     {
     background-image: url(images/image.gif);
@@ -25,9 +26,32 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     }
-    table
+
+    table 
     {
-        /* position: absolute; */
+        overflow-x: scroll;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        /* min-width: 400px; */
+        width: 60%;
+        margin: auto;
+        margin-top: 100px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    table thead th {
+    border: none;
+    padding: 30px;
+    font-size: 14px;
+    color: #fff; 
+    background: linear-gradient(#ff7b00,#ffb700);
+    text-align: center; 
+}
+    /* table
+    {
+        /* position: absolute; 
         margin: auto;
         margin-top: 150px;
         width: 60%;
@@ -38,7 +62,7 @@
         border-spacing: 0;
         border-radius: 12px 12px 0 0;
         overflow: hidden;
-    }
+    } */
     th
     {
         background: rgba(0,0,0,0.7);
@@ -54,6 +78,7 @@
 <body >
             
             <table>
+                <thead>
                 <tr>
                     <th>ID</th>
                     <th>Image</th>
@@ -63,6 +88,7 @@
                     <th>Status</th>
 
                 </tr>
+                </thead>
             <?php
             // include 'dataconnection.php';
 
