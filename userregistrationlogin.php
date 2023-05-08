@@ -1,74 +1,38 @@
-<?php session_start(); ?>
 <?php
-    include('dataconnection.php');
+    include "dataconnection.php";
+    $msg=" ";
+    if(isset($_POST['submit']))
+    {
+        $email = mysqli_real_escape_string($conn,$_POST["email"]);
+        $password=mysqli_real_escape_string($conn,$_POST['pass']);
+        
+        $sql = "SELECT * FROM `login` WHERE email = '{$email}' AND password = '{$password}'";
+        $result = mysqli_query($conn,$sql);
+        
+        $r = mysqli_num_rows($result);
+        $re = mysqli_fetch_assoc($result);
+        $sql2 = "SELECT * From `login`";
+        $result2=mysqli_query($conn,$sql2);
+        $re2 = mysqli_fetch_assoc($result2);
+        if($password == $re2["password"] && $email ==$re2["email"])
+        {
+            header("location: dashboard.php?email=".$re['email']);
+        }
+        else if(!$email)
+        {
+            $msg = "<div class='error'><i class='fa fa-exclamation-circle '></i>  &nbsp; Please fill in your email</div>";
+        }
+        else if(!$password)
+        {
+            $msg = "<div class='error'><i class='fa fa-exclamation-circle '></i>  &nbsp;Please fill in your password</div>";
+        }
+        else if($password != $re2["password"] || $email !=$re2["email"])
+        {
+            $msg = "<div class='error'><i class='fa fa-exclamation-circle '></i>  &nbsp;Email or password do not match</div>";
 
-    if(isset($_POST["register"])){
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-
-        $check_query = mysqli_query($connect, "SELECT * FROM login where email ='$email'");
-        $rowCount = mysqli_num_rows($check_query);
-
-        if(!empty($email) && !empty($password)){
-            if($rowCount > 0){
-                ?>
-                <script>
-                    alert("User with email already exist!");
-                </script>
-                <?php
-            }else{
-                $password_hash = password_hash($password, PASSWORD_BCRYPT);
-
-                $result = mysqli_query($connect, "INSERT INTO login (email, password, status) VALUES ('$email', '$password_hash', 0)");
-    
-                if($result){
-                    $otp = rand(100000,999999);
-                    $_SESSION['otp'] = $otp;
-                    $_SESSION['mail'] = $email;
-                    require "Mail/phpmailer/PHPMailerAutoload.php";
-                    $mail = new PHPMailer;
-    
-                    $mail->isSMTP();
-                    $mail->Host='smtp.gmail.com';
-                    $mail->Port=587;
-                    $mail->SMTPAuth=true;
-                    $mail->SMTPSecure='tls';
-    
-                    $mail->Username='email account';
-                    $mail->Password='email password';
-    
-                    $mail->setFrom('email account', 'OTP Verification');
-                    $mail->addAddress($_POST["email"]);
-    
-                    $mail->isHTML(true);
-                    $mail->Subject="Your verify code";
-                    $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>
-                    <br><br>
-                    <p>With regrads,</p>
-                    <b>TPGS Team</b>";
-    
-                            if(!$mail->send()){
-                                ?>
-                                    <script>
-                                        alert("<?php echo "Register Failed, Invalid Email "?>");
-                                    </script>
-                                <?php
-                            }else{
-                                ?>
-                                <script>
-                                    alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
-                                    window.location.replace('userverification.php');
-                                </script>
-                                <?php
-                            }
-                }
-            }
         }
     }
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,8 +53,8 @@
             <input type="text" id="name" placeholder="Name">
             <input type="email" id="email" placeholder="Email">
             <div class="password">
-                <input type="password" id="passwd" placeholder="Password">
-                <span id="togglebtn" toggle="#psw"></span>
+                <input type="password" id="passwd" placeholder="Password" pattern="^\S+$">
+                <span id="togglebtn" class="fas fa-eye-slash"></span>
                 <div class="validation">
                     <ul>
                         <li id="length">Minimum 8 character</li>
@@ -109,8 +73,9 @@
         <div class="form-container login-container">
         <form action="#">
             <h1>User Login</h1>
-            <input type="email" id="email" placeholder="Email">
-            <input type="password" id="passwd" placeholder="Password">
+            <?php echo $msg;?>
+            <input name="email" type="email" placeholder="Email">
+            <input name="pass" type="password" placeholder="Password">
 
             <div class="content">
             <div class="checkbox">
@@ -148,67 +113,78 @@
 
     <script src="userregistrationlogin.js"></script>
     
-    <script>
-    let toggle = document.getElementById('togglePassword');
-    let password = document.getElementById('passwd');
+<script>
+        let togglePassword = document.getElementById('togglebtn');
+        let password = document.getElementById('passwd');
 
-    let minlength = document.getElementById('length');
-    let digit = document.getElementById('number');
-    let lowercase = document.getElementById('lower');
-    let uppercase = document.getElementById('upper');
-    let specialchar = document.getElementById('special');
+        let minlength = document.getElementById('length');
+        let digit = document.getElementById('number');
+        let lowercase = document.getElementById('lower');
+        let uppercase = document.getElementById('upper');
+        let specialchar = document.getElementById('special');
+        let spaceerror = document.getElementById('space');
 
-    //check
-    function checkPassword(data){
-        const length = new RegExp('(?=.*{8,})')
-        const number = new RegExp('(?=.*[0-9])')
-        const lower = new RegExp('(?=.*[a-z])')
-        const upper = new RegExp('(?=.*[A-Z])')
-        const special = new RegExp('(?=.*[!@#\$%\^&\*])')
-    }
-    
-    if(length.test(data)){
-        minlength.classlist.add('valid');
-    }else{
-        minlength.classlist.remove('valid');
-    }
+        function checkPassword(data){
+            const length = new RegExp('(?=.{8,})');
+            const number = new RegExp('(?=.*[0-9])');
+            const lower = new RegExp('(?=.*[a-z])');
+            const upper = new RegExp('(?=.*[A-Z])');
+            const special = new RegExp('(?=.*[!@#$%^&*])');
+            const space = new RegExp('(?=.*[\\s])');
 
-    if(number.test(data)){
-        digit.classlist.add('valid');
-    }else{
-        digit.classlist.remove('valid');
-    }
-    
-    if(lower.test(data)){
-        lowercase.classlist.add('valid');
-    }else{
-        lowercase.classlist.remove('valid');
-    }
+            if(length.test(data)){
+                minlength.classList.add('valid');
+            }else{
+                minlength.classList.remove('valid');
+            }
 
-    if(upper.test(data)){
-        uppercase.classlist.add('valid');
-    }else{
-        uppercase.classlist.remove('valid');
-    }
+            if(number.test(data)){
+                digit.classList.add('valid');
+            }else{
+                digit.classList.remove('valid');
+            }
 
-    if(special.test(data)){
-        specialchar.classlist.add('valid');
-    }else{
-        specialchar.classlist.remove('valid');
-    }
+            if(lower.test(data)){
+                lowercase.classList.add('valid');
+            }else{
+                lowercase.classList.remove('valid');
+            }
 
-    //show & hide password
-    toggle.onclick = function(){
-        if(password.type === "password"){
-            password.setAttribute('type','text');
-            toggleBtn.classlist.add('hide');
-        }else{
-            password.setAttribute('type','password');
-            toggleBtn.classlist.remove('hide');
+            if(upper.test(data)){
+                uppercase.classList.add('valid');
+            }else{
+                uppercase.classList.remove('valid');
+            }
+
+            if(special.test(data)){
+                specialchar.classList.add('valid');
+            }else{
+                specialchar.classList.remove('valid');
+            }
+
+            if(space.test(data)){
+                spaceerror.classList.add('error');
+            }else{
+                spaceerror.classList.remove('error');
+            }
         }
-    };
 
-    </script>
+    password.addEventListener('input', function(){
+        checkPassword(password.value);
+    });
+
+    togglePassword.addEventListener('click', function(){
+        if(password.type === "password"){
+            password.type = "text";
+            togglePassword.classList.remove('fa-eye-slash');
+            togglePassword.classList.add('fa-eye');
+        }else{
+            password.type = "password";
+            togglePassword.classList.remove('fa-eye');
+            togglePassword.classList.add('fa-eye-slash');
+        }
+    });
+</script>
 </body>
 </html>
 

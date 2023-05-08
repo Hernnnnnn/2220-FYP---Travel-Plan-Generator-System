@@ -191,15 +191,6 @@ input {
 	height: 30px;
 }
 
-#togglebtn::before {
-	content: '\f06e';
-	font-family: FontAwesome;
-}
-
-#togglebtn .hide::before {
-	content: '\f070';
-}
-
 .validation {
 	background: #fffdfdda;
 	padding: 10px;
