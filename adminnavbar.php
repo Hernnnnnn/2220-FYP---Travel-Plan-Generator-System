@@ -98,7 +98,7 @@
 	}
 
 	body::before {
-		content: "";
+		/* content: ""; */
 		display: block;
 		position: absolute;
 		top: 0;
@@ -109,7 +109,7 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-		opacity: 0.5; /* Change the opacity value as per your requirement */
+		/* opacity: 0.5; Change the opacity value as per your requirement */
 	}
 </style>
 <body>
@@ -122,7 +122,7 @@
 					
 				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
 					
-				<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
+				<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>TPGS</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
