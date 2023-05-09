@@ -112,11 +112,11 @@
 					
 				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
 					
-				<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>TPGS</a></h1>
+				<h1 id="fh5co-logo"><a href=""><i class="icon-airplane"></i>TPGS</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li class="active"><a href="index.html">Home</a></li>
+							<li class="active"><a href="dashboard.php?email=<?php echo $re['email']?>"><i class="fa fa-home"></i> Home</a></li>
 							<li>
 								<a href="adminmanageuser.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
 							</li>
