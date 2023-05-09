@@ -70,47 +70,19 @@
 	<![endif]-->
 
 	</head>
+
+	<?php 
+		include "usernavbar.php";
+		include 'dataconnection.php';
+		$email = $_GET['email'];
+		$sql = "SELECT * From `login` where email = '$email'";
+		$r = mysqli_query($conn,$sql);
+		$re = mysqli_fetch_assoc($r);
+	?>
+
 	<body>
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-
-		<header id="fh5co-header-section" class="sticky-banner">
-			<div class="container">
-				<div class="nav-header">
-					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
-					<!-- START #fh5co-menu-wrap -->
-					<nav id="fh5co-menu-wrap" role="navigation">
-						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li class="active"><a href="index.html">Home</a></li>
-							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Vacations</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="#">Family</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
-								</ul>
-							</li>
-							<li><a href="flight.html">Flights</a></li>
-							<li><a href="hotel.html">Hotel</a></li>
-							<li><a href="car.html">Car</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
-							<li><a href="registrationlogin.php">Login</a></li>
-
-							
-						</ul>
-
-						
-					</nav>
-				</div>
-			</div>
-		</header>
-
-		<!-- end:header-top -->
-	
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
 			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/image.gif); ">
@@ -134,13 +106,13 @@
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
 													<label for="from">From:</label>
-													<input type="text" class="form-control" id="from-place" placeholder="Johor Bahru"/>
+													<input type="text" class="form-control" id="from-place" placeholder="Los Angeles, USA"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
 													<label for="from">To:</label>
-													<input type="text" class="form-control" id="to-place" placeholder="Kuala Lumpur"/>
+													<input type="text" class="form-control" id="to-place" placeholder="Tokyo, Japan"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
@@ -329,16 +301,11 @@
 							</div>
 							<div class="desc2 animate-box">
 								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
-								
-									<h2>Plan Your Trip Now</h2>
-									<h3>Let your life be wonderful.</h3>
-								
-
-
-
-
-									
-									<p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p>
+									<p>HandCrafted by <a href="http://frehtml5.co/" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></p>
+									<h2>Exclusive Limited Time Offer</h2>
+									<h3>Fly to Hong Kong via Los Angeles, USA</h3>
+									<span class="price">$599</span>
+									<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
 								</div>
 							</div>
 						</div>
@@ -358,35 +325,35 @@
 				</div>
 				<div class="row">
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/Kuala Lumpur1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
-								<h3>Kuala Lumpur</h3>
-								<span></span>
-								<span class="price"></span>
-								<a class="btn btn-primary btn-outline" href="place.html">VIEW MORE <i class="icon-arrow-right22"></i></a>
+								<h3>New York</h3>
+								<span>3 nights + Flight 5*Hotel</span>
+								<span class="price">$1,000</span>
+								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/penang.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
-								<h3>PENANG</h3>
-								<span></span>
-								<span class="price"></span>
-								<a class="btn btn-primary btn-outline" href="PENANG.html">VIEW MORE <i class="icon-arrow-right22"></i></a>
+								<h3>Philippines</h3>
+								<span>4 nights + Flight 5*Hotel</span>
+								<span class="price">$1,000</span>
+								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="melaka.html"><img src="images/melaka.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
-								<h3>MALEKA</h3>
-								<span></span>
-								<span class="price"></span>
-								<a class="btn btn-primary btn-outline" href="melaka.html">VIEW MORE <i class="icon-arrow-right22"></i></a>
+								<h3>Hongkong</h3>
+								<span>2 nights + Flight 4*Hotel</span>
+								<span class="price">$1,000</span>
+								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
@@ -508,7 +475,7 @@
 							<li class="one-forth text-center" style="background-image: url(images/melaka.jpg); ">
 								<a href="#">
 									<div class="case-studies-summary">
-										<h2>Melaka</h2>
+										<h2>Melacca</h2>
 									</div>
 								</a>
 							</li>
@@ -788,8 +755,8 @@
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
-	<script src="loadmore.js"></script>
 
 	</body>
 </html>
+
 

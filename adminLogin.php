@@ -18,7 +18,7 @@
         $re2 = mysqli_fetch_assoc($result2);
         if($password == $re2["password"] && $email ==$re2["email"])
         {
-            header("location: adminpage.php?email=".$re['email']);
+            header("location: dashboard.php?email=".$re['email']);
         }
         else if(!$email)
         {
@@ -35,6 +35,7 @@
         }
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,22 +71,6 @@
 </head>
 <body>
     <div class="container" id="container">
-        <div class="form-container register-container">
-        <form action="#">
-            <h1>Register</h1>
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <button>Register</button>
-            <span>or use your account</span>
-            <div class="social-container">
-            <a href="#" class="social"><i class="lni lni-facebook-fill"></i></a>
-            <a href="#" class="social"><i class="lni lni-google"></i></a>
-            <a href="#" class="social"><i class="lni lni-linkedin-original"></i></a>
-            </div>
-        </form>
-        </div>    
-        
         <div class="form-container login-container">
 		
         <form action="" method="post">
@@ -111,26 +96,31 @@
 
         <div class="overlay-container">
             <div class="overlay">
-                <!-- <div class="overlay-panel overlay-left">
-                    <h1 class="title">Hello <br> Welcome </h1>
-                    <p>if you don't have an account, login here and have fun</p>
-                    <button class="ghost" id="login">Login
-                        <i class="lni lni-arrow-left login"></i>
-                    </button> -->
                 </div>
 
-                <!-- <div class="overlay-panel overlay-right">
-                    <h1 class="title">Start your <br> journey now </h1>
-                    <p>if you don't have an account, join us now</p>
-                    <button class="ghost" id="register">Register
-                        <i class="lni lni-arrow-right register"></i>
-                    </button>
-                </div> -->
+                <div class="overlay-panel overlay-right">
+                    <h1 class="title">Are you ready <br> to start your job? </h1>
+                    <p>boss doesn't care are you ready or not</p>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        let togglePassword = document.getElementById('togglebtn');
+        let password = document.getElementById('passwd');
+
+        togglePassword.addEventListener('click', function(){
+        if(password.type === "password"){
+            password.type = "text";
+            togglePassword.classList.remove('fa-eye-slash');
+            togglePassword.classList.add('fa-eye');
+        }else{
+            password.type = "password";
+            togglePassword.classList.remove('fa-eye');
+            togglePassword.classList.add('fa-eye-slash');
+        }
+    });
     </script>
 
 </body>

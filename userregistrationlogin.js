@@ -1,7 +1,7 @@
 
 
-const registerButton = document.getElementById("register");
-const loginButton = document.getElementById("login");
+const registerButton = document.getElementById("registerp");
+const loginButton = document.getElementById("loginp");
 const container = document.getElementById("container");
 
 registerButton.addEventListener("click", () => {
@@ -11,3 +11,4 @@ registerButton.addEventListener("click", () => {
 loginButton.addEventListener("click", () => {
   container.classList.remove("right-panel-active");
 });
+

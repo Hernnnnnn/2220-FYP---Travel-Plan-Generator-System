@@ -19,7 +19,7 @@
             }else{
                 $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-                $result = mysqli_query($connect, "INSERT INTO login (email, password, status) VALUES ('$email', '$password_hash', 0)");
+                $result = mysqli_query($connect, "INSERT INTO login (email, password, status) VALUES ('$email', '$password_hash', 1)");
     
                 if($result){
                     $otp = rand(100000,999999);
@@ -65,10 +65,43 @@
             }
         }
     }
-
 ?>
 
+<?php
+    include "dataconnection.php";
+    $msg=" ";
+    if(isset($_POST['submit']))
+    {
+        $email = mysqli_real_escape_string($conn,$_POST["email"]);
+        $password=mysqli_real_escape_string($conn,$_POST['pass']);
+        
+        $sql = "SELECT * FROM `login` WHERE email = '{$email}' AND password = '{$password}'";
+        $result = mysqli_query($conn,$sql);
+        
+        $r = mysqli_num_rows($result);
+        $re = mysqli_fetch_assoc($result);
+        $sql2 = "SELECT * From `login`";
+        $result2=mysqli_query($conn,$sql2);
+        $re2 = mysqli_fetch_assoc($result2);
+        if($password == $re2["password"] && $email ==$re2["email"])
+        {
+            header("location: index.php?email=".$re['email']);
+        }
+        else if(!$email)
+        {
+            $msg = "<div class='error'><i class='fa fa-exclamation-circle '></i>  &nbsp; Please fill in your email</div>";
+        }
+        else if(!$password)
+        {
+            $msg = "<div class='error'><i class='fa fa-exclamation-circle '></i>  &nbsp;Please fill in your password</div>";
+        }
+        else if($password != $re2["password"] || $email !=$re2["email"])
+        {
+            $msg = "<div class='error'><i class='fa fa-exclamation-circle '></i>  &nbsp;Email or password do not match</div>";
 
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,8 +122,8 @@
             <input type="text" id="name" placeholder="Name">
             <input type="email" id="email" placeholder="Email">
             <div class="password">
-                <input type="password" id="passwd" placeholder="Password">
-                <span id="togglebtn"></span>
+                <input type="password" id="passwd" placeholder="Password" pattern="^\S+$">
+                <span id="togglebtn" class="fas fa-eye-slash"></span>
                 <div class="validation">
                     <ul>
                         <li id="length">Minimum 8 character</li>
@@ -109,8 +142,9 @@
         <div class="form-container login-container">
         <form action="#">
             <h1>User Login</h1>
-            <input type="email" id="email" placeholder="Email">
-            <input type="password" id="passwd" placeholder="Password">
+            <?php echo $msg;?>
+            <input name="email" type="email" placeholder="Email">
+            <input name="pass" type="password" placeholder="Password">
 
             <div class="content">
             <div class="checkbox">
@@ -121,7 +155,7 @@
                 <a href="userrecoverpassword.php">Forgot password?</a>
             </div>
             </div>
-            <button>Login</button>
+            <button name="submit" type="submit">Login</button>
         </form>
         </div>
 
@@ -130,7 +164,7 @@
                 <div class="overlay-panel overlay-left">
                     <h1 class="title">Hello <br> Welcome </h1>
                     <p>if you don't have an account, login here and have fun</p>
-                    <button class="ghost" id="login">Login
+                    <button class="ghost" id="loginp">Login
                         <i class="fa-regular fa-arrow-left"></i>
                     </button>
                 </div>
@@ -138,7 +172,7 @@
                 <div class="overlay-panel overlay-right">
                     <h1 class="title">Start your <br> journey now </h1>
                     <p>if you don't have an account, join us now</p>
-                    <button class="ghost" id="register">Register
+                    <button class="ghost" id="registerp">Register
                         <i class="fa-regular fa-arrow-right"></i>
                     </button>
                 </div>
@@ -148,67 +182,78 @@
 
     <script src="userregistrationlogin.js"></script>
     
-    <script>
-    let toggle = document.getElementById('togglePassword');
-    let password = document.getElementById('password');
+<script>
+        let togglePassword = document.getElementById('togglebtn');
+        let password = document.getElementById('passwd');
 
-    let minlength = document.getElementById('length');
-    let digit = document.getElementById('number');
-    let lowercase = document.getElementById('lower');
-    let uppercase = document.getElementById('upper');
-    let specialchar = document.getElementById('special');
+        let minlength = document.getElementById('length');
+        let digit = document.getElementById('number');
+        let lowercase = document.getElementById('lower');
+        let uppercase = document.getElementById('upper');
+        let specialchar = document.getElementById('special');
+        let spaceerror = document.getElementById('space');
 
-    //check
-    function checkPassword(data){
-        const length = new RegExp('(?=.*{8,})')
-        const number = new RegExp('(?=.*[0-9])')
-        const lower = new RegExp('(?=.*[a-z])')
-        const upper = new RegExp('(?=.*[A-Z])')
-        const special = new RegExp('(?=.*[!@#\$%\^&\*])')
-    }
-    
-    if(length.test(data)){
-        minlength.classlist.add('valid');
-    }else{
-        minlength.classlist.remove('valid');
-    }
+        function checkPassword(data){
+            const length = new RegExp('(?=.{8,})');
+            const number = new RegExp('(?=.*[0-9])');
+            const lower = new RegExp('(?=.*[a-z])');
+            const upper = new RegExp('(?=.*[A-Z])');
+            const special = new RegExp('(?=.*[!@#$%^&*])');
+            const space = new RegExp('(?=.*[\\s])');
 
-    if(number.test(data)){
-        digit.classlist.add('valid');
-    }else{
-        digit.classlist.remove('valid');
-    }
-    
-    if(lower.test(data)){
-        lowercase.classlist.add('valid');
-    }else{
-        lowercase.classlist.remove('valid');
-    }
+            if(length.test(data)){
+                minlength.classList.add('valid');
+            }else{
+                minlength.classList.remove('valid');
+            }
 
-    if(upper.test(data)){
-        uppercase.classlist.add('valid');
-    }else{
-        uppercase.classlist.remove('valid');
-    }
+            if(number.test(data)){
+                digit.classList.add('valid');
+            }else{
+                digit.classList.remove('valid');
+            }
 
-    if(special.test(data)){
-        specialchar.classlist.add('valid');
-    }else{
-        specialchar.classlist.remove('valid');
-    }
+            if(lower.test(data)){
+                lowercase.classList.add('valid');
+            }else{
+                lowercase.classList.remove('valid');
+            }
 
-    //show & hide password
-    toggle.onclick = function(){
-        if(password.type === "password"){
-            password.setAttribute('type','text');
-            toggleBtn.classlist.add('hide');
-        }else{
-            password.setAttribute('type','password');
-            toggleBtn.classlist.remove('hide');
+            if(upper.test(data)){
+                uppercase.classList.add('valid');
+            }else{
+                uppercase.classList.remove('valid');
+            }
+
+            if(special.test(data)){
+                specialchar.classList.add('valid');
+            }else{
+                specialchar.classList.remove('valid');
+            }
+
+            if(space.test(data)){
+                spaceerror.classList.add('error');
+            }else{
+                spaceerror.classList.remove('error');
+            }
         }
-    };
 
-    </script>
+    password.addEventListener('input', function(){
+        checkPassword(password.value);
+    });
+
+    togglePassword.addEventListener('click', function(){
+        if(password.type === "password"){
+            password.type = "text";
+            togglePassword.classList.remove('fa-eye-slash');
+            togglePassword.classList.add('fa-eye');
+        }else{
+            password.type = "password";
+            togglePassword.classList.remove('fa-eye');
+            togglePassword.classList.add('fa-eye-slash');
+        }
+    });
+</script>
 </body>
 </html>
 
