@@ -5,9 +5,6 @@
         
         header("Location: editstatus.php?id=".$_POST['ID']);
         
-    
-        
-    
     }
 ?>
 <!DOCTYPE html>
