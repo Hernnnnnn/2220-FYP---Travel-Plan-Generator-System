@@ -98,7 +98,7 @@
 	}
 
 	body::before {
-		/* content: ""; */
+		content: "";
 		display: block;
 		position: absolute;
 		top: 0;
@@ -109,7 +109,7 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-		/* opacity: 0.5; Change the opacity value as per your requirement */
+		opacity: 0.5; /* Change the opacity value as per your requirement */
 	}
 </style>
 <body>

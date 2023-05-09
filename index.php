@@ -70,15 +70,19 @@
 	<![endif]-->
 
 	</head>
-	<?php include "usernavbar2.php" ?>
+
+	<?php 
+		include "usernavbar.php";
+		include 'dataconnection.php';
+		$email = $_GET['email'];
+		$sql = "SELECT * From `login` where email = '$email'";
+		$r = mysqli_query($conn,$sql);
+		$re = mysqli_fetch_assoc($r);
+	?>
+
 	<body>
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-
-		
-
-		<!-- end:header-top -->
-	
 		<div class="fh5co-hero">
 			<div class="fh5co-overlay"></div>
 			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/image.gif); ">

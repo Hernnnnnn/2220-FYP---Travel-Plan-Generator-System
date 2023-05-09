@@ -1,5 +1,5 @@
 <?php
-    $conn = mysqli_connect("localhost","root","","TPGS");
+    $conn = mysqli_connect("localhost","root","","tpgs");
 
     if(!$conn)
     {
