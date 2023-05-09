@@ -117,7 +117,7 @@
 <body>
     <div class="container" id="container">
         <div class="form-container register-container">
-        <form action="#">
+        <form action="#" method="post">
             <h1>User Registration</h1>
             <input type="text" id="name" placeholder="Name">
             <input type="email" id="email" placeholder="Email">
@@ -135,12 +135,12 @@
                 </div>
             </div>
         
-            <button name="register" type="register">Register</button>
+            <button name="register" type="submit">Register</button>
         </form>
         </div>    
         
         <div class="form-container login-container">
-        <form action="#">
+        <form action="#" method="post">
             <h1>User Login</h1>
             <?php echo $msg;?>
             <input name="email" type="email" placeholder="Email">

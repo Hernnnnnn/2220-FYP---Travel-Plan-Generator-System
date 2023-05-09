@@ -74,6 +74,7 @@
     td
     {
         background: rgba(255, 255, 255, 0.7);
+        text-align: center;
     }
     th
     {
@@ -160,7 +161,6 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Image</th>
                     <th>Username</th>
                     <th>Password</th>
                     <th>Email</th>
@@ -179,7 +179,6 @@ input[type="checkbox"].toggle:disabled + label::after {
             <form method="post">
                 <tr>
                     <td><?php echo $user['ID']?></td>
-                    <td><?php echo $user['image']?></td>
                     <td><?php echo $user['username']?></td>
                     <td><?php echo $user['password']?></td>
                     <td><?php echo $user['email']?></td>
