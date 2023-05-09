@@ -92,15 +92,25 @@
 		padding: 0;
 	}
 	
-	body
-    {
-        background-image: url(images/image.gif);
-        background-size: cover; 
+	body {
+		position: relative;
+		height: 150%;
+	}
+
+	body::before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url(images/image.gif);
+		background-size: cover;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-		box-sizing: border-box;
-		height: 150%;
-    }
+		opacity: 0.5; /* Change the opacity value as per your requirement */
+	}
 </style>
 <body>
 <div class="background">
@@ -112,7 +122,7 @@
 					
 				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
 					
-				<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>Travel</a></h1>
+				<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>TPGS</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
