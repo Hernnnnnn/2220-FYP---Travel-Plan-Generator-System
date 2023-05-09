@@ -92,24 +92,14 @@
 		padding: 0;
 	}
 	
-	body {
-		position: relative;
-		height: 150%;
-	}
-
-	body::before {
-		content: "";
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-image: url(images/image.gif);
-		background-size: cover;
+	body
+    {
+        background-image: url(images/image.gif);
+        background-size: cover; 
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-		opacity: 0.5; /* Change the opacity value as per your requirement */
+		box-sizing: border-box;
+		height:150%;
 	}
 </style>
 <body>
@@ -131,7 +121,7 @@
 								<a href="adminmanageuser.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
 							</li>
 							<!-- <li><a href="flight.html"></a></li> -->
-							<li><a href="hotel.html">Hotel</a></li>
+							<li><a href="dashboard.php">Hotel</a></li>
 							<li><a href="car.html">Car</a></li>
 							<li><a href="blog.html">Blog</a></li>
 							<li><a href="contact.html">Contact</a></li>
