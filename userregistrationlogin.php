@@ -1,3 +1,72 @@
+<?php session_start(); ?>
+<?php
+    include('dataconnection.php');
+
+    if(isset($_POST["register"])){
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        $check_query = mysqli_query($connect, "SELECT * FROM login where email ='$email'");
+        $rowCount = mysqli_num_rows($check_query);
+
+        if(!empty($email) && !empty($password)){
+            if($rowCount > 0){
+                ?>
+                <script>
+                    alert("User with email already exist!");
+                </script>
+                <?php
+            }else{
+                $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+                $result = mysqli_query($connect, "INSERT INTO login (email, password, status) VALUES ('$email', '$password_hash', 1)");
+    
+                if($result){
+                    $otp = rand(100000,999999);
+                    $_SESSION['otp'] = $otp;
+                    $_SESSION['mail'] = $email;
+                    require "Mail/phpmailer/PHPMailerAutoload.php";
+                    $mail = new PHPMailer;
+    
+                    $mail->isSMTP();
+                    $mail->Host='smtp.gmail.com';
+                    $mail->Port=587;
+                    $mail->SMTPAuth=true;
+                    $mail->SMTPSecure='tls';
+    
+                    $mail->Username='email account';
+                    $mail->Password='email password';
+    
+                    $mail->setFrom('email account', 'OTP Verification');
+                    $mail->addAddress($_POST["email"]);
+    
+                    $mail->isHTML(true);
+                    $mail->Subject="Your verify code";
+                    $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>
+                    <br><br>
+                    <p>With regrads,</p>
+                    <b>TPGS Team</b>";
+    
+                            if(!$mail->send()){
+                                ?>
+                                    <script>
+                                        alert("<?php echo "Register Failed, Invalid Email "?>");
+                                    </script>
+                                <?php
+                            }else{
+                                ?>
+                                <script>
+                                    alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
+                                    window.location.replace('userverification.php');
+                                </script>
+                                <?php
+                            }
+                }
+            }
+        }
+    }
+?>
+
 <?php
     include "dataconnection.php";
     $msg=" ";
@@ -16,7 +85,7 @@
         $re2 = mysqli_fetch_assoc($result2);
         if($password == $re2["password"] && $email ==$re2["email"])
         {
-            header("location: dashboard.php?email=".$re['email']);
+            header("location: index.php?email=".$re['email']);
         }
         else if(!$email)
         {
@@ -86,7 +155,7 @@
                 <a href="userrecoverpassword.php">Forgot password?</a>
             </div>
             </div>
-            <button>Login</button>
+            <button name="submit" type="submit">Login</button>
         </form>
         </div>
 
@@ -95,7 +164,7 @@
                 <div class="overlay-panel overlay-left">
                     <h1 class="title">Hello <br> Welcome </h1>
                     <p>if you don't have an account, login here and have fun</p>
-                    <button class="ghost" id="login">Login
+                    <button class="ghost" id="loginp">Login
                         <i class="fa-regular fa-arrow-left"></i>
                     </button>
                 </div>
@@ -103,7 +172,7 @@
                 <div class="overlay-panel overlay-right">
                     <h1 class="title">Start your <br> journey now </h1>
                     <p>if you don't have an account, join us now</p>
-                    <button class="ghost" id="register">Register
+                    <button class="ghost" id="registerp">Register
                         <i class="fa-regular fa-arrow-right"></i>
                     </button>
                 </div>

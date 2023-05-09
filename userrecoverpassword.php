@@ -1,4 +1,3 @@
-<?php session_start() ; ?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -24,7 +23,7 @@
         
             <h1>Password Recovery</h1>
             <i class='fa fa-triangle-exclamation'></i>
-            <input type="email" id="email" placeholder="Email">
+            <input type="email" id="email" name="email" placeholder="Email">
             <button name="recover" type="recover">Recover</button>
         </form>
         </div>
@@ -43,15 +42,20 @@
 </html>
 
 <?php 
+    include('dataconnection.php');
+    
     if(isset($_POST["recover"])){
-        include('dataconnection.php');
-        $email = $_POST["email"];
+        
+        $email =  mysqli_real_escape_string($conn,$_POST["email"]);
 
-        $sql = mysqli_query($connect, "SELECT * FROM login WHERE email='$email'");
-        $query = mysqli_num_rows($sql);
-  	    $fetch = mysqli_fetch_assoc($sql);
+        $sql = "SELECT * FROM `login` WHERE email='$email'";
+        $result = mysqli_query($conn,$sql);
 
-        if(mysqli_num_rows($sql) <= 0){
+        if(!$result) {
+            die("Query failed: " . mysqli_error($conn));
+        }
+
+        if(mysqli_num_rows($result) <= 0){
             ?>
             <script>
                 alert("<?php  echo "Sorry, no emails exists "?>");

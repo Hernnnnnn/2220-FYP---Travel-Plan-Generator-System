@@ -58,7 +58,7 @@
 </body>
 </html>
 <?php 
-    include('connect/connection.php');
+    include('dataconnection.php');
     if(isset($_POST["verify"])){
         $otp = $_SESSION['otp'];
         $email = $_SESSION['mail'];
