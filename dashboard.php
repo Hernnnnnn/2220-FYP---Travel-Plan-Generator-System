@@ -18,37 +18,8 @@ include 'dataconnection.php';
 
 <style>
     
-    .header
-    {
-        display: flex;
-        justify-content: space-between;
-        padding: 1rem;
-        /* margin-bottom: 0px; */
-    }
-    .search-wrapper
-    {
-        border: 1px solid black;
-        border-radius: 30px;
-        height: 50px;
-        align-items: center;
-        overflow-x: hidden;
-        margin: auto;
-    }
-    .search-wrapper span
-    {
-        display: inline-block;
-        padding: 0rem .5rem;
-        color: black;
-    }
-    .search-wrapper input
-    {
-        height: 100%;
-        padding: .5rem;
-        border: none;
-        outline: none;
-        background: transparent;
-        color: gray;
-    }
+    
+    
     main
     {
         /* margin-top: 50px; */
@@ -116,12 +87,7 @@ include 'dataconnection.php';
     ?>
 <body>
     <!-- <header> -->
-    <div class="header">
-    <div class="search-wrapper">
-        <span class="fa fa-search"></span>
-        <input type="search" placeholder="Search here">
-    </div>
-    </div>
+    
     <!-- </header> -->
     
     <main>
