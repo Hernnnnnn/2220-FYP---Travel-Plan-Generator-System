@@ -11,7 +11,8 @@
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FREEHTML5.CO" />
-
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!-- 
 	//////////////////////////////////////////////////////
 
@@ -102,6 +103,15 @@
 		height:150%;
 	}
 </style>
+<style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 24
+}
+</style>
 <body>
 <div class="background">
 <header id="fh5co-header-section" class="sticky-banner">
@@ -127,11 +137,8 @@
 							<li><a href="contact.html">Contact</a></li>
 							<li><a href="adminprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a>
 							<ul class="fh5co-sub-menu">
-									<li><a href="#">Family</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
+									<li><a href="#"><span></span> Edit password</a></li>
+									<li><a href="adminLogout.php"><span class="material-symbols-outlined">logout</span>Log out</a></li>
 								</ul></li>
 						</ul>
 					</nav>

@@ -1,6 +1,7 @@
 
 
 <?php
+    session_start();
     include "dataconnection.php";
     $msg=" ";
     if(isset($_POST['submit']))
@@ -18,7 +19,9 @@
         $re2 = mysqli_fetch_assoc($result2);
         if($password == $re2["password"] && $email ==$re2["email"])
         {
+            $_SESSION['email']=$email;
             header("location: dashboard.php?email=".$re['email']);
+            die;
         }
         else if(!$email)
         {

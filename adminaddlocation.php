@@ -1,5 +1,10 @@
 
 <?php 
+session_start();
+if(!$_SESSION['email'])
+{
+    header("Location:adminLogin.php");
+}
     include 'dataconnection.php';
     $email = $_GET['email'];
     $msg=" ";

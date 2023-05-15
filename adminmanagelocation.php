@@ -8,6 +8,11 @@
     <title>Admin || Location</title>
     
     <?php
+    session_start();
+    if(!$_SESSION['email'])
+{
+    header("Location:adminLogin.php");
+}
     include 'adminnavbar.php';
     $email = $_GET['email'];
     $sql = "SELECT * From `admin` where email = '$email'";
