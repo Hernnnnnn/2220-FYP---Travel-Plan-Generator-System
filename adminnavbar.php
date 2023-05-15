@@ -121,7 +121,7 @@
 								<a href="adminmanageuser.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
 							</li>
 							<!-- <li><a href="flight.html"></a></li> -->
-							<li><a href="adminmanagelocation.php?email=<?php echo $re['email']?>">Location's details</a></li>
+							<li><a href="adminmanagelocation.php?email=<?php echo $re['email']?>"><span class="fa fa-globe"></span> Location's details</a></li>
 							<li><a href="car.html">Car</a></li>
 							<li><a href="blog.html">Blog</a></li>
 							<li><a href="contact.html">Contact</a></li>

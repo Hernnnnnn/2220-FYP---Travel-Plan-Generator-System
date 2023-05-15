@@ -296,11 +296,12 @@ input[type="checkbox"].toggle:disabled + label::after {
                     <td>
                         <?php echo $loc["lVideo"]?>
                     </td>
+                    <?php $id=$loc['id']?>
+
                     <td>
                     <a class="update" href="adminupdatelocationdetails.php?email=<?php echo $email?>&&id=<?php echo $id?>">Update</a>
                     </td>
                     <td>
-                        <?php $id=$loc['id']?>
                     <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a>
                     </td>
                     
