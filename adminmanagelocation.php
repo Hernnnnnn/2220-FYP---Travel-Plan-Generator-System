@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +67,9 @@
     {
         background: rgba(255, 255, 255, 0.7);
         text-align: center;
-        
+        padding-bottom: 15px;
+        padding-top: 15px;
+
     }
     th
     {
@@ -227,6 +228,16 @@ input[type="checkbox"].toggle:disabled + label::after {
         font-weight: bold;
         
     }
+    .fa-close
+    {
+        font-size: 35px;
+        color: #4bb6b7;
+    }
+
+    .fa-close:hover
+    {
+        color: red;
+    }
 </style>
 <body >
     <form method="post">
@@ -262,11 +273,12 @@ input[type="checkbox"].toggle:disabled + label::after {
                 </tr>
                 <thead>
                 <tr>
-                    <th>ID</th>
+                    
                     <th>Location's Name</th>
                     <th>Location's Details</th>
                     <th>Location's Image</th>
                     <th>Location's Video</th>
+                    <th></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -275,11 +287,10 @@ input[type="checkbox"].toggle:disabled + label::after {
 
                 while($loc = mysqli_fetch_array($query))
                 {
-                    $id=$loc['id'];
+                    
             ?>
                 <tr>
-                    <td><?php echo $loc['id']?></td>
-                    <td><?php echo $loc['lName']?></td>
+                    <td><span style="font-weight: bold; font-size: 19px;"><?php echo $loc['lName']?></span></td>
                     <td><div class="test"><?php echo $loc['lDetails']?></div></td>
                     <td><img style="width: 60%;" src="images/<?php echo $loc['lImage']?>" alt=""></td>
                     <td>
@@ -287,6 +298,10 @@ input[type="checkbox"].toggle:disabled + label::after {
                     </td>
                     <td>
                     <a class="update" href="adminupdatelocationdetails.php?email=<?php echo $email?>&&id=<?php echo $id?>">Update</a>
+                    </td>
+                    <td>
+                        <?php $id=$loc['id']?>
+                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a>
                     </td>
                     
 

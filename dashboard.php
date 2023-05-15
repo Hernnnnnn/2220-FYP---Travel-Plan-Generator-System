@@ -96,7 +96,7 @@ include 'dataconnection.php';
                 <div>
                 <h1>
                     <?php
-                    $r = "SELECT * from `admin`";
+                    $r = "SELECT * from `login`";
                     $r_query = mysqli_query($conn,$r);
                         if($user_total = mysqli_num_rows($r_query))
                         {
