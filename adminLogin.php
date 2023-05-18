@@ -99,11 +99,11 @@
 
         <div class="overlay-container">
             <div class="overlay">
+                
+            <div class="overlay-panel overlay-right">
+            <h1 class="title">Are you ready <br> to start your job? </h1>
+                    <p>Boss doesn't care are you ready or not</p>
                 </div>
-
-                <div class="overlay-panel overlay-right">
-                    <h1 class="title">Are you ready <br> to start your job? </h1>
-                    <p>boss doesn't care are you ready or not</p>
                 </div>
             </div>
         </div>

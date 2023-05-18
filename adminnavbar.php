@@ -7,6 +7,10 @@
     <title>Admin || Navbar</title>
 
 </head>
+<style>
+	
+	
+</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -102,6 +106,45 @@
 		box-sizing: border-box;
 		height:150%;
 	}
+	.checkbtn
+	{
+		font-size: 30px;
+		color: black;
+		float: right;
+		line-height: 80px;
+		margin-right: 40px;
+		cursor: pointer;
+		display: none;
+	}
+	#check
+	{
+		display: none;
+	}
+	
+	@media screen and (max-width: 942px) {
+		label .logo
+		{
+			font-size: 30px;
+			/* padding-left: 50px; */
+		}
+		nav ul li a
+		{
+			font-size: 16px;
+		}
+	}
+
+	@media screen and (max-width: 858px) {
+		.checkbtn{
+			display: block;
+		}
+		ul{
+			position: fixed;
+			width: 100%;
+			height: 100vh;
+			/* background: ; */
+		}
+		
+	}
 </style>
 <style>
 .material-symbols-outlined {
@@ -119,12 +162,15 @@
 			
 				<div class="nav-header">
 						
-					
-				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					
-				<h1 id="fh5co-logo"><a href=""><i class="icon-airplane"></i>TPGS</a></h1>
+				
+				<h1 id="fh5co-logo" class="logo"><a href=""><i class="icon-airplane"></i>TPGS</a></h1>
 					<!-- START #fh5co-menu-wrap -->
+					<input type="checkbox" name="check" id="check" >
+						<label for="check" class="checkbtn">
+							<i class="fa fa-bars"></i>
+						</label>
 					<nav id="fh5co-menu-wrap" role="navigation">
+						
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="dashboard.php?email=<?php echo $re['email']?>"><i class="fa fa-home"></i> Home</a></li>
 							<li>
@@ -141,7 +187,10 @@
 									<li><a href="adminLogout.php"><span class="material-symbols-outlined">logout</span>Log out</a></li>
 								</ul></li>
 						</ul>
+						
 					</nav>
+					
+					
 				</div>
 			</div>
 	</header>
@@ -165,12 +214,12 @@
 	<script src="js/superfish.js"></script>
 	<!-- Magnific Popup -->
 	<script src="js/jquery.magnific-popup.min.js"></script>
-	<!-- <script src="js/magnific-popup-options.js"></script> -->
+	<script src="js/magnific-popup-options.js"></script>
 	<!-- Date Picker -->
 	<script src="js/bootstrap-datepicker.min.js"></script>
 	<!-- CS Select -->
 	<script src="js/classie.js"></script>
-	<!-- <script src="js/selectFx.js"></script> -->
+	<script src="js/selectFx.js"></script>
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
