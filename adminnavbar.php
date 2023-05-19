@@ -106,45 +106,7 @@
 		box-sizing: border-box;
 		height:150%;
 	}
-	.checkbtn
-	{
-		font-size: 30px;
-		color: black;
-		float: right;
-		line-height: 80px;
-		margin-right: 40px;
-		cursor: pointer;
-		display: none;
-	}
-	#check
-	{
-		display: none;
-	}
 	
-	@media screen and (max-width: 942px) {
-		label .logo
-		{
-			font-size: 30px;
-			/* padding-left: 50px; */
-		}
-		nav ul li a
-		{
-			font-size: 16px;
-		}
-	}
-
-	@media screen and (max-width: 858px) {
-		.checkbtn{
-			display: block;
-		}
-		ul{
-			position: fixed;
-			width: 100%;
-			height: 100vh;
-			/* background: ; */
-		}
-		
-	}
 </style>
 <style>
 .material-symbols-outlined {
@@ -165,27 +127,34 @@
 				
 				<h1 id="fh5co-logo" class="logo"><a href=""><i class="icon-airplane"></i>TPGS</a></h1>
 					<!-- START #fh5co-menu-wrap -->
-					<input type="checkbox" name="check" id="check" >
-						<label for="check" class="checkbtn">
-							<i class="fa fa-bars"></i>
-						</label>
+					
 					<nav id="fh5co-menu-wrap" role="navigation">
-						
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="dashboard.php?email=<?php echo $re['email']?>"><i class="fa fa-home"></i> Home</a></li>
 							<li>
 								<a href="adminmanageuser.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
 							</li>
 							<!-- <li><a href="flight.html"></a></li> -->
-							<li><a href="adminmanagelocation.php?email=<?php echo $re['email']?>"><span class="fa fa-globe"></span> Location's details</a></li>
-							<li><a href="car.html">Car</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
-							<li><a href="adminprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a>
+							<li>
+								<a href="adminmanagelocation.php?email=<?php echo $re['email']?>"><span class="fa fa-globe"></span> Location's details</a>
+							</li>
+							<li>
+								<a href="car.html">Car</a>
+							</li>
+							<li>
+								<a href="blog.html">Blog</a>
+							</li>
+							<li>
+								<a href="contact.html">Contact</a>
+							</li>
+							<li>
+								<a href="adminprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a>
+							</li>
 							<ul class="fh5co-sub-menu">
 									<li><a href="#"><span></span> Edit password</a></li>
-									<li><a href="adminLogout.php"><span class="material-symbols-outlined">logout</span>Log out</a></li>
-								</ul></li>
+									<li><a href="adminLogout.php"><span class="material-symbols-outlined">logout</span>Log out</a>
+								</li>
+								</ul>
 						</ul>
 						
 					</nav>
@@ -200,9 +169,9 @@
 
 <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<!-- <script src="js/jquery.easing.1.3.js"></script> -->
+	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<!-- <script src="js/bootstrap.min.js"></script> -->
+	<script src="js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
 	<script src="js/jquery.waypoints.min.js"></script>
 	<script src="js/sticky.js"></script>
