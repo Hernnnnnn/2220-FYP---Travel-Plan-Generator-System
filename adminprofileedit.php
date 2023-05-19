@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <?php
+    session_start();
+    if(!$_SESSION['email'])
+{
+    header("Location:adminLogin.php");
+}
     include 'adminnavbar.php';
     $email = $_GET['email'];
     $sql = "SELECT * From `admin` where email = '$email'";

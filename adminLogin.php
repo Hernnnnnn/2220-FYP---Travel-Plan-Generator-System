@@ -1,6 +1,7 @@
 
 
 <?php
+    session_start();
     include "dataconnection.php";
     $msg=" ";
     if(isset($_POST['submit']))
@@ -18,7 +19,9 @@
         $re2 = mysqli_fetch_assoc($result2);
         if($password == $re2["password"] && $email ==$re2["email"])
         {
+            $_SESSION['email']=$email;
             header("location: dashboard.php?email=".$re['email']);
+            die;
         }
         else if(!$email)
         {
@@ -96,11 +99,11 @@
 
         <div class="overlay-container">
             <div class="overlay">
+                
+            <div class="overlay-panel overlay-right">
+            <h1 class="title">Are you ready <br> to start your job? </h1>
+                    <p>Boss doesn't care are you ready or not</p>
                 </div>
-
-                <div class="overlay-panel overlay-right">
-                    <h1 class="title">Are you ready <br> to start your job? </h1>
-                    <p>boss doesn't care are you ready or not</p>
                 </div>
             </div>
         </div>

@@ -7,11 +7,16 @@
     <title>Admin || Navbar</title>
 
 </head>
+<style>
+	
+	
+</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FREEHTML5.CO" />
-
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!-- 
 	//////////////////////////////////////////////////////
 
@@ -101,6 +106,16 @@
 		box-sizing: border-box;
 		height:150%;
 	}
+	
+</style>
+<style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 24
+}
 </style>
 <body>
 <div class="background">
@@ -109,11 +124,10 @@
 			
 				<div class="nav-header">
 						
-					
-				<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					
-				<h1 id="fh5co-logo"><a href=""><i class="icon-airplane"></i>TPGS</a></h1>
+				
+				<h1 id="fh5co-logo" class="logo"><a href=""><i class="icon-airplane"></i>TPGS</a></h1>
 					<!-- START #fh5co-menu-wrap -->
+					
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="dashboard.php?email=<?php echo $re['email']?>"><i class="fa fa-home"></i> Home</a></li>
@@ -121,20 +135,31 @@
 								<a href="adminmanageuser.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
 							</li>
 							<!-- <li><a href="flight.html"></a></li> -->
-							<li><a href="dashboard.php">Hotel</a></li>
-							<li><a href="car.html">Car</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
-							<li><a href="adminprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a>
+							<li>
+								<a href="adminmanagelocation.php?email=<?php echo $re['email']?>"><span class="fa fa-globe"></span> Location's details</a>
+							</li>
+							<li>
+								<a href="car.html">Car</a>
+							</li>
+							<li>
+								<a href="blog.html">Blog</a>
+							</li>
+							<li>
+								<a href="contact.html">Contact</a>
+							</li>
+							<li>
+								<a href="adminprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a>
+							</li>
 							<ul class="fh5co-sub-menu">
-									<li><a href="#">Family</a></li>
-									<li><a href="#">CSS3 &amp; HTML5</a></li>
-									<li><a href="#">Angular JS</a></li>
-									<li><a href="#">Node JS</a></li>
-									<li><a href="#">Django &amp; Python</a></li>
-								</ul></li>
+									<li><a href="#"><span></span> Edit password</a></li>
+									<li><a href="adminLogout.php"><span class="material-symbols-outlined">logout</span>Log out</a>
+								</li>
+								</ul>
 						</ul>
+						
 					</nav>
+					
+					
 				</div>
 			</div>
 	</header>
@@ -144,9 +169,9 @@
 
 <script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<!-- <script src="js/jquery.easing.1.3.js"></script> -->
+	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<!-- <script src="js/bootstrap.min.js"></script> -->
+	<script src="js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
 	<script src="js/jquery.waypoints.min.js"></script>
 	<script src="js/sticky.js"></script>
@@ -158,12 +183,12 @@
 	<script src="js/superfish.js"></script>
 	<!-- Magnific Popup -->
 	<script src="js/jquery.magnific-popup.min.js"></script>
-	<!-- <script src="js/magnific-popup-options.js"></script> -->
+	<script src="js/magnific-popup-options.js"></script>
 	<!-- Date Picker -->
 	<script src="js/bootstrap-datepicker.min.js"></script>
 	<!-- CS Select -->
 	<script src="js/classie.js"></script>
-	<!-- <script src="js/selectFx.js"></script> -->
+	<script src="js/selectFx.js"></script>
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>

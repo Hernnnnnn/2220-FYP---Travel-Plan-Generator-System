@@ -1,17 +1,20 @@
 <?php
     include 'dataconnection.php';
-    $status=$_POST['hidden_status'];
+    $status = $_GET['status'];
     $id=$_GET['id'];
-    if($status == 1)
-        {
-            $status =0;
-            
-        }
-        else
-        {
-            $status =1;
-        }
-        $sql = "UPDATE `login` set status='$status' where ID =$id";
-            mysqli_query($conn,$sql);
-
+    $email=$_GET['email'];
+    if($status ==1)
+    {
+        $status=0;
+        $q = "UPDATE `login` set status='$status' where ID = '$id'";
+        mysqli_query($conn,$q);
+    }
+    else if($status ==0)
+    {
+        $status =1;
+        $q = "UPDATE `login` set status='$status' where ID = '$id'";
+        mysqli_query($conn,$q);
+    }
+    
+    header("Location: adminmanageuser.php?email=".$email);
 ?>
