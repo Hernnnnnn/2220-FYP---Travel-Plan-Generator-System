@@ -27,7 +27,7 @@
     header
     {
         width: 100%;
-        height: 80%;
+        height: 80px;
         /* background-color: black; */
         display: flex;
         align-items: center;
@@ -42,6 +42,12 @@
   font-family: "Open Sans", Arial, sans-serif;
 
     }
+
+    .hamburger
+    {
+        display: none;
+    }
+
     .nav-bar ul
     {
         display: flex;
@@ -57,7 +63,7 @@
         transition: 0.2s;
         margin: 0 5px;
         font-weight: bold;
-  font-family: "Open Sans", Arial, sans-serif;
+    font-family: "Open Sans", Arial, sans-serif;
 
     }
 
@@ -75,8 +81,63 @@
         header
         {
             padding: 0 50px;
-            
         }
+    }
+    @media only screen and (max-width: 1100px)
+    {
+        header
+        {
+            padding: 0 30px;
+        }
+    }
+    @media only screen and (max-width: 900px)
+    {
+        .hamburger
+        {
+            display: block;
+            cursor: pointer;
+        }
+        .hamburger .line
+        {
+            width: 30px;
+            height: 3px;
+            background: black;
+            margin: 6px 0;
+        }
+        .nav-bar
+        {
+            height: 0;
+            /* display: none; */
+            position:absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            width: 100vw;
+            transition: 0.2s;
+            overflow: hidden;
+        }
+        .nav-bar.active
+        {
+            height: 450px;
+        }
+        .nav-bar ul 
+        {
+            display: block;
+            width: fit-content;
+            margin: 80px auto 0 auto;
+            text-align: center;
+            transition: 0.5s;
+            opacity: 0;
+        }
+        .nav-bar.active ul
+        {
+            opacity: 1;
+        }
+        .nav-bar ul li a
+        {
+            margin-bottom: 20px;
+        }
+
     }
 </style>
 	
@@ -87,6 +148,11 @@
 <body>
 <header>
     <h1 class="logo"><a href=""><i class="fa fa-plane"></i>TPGS</a></h1>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
     <nav class="nav-bar">
     <ul>
         <li><a href="" class="active"><i class="fa fa-home"></i> Home</a></li>
@@ -100,5 +166,13 @@
     </ul>
     </nav>
     </header>
+    <script>
+		hamburger = document.querySelector(".hamburger");
+		hamburger.onclick = function()
+		{
+			navBar = document.querySelector(".nav-bar");
+			navBar.classList.toggle("active");
+		}
+	</script>
 </body>
 </html>
