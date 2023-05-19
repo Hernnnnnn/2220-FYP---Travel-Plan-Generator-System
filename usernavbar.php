@@ -115,7 +115,7 @@
 									</li>
 
 
-									<li><a href="#" class="sub-menu-link">
+									<li><a href="userregistrationlogin.php" class="sub-menu-link">
 										<img src="images/logout.png">
 										<p>Logout</p>
 										<span>></span>
