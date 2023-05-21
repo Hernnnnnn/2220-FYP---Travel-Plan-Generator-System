@@ -1,34 +1,28 @@
+<?php
+    session_start();
+    if(!$_SESSION['email'])
+	{
+    	header("Location:userregistrationlogin.php");
+	}
+		include "usernavbar.php";
+		include 'dataconnection.php';
+		$email = $_GET['email'];
+		$sql = "SELECT * From `login` where email = '$email'";
+		$r = mysqli_query($conn,$sql);
+		$re = mysqli_fetch_assoc($r);
+?>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<html class="no-js">
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Travel &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+	<title>TPGS || Homepage</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FREEHTML5.CO" />
 
-  <!-- 
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FREEHTML5.CO
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
 	<meta property="og:site_name" content=""/>
@@ -60,25 +54,10 @@
 	<link rel="stylesheet" href="css/cs-skin-border.css">
 	
 	<link rel="stylesheet" href="css/style.css">
-
-
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
 
 	</head>
-
-	<?php 
-		include "usernavbar.php";
-		include 'dataconnection.php';
-		$email = $_GET['email'];
-		$sql = "SELECT * From `login` where email = '$email'";
-		$r = mysqli_query($conn,$sql);
-		$re = mysqli_fetch_assoc($r);
-	?>
 
 	<body>
 		<div id="fh5co-wrapper">

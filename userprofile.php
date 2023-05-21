@@ -1,19 +1,25 @@
+<?php
+    session_start();
+    if(!$_SESSION['email'])
+	{
+    	header("Location:userregistrationlogin.php");
+	}
+		include "usernavbar.php";
+		include 'dataconnection.php';
+		$email = $_GET['email'];
+		$sql = "SELECT * From `login` where email = '$email'";
+		$r = mysqli_query($conn,$sql);
+		$re = mysqli_fetch_assoc($r);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User || Profile</title>
+    <title>TPGS || Profile</title>
     <link rel="stylesheet" href="css/adminprofile.css">
-    <?php
-    include 'usernavbar.php';
-    $email = $_GET['email'];
-    $sql = "SELECT * From `login` where email = '$email'";
-	$r = mysqli_query($conn,$sql);
-	$re = mysqli_fetch_assoc($r);
-    ?>
-    
 </head>
 <style>
     body
