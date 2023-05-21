@@ -13,6 +13,12 @@
     <!-- CSS -->
     <link rel="stylesheet" href="place.css" />
 
+	 <!-- Swiper CSS -->
+	 <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+
+	 <!-- CSS -->
+	 <link rel="stylesheet" href="sw.css" />
+
     <!-- 
 	//////////////////////////////////////////////////////
 
@@ -477,71 +483,83 @@
 
     
 
-	<section class="product"> 
-        <h2 class="product-category">Popular food</h2>
-        <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
-        <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
-        <div class="product-container">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag">5.0</span>
-                    <img src="images/KLL.jpg" class="product-thumb" alt="">
-                    <button class="card-btn">view more</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">KLCC</h2>
-                    <p class="product-short-description">a short line about the cloth..</p>
-                  
-                </div>
-            </div>
-
-
-			<div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag">5.0</span>
-                    <img src="images/KLL.jpg" class="product-thumb" alt="">
-                    <button class="card-btn">view more</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">KLCC</h2>
-                    <p class="product-short-description">a short line about the cloth..</p>
-                  
-                </div>
-            </div>
-
-
-			<div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag">5.0</span>
-                    <img src="images/KLL.jpg" class="product-thumb" alt="">
-                    <button class="card-btn">view more</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">KLCC</h2>
-                    <p class="product-short-description">a short line about the cloth..</p>
-                  
-                </div>
-            </div>
-
-
-			<div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag">5.0</span>
-                    <img src="images/KLL.jpg" class="product-thumb" alt="">
-                    <button class="card-btn">view more</button>
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">KLCC</h2>
-                    <p class="product-short-description">a short line about the cloth..</p>
-                  
-                </div>
-            </div>
-
+	
+	<div class="container-2 swiper">
+		<h2>Popular food</h2>
+		<div class="slide-container">
+		  <div class="card-wrapper swiper-wrapper">
+			<div class="card swiper-slide">
+			  <div class="image-box">
+				<img src="images/kuala lumpur.jpg" alt="" />
+			  </div>
+			  <div class="food-details">
+	
+				<div class="title-description">
+				  <h3 class="title">David Cardlos</h3>
+				  <h4 class="description">Full Stack Developer</h4>
+				</div>
+			  </div>
+			</div>
+			<div class="card swiper-slide">
+			  <div class="image-box">
+				<img src="images/kuala lumpur.jpg" alt="" />
+			  </div>
+			  <div class="food-details">
 			
-        </div>
-    </section>
+				<div class="title-description">
+				  <h3 class="title">Siliana Ramis</h3>
+				  <h4 class="description">Photographer</h4>
+				</div>
+			  </div>
+			</div>
+			<div class="card swiper-slide">
+			  <div class="image-box">
+				<img src="images/kuala lumpur.jpg" alt="" />
+			  </div>
+			  <div class="food-details">
+			
+				<div class="title-description">
+				  <h3 class="title">Richard Bond</h3>
+				  <h4 class="description">Data Analyst</h4>
+				</div>
+			  </div>
+			</div>
+			<div class="card swiper-slide">
+			  <div class="image-box">
+				<img src="images/kuala lumpur.jpg" alt="" />
+			  </div>
+			  <div class="food-details">
+		
+				<div class="title-description">
+				  <h3 class="title">Priase</h3>
+				  <h4 class="description">App Developer</h4>
+				</div>
+			  </div>
+			</div>
+			<div class="card swiper-slide">
+			  <div class="image-box">
+				<img src="images/kuala lumpur.jpg" alt="" />
+			  </div>
+			  <div class="food-details">
+			
+				<div class="title-description">
+				  <h3 class="title">James Laze</h3>
+				  <h4 class="description">Blogger</h4>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="swiper-button-next swiper-navBtn"></div>
+		<div class="swiper-button-prev swiper-navBtn"></div>
+		<div class="swiper-pagination"></div>
+	  </div>
+  
+
 
 	<script src="place.js"></script>
 	<script src="loadmore.js"></script>
+	<script src="swiper-bundle.min.js"></script>
+    <script src="sw.js"></script>
   </body>
 </html>
