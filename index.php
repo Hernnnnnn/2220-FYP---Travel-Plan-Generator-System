@@ -106,13 +106,13 @@
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
 													<label for="from">From:</label>
-													<input type="text" class="form-control" id="from-place" placeholder="Los Angeles, USA"/>
+													<input type="text" class="form-control" id="from-place" placeholder="Johor Bahru"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
 													<label for="from">To:</label>
-													<input type="text" class="form-control" id="to-place" placeholder="Tokyo, Japan"/>
+													<input type="text" class="form-control" id="to-place" placeholder="Kuala Lumpur"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
@@ -301,11 +301,11 @@
 							</div>
 							<div class="desc2 animate-box">
 								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
-									<p>HandCrafted by <a href="http://frehtml5.co/" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></p>
-									<h2>Exclusive Limited Time Offer</h2>
-									<h3>Fly to Hong Kong via Los Angeles, USA</h3>
-									<span class="price">$599</span>
-									<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
+									
+									<h2>Travel around the world</h2>
+									<h3>Enjoy Your Trip</h3>
+									
+									<p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p>
 								</div>
 							</div>
 						</div>
@@ -325,35 +325,35 @@
 				</div>
 				<div class="row">
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/kuala lumpur.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
-								<h3>New York</h3>
-								<span>3 nights + Flight 5*Hotel</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
+								<h3>Kuala Lumpur</h3>
+								<span></span>
+								<span class="price"></span>
+								<a class="btn btn-primary btn-outline" href="Kuala Lumpur.html">View more<i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/melaka.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
-								<h3>Philippines</h3>
-								<span>4 nights + Flight 5*Hotel</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
+								<h3>Melaka</h3>
+								<span></span>
+								<span class="price"></span>
+								<a class="btn btn-primary btn-outline" href="melaka.html">View more <i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<div href="#"><img src="images/penang.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
 							<div class="desc">
 								<span></span>
-								<h3>Hongkong</h3>
-								<span>2 nights + Flight 4*Hotel</span>
-								<span class="price">$1,000</span>
-								<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
+								<h3>Penang</h3>
+								<span></span>
+								<span class="price"></span>
+								<a class="btn btn-primary btn-outline" href="PENANG.html">View more <i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
