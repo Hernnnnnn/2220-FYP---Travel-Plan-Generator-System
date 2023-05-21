@@ -49,8 +49,9 @@
     <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css"/>
     <link rel="stylesheet" href="css/registrationlogin.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
     <script>
-        
         Response.setHeader("Cache-Control")
     </script>
 
@@ -79,12 +80,12 @@
         <form action="" method="post">
         
             <h1>Admin Login</h1>
-            <i class='fa fa-triangle-exclamation'></i>
-            
             <?php echo $msg;?>
             <input name="email" type="email" placeholder="Email">
-            <input name="pass" type="password" id="login-password" placeholder="Password">
-            <span id="login-togglebtn" class="fas fa-eye-slash"></span>
+            <div class="password-input">
+                <input name="pass" type="password" id="login-password" placeholder="Password">
+                <span id="login-togglebtn" class="fas fa-eye-slash"></span>
+            </div>
             <!-- <div class="content">
             <div class="checkbox">
                 <input type="checkbox" name="checkbox" id="checkbox">
@@ -102,7 +103,7 @@
             <div class="overlay">
                 
             <div class="overlay-panel overlay-right">
-            <h1 class="title">Are you ready <br> to start your job? </h1>
+            <h1 class="title" style="font-size:40px;">Are you ready <br> to start your job? </h1>
                     <p>Boss doesn't care are you ready or not</p>
                 </div>
                 </div>
@@ -110,6 +111,24 @@
         </div>
     </div>
 
-    <script src="showhidepassword.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let loginPassword = document.getElementById('login-password');
+        let loginToggleBtn = document.getElementById('login-togglebtn');
+
+        loginToggleBtn.addEventListener('click', function () {
+            if (loginPassword.type === 'password') {
+                loginPassword.type = 'text';
+                loginToggleBtn.classList.remove('fa-eye-slash');
+                loginToggleBtn.classList.add('fa-eye');
+            } else {
+                loginPassword.type = 'password';
+                loginToggleBtn.classList.remove('fa-eye');
+                loginToggleBtn.classList.add('fa-eye-slash');
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
