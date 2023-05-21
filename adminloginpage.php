@@ -83,7 +83,8 @@
             
             <?php echo $msg;?>
             <input name="email" type="email" placeholder="Email">
-            <input name="pass" type="password" placeholder="Password">
+            <input name="pass" type="password" id="login-password" placeholder="Password">
+            <span id="login-togglebtn" class="fas fa-eye-slash"></span>
             <!-- <div class="content">
             <div class="checkbox">
                 <input type="checkbox" name="checkbox" id="checkbox">
@@ -109,22 +110,6 @@
         </div>
     </div>
 
-    <script>
-        let togglePassword = document.getElementById('togglebtn');
-        let password = document.getElementById('passwd');
-
-        togglePassword.addEventListener('click', function(){
-        if(password.type === "password"){
-            password.type = "text";
-            togglePassword.classList.remove('fa-eye-slash');
-            togglePassword.classList.add('fa-eye');
-        }else{
-            password.type = "password";
-            togglePassword.classList.remove('fa-eye');
-            togglePassword.classList.add('fa-eye-slash');
-        }
-    });
-    </script>
-
+    <script src="showhidepassword.js"></script>
 </body>
 </html>

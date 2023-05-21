@@ -179,53 +179,53 @@
         </div>    
         
         <div class="form-container login-container">
-        <form action="#" method="post">
-            <h1>User Login</h1>
-            <?php echo $msg;?>
-            <input name="email" type="email" placeholder="Email">
-            <input name="pass" type="password" placeholder="Password">
-            <span id="togglebtn" class="fas fa-eye-slash"></span>
+  <form action="#" method="post">
+    <h1>User Login</h1>
+    <?php echo $msg;?>
+    <input name="email" type="email" placeholder="Email">
+    <div class="password-input">
+        <input name="pass" type="password" id="login-password" placeholder="Password">
+        <span id="login-togglebtn" class="fas fa-eye-slash"></span>
+    </div>
 
-            <div class="content">
-            <div class="checkbox">
-                <input type="checkbox" name="checkbox" id="checkbox">
+    <div class="content">
+        <div class="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox">
                 <label>Remember me</label>
             </div>
-            <div class="pass-link">
-                <a href="userrecoverpassword.php">Forgot password?</a>
+                <div class="pass-link">
+                    <a href="userrecoverpassword.php">Forgot password?</a>
+                </div>
             </div>
-            </div>
-            <button name="submit" type="submit">Login</button>
+                <button name="submit" type="submit">Login</button>
         </form>
-        </div>
+    </div>
 
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1 class="title">Hello <br> Welcome </h1>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1 class="title">Hello <br> Welcome </h1>
                     <p>if you don't have an account, login here and have fun</p>
-                    <button class="ghost" id="loginp">Login
-                        <i class="fa-regular fa-arrow-left"></i>
-                    </button>
-                </div>
+                        <button class="ghost" id="loginp">Login
+                            <i class="fa-regular fa-arrow-left"></i>
+                        </button>
+    </div>
 
-                <div class="overlay-panel overlay-right">
-                    <h1 class="title">Start your <br> journey now </h1>
-                    <p>if you don't have an account, join us now</p>
-                    <button class="ghost" id="registerp">Register
-                        <i class="fa-regular fa-arrow-right"></i>
-                    </button>
-                </div>
+    <div class="overlay-panel overlay-right">
+        <h1 class="title">Start your <br> journey now </h1>
+            <p>if you don't have an account, join us now</p>
+                <button class="ghost" id="registerp">Register
+                    <i class="fa-regular fa-arrow-right"></i>
+                </button>
             </div>
         </div>
     </div>
 
-    <script src="userregistrationlogin.js"></script>
-    
-<script>
-        let togglePassword = document.getElementById('togglebtn');
-        let password = document.getElementById('passwd');
 
+    <script src="userregistrationlogin.js"></script>
+    <script src="showhidepassword.js"></script>
+
+<script>
         let minlength = document.getElementById('length');
         let digit = document.getElementById('number');
         let lowercase = document.getElementById('lower');
@@ -280,18 +280,6 @@
 
     password.addEventListener('input', function(){
         checkPassword(password.value);
-    });
-
-    togglePassword.addEventListener('click', function(){
-        if(password.type === "password"){
-            password.type = "text";
-            togglePassword.classList.remove('fa-eye-slash');
-            togglePassword.classList.add('fa-eye');
-        }else{
-            password.type = "password";
-            togglePassword.classList.remove('fa-eye');
-            togglePassword.classList.add('fa-eye-slash');
-        }
     });
 </script>
 </body>
