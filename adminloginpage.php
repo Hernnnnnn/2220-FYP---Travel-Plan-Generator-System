@@ -106,7 +106,6 @@
             <h1 class="title" style="font-size:40px;">Are you ready <br> to start your job? </h1>
                     <p>Boss doesn't care are you ready or not</p>
                 </div>
-                </div>
             </div>
         </div>
     </div>
@@ -128,7 +127,7 @@
             }
         });
     });
-</script>
+    </script>
 
 </body>
 </html>

@@ -41,86 +41,87 @@
 </body>
 </html>
 
-<?php 
-    include('dataconnection.php');
-    
-    if(isset($_POST["recover"])){
-        
-        $email =  mysqli_real_escape_string($conn,$_POST["email"]);
+<?php
+include('dataconnection.php');
 
-        $sql = "SELECT * FROM `login` WHERE email='$email'";
-        $result = mysqli_query($conn,$sql);
+if (isset($_POST["recover"])) {
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);
 
-        if(!$result) {
-            die("Query failed: " . mysqli_error($conn));
-        }
+    $sql = "SELECT * FROM `login` WHERE email='$email'";
+    $result = mysqli_query($conn, $sql);
 
-        if(mysqli_num_rows($result) <= 0){
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+
+    if (mysqli_num_rows($result) <= 0) {
+        ?>
+        <script>
+            alert("<?php echo "Sorry, no emails exist"; ?>");
+        </script>
+        <?php
+    } else {
+        $fetch = mysqli_fetch_assoc($result); // Fetch the row from the result set
+
+        if ($fetch["status"] == 0) {
             ?>
             <script>
-                alert("<?php  echo "Sorry, no emails exists "?>");
+                alert("Sorry, your account must be verified first before you can recover your password!");
+                window.location.replace("userregistrationlogin.php");
             </script>
             <?php
-        }else if($fetch["status"] == 0){
-            ?>
-               <script>
-                   alert("Sorry, your account must verify first, before you recover your password !");
-                   window.location.replace("userregistrationlogin.php");
-               </script>
-           <?php
-        }else{
-            // generate token by binaryhexa 
+        } else {
+            // Generate token by binaryhexa
             $token = bin2hex(random_bytes(50));
 
-            //session_start ();
+            session_start();
             $_SESSION['token'] = $token;
             $_SESSION['email'] = $email;
 
-            require "Mail/phpmailer/PHPMailerAutoload.php";
+            require "phpmailer/PHPMailerAutoload.php";
             $mail = new PHPMailer;
 
             $mail->isSMTP();
-            $mail->Host='smtp.gmail.com';
-            $mail->Port=587;
-            $mail->SMTPAuth=true;
-            $mail->SMTPSecure='tls';
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Port = 587;
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'tls';
 
             // h-hotel account
-            $mail->Username='email account';
-            $mail->Password='email password';
+            $mail->Username = 'allenleekheehern@gmail.com';
+            $mail->Password = 'lpuvtqrahhscqgsk';
 
-            // send by h-hotel email
-            $mail->setFrom('email', 'Password Reset');
-            // get email from input
+            // Send from h-hotel email
+            $mail->setFrom('allenleekheehern@gmail.com', 'Password Reset');
+            // Get email from input
             $mail->addAddress($_POST["email"]);
-            //$mail->addReplyTo('lamkaizhe16@gmail.com');
+            // $mail->addReplyTo('lamkaizhe16@gmail.com');
 
             // HTML body
             $mail->isHTML(true);
-            $mail->Subject="Recover your password";
-            $mail->Body="<b>Dear User</b>
+            $mail->Subject = "Recover your password";
+            $mail->Body = "<b>Dear User</b>
             <h3>We received a request to reset your password.</h3>
             <p>Kindly click the below link to reset your password</p>
-            http://localhost/2220-FYP---Travel-Plan-Generator-System/userresetpassword.php
+            http://localhost/TPGS/userresetpassword.php?email=".$email."
             <br><br>
-            <p>With regrads,</p>
+            <p>With regards,</p>
             <b>TPGS Team</b>";
 
-            if(!$mail->send()){
+            if (!$mail->send()) {
                 ?>
-                    <script>
-                        alert("<?php echo " Invalid Email "?>");
-                    </script>
+                <script>
+                    alert("<?php echo "Invalid Email"; ?>");
+                </script>
                 <?php
-            }else{
+            } else {
                 ?>
-                    <script>
-                        window.location.replace("notification.html");
-                    </script>
+                <script>
+                    window.location.replace("notification.html");
+                </script>
                 <?php
             }
         }
     }
-
-
+}
 ?>

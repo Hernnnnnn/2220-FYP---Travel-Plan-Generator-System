@@ -1,82 +1,13 @@
-<?php session_start(); ?>
 <?php
-    include('dataconnection.php');
-    $msg = "";
-    if(isset($_POST["register"])){
-        $email = isset($_POST['email']) ? $_POST['email'] : "";
-        $password = isset($_POST['pass']) ? $_POST['pass'] : "";
-
-        $check_query = mysqli_query($conn, "SELECT * FROM login where email ='$email'");
-        $rowCount = mysqli_num_rows($check_query);
-
-        if(!empty($email) && !empty($password)){
-            if($rowCount > 0){
-                ?>
-                <script>
-                    alert("User with email already exist!");
-                </script>
-                <?php
-            }else{
-                $password_hash = password_hash($password, PASSWORD_BCRYPT);
-
-                $result = mysqli_query($conn, "INSERT INTO login (email, password, status) VALUES ('$email', '$password_hash', 0)");
-    
-                if($result){
-                    $otp = rand(100000,999999);
-                    $_SESSION['otp'] = $otp;
-                    $_SESSION['mail'] = $email;
-                    require "Mail/phpmailer/PHPMailerAutoload.php";
-                    $mail = new PHPMailer;
-    
-                    $mail->isSMTP();
-                    $mail->Host='smtp.gmail.com';
-                    $mail->Port=587;
-                    $mail->SMTPAuth=true;
-                    $mail->SMTPSecure='tls';
-    
-                    $mail->Username='email account';
-                    $mail->Password='email password';
-    
-                    $mail->setFrom('email account', 'OTP Verification');
-                    $mail->addAddress($_POST["email"]);
-    
-                    $mail->isHTML(true);
-                    $mail->Subject="Your verify code";
-                    $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>
-                    <br><br>
-                    <p>With regrads,</p>
-                    <b>TPGS Team</b>";
-    
-                            if(!$mail->send()){
-                                ?>
-                                    <script>
-                                        alert("<?php echo "Register Failed, Invalid Email "?>");
-                                    </script>
-                                <?php
-                            }else{
-                                ?>
-                                <script>
-                                    alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
-                                    window.location.replace('userverification.php');
-                                </script>
-                                <?php
-                            }
-                }
-            }
-        }
-    }
-?>
-
-<?php
-    include('dataconnection.php');
-
+session_start();
+include('dataconnection.php');
     if(isset($_POST["submit"])){
         $email = mysqli_real_escape_string($conn,$_POST["email"]);
         $password=mysqli_real_escape_string($conn,$_POST['pass']);
 
         $sql = mysqli_query($conn, "SELECT * FROM login where email = '$email'");
         $count = mysqli_num_rows($sql);
-
+        
         if($count > 0){
             $fetch = mysqli_fetch_assoc($sql);
             $hashpassword = $fetch["password"];
@@ -87,10 +18,7 @@
                         <p>Please verify email account before login.</p>
                       </div>";
             }else if(password_verify($password, $hashpassword)){
-                echo "<div class='popup'>
-                        <span class='close'>&times;</span>
-                        <p>Login successful!</p>
-                      </div>";
+                header ("location:index.php?email=".$email);
             }else{
                 echo "<div class='popup'>
                         <h2>Oh ouh</h2>
@@ -101,6 +29,89 @@
         }    
     }
 ?>
+<?php
+
+$msg = "";
+
+if (isset($_POST["register"])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['pass'];
+
+    $check_query = mysqli_query($conn, "SELECT * FROM login WHERE email = '$email'");
+    $rowCount = mysqli_num_rows($check_query);
+
+    if (!empty($email) && !empty($password)) {
+        if ($rowCount > 0) {
+            ?>
+            <script>
+                alert("User with email already exists!");
+            </script>
+            <?php
+        } else {
+            $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+            $result = mysqli_query($conn, "INSERT INTO login (username, email, password, status) VALUES ('$name','$email', '$password_hash', 1)");
+
+            if ($result) {
+                $otp = rand(100000, 999999);
+                $_SESSION['otp'] = $otp;
+                $_SESSION['mail'] = $email;
+                require "phpmailer/PHPMailerAutoload.php";
+                $mail = new PHPMailer(true); // Enable exceptions
+
+                try {
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->Port = 587;
+                    $mail->SMTPAuth = true;
+                    $mail->SMTPSecure = 'tls';
+                    $mail->SMTPDebug = 2;
+
+                    $mail->Username = 'allenleekheehern@gmail.com';
+                    $mail->Password = 'lpuvtqrahhscqgsk';
+
+                    $mail->setFrom('allenleekheehern@gmail.com', 'OTP Verification');
+                    $mail->addAddress($email);
+
+                    $mail->isHTML(true);
+                    $mail->Subject = "Your verify code from TPGS";
+                    $mail->Body = "<p>Dear user,</p><h3>Your verify OTP code is $otp</h3><br><br><p>With regards,</p><b>TPGS Team</b>";
+
+                    $mail->send();
+                    ?>
+                    <script>
+                        alert("Register Successful, OTP sent to <?php echo $email; ?>");
+                        window.location.replace('userverification.php');
+                    </script>
+                    <?php
+                } catch (Exception $e) {
+                    ?>
+                    <script>
+                        alert("Register Failed, Invalid Email: <?php echo $e->getMessage(); ?>");
+                    </script>
+                    <?php
+                }
+            } else {
+                ?>
+                <script>
+                    alert("Failed to register user");
+                </script>
+                <?php
+            }
+        }
+    } else {
+        ?>
+        <script>
+            alert("Email and password fields cannot be empty");
+        </script>
+        <?php
+    }
+}
+?>
+
+
+
 
 <style>
     /* Popup container */
@@ -158,10 +169,10 @@
         <div class="form-container register-container">
         <form action="#" method="post">
             <h1>User Registration</h1>
-            <input type="text" id="name" placeholder="Name">
-            <input type="email" id="email" placeholder="Email">
+            <input type="text" id="name" placeholder="Name" name="name">
+            <input type="email" id="email" placeholder="Email" name="email">
             <div class="password">
-                <input type="password" id="passwd" name="pass "placeholder="Password" pattern="^\S+$">
+                <input type="password" id="passwd" name="pass" placeholder="Password" pattern="^\S+$">
                 <span id="togglebtn" class="fas fa-eye-slash"></span>
             <div class="validation">
                     <ul>
@@ -173,12 +184,11 @@
                     </ul>
                 </div>
             </div>
-        
             <button name="register" type="submit">Register</button>
         </form>
-        </div>    
+    </div>
         
-        <div class="form-container login-container">
+<div class="form-container login-container">
   <form action="#" method="post">
     <h1>User Login</h1>
     <?php echo $msg;?>
@@ -220,7 +230,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="userregistrationlogin.js"></script>
     <script src="showhidepassword.js"></script>

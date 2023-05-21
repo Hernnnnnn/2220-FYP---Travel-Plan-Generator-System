@@ -15,7 +15,7 @@ include('dataconnection.php');
     <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css"/>
     <link rel="stylesheet" href="css/registrationlogin.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <body>
     <div class="container" id="container">
         
@@ -24,8 +24,19 @@ include('dataconnection.php');
         <form action="" method="post">
         
             <h1>Reset Password</h1>
-            <i class='fa fa-triangle-exclamation'></i>
-            <input type="password" id="passwd" placeholder="Password">
+            <div class="password-input">
+                <input name="pass" type="password" id="login-password" placeholder="Password">
+                <span id="login-togglebtn" class="fas fa-eye-slash"></span>
+            </div>
+            <div class="validation">
+                    <ul>
+                        <li id="length">Minimum 8 character</li>
+                        <li id="number">At least one number</li>
+                        <li id="lower">At least one lowercase character</li>
+                        <li id="upper">At least one uppercase character</li>
+                        <li id="special">At least one special character</li>
+                    </ul>
+            </div>
             <button name="submit" type="submit">Reset</button>
         </form>
         </div>
@@ -42,28 +53,104 @@ include('dataconnection.php');
 
     <script src="registrationlogin.js"></script>
 
+    <script>
+        let minlength = document.getElementById('length');
+        let digit = document.getElementById('number');
+        let lowercase = document.getElementById('lower');
+        let uppercase = document.getElementById('upper');
+        let specialchar = document.getElementById('special');
+        let spaceerror = document.getElementById('space');
+
+        function checkPassword(data){
+            const length = new RegExp('(?=.{8,})');
+            const number = new RegExp('(?=.*[0-9])');
+            const lower = new RegExp('(?=.*[a-z])');
+            const upper = new RegExp('(?=.*[A-Z])');
+            const special = new RegExp('(?=.*[!@#$%^&*])');
+            const space = new RegExp('(?=.*[\\s])');
+
+            if(length.test(data)){
+                minlength.classList.add('valid');
+            }else{
+                minlength.classList.remove('valid');
+            }
+
+            if(number.test(data)){
+                digit.classList.add('valid');
+            }else{
+                digit.classList.remove('valid');
+            }
+
+            if(lower.test(data)){
+                lowercase.classList.add('valid');
+            }else{
+                lowercase.classList.remove('valid');
+            }
+
+            if(upper.test(data)){
+                uppercase.classList.add('valid');
+            }else{
+                uppercase.classList.remove('valid');
+            }
+
+            if(special.test(data)){
+                specialchar.classList.add('valid');
+            }else{
+                specialchar.classList.remove('valid');
+            }
+
+            if(space.test(data)){
+                spaceerror.classList.add('error');
+            }else{
+                spaceerror.classList.remove('error');
+            }
+        }
+
+    password.addEventListener('input', function(){
+        checkPassword(password.value);
+    });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let loginPassword = document.getElementById('login-password');
+        let loginToggleBtn = document.getElementById('login-togglebtn');
+
+        loginToggleBtn.addEventListener('click', function () {
+            if (loginPassword.type === 'password') {
+                loginPassword.type = 'text';
+                loginToggleBtn.classList.remove('fa-eye-slash');
+                loginToggleBtn.classList.add('fa-eye');
+            } else {
+                loginPassword.type = 'password';
+                loginToggleBtn.classList.remove('fa-eye');
+                loginToggleBtn.classList.add('fa-eye-slash');
+            }
+        });
+    });
+    </script>
 </body>
 </html>
 <?php
-    if(isset($_POST["reset"])){
+    if(isset($_POST["submit"])){
         include('dataconnection.php');
         $psw = $_POST["password"];
 
         $token = $_SESSION['token'];
-        $Email = $_SESSION['email'];
+        $Email = $_GET['email'];
 
         $hash = password_hash( $psw , PASSWORD_DEFAULT );
 
-        $sql = mysqli_query($connect, "SELECT * FROM login WHERE email='$Email'");
+        $sql = mysqli_query($conn, "SELECT * FROM login WHERE email='$Email'");
         $query = mysqli_num_rows($sql);
   	    $fetch = mysqli_fetch_assoc($sql);
 
         if($Email){
             $new_pass = $hash;
-            mysqli_query($connect, "UPDATE login SET password='$new_pass' WHERE email='$Email'");
+            mysqli_query($conn, "UPDATE login SET password='$new_pass' WHERE email='$Email'");
             ?>
             <script>
-                window.location.replace("userregisterlogin.php");
+                window.location.replace("userregistrationlogin.php");
                 alert("<?php echo "Your password has been succesful reset"?>");
             </script>
             <?php
@@ -75,16 +162,5 @@ include('dataconnection.php');
             <?php
         }
     }
-
 ?>
-<script>
-    toggle.onclick = function(){
-        if(password.type === "password"){
-            password.setAttribute('type','text');
-            toggleBtn.classlist.add('hide');
-        }else{
-            password.setAttribute('type','password');
-            toggleBtn.classlist.remove('hide');
-        }
-    };
-</script>
+
