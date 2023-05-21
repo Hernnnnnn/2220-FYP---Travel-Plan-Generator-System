@@ -1,21 +1,19 @@
 
-<?php
-    if(isset($_POST["hidden_status"]))
-    {
-        
-        header("Location: editstatus.php?id=".$_POST['ID']);
-        
-    }
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin || Profile</title>
+    <title>Admin || User</title>
     
     <?php
+    session_start();
+    if(!$_SESSION['email'])
+{
+    header("Location:adminLogin.php");
+}
     include 'adminnavbar.php';
     $email = $_GET['email'];
     $sql = "SELECT * From `admin` where email = '$email'";
@@ -35,7 +33,7 @@
     background-attachment: fixed;
     }
 
-    table 
+     table 
     {
         overflow-x: scroll;
         border-collapse: collapse;
@@ -74,6 +72,7 @@
     td
     {
         background: rgba(255, 255, 255, 0.7);
+        text-align: center;
     }
     th
     {
@@ -81,10 +80,6 @@
         color: #fff;
         text-align: center;
         text-transform: uppercase;
-    }
-    th,td
-    {
-        padding: 12px 15px;
     }
 
     input[type="checkbox"].toggle
@@ -109,6 +104,11 @@
         border-radius: 1em;
         margin-right: .25em;
         transition: background-color 200ms ease-in-out;
+    }
+
+    label
+    {
+        margin-bottom: 25px;
     }
 
     input[type="checkbox"].toggle:checked,label
@@ -152,52 +152,150 @@ input[type="checkbox"].toggle:disabled + label::before {
 input[type="checkbox"].toggle:disabled + label::after {
   background-color: #777;
 }
-    
+
+.header
+    {
+        display: flex;
+        padding: 1rem;
+        margin: 0;
+    }
+.search-wrapper
+    {
+        border: 1px solid black;
+        border-radius: 30px;
+        height: 50px;
+        margin: 0;
+        /* align-items: center; */
+        overflow-x: hidden;
+        /* margin: auto; */
+    }
+    .search-wrapper button
+    {
+        display: inline-block;
+        padding: 0rem .5rem;
+        color: black;
+        border: none;
+        background-color: transparent;
+        margin-right: 15px;
+    }
+
+    .search-wrapper span
+    {
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    .search-wrapper input
+    {
+        height: 100%;
+        padding: .5rem;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: gray;
+        padding-left: 20px;
+    }
+    .update
+    {
+        color: white;
+        margin: 10px;
+        margin-left: 0;
+        /* border: 1px solid black; */
+        padding: 15px;
+        border-radius: 25px;
+        background-color: #4bb6b7;
+        font-weight: bold;
+    }
+
+    .update:hover
+    {
+        color: black;
+        background: rgba(255, 255, 255, 0.4);
+        font-weight: bold;
+    }
 </style>
 <body >
-            
+    <form method="post">
             <table>
+                <tr>
+                    <?php 
+                    if(isset($_POST['search']))
+                    {
+                        $searchKey=$_POST['search'];
+                        $p = "SELECT * From `login` where username LIKE '%$searchKey%'";
+
+                    }
+                    else
+                    {
+                        $p = "SELECT * From `login`";
+                        $searchKey = "";
+                    }
+                        
+                        $query = mysqli_query($conn,$p);
+
+
+                    ?>
+                    <td colspan="6"><div class="header">
+                    <div class="search-wrapper">
+                    <input type="text" name="search" placeholder="Search here" value="<?php echo $searchKey?>">
+
+                    <button type="submit" name="submit"><span class="fa fa-search"></span></button>
+                        
+                        
+                    </div>
+                     </div>
+                     </form>
+                    </td>
+                </tr>
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Image</th>
                     <th>Username</th>
                     <th>Password</th>
                     <th>Email</th>
                     <th>Status</th>
-
+                    <th></th>
                 </tr>
                 </thead>
             <?php
             // include 'dataconnection.php';
 
-            $p = "SELECT * From `login`";
-                $query = mysqli_query($conn,$p);
-                while($user = mysqli_fetch_assoc($query))
+                while($user = mysqli_fetch_array($query))
                 {
+                    $id=$user['ID'];
             ?>
-            <form method="post">
+            
                 <tr>
                     <td><?php echo $user['ID']?></td>
-                    <td><?php echo $user['image']?></td>
                     <td><?php echo $user['username']?></td>
                     <td><?php echo $user['password']?></td>
                     <td><?php echo $user['email']?></td>
                     <td>
-                    <input type="hidden" name="ID" id="ID" value="<?php echo $user['ID']?>">
-                    <input type='checkbox' class='toggle' id='check<?php echo $user['ID']?>' <?php if($user['status']==1){echo "checked";}?>>
-                        <label for='check<?php echo $user['ID']?>'></label>
-                        <input type="hidden" id="hidden_status" name="hidden_status"value="<?php echo $user['status']?>">
+                    <input type='checkbox' class='toggle' name="check" id='check<?php echo $user['ID']?>' <?php if($user['status']==1){echo "checked";}?>>
+                        <label for='check<?php echo $user['ID']?>' name="check"></label>
+                        <input type="hidden" id="hidden_status" name="hidden_status" value="<?php echo $user['status']?>">
                         
+                        <input type="hidden" name="ID" id="ID" value="<?php echo $user['ID']?>">
                         
                     </td>
-                
+                    <td>
+                    <?php
+                   $status = $user["status"];
+                    if($status==1)
+                    {
+                        echo '<a class="update" href="editstatus.php?email='.$email.'&&id='.$id.'&&status='.$status.'">Update</a>';
+                    }
+                    else if($status==0)
+                    {
+                        echo '<a class="update" href="editstatus.php?email='.$email.'&&id='.$id.'&&status='.$status.'">Update</a>';
+                    }
+                    ?>
+                    </td>
+                    
 
                 </tr>
             <?php
                 }
             ?>
-            <input type="submit" name="submit" id="submit">
             </form>
             </table>
             

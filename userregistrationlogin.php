@@ -1,12 +1,12 @@
 <?php session_start(); ?>
 <?php
     include('dataconnection.php');
-
+    $msg = "";
     if(isset($_POST["register"])){
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+        $email = isset($_POST['email']) ? $_POST['email'] : "";
+        $password = isset($_POST['pass']) ? $_POST['pass'] : "";
 
-        $check_query = mysqli_query($connect, "SELECT * FROM login where email ='$email'");
+        $check_query = mysqli_query($conn, "SELECT * FROM login where email ='$email'");
         $rowCount = mysqli_num_rows($check_query);
 
         if(!empty($email) && !empty($password)){
@@ -19,7 +19,7 @@
             }else{
                 $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-                $result = mysqli_query($connect, "INSERT INTO login (email, password, status) VALUES ('$email', '$password_hash', 1)");
+                $result = mysqli_query($conn, "INSERT INTO login (email, password, status) VALUES ('$email', '$password_hash', 1)");
     
                 if($result){
                     $otp = rand(100000,999999);
@@ -68,40 +68,79 @@
 ?>
 
 <?php
-    include "dataconnection.php";
-    $msg=" ";
-    if(isset($_POST['submit']))
-    {
+    include('dataconnection.php');
+
+    if(isset($_POST["submit"])){
         $email = mysqli_real_escape_string($conn,$_POST["email"]);
         $password=mysqli_real_escape_string($conn,$_POST['pass']);
-        
-        $sql = "SELECT * FROM `login` WHERE email = '{$email}' AND password = '{$password}'";
-        $result = mysqli_query($conn,$sql);
-        
-        $r = mysqli_num_rows($result);
-        $re = mysqli_fetch_assoc($result);
-        $sql2 = "SELECT * From `login`";
-        $result2=mysqli_query($conn,$sql2);
-        $re2 = mysqli_fetch_assoc($result2);
-        if($password == $re2["password"] && $email ==$re2["email"])
-        {
-            header("location: index.php?email=".$re['email']);
-        }
-        else if(!$email)
-        {
-            $msg = "<div class='error'><i class='fa fa-exclamation-circle '></i>  &nbsp; Please fill in your email</div>";
-        }
-        else if(!$password)
-        {
-            $msg = "<div class='error'><i class='fa fa-exclamation-circle '></i>  &nbsp;Please fill in your password</div>";
-        }
-        else if($password != $re2["password"] || $email !=$re2["email"])
-        {
-            $msg = "<div class='error'><i class='fa fa-exclamation-circle '></i>  &nbsp;Email or password do not match</div>";
 
-        }
+        $sql = mysqli_query($conn, "SELECT * FROM login where email = '$email'");
+        $count = mysqli_num_rows($sql);
+
+        if($count > 0){
+            $fetch = mysqli_fetch_assoc($sql);
+            $hashpassword = $fetch["password"];
+
+            if($fetch["status"] == 0){
+                echo "<div class='popup'>
+                        <span class='close'>&times;</span>
+                        <p>Please verify email account before login.</p>
+                      </div>";
+            }else if(password_verify($password, $hashpassword)){
+                echo "<div class='popup'>
+                        <span class='close'>&times;</span>
+                        <p>Login successful!</p>
+                      </div>";
+            }else{
+                echo "<div class='popup'>
+                        <h2>Oh ouh</h2>
+                        <p>Incorrect email or password. Please try again.</p>
+                        <button onclick=\"document.querySelector('.popup').style.display = 'none'\">Close</button>
+                      </div>";
+            }
+        }    
     }
 ?>
+
+<style>
+    /* Popup container */
+    .popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f44336;
+    text-align: center;
+    color: white;
+    padding: 16px;
+    border-radius: 5px;
+    z-index: 1;
+    opacity: 0.9;
+    visibility: visible;
+    animation: popup 0.5s ease-in-out forwards;
+    }
+
+    /* Close button */
+    .popup .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    }
+
+    .popup .close:hover {
+    color: #ccc;
+    }
+
+    /* Animation */
+    @keyframes popup {
+    0% {opacity: 0; bottom: -50px}
+    100% {opacity: 0.9; bottom: 30px}
+    }
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -117,14 +156,14 @@
 <body>
     <div class="container" id="container">
         <div class="form-container register-container">
-        <form action="#">
+        <form action="#" method="post">
             <h1>User Registration</h1>
             <input type="text" id="name" placeholder="Name">
             <input type="email" id="email" placeholder="Email">
             <div class="password">
-                <input type="password" id="passwd" placeholder="Password" pattern="^\S+$">
+                <input type="password" id="passwd" name="pass "placeholder="Password" pattern="^\S+$">
                 <span id="togglebtn" class="fas fa-eye-slash"></span>
-                <div class="validation">
+            <div class="validation">
                     <ul>
                         <li id="length">Minimum 8 character</li>
                         <li id="number">At least one number</li>
@@ -135,16 +174,17 @@
                 </div>
             </div>
         
-            <button name="register" type="register">Register</button>
+            <button name="register" type="submit">Register</button>
         </form>
         </div>    
         
         <div class="form-container login-container">
-        <form action="#">
+        <form action="#" method="post">
             <h1>User Login</h1>
             <?php echo $msg;?>
             <input name="email" type="email" placeholder="Email">
             <input name="pass" type="password" placeholder="Password">
+            <span id="togglebtn" class="fas fa-eye-slash"></span>
 
             <div class="content">
             <div class="checkbox">

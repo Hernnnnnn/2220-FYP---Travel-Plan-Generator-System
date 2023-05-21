@@ -201,7 +201,7 @@ input {
 
 .validation ul {
 	position: relative;
-	display: flex;
+	display: contents;
 	flex-direction: column;
 	text-align: left;
 	gap: 8px;
@@ -220,12 +220,42 @@ input {
 	width: 20px;
 	height: 10px;
 	font-family: fontAwesome;
-	display: inline-flex;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	margin-right: 8px;
 }
 
-.validation ul li.valid::before {
-	content: '\f00c';
-	color: #4bb6b7;
+.validation ul li#length.valid::before,
+.validation ul li#number.valid::before,
+.validation ul li#lower.valid::before,
+.validation ul li#upper.valid::before,
+.validation ul li#special.valid::before {
+  color: green;
+}
+
+.validation ul li#length.error::before,
+.validation ul li#number.error::before,
+.validation ul li#lower.error::before,
+.validation ul li#upper.error::before,
+.validation ul li#special.error::before {
+  color: red;
+}
+
+.validation ul li#length.valid,
+.validation ul li#number.valid,
+.validation ul li#lower.valid,
+.validation ul li#upper.valid,
+.validation ul li#special.valid {
+  color: green;
+}
+
+.validation ul li#length.error,
+.validation ul li#number.error,
+.validation ul li#lower.error,
+.validation ul li#upper.error,
+.validation ul li#special.error {
+  color: red;
 }
 
 .login-container {
