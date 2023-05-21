@@ -60,7 +60,7 @@
             ?>
              <script>
                  alert("Verfiy account done, you may sign in now");
-                   window.location.replace("index.php");
+                 window.location.replace('userverification.php?email=<?php echo $email; ?>');
              </script>
              <?php
         }

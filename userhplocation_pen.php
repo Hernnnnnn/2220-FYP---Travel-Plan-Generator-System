@@ -67,7 +67,7 @@
 	
 	<link rel="stylesheet" href="css/style.css">
 
-	<link rel="stylesheet" href="placedetail.css">
+	<link rel="stylesheet" href="css/userlocationdetail.css">
 
 
 	<!-- Modernizr JS -->

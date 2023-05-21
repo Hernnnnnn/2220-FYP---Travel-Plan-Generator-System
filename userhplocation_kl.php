@@ -4,8 +4,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Card Slider</title>
+    <meta title="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TGPS</title>
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="swiper-bundle.min.css" />
@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="place.css" />
 
 	 <!-- Swiper CSS -->
-	 <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
 
-	 <!-- CSS -->
-	 <link rel="stylesheet" href="sw.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="sw.css" />
 
     <!-- 
 	//////////////////////////////////////////////////////
@@ -37,12 +37,12 @@
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
+	<meta property="og:site_title" content=""/>
 	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+	<meta title="twitter:title" content="" />
+	<meta title="twitter:image" content="" />
+	<meta title="twitter:url" content="" />
+	<meta title="twitter:card" content="" />
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" href="favicon.ico">
@@ -67,7 +67,8 @@
 	
 	<link rel="stylesheet" href="css/style.css">
 
-	<link rel="stylesheet" href="placedetail.css">
+	<link rel="stylesheet" href="css/userlocationdetail.css">
+	<link rel="stylesheet" href="sw.css" />
 
 
 	<!-- Modernizr JS -->
@@ -334,7 +335,7 @@
 							</div>
 							<div class="desc2 animate-box">
 								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
-									<p>HandCrafted by <a href="http://frehtml5.co/" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></p>
+									<p>HandCrafted by <a href="http://frehtml5.co/" target="_blank" class="fh5co-site-title">FreeHTML5.co</a></p>
 									<h2>Exclusive Limited Time Offer</h2>
 									<h3>Fly to Hong Kong via Los Angeles, USA</h3>
 									<span class="price">$599</span>
@@ -352,14 +353,14 @@
         <div class="place_detail">
             <div class="container_placedetail">
                 <div class="placedetail_title">
-                    <h1>MELAKA</h1>
-                    <p>Melaka is a state in Malaysia located in the southern region of the Malay Peninsula, facing the Strait of Malacca.</p>
+                    <h1>Kuala Lumpur</h1>
+                    <p>Kuala Lumpur is Malaysia's largest urban area as well as its cultural, commercial, and transportation centre. The city's commercial quarter, known as the Golden Triangle, is the site of the Petronas Twin Towers, two of the world's tallest buildings.</p>
 
                 </div>
 
             <div class="placedetail_img">
                 <video  controls autoplay loop >
-                    <source src="images/melaka.mp4">
+                    <source src="images/Kuala Lumpur.mp4">
                 </video>
             </div>
 
@@ -370,9 +371,9 @@
     </div>
 
 	<div class="introduction">
-		<h1 >What to know before visiting Melaka</h1>
+		<h1 >What to know before visiting Kuala Lumpur</h1>
 		<div class="introduction-description">
-			<h2 >about melaka</h2>
+			<h2 >about Kuala Lumpur</h2>
 			<p>Malaysia’s capital Kuala Lumpur is known for its skyscrapers and cultural diversity. Rise to the top of the iconic Petronas Twin Towers–the world’s tallest twin towers; or brave the glass-bottomed viewing box at the Sky Deck in KL Tower!
 
 				A city bustling with excitement from day to night, Kuala Lumpur offers you a splashing good time at Sunway Lagoon. Spend time walking up the steps of the Batu Caves, a picturesque limestone hill. A melting pot of culture from all over the world, the local cuisine is bound to tantalize your taste buds! Simply go on a street food hunt and you’ll understand why. To escape the heat, take a day trip to Genting Highlands, a hilltop City of Entertainment.</p>
@@ -381,7 +382,7 @@
 	</div>
 	<div class="container-1">
 
-		<h1 class="heading">Top sights in Melaka</h1>
+		<h1 class="heading">Top sights in Kuala Lumpur</h1>
 	 
 		<div class="box-container">
 	 
@@ -481,10 +482,7 @@
 	 </div>
 
 
-    
-
-	
-	<div class="container-2 swiper">
+    <div class="container-2 swiper">
 		<h2>Popular food</h2>
 		<div class="slide-container">
 		  <div class="card-wrapper swiper-wrapper">
@@ -555,7 +553,6 @@
 		<div class="swiper-pagination"></div>
 	  </div>
   
-
 
 	<script src="place.js"></script>
 	<script src="loadmore.js"></script>
