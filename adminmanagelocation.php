@@ -11,7 +11,7 @@
     session_start();
     if(!$_SESSION['email'])
 {
-    header("Location:adminLogin.php");
+    header("Location:adminloginpage.php");
 }
     include 'adminnavbar.php';
     $email = $_GET['email'];

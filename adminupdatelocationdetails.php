@@ -3,7 +3,7 @@
 session_start();
 if(!$_SESSION['email'])
 {
-    header("Location:adminLogin.php");
+    header("Location:adminloginpage.php");
 }
     include 'dataconnection.php';
     $email = $_GET['email'];
