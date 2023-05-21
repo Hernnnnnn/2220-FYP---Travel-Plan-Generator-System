@@ -18,7 +18,7 @@ include('dataconnection.php');
                         <p>Please verify email account before login.</p>
                       </div>";
             }else if(password_verify($password, $hashpassword)){
-                header ("location:index.php?email=".$email);
+                header ("location:userhomepage.php?email=".$email);
             }else{
                 echo "<div class='popup'>
                         <h2>Oh ouh</h2>
