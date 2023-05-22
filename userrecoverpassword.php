@@ -95,7 +95,7 @@ if (isset($_POST["recover"])) {
             $mail->setFrom('allenleekheehern@gmail.com', 'Password Reset');
             // Get email from input
             $mail->addAddress($_POST["email"]);
-            // $mail->addReplyTo('lamkaizhe16@gmail.com');
+            // $mail->addReplyTo('123@gmail.com');
 
             // HTML body
             $mail->isHTML(true);
@@ -104,7 +104,7 @@ if (isset($_POST["recover"])) {
             <h3>We received a request to reset your password.</h3>
             <p>Kindly click the below link to reset your password</p>
             http://localhost/TPGS/userresetpassword.php?email=".$email."
-            <br><br>
+            <br>
             <p>With regards,</p>
             <b>TPGS Team</b>";
 

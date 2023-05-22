@@ -59,7 +59,7 @@
             mysqli_query($conn, "UPDATE login SET status = 1 WHERE email = '$email'");
             ?>
              <script>
-                 alert("Verfiy account done, redirecting to TPGS homepage");
+                 alert("Verified account, redirecting to TPGS homepage");
                  window.location.replace('userhomepage.php?email=<?php echo $email; ?>');
              </script>
              <?php
