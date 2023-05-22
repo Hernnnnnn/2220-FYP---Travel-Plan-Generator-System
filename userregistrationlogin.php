@@ -26,8 +26,17 @@ if (isset($_POST["submit"])) {
                         <button class='close'></button>
                       </div>";
             } else if (password_verify($password, $hashpassword)) {
-                
-                header("location:userhomepage.php?email=".$email);
+                echo "<div class='popup' style='background-color: #3dec55;'>
+                    <h2>Login</h2>
+                    <p>Login successful!</p>
+                    <button class='close'></button>
+                </div>";
+
+                echo '<script>
+                        setTimeout(function(){
+                            window.location.href = "userhomepage.php?email='.$email.'";
+                        }, 5000);
+                    </script>';
                 exit;
             } else {
                 echo "<div class='popup'>

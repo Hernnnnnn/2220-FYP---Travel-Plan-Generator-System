@@ -1,4 +1,8 @@
-<?php include 'auth_check.php'; ?>
+<?php 
+include 'userauthcheck.php'; 
+include "usernavbar.php";
+include 'dataconnection.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
