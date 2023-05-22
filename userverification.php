@@ -50,21 +50,16 @@
         $otp_code = $_POST['otp_code'];
 
         if($otp != $otp_code){
-            ?>
-           <script>
-               alert("Invalid OTP code");
-           </script>
-           <?php
+            echo "<div class='popup'>
+                    <h2>Oh ouh</h2>
+                    <p>Invalid OTP code</p>
+                    <button class='close'></button>
+                </div>";
         }else{
             mysqli_query($conn, "UPDATE login SET status = 1 WHERE email = '$email'");
-            ?>
-             <script>
-                 alert("Verified account, redirecting to TPGS homepage");
-                 window.location.replace('userhomepage.php?email=<?php echo $email; ?>');
-             </script>
-             <?php
+            $_SESSION['email'] = $email;
+            header("location:userhomepage.php?email=".$email);
+            exit;
         }
-
     }
-
 ?>

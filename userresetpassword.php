@@ -148,18 +148,14 @@ include('dataconnection.php');
         if($Email){
             $new_pass = $hash;
             mysqli_query($conn, "UPDATE login SET password='$new_pass' WHERE email='$Email'");
-            ?>
-            <script>
-                window.location.replace("userregistrationlogin.php");
-                alert("<?php echo "Your password has been succesful reset"?>");
-            </script>
-            <?php
+            header("location:userregistrationlogin.php");
+            exit;
         }else{
-            ?>
-            <script>
-                alert("<?php echo "Please try again"?>");
-            </script>
-            <?php
+            echo "<div class='popup'>
+                    <h2>Oh ouh</h2>
+                    <p>Please try again</p>
+                    <button class='close'></button>
+                </div>";
         }
     }
 ?>
