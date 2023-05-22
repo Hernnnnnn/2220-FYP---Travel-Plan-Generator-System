@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
                         <button class='close'></button>
                       </div>";
             } else if (password_verify($password, $hashpassword)) {
-                $_SESSION['email'] = $email;
+                
                 header("location:userhomepage.php?email=".$email);
                 exit;
             } else {
@@ -70,11 +70,11 @@ if (isset($_POST["register"])) {
 
     if (!empty($email) && !empty($password)) {
         if ($rowCount > 0) {
-                echo "<div class='popup'>
-                        <h2>Oh ouh</h2>
-                        <p>User with email already exists!</p>
-                        <button class='close'></button>
-                      </div>";
+            echo "<div class='popup'>
+                    <h2>Oh ouh</h2>
+                    <p>User with email already exists!</p>
+                    <button class='close'></button>
+                  </div>";
         } else {
             $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
@@ -93,7 +93,6 @@ if (isset($_POST["register"])) {
                     $mail->Port = 587;
                     $mail->SMTPAuth = true;
                     $mail->SMTPSecure = 'tls';
-                    $mail->SMTPDebug = 2;
 
                     $mail->Username = 'allenleekheehern@gmail.com';
                     $mail->Password = 'lpuvtqrahhscqgsk';
@@ -106,15 +105,18 @@ if (isset($_POST["register"])) {
                     $mail->Body = "<p>Dear user,</p><h3>Your verify OTP code is $otp</h3><br><p>With regards,</p><b>TPGS Team</b>";
 
                     $mail->send();
-                        echo "<div class='popup'>
-                            <h2>Oh ouh</h2>
-                            <p>Register Successful, OTP sent to $email</p>
+
+                    echo "<div class='popup' style='background-color: #3dec55;'>
+                            <h2>OTP</h2>
+                            <p>Registration Successful, OTP sent to</p><p>$email</p>
                             <button class='close'></button>
                         </div>";
 
-                        usleep(3000000);
-
-                        header("location:userverification.php");
+                    echo '<script>
+                            setTimeout(function(){
+                                window.location.href = "userverification.php";
+                            }, 5000);
+                        </script>';
                 } catch (Exception $e) {
                     echo "<div class='popup'>
                             <h2>Oh ouh</h2>
@@ -122,12 +124,6 @@ if (isset($_POST["register"])) {
                             <button class='close'></button>
                         </div>";
                 }
-            } else {
-                echo "<div class='popup'>
-                        <h2>Oh ouh</h2>
-                        <p>Register failed</p>
-                        <button class='close'></button>
-                    </div>";
             }
         }
     } else {

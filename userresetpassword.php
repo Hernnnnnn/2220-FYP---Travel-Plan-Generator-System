@@ -16,6 +16,50 @@ include('dataconnection.php');
     <link rel="stylesheet" href="css/registrationlogin.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+
+<style>
+    .popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f44336;
+    text-align: center;
+    color: white;
+    padding: 16px;
+    border-radius: 5px;
+    z-index: 1;
+    opacity: 0.9;
+    visibility: visible;
+    animation: popup 0.5s ease-in-out forwards;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    }
+
+    .popup .close::before {
+        content: "✕";
+    }
+    .popup .close:hover {
+    color: #ccc;
+    }
+
+    @keyframes popup {
+    0% {opacity: 0; bottom: -50px}
+    100% {opacity: 0.9; bottom: 30px}
+    }
+</style>
+
 <body>
     <div class="container" id="container">
         
@@ -129,17 +173,34 @@ include('dataconnection.php');
         });
     });
     </script>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var closeButton = document.querySelector('.popup .close');
+        if (closeButton) {
+            closeButton.addEventListener('click', function() {
+                var popup = this.parentNode;
+                popup.style.display = 'none';
+            });
+
+            setTimeout(function() {
+                closeButton.click();
+            }, 5000);
+        }
+    });
+    </script>
 </body>
 </html>
+
 <?php
     if(isset($_POST["submit"])){
         include('dataconnection.php');
-        $psw = $_POST["password"];
+        $psw = $_POST["pass"];
 
         $token = $_SESSION['token'];
         $Email = $_GET['email'];
 
-        $hash = password_hash( $psw , PASSWORD_DEFAULT );
+        $hash = password_hash($psw, PASSWORD_DEFAULT);
 
         $sql = mysqli_query($conn, "SELECT * FROM login WHERE email='$Email'");
         $query = mysqli_num_rows($sql);
@@ -148,7 +209,17 @@ include('dataconnection.php');
         if($Email){
             $new_pass = $hash;
             mysqli_query($conn, "UPDATE login SET password='$new_pass' WHERE email='$Email'");
-            header("location:userregistrationlogin.php");
+            echo "<div class='popup' style='background-color: #3dec55;'>
+                    <h2>Updated</h2>
+                    <p>Your password has been updated successfully.</p>
+                    <button class='close'></button>
+                </div>";
+
+            echo '<script>
+                    setTimeout(function(){
+                        window.location.href = "userregistrationlogin.php";
+                    }, 5000);
+                </script>';
             exit;
         }else{
             echo "<div class='popup'>
@@ -159,4 +230,3 @@ include('dataconnection.php');
         }
     }
 ?>
-

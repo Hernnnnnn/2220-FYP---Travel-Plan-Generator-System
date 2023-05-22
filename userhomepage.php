@@ -1,17 +1,7 @@
-<?php
-    session_start();
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
-    if(!$_SESSION['email'])
-	{
-    	header("Location:userregistrationlogin.php");
-	}
-		include "usernavbar.php";
-		include 'dataconnection.php';
-		$email = $_GET['email'];
-		$sql = "SELECT * From `login` where email = '$email'";
-		$r = mysqli_query($conn,$sql);
-		$re = mysqli_fetch_assoc($r);
+<?php 
+include 'userauthcheck.php'; 
+include "usernavbar.php";
+include 'dataconnection.php';
 ?>
 
 <!DOCTYPE html>
