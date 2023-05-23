@@ -54,8 +54,17 @@
 	<link rel="stylesheet" href="css/cs-skin-border.css">
 	
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="placedetail.css">
+	<link rel="stylesheet" href="sw.css" >
+
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
 
 	</head>
   <body>
