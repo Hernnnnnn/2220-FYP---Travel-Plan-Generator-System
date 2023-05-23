@@ -1,6 +1,6 @@
-<?php 
-include 'userauthcheck.php'; 
-include 'dataconnection.php';
+<?php
+session_start();
+include('dataconnection.php');
 ?>
 
 <!DOCTYPE html>
