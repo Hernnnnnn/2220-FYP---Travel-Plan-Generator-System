@@ -299,14 +299,14 @@ include "usernavbar.php";
         <div class="place_detail">
             <div class="container_placedetail">
                 <div class="placedetail_title">
-                    <h1>MELAKA</h1>
-                    <p>Melaka is a state in Malaysia located in the southern region of the Malay Peninsula, facing the Strait of Malacca.</p>
+                    <h1>Malacca</h1>
+                    <p>Malacca is a state in Malaysia located in the southern region of the Malay Peninsula, facing the Strait of Malacca.</p>
 
                 </div>
 
             <div class="placedetail_img">
                 <video  controls autoplay loop >
-                    <source src="images/melaka.mp4">
+                    <source src="images/Malacca.mp4">
                 </video>
             </div>
 
@@ -317,9 +317,9 @@ include "usernavbar.php";
     </div>
 
 	<div class="introduction">
-		<h1 >What to know before visiting Melaka</h1>
+		<h1 >What to know before visiting Malacca</h1>
 		<div class="introduction-description">
-			<h2 >about melaka</h2>
+			<h2 >about Malacca</h2>
 			<p>Malaysia’s capital Kuala Lumpur is known for its skyscrapers and cultural diversity. Rise to the top of the iconic Petronas Twin Towers–the world’s tallest twin towers; or brave the glass-bottomed viewing box at the Sky Deck in KL Tower!
 
 				A city bustling with excitement from day to night, Kuala Lumpur offers you a splashing good time at Sunway Lagoon. Spend time walking up the steps of the Batu Caves, a picturesque limestone hill. A melting pot of culture from all over the world, the local cuisine is bound to tantalize your taste buds! Simply go on a street food hunt and you’ll understand why. To escape the heat, take a day trip to Genting Highlands, a hilltop City of Entertainment.</p>
@@ -328,7 +328,7 @@ include "usernavbar.php";
 	</div>
 	<div class="container-1">
 
-		<h1 class="heading">Top sights in Melaka</h1>
+		<h1 class="heading">Top sights in Malacca</h1>
 	 
 		<div class="box-container">
 	 
