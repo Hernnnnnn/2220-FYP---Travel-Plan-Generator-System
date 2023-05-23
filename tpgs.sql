@@ -40,8 +40,6 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ID`, `username`, `password`, `email`, `image`) VALUES
-(1, 'Teng', '123', 'dehui7051@gmail.com', 'dehui.jpg'),
-(2, 'Teng', '123', 'dehui7051@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -63,7 +61,6 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`ID`, `username`, `email`, `password`, `status`, `image`) VALUES
-(1, 'Hern', 'jlim2468101@gmail.com', 'Jlim2468101$', 1, '');
 
 --
 -- Indexes for dumped tables
