@@ -298,6 +298,7 @@ include "usernavbar.php";
 		</div>
 
 
+
         <div class="place_detail">
             <div class="container_placedetail">
                 <div class="placedetail_title">
@@ -317,8 +318,9 @@ include "usernavbar.php";
         </div>
 
     </div>
+	
 
-	<div class="introduction">
+		<div class="introduction">
 		<h1 >What to know before visiting Kuala Lumpur</h1>
 		<div class="introduction-description">
 			<h2 >about Kuala Lumpur</h2>
@@ -500,11 +502,10 @@ include "usernavbar.php";
 		<div class="swiper-button-prev swiper-navBtn"></div>
 		<div class="swiper-pagination"></div>
 	  </div>
-  
-
-	<script src="userlocation.js"></script>
+	  <script src="userlocation.js"></script>
 	<script src="loadmore.js"></script>
 	<script src="swiper-bundle.min.js"></script>
     <script src="sw.js"></script>
   </body>
-</html>
+  <body>
+	<html>

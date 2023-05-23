@@ -302,7 +302,7 @@ include "usernavbar.php";
 								<h3>Kuala Lumpur</h3>
 								<span></span>
 								<span class="price"></span>
-								<a class="btn btn-primary btn-outline" href="Kuala Lumpur.html">View more<i class="icon-arrow-right22"></i></a>
+								<a class="btn btn-primary btn-outline" href="userhplocation_kl.php">View more<i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
@@ -313,7 +313,7 @@ include "usernavbar.php";
 								<h3>Melaka</h3>
 								<span></span>
 								<span class="price"></span>
-								<a class="btn btn-primary btn-outline" href="melaka.html">View more <i class="icon-arrow-right22"></i></a>
+								<a class="btn btn-primary btn-outline" href="userhplocation_mlk.php">View more <i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
@@ -324,7 +324,7 @@ include "usernavbar.php";
 								<h3>Penang</h3>
 								<span></span>
 								<span class="price"></span>
-								<a class="btn btn-primary btn-outline" href="PENANG.html">View more <i class="icon-arrow-right22"></i></a>
+								<a class="btn btn-primary btn-outline" href="userhplocation_pen.php">View more <i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
