@@ -267,65 +267,92 @@ if (isset($_POST["register"])) {
     <script src="userregistrationlogin.js"></script>
     <script src="showhidepassword.js"></script>
 
-<script>
+    <script>
     $msg = "";
 
-        let minlength = document.getElementById('length');
-        let digit = document.getElementById('number');
-        let lowercase = document.getElementById('lower');
-        let uppercase = document.getElementById('upper');
-        let specialchar = document.getElementById('special');
-        let spaceerror = document.getElementById('space');
+    let minlength = document.getElementById('length');
+    let digit = document.getElementById('number');
+    let lowercase = document.getElementById('lower');
+    let uppercase = document.getElementById('upper');
+    let specialchar = document.getElementById('special');
+    let spaceerror = document.getElementById('space');
 
-        function checkPassword(data){
-            const length = new RegExp('(?=.{8,})');
-            const number = new RegExp('(?=.*[0-9])');
-            const lower = new RegExp('(?=.*[a-z])');
-            const upper = new RegExp('(?=.*[A-Z])');
-            const special = new RegExp('(?=.*[!@#$%^&*])');
-            const space = new RegExp('(?=.*[\\s])');
+    function checkPassword(data) {
+        const length = new RegExp('(?=.{8,})');
+        const number = new RegExp('(?=.*[0-9])');
+        const lower = new RegExp('(?=.*[a-z])');
+        const upper = new RegExp('(?=.*[A-Z])');
+        const special = new RegExp('(?=.*[!@#$%^&*])');
+        const space = new RegExp('(?=.*[\\s])');
 
-            if(length.test(data)){
-                minlength.classList.add('valid');
-            }else{
-                minlength.classList.remove('valid');
-            }
-
-            if(number.test(data)){
-                digit.classList.add('valid');
-            }else{
-                digit.classList.remove('valid');
-            }
-
-            if(lower.test(data)){
-                lowercase.classList.add('valid');
-            }else{
-                lowercase.classList.remove('valid');
-            }
-
-            if(upper.test(data)){
-                uppercase.classList.add('valid');
-            }else{
-                uppercase.classList.remove('valid');
-            }
-
-            if(special.test(data)){
-                specialchar.classList.add('valid');
-            }else{
-                specialchar.classList.remove('valid');
-            }
-
-            if(space.test(data)){
-                spaceerror.classList.add('error');
-            }else{
-                spaceerror.classList.remove('error');
-            }
+        if (length.test(data)) {
+            minlength.classList.add('valid');
+        } else {
+            minlength.classList.remove('valid');
         }
 
-    password.addEventListener('input', function(){
+        if (number.test(data)) {
+            digit.classList.add('valid');
+        } else {
+            digit.classList.remove('valid');
+        }
+
+        if (lower.test(data)) {
+            lowercase.classList.add('valid');
+        } else {
+            lowercase.classList.remove('valid');
+        }
+
+        if (upper.test(data)) {
+            uppercase.classList.add('valid');
+        } else {
+            uppercase.classList.remove('valid');
+        }
+
+        if (special.test(data)) {
+            specialchar.classList.add('valid');
+        } else {
+            specialchar.classList.remove('valid');
+        }
+
+        if (space.test(data)) {
+            spaceerror.classList.add('error');
+        } else {
+            spaceerror.classList.remove('error');
+        }
+    }
+
+    password.addEventListener('input', function () {
         checkPassword(password.value);
     });
+
+    const registerForm = document.querySelector('.register-container form');
+    registerForm.addEventListener('submit', function(event) {
+    const passwordValue = document.getElementById('passwd').value;
+
+    if (!minlength.classList.contains('valid') ||
+        !digit.classList.contains('valid') ||
+        !lowercase.classList.contains('valid') ||
+        !uppercase.classList.contains('valid') ||
+        !specialchar.classList.contains('valid') ||
+        spaceerror.classList.contains('error')
+    ) {
+        event.preventDefault();
+
+        const popup = document.createElement('div');
+        popup.classList.add('popup');
+        popup.innerHTML = "<h2>Error</h2><p>Please ensure that the password meets the requirements.</p><button class='close'></button>";
+        document.body.appendChild(popup);
+
+        const closeButton = popup.querySelector('.close');
+        closeButton.addEventListener('click', function() {
+        document.body.removeChild(popup);
+        });
+    }
+    });
+
 </script>
+
 </body>
 </html>
 
