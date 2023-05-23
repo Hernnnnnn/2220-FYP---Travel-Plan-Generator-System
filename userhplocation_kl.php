@@ -298,6 +298,7 @@ include "usernavbar.php";
 		</div>
 
 
+
         <div class="place_detail">
             <div class="container_placedetail">
                 <div class="placedetail_title">
@@ -317,8 +318,9 @@ include "usernavbar.php";
         </div>
 
     </div>
+	
 
-	<div class="introduction">
+		<div class="introduction">
 		<h1 >What to know before visiting Kuala Lumpur</h1>
 		<div class="introduction-description">
 			<h2 >about Kuala Lumpur</h2>
@@ -436,61 +438,61 @@ include "usernavbar.php";
 		  <div class="card-wrapper swiper-wrapper">
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/KUALA LUMPUR/FOOD/food_Bunn_Choon_Egg.jpg" alt="" />
 			  </div>
 			  <div class="food-details">
 	
 				<div class="title-description">
-				  <h3 class="title">David Cardlos</h3>
-				  <h4 class="description">Full Stack Developer</h4>
+				  <h3 class="title">Bunn Choon Egg</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/KUALA LUMPUR/FOOD/food_guigui.jpeg" alt="" />
 			  </div>
 			  <div class="food-details">
 			
 				<div class="title-description">
-				  <h3 class="title">Siliana Ramis</h3>
-				  <h4 class="description">Photographer</h4>
+				  <h3 class="title">KOREA GUI GUI RESTAURANT</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/KUALA LUMPUR/FOOD/food_xiaoshiguang.jpeg" alt="" />
 			  </div>
 			  <div class="food-details">
 			
 				<div class="title-description">
-				  <h3 class="title">Richard Bond</h3>
-				  <h4 class="description">Data Analyst</h4>
+				  <h3 class="title">xiaoshiguang</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/KUALA LUMPUR/FOOD/LAI FOONG.jpeg" alt="" />
 			  </div>
 			  <div class="food-details">
 		
 				<div class="title-description">
-				  <h3 class="title">Priase</h3>
-				  <h4 class="description">App Developer</h4>
+				  <h3 class="title">LAI FOONG RESTAURANT</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/KUALA LUMPUR/FOOD/TARMA Iraqi Street Food.jpg" alt="" />
 			  </div>
 			  <div class="food-details">
 			
 				<div class="title-description">
-				  <h3 class="title">James Laze</h3>
-				  <h4 class="description">Blogger</h4>
+				  <h3 class="title">TARMA Iraqi Street Food</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
@@ -500,11 +502,10 @@ include "usernavbar.php";
 		<div class="swiper-button-prev swiper-navBtn"></div>
 		<div class="swiper-pagination"></div>
 	  </div>
-  
-
-	<script src="userlocation.js"></script>
+	  <script src="userlocation.js"></script>
 	<script src="loadmore.js"></script>
 	<script src="swiper-bundle.min.js"></script>
     <script src="sw.js"></script>
   </body>
-</html>
+  <body>
+	<html>

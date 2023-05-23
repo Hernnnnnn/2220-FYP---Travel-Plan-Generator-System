@@ -320,9 +320,7 @@ include "usernavbar.php";
 		<h1 >What to know before visiting Malacca</h1>
 		<div class="introduction-description">
 			<h2 >about Malacca</h2>
-			<p>Malaysia’s capital Kuala Lumpur is known for its skyscrapers and cultural diversity. Rise to the top of the iconic Petronas Twin Towers–the world’s tallest twin towers; or brave the glass-bottomed viewing box at the Sky Deck in KL Tower!
-
-				A city bustling with excitement from day to night, Kuala Lumpur offers you a splashing good time at Sunway Lagoon. Spend time walking up the steps of the Batu Caves, a picturesque limestone hill. A melting pot of culture from all over the world, the local cuisine is bound to tantalize your taste buds! Simply go on a street food hunt and you’ll understand why. To escape the heat, take a day trip to Genting Highlands, a hilltop City of Entertainment.</p>
+			<p>Malacca City  is the capital city of the Malaysian state of Malacca, in Melaka Tengah District. As of 2019 it has a population of 579,000. Malacca City is one of the cleanest cities in South East Asia, being awarded as National Winner of Asean Clean Tourist City Standard Award 2018–2020 recently. It is the oldest Malaysian city on the Straits of Malacca, having become a successful entrepôt in the era of the Malacca Sultanate. The present-day city was founded by Parameswara, a Sumatran prince who escaped to the Malay Peninsula when Srivijaya fell to the Majapahit. </p>
 			
 		</div>
 	</div>
@@ -334,11 +332,11 @@ include "usernavbar.php";
 	 
 		   <div class="box">
 			  <div class="image">
-				 <img src="images/KLCCC.jpg" alt="">
+				 <img src="images/MELAKA/POPULAR DESTINATION/melaka_shore_sky.jpg" alt="">
 			  </div>
 			  <div class="content">
-				 <h3>KLCC</h3>
-				 <p> KLCC Twin Towers, are a pair of 88-storey supertall skyscrapers in Kuala Lumpur</p>
+				 <h3>shore_sky</h3>
+				 <p></p>
 				 <a href="#" class="btn">read more</a>
 				 <div class="icons">
 					<span> <i class="fas fa-calendar"></i> </span>
@@ -349,10 +347,10 @@ include "usernavbar.php";
 	 
 		   <div class="box">
 			  <div class="image">
-				 <img src="images/pavilion.jpg" alt="">
+				 <img src="images/MELAKA/POPULAR DESTINATION/melaka_sultanate.jpg" alt="">
 			  </div>
 			  <div class="content">
-				 <h3>pavilion</h3>
+				 <h3>melaka_sultanate</h3>
 				 <p>Pavilion Kuala Lumpur is a shopping centre  in Kuala Lumpur, Malaysia.</p>
 				 <a href="#" class="btn">read more</a>
 				 <div class="icons"></div>
@@ -361,63 +359,50 @@ include "usernavbar.php";
 	 
 		   <div class="box">
 			  <div class="image">
-				 <img src="images/thean-hou.jpg" alt="">
+				 <img src="images/MELAKA/POPULAR DESTINATION/MENARAjpg.jpg" alt="">
 			  </div>
 			  <div class="content">
-				 <h3>Thean-hou</h3>
-				 <p> Theon Hou is an ancient temple which is also a popular tourist attraction</p>
+				 <h3>MENARA</h3>
+				 <p> </p>
 				 <a href="#" class="btn">read more</a>
 				 <div class="icons">
-					<span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-					<span> <i class="fas fa-user"></i> by admin </span>
+					<span> <i class="fas fa-calendar"></i> </span>
+					<span> <i class="fas fa-user"></i> </span>
 				 </div>
 			  </div>
 		   </div>
 	 
 		   <div class="box">
 			  <div class="image">
-				 <img src="images/KLL.jpg" alt="">
+				 <img src="images/MELAKA/POPULAR DESTINATION/mlk_jonker street.jpg" alt="">
 			  </div>
 			  <div class="content">
-				 <h3>Aquaria KLCC</h3>
-				 <p>One of the top Kuala Lumpur tourist places is Aquaria which is said to be one of the largest aquariums in Southeast Asia.</p>
+				 <h3>jonker street</h3>
+				 <p></p>
 				 <a href="#" class="btn">read more</a>
 				 <div class="icons">
-					<span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-					<span> <i class="fas fa-user"></i> by admin </span>
+					<span> <i class="fas fa-calendar"></i>  </span>
+					<span> <i class="fas fa-user"></i> </span>
 				 </div>
 			  </div>
 		   </div>
 	 
 		   <div class="box">
 			  <div class="image">
-				 <img src="images/KL ZOO.jpg" alt="">
+				 <img src="images/MELAKA/POPULAR DESTINATION/St. Paul's Church.jpg" alt="">
 			  </div>
 			  <div class="content">
-				 <h3>Kl Tower Mini Zoo</h3>
-				 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
+				 <h3>St. Paul's Church</h3>
+				 <p></p>
 				 <a href="#" class="btn">read more</a>
 				 <div class="icons">
-					<span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-					<span> <i class="fas fa-user"></i> by admin </span>
+					<span> <i class="fas fa-calendar"></i>  </span>
+					<span> <i class="fas fa-user"></i></span>
 				 </div>
 			  </div>
 		   </div>
 	 
-		   <div class="box">
-			  <div class="image">
-				 <img src="images/KL BATU CABUSr.jpg" alt="">
-			  </div>
-			  <div class="content">
-				 <h3>Batu Caves</h3>
-				 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-				 <a href="#" class="btn">read more</a>
-				 <div class="icons">
-					<span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-					<span> <i class="fas fa-user"></i> by admin </span>
-				 </div>
-			  </div>
-		   </div>
+		   
 	 
 		  
 	 
@@ -437,64 +422,53 @@ include "usernavbar.php";
 		  <div class="card-wrapper swiper-wrapper">
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/MELAKA/FOOD/food_melaka_Hard Rock Cafe.jpeg" alt="" />
 			  </div>
 			  <div class="food-details">
 	
 				<div class="title-description">
-				  <h3 class="title">David Cardlos</h3>
-				  <h4 class="description">Full Stack Developer</h4>
+				  <h3 class="title">Hard Rock Cafe</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/MELAKA/FOOD/food_melaka_Pak Putra Restaurant.jpg" alt="" />
 			  </div>
 			  <div class="food-details">
 			
 				<div class="title-description">
-				  <h3 class="title">Siliana Ramis</h3>
-				  <h4 class="description">Photographer</h4>
+				  <h3 class="title">Pak Putra Restaurant</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/MELAKA/FOOD/food_melaka_Restaurant Ming Huat.jpg" alt="" />
 			  </div>
 			  <div class="food-details">
 			
 				<div class="title-description">
-				  <h3 class="title">Richard Bond</h3>
-				  <h4 class="description">Data Analyst</h4>
+				  <h3 class="title">Restaurant Ming Huat</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/MELAKA/FOOD/food_melaka_wild coriander.jpg" alt="" />
 			  </div>
 			  <div class="food-details">
 		
 				<div class="title-description">
-				  <h3 class="title">Priase</h3>
-				  <h4 class="description">App Developer</h4>
+				  <h3 class="title">melaka_wild coriander</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
-			<div class="card swiper-slide">
-			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
-			  </div>
-			  <div class="food-details">
 			
-				<div class="title-description">
-				  <h3 class="title">James Laze</h3>
-				  <h4 class="description">Blogger</h4>
-				</div>
-			  </div>
-			</div>
 		  </div>
 		</div>
 		<div class="swiper-button-next swiper-navBtn"></div>
