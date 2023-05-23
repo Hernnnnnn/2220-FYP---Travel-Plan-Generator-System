@@ -318,9 +318,7 @@ include "usernavbar.php";
 		<h1 >What to know before visiting Penang</h1>
 		<div class="introduction-description">
 			<h2 >about Penang</h2>
-			<p>Malaysia’s capital Kuala Lumpur is known for its skyscrapers and cultural diversity. Rise to the top of the iconic Petronas Twin Towers–the world’s tallest twin towers; or brave the glass-bottomed viewing box at the Sky Deck in KL Tower!
-
-				A city bustling with excitement from day to night, Kuala Lumpur offers you a splashing good time at Sunway Lagoon. Spend time walking up the steps of the Batu Caves, a picturesque limestone hill. A melting pot of culture from all over the world, the local cuisine is bound to tantalize your taste buds! Simply go on a street food hunt and you’ll understand why. To escape the heat, take a day trip to Genting Highlands, a hilltop City of Entertainment.</p>
+			<p>Penang is a Malaysian state located on the northwest coast of Peninsular Malaysia, by the Malacca Strait. It has two parts: Penang Island, where the capital city, George Town, is located, and Seberang Perai on the Malay Peninsula. They are connected by Malaysia's two longest road bridges, the Penang Bridge and the Sultan Abdul Halim Muadzam Shah Bridge; the latter is also the second longest oversea bridge in Southeast Asia.</p>
 			
 		</div>
 	</div>

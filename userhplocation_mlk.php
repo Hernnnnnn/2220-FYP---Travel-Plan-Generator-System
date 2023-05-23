@@ -320,9 +320,7 @@ include "usernavbar.php";
 		<h1 >What to know before visiting Malacca</h1>
 		<div class="introduction-description">
 			<h2 >about Malacca</h2>
-			<p>Malaysia’s capital Kuala Lumpur is known for its skyscrapers and cultural diversity. Rise to the top of the iconic Petronas Twin Towers–the world’s tallest twin towers; or brave the glass-bottomed viewing box at the Sky Deck in KL Tower!
-
-				A city bustling with excitement from day to night, Kuala Lumpur offers you a splashing good time at Sunway Lagoon. Spend time walking up the steps of the Batu Caves, a picturesque limestone hill. A melting pot of culture from all over the world, the local cuisine is bound to tantalize your taste buds! Simply go on a street food hunt and you’ll understand why. To escape the heat, take a day trip to Genting Highlands, a hilltop City of Entertainment.</p>
+			<p>Malacca City  is the capital city of the Malaysian state of Malacca, in Melaka Tengah District. As of 2019 it has a population of 579,000. Malacca City is one of the cleanest cities in South East Asia, being awarded as National Winner of Asean Clean Tourist City Standard Award 2018–2020 recently. It is the oldest Malaysian city on the Straits of Malacca, having become a successful entrepôt in the era of the Malacca Sultanate. The present-day city was founded by Parameswara, a Sumatran prince who escaped to the Malay Peninsula when Srivijaya fell to the Majapahit. </p>
 			
 		</div>
 	</div>
