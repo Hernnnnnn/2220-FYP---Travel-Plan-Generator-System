@@ -49,6 +49,17 @@ include "usernavbar.php";
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 
+	<link rel="stylesheet" href="placedetail.css">
+	<link rel="stylesheet" href="sw.css" >
+
+
+
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+
 	</head>
   <body>
 		<div class="fh5co-hero">

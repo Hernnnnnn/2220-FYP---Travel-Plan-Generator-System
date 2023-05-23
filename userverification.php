@@ -103,7 +103,7 @@
     include('dataconnection.php');
     if(isset($_POST["verify"])){
         $otp = $_SESSION['otp'];
-        $email = $_SESSION['email'];
+        $email = $_SESSION['mail'];
         $otp_code = $_POST['otp_code'];
 
         if($otp != $otp_code){

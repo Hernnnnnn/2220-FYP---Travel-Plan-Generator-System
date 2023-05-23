@@ -20,7 +20,7 @@
         if($password == $re2["password"] && $email ==$re2["email"])
         {
             $_SESSION['email']=$email;
-            header("location: dashboard.php?email=".$re['email']);
+            header("location: admindashboard.php?email=".$re['email']);
             die;
         }
         else if(!$email)
