@@ -317,7 +317,7 @@ include "usernavbar.php";
 	<div class="introduction">
 		<h1 >What to know before visiting Penang</h1>
 		<div class="introduction-description">
-			<h2 >about Kuala Lumpur</h2>
+			<h2 >about Penang</h2>
 			<p>Malaysia’s capital Kuala Lumpur is known for its skyscrapers and cultural diversity. Rise to the top of the iconic Petronas Twin Towers–the world’s tallest twin towers; or brave the glass-bottomed viewing box at the Sky Deck in KL Tower!
 
 				A city bustling with excitement from day to night, Kuala Lumpur offers you a splashing good time at Sunway Lagoon. Spend time walking up the steps of the Batu Caves, a picturesque limestone hill. A melting pot of culture from all over the world, the local cuisine is bound to tantalize your taste buds! Simply go on a street food hunt and you’ll understand why. To escape the heat, take a day trip to Genting Highlands, a hilltop City of Entertainment.</p>
@@ -326,17 +326,17 @@ include "usernavbar.php";
 	</div>
 	<div class="container-1">
 
-		<h1 class="heading">Top sights in Kuala Lumpur</h1>
+		<h1 class="heading">Top sights in Penang</h1>
 	 
 		<div class="box-container">
 	 
 		   <div class="box">
 			  <div class="image">
-				 <img src="images/KLCCC.jpg" alt="">
+				 <img src="images/PENANG/POPULAR DESTINATION/penang_top.jpeg" alt="">
 			  </div>
 			  <div class="content">
-				 <h3>KLCC</h3>
-				 <p> KLCC Twin Towers, are a pair of 88-storey supertall skyscrapers in Kuala Lumpur</p>
+				 <h3>penang top</h3>
+				 <p> </p>
 				 <a href="#" class="btn">read more</a>
 				 <div class="icons">
 					<span> <i class="fas fa-calendar"></i> </span>
@@ -347,11 +347,11 @@ include "usernavbar.php";
 	 
 		   <div class="box">
 			  <div class="image">
-				 <img src="images/pavilion.jpg" alt="">
+				 <img src="images/PENANG/POPULAR DESTINATION/penang_The TOP Penang, Theme Park Penang.JPG" alt="">
 			  </div>
 			  <div class="content">
-				 <h3>pavilion</h3>
-				 <p>Pavilion Kuala Lumpur is a shopping centre  in Kuala Lumpur, Malaysia.</p>
+				 <h3>Theme Park Penang</h3>
+				 <p></p>
 				 <a href="#" class="btn">read more</a>
 				 <div class="icons"></div>
 			  </div>
@@ -359,64 +359,50 @@ include "usernavbar.php";
 	 
 		   <div class="box">
 			  <div class="image">
-				 <img src="images/thean-hou.jpg" alt="">
+				 <img src="images/PENANG/POPULAR DESTINATION/penang_The Habitat Penang Hill.jpg" alt="">
 			  </div>
 			  <div class="content">
-				 <h3>Thean-hou</h3>
-				 <p> Theon Hou is an ancient temple which is also a popular tourist attraction</p>
+				 <h3>The Habitat Penang Hill</h3>
+				 <p> </p>
 				 <a href="#" class="btn">read more</a>
 				 <div class="icons">
-					<span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-					<span> <i class="fas fa-user"></i> by admin </span>
+					<span> <i class="fas fa-calendar"></i>  </span>
+					<span> <i class="fas fa-user"></i> </span>
 				 </div>
 			  </div>
 		   </div>
 	 
 		   <div class="box">
 			  <div class="image">
-				 <img src="images/KLL.jpg" alt="">
+				 <img src="images/PENANG/POPULAR DESTINATION/penang_Penang Butterfly Farm.jpg" alt="">
 			  </div>
 			  <div class="content">
-				 <h3>Aquaria KLCC</h3>
-				 <p>One of the top Kuala Lumpur tourist places is Aquaria which is said to be one of the largest aquariums in Southeast Asia.</p>
+				 <h3>Butterfly Farm</h3>
+				 <p></p>
 				 <a href="#" class="btn">read more</a>
 				 <div class="icons">
-					<span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-					<span> <i class="fas fa-user"></i> by admin </span>
+					<span> <i class="fas fa-calendar"></i> </span>
+					<span> <i class="fas fa-user"></i> </span>
 				 </div>
 			  </div>
 		   </div>
 	 
 		   <div class="box">
 			  <div class="image">
-				 <img src="images/KL ZOO.jpg" alt="">
+				 <img src="images/PENANG/POPULAR DESTINATION/penang_Kek Lok Si Temple.jpg" alt="">
 			  </div>
 			  <div class="content">
-				 <h3>Kl Tower Mini Zoo</h3>
-				 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
+				 <h3>Kek Lok Si Temple</h3>
+				 <p></p>
 				 <a href="#" class="btn">read more</a>
 				 <div class="icons">
-					<span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-					<span> <i class="fas fa-user"></i> by admin </span>
+					<span> <i class="fas fa-calendar"></i> </span>
+					<span> <i class="fas fa-user"></i> </span>
 				 </div>
 			  </div>
 		   </div>
 	 
-		   <div class="box">
-			  <div class="image">
-				 <img src="images/KL BATU CABUSr.jpg" alt="">
-			  </div>
-			  <div class="content">
-				 <h3>Batu Caves</h3>
-				 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, adipisci!</p>
-				 <a href="#" class="btn">read more</a>
-				 <div class="icons">
-					<span> <i class="fas fa-calendar"></i> 21st may, 2022 </span>
-					<span> <i class="fas fa-user"></i> by admin </span>
-				 </div>
-			  </div>
-		   </div>
-	 
+		 
 		  
 	 
 		</div>
@@ -435,61 +421,61 @@ include "usernavbar.php";
 		  <div class="card-wrapper swiper-wrapper">
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/PENANG/FOOD/food_penang_Ivy's Nyonya Cuisine.jpg" alt="" />
 			  </div>
 			  <div class="food-details">
 	
 				<div class="title-description">
-				  <h3 class="title">David Cardlos</h3>
-				  <h4 class="description">Full Stack Developer</h4>
+				  <h3 class="title">penang_Ivy's Nyonya Cuisine</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/PENANG/FOOD/food_penang_Penang Famous LOR BAK.jpg" alt="" />
 			  </div>
 			  <div class="food-details">
 			
 				<div class="title-description">
-				  <h3 class="title">Siliana Ramis</h3>
-				  <h4 class="description">Photographer</h4>
+				  <h3 class="title">Penang Famous LOR BAK</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/PENANG/FOOD/food_penang_Richard Rivalee Nyonya Cuisine Restaurant.jpg" alt="" />
 			  </div>
 			  <div class="food-details">
 			
 				<div class="title-description">
-				  <h3 class="title">Richard Bond</h3>
-				  <h4 class="description">Data Analyst</h4>
+				  <h3 class="title">Richard Rivalee Nyonya Cuisine Restaurant</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/PENANG/FOOD/penang_Clan Jetties Of Penang.jpg" alt="" />
 			  </div>
 			  <div class="food-details">
 		
 				<div class="title-description">
-				  <h3 class="title">Priase</h3>
-				  <h4 class="description">App Developer</h4>
+				  <h3 class="title">Clan Jetties Of Penang</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
 			<div class="card swiper-slide">
 			  <div class="image-box">
-				<img src="images/kuala lumpur.jpg" alt="" />
+				<img src="images/PENANG/FOOD/penang_food_Medan Selera (Halal) Padang Brown.jpg" alt="" />
 			  </div>
 			  <div class="food-details">
 			
 				<div class="title-description">
-				  <h3 class="title">James Laze</h3>
-				  <h4 class="description">Blogger</h4>
+				  <h3 class="title">penang_food_Medan Selera (Halal) Padang Brown</h3>
+				  <h4 class="description"></h4>
 				</div>
 			  </div>
 			</div>
