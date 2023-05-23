@@ -17,6 +17,48 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 
+<style>
+    .popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f44336;
+    text-align: center;
+    color: white;
+    padding: 16px;
+    border-radius: 5px;
+    z-index: 1;
+    opacity: 0.9;
+    visibility: visible;
+    animation: popup 0.5s ease-in-out forwards;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    }
+
+    .popup .close::before {
+        content: "✕";
+    }
+    .popup .close:hover {
+    color: #ccc;
+    }
+
+    @keyframes popup {
+    0% {opacity: 0; bottom: -50px}
+    100% {opacity: 0.9; bottom: 30px}
+    }
+</style>
+
 <body>
     <div class="container" id="container">
         <div class="form-container login-container">
@@ -40,8 +82,25 @@
             </div>
         </div>
     </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var closeButton = document.querySelector('.popup .close');
+        if (closeButton) {
+            closeButton.addEventListener('click', function() {
+                var popup = this.parentNode;
+                popup.style.display = 'none';
+            });
+
+            setTimeout(function() {
+                closeButton.click();
+            }, 5000);
+        }
+    });
+    </script>
 </body>
+
 </html>
+
 <?php 
     include('dataconnection.php');
     if(isset($_POST["verify"])){
@@ -50,21 +109,25 @@
         $otp_code = $_POST['otp_code'];
 
         if($otp != $otp_code){
-            ?>
-           <script>
-               alert("Invalid OTP code");
-           </script>
-           <?php
+            echo "<div class='popup'>
+                    <h2>Oh ouh</h2>
+                    <p>Invalid OTP code</p>
+                    <button class='close'></button>
+                </div>";
         }else{
             mysqli_query($conn, "UPDATE login SET status = 1 WHERE email = '$email'");
-            ?>
-             <script>
-                 alert("Verfiy account done, redirecting to TPGS homepage");
-                 window.location.replace('userhomepage.php?email=<?php echo $email; ?>');
-             </script>
-             <?php
+            echo "<div class='popup' style='background-color: #3dec55;'>
+                    <h2>Registration Successful</h2>
+                    <p>Congratulations, your account</p><p>has been successfully created.</p>
+                    <button class='close'></button>
+                </div>";
+    
+            echo '<script>
+                    setTimeout(function(){
+                        window.location.href = "userhomepage.php?email='.$email.'";
+                    }, 5000);
+                </script>';
+            exit;
         }
-
     }
-
 ?>

@@ -14,6 +14,50 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+</head>
+
+<style>
+    .popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f44336;
+    text-align: center;
+    color: white;
+    padding: 16px;
+    border-radius: 5px;
+    z-index: 1;
+    opacity: 0.9;
+    visibility: visible;
+    animation: popup 0.5s ease-in-out forwards;
+    }
+
+    .popup .close {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    }
+
+    .popup .close::before {
+        content: "✕";
+    }
+    .popup .close:hover {
+    color: #ccc;
+    }
+
+    @keyframes popup {
+    0% {opacity: 0; bottom: -50px}
+    100% {opacity: 0.9; bottom: 30px}
+    }
+</style>
+
 <body>
     <div class="container" id="container">
         
@@ -37,7 +81,22 @@
             </div>
         </div>
     </div>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var closeButton = document.querySelector('.popup .close');
+        if (closeButton) {
+            closeButton.addEventListener('click', function() {
+                var popup = this.parentNode;
+                popup.style.display = 'none';
+            });
 
+            setTimeout(function() {
+                closeButton.click();
+            }, 5000);
+        }
+    });
+    </script>
 </body>
 </html>
 
@@ -95,7 +154,7 @@ if (isset($_POST["recover"])) {
             $mail->setFrom('allenleekheehern@gmail.com', 'Password Reset');
             // Get email from input
             $mail->addAddress($_POST["email"]);
-            // $mail->addReplyTo('lamkaizhe16@gmail.com');
+            // $mail->addReplyTo('123@gmail.com');
 
             // HTML body
             $mail->isHTML(true);
@@ -104,22 +163,29 @@ if (isset($_POST["recover"])) {
             <h3>We received a request to reset your password.</h3>
             <p>Kindly click the below link to reset your password</p>
             http://localhost/TPGS/userresetpassword.php?email=".$email."
-            <br><br>
+            <br>
             <p>With regards,</p>
             <b>TPGS Team</b>";
 
             if (!$mail->send()) {
-                ?>
-                <script>
-                    alert("<?php echo "Invalid Email"; ?>");
-                </script>
-                <?php
+                echo "<div class='popup'>
+                        <h2>Error</h2>
+                        <p>Invalid Email</p>
+                        <button class='close'></button>
+                    </div>";
             } else {
-                ?>
-                <script>
-                    window.location.replace("notification.html");
-                </script>
-                <?php
+            echo "<div class='popup'>
+                    <h2>Recovery</h2>
+                    <p>Email send out ! Kindly check your email inbox.</p>
+                    <button class='close'></button>
+                </div>";
+
+            echo '<script>
+                    setTimeout(function(){
+                        window.location.href = "userregistrationlogin.php";
+                    }, 5000);
+                </script>';
+            exit;
             }
         }
     }

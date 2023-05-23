@@ -282,11 +282,11 @@ input[type="checkbox"].toggle:disabled + label::after {
                    $status = $user["status"];
                     if($status==1)
                     {
-                        echo '<a class="update" href="editstatus.php?email='.$email.'&&id='.$id.'&&status='.$status.'">Update</a>';
+                        echo '<a class="update" href="admineditstatus.php?email='.$email.'&&id='.$id.'&&status='.$status.'">Update</a>';
                     }
                     else if($status==0)
                     {
-                        echo '<a class="update" href="editstatus.php?email='.$email.'&&id='.$id.'&&status='.$status.'">Update</a>';
+                        echo '<a class="update" href="admineditstatus.php?email='.$email.'&&id='.$id.'&&status='.$status.'">Update</a>';
                     }
                     ?>
                     </td>

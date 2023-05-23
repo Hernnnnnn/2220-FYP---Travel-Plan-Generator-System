@@ -1,3 +1,8 @@
+<?php 
+include 'userauthcheck.php'; 
+include 'dataconnection.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,14 +34,6 @@
 	<link rel="stylesheet" href="css/cs-skin-border.css">
 	
 	<link rel="stylesheet" href="css/style.css">
-
-<?php 
-	include 'dataconnection.php';
-	$email = $_GET['email'];
-	$sql = "SELECT * From `login` where email = '$email'";
-	$r = mysqli_query($conn,$sql);
-	$re = mysqli_fetch_assoc($r);
-?>
 
 <style>
 	.img
@@ -83,11 +80,11 @@
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li class="active"><a href="index.php">Home</a></li>
-							<li><a href="hotel.html">Hotel</a></li>
-							<li><a href="car.html">Car</a></li>
+							<li class="active"><a href="userhomepage.php?email=<?php echo $email; ?>">Home</a></li>
+							<li><a href="userhphotel.php?email=<?php echo $email; ?>">Hotel</a></li>
+							<li><a href="flight.php?email=<?php echo $email; ?>">Flight</a></li>
 							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="usercontactus.php?email=<?php echo $email; ?>">Contact</a></li>
 							<li><a href="userprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a>
 								<ul class="fh5co-sub-menu" style="position: absolute;">
 									<li style="display: flex; align-items: center;"><a class="user-info">
@@ -96,19 +93,19 @@
 										<hr style="border: 0; height: 1px; width: 100%; background: #ccc; margin: 15px 0 10px;">
 									</li>
 
-									<li><a href="#" class="sub-menu-link">
+									<li><a href="usereditprofile.php?email=<?php echo $email; ?>" class="sub-menu-link">
 										<img src="images/profile.png">
 										<p>Edit Profile</p>
 										<span>></span>
 									</li>
 
-									<li><a href="#" class="sub-menu-link">
+									<li><a href="userprofile.php?email=<?php echo $email; ?>" class="sub-menu-link">
 										<img src="images/setting-copy.png">
 										<p>Settings & Privacy</p>
 										<span>></span>
 									</li>
 
-									<li><a href="#" class="sub-menu-link">
+									<li><a href="usercontactus.php?email=<?php echo $email; ?>" class="sub-menu-link">
 										<img src="images/help.png">
 										<p>Help & Support</p>
 										<span>></span>
