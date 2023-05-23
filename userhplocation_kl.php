@@ -50,7 +50,9 @@ include "usernavbar.php";
 	<script src="js/modernizr-2.6.2.min.js"></script>
 
 
-	<link rel="stylesheet" href="placedetail.css">
+	<link rel="stylesheet" href="css/userlocationdetail.css">
+	<link rel="stylesheet" href="css/userlocation.css">
+	<link rel="stylesheet" href="swiper-bundle.min.css" >
 	<link rel="stylesheet" href="sw.css" >
 
 
@@ -500,7 +502,7 @@ include "usernavbar.php";
 	  </div>
   
 
-	<script src="place.js"></script>
+	<script src="userlocation.js"></script>
 	<script src="loadmore.js"></script>
 	<script src="swiper-bundle.min.js"></script>
     <script src="sw.js"></script>
