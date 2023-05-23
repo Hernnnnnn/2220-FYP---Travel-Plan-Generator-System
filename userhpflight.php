@@ -1,7 +1,7 @@
-<?php 
-include 'userauthcheck.php'; 
+<?php
+session_start();
+include('dataconnection.php');
 include "usernavbar.php";
-include 'dataconnection.php';
 ?>
 
 <!DOCTYPE html>

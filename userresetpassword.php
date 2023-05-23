@@ -198,7 +198,7 @@ include('dataconnection.php');
         $psw = $_POST["pass"];
 
         $token = $_SESSION['token'];
-        $Email = $_GET['email'];
+        $Email = $_GET['mail'];
 
         $hash = password_hash($psw, PASSWORD_DEFAULT);
 
