@@ -37,7 +37,6 @@ if (isset($_POST["submit"])) {
                             window.location.href = "userhomepage.php?email='.$email.'";
                         }, 5000);
                     </script>';
-                exit;
             } else {
                 echo "<div class='popup'>
                         <h2>Oh ouh</h2>
@@ -77,7 +76,7 @@ if (isset($_POST["register"])) {
     $check_query = mysqli_query($conn, "SELECT * FROM login WHERE email = '$email'");
     $rowCount = mysqli_num_rows($check_query);
 
-    if (!empty($email) && !empty($password)) {
+    if (!empty($name) && !empty($email) && !empty($password)) {
         if ($rowCount > 0) {
             echo "<div class='popup'>
                     <h2>Oh ouh</h2>
@@ -138,7 +137,7 @@ if (isset($_POST["register"])) {
     } else {
         echo "<div class='popup'>
                 <h2>Error</h2>
-                <p>Email and password fields cannot be empty</p>
+                <p>Username, email or password fields cannot be empty</p>
                 <button class='close'></button>
             </div>";
     }
