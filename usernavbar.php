@@ -1,6 +1,5 @@
-<?php 
-include 'userauthcheck.php'; 
-include 'dataconnection.php';
+<?php
+include('dataconnection.php');
 ?>
 
 <!DOCTYPE html>
