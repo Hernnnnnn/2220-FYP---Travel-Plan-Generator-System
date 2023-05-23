@@ -1,5 +1,5 @@
 <?php 
-include 'userauthcheck.php'; 
+// include 'userauthcheck.php'; 
 include "usernavbar.php";
 include 'dataconnection.php';
 ?>

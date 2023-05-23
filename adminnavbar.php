@@ -297,7 +297,7 @@
 								<a href="contact.html">Contact</a>
 							</li>
 							<li>
-								<a href="adminLogout.php"><i class='fas fa-sign-out-alt'></i>Log out</a>
+								<a href="adminlogoutpage.php"><i class='fas fa-sign-out-alt'></i>Log out</a>
 							</li>
 							<li>
 								<a href="adminprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a>
