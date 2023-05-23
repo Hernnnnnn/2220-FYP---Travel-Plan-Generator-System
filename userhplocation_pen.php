@@ -450,7 +450,7 @@ include "usernavbar.php";
 			  <div class="food-details">
 			
 				<div class="title-description">
-				  <h3 class="title">Richard Rivalee Nyonya Cuisine Restaurant</h3>
+				  <h3 class="title">Richard Rivalee Nyonya Cuisine </h3>
 				  <h4 class="description"></h4>
 				</div>
 			  </div>
@@ -474,7 +474,7 @@ include "usernavbar.php";
 			  <div class="food-details">
 			
 				<div class="title-description">
-				  <h3 class="title">penang_food_Medan Selera (Halal) Padang Brown</h3>
+				  <h3 class="title">Medan Selera  Padang Brown</h3>
 				  <h4 class="description"></h4>
 				</div>
 			  </div>
