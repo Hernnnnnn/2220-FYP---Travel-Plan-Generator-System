@@ -726,7 +726,7 @@ include "usernavbar.php";
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
-
+	<script src="userpreventreturn.js"></script>
 	</body>
 </html>
 
