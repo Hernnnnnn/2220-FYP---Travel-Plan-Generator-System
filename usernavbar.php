@@ -85,7 +85,8 @@ $re = mysqli_fetch_assoc($r);
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="userhomepage.php?email=<?php echo $email; ?>">Home</a></li>
 							<li><a href="userhphotel.php?email=<?php echo $email; ?>">Hotel</a></li>
-							<li><a href="flight.php?email=<?php echo $email; ?>">Flight</a></li>
+							<li><a href="Itinerary.php?email=<?php echo $email; ?>">Itinerary</a></li>
+
 							<li><a href="blog.html">Blog</a></li>
 							<li><a href="usercontactus.php?email=<?php echo $email; ?>">Contact</a></li>
 							<li><a href="userprofile.php?email=<?php echo $re['email']?>"><img class="img" src="images/<?php echo $re['image']?>" width="35px" style="border-radius: 50%;" alt=""></a>
@@ -97,26 +98,26 @@ $re = mysqli_fetch_assoc($r);
 									</li>
 
 									<li><a href="usereditprofile.php?email=<?php echo $email; ?>" class="sub-menu-link">
-										<img src="images/profile.png">
+										<img src="images/profile.png" style="float: left;">
 										<p>Edit Profile</p>
 										<span>></span>
 									</li>
 
 									<li><a href="userprofile.php?email=<?php echo $email; ?>" class="sub-menu-link">
-										<img src="images/setting-copy.png">
+										<img src="images/setting-copy.png"style="float: left;">
 										<p>Settings & Privacy</p>
 										<span>></span>
 									</li>
 
 									<li><a href="usercontactus.php?email=<?php echo $email; ?>" class="sub-menu-link">
-										<img src="images/help.png">
+										<img src="images/help.png"style="float: left;">
 										<p>Help & Support</p>
 										<span>></span>
 									</li>
 
 
 									<li><a href="userregistrationlogin.php" class="sub-menu-link">
-										<img src="images/logout.png">
+										<img src="images/logout.png"style="float: left;">
 										<p>Logout</p>
 										<span>></span>
 									</li>

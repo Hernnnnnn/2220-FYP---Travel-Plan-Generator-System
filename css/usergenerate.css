@@ -182,7 +182,7 @@ img {
 
 
 
-/*prodduct card*/
+/*product card*/
 
 
 
@@ -270,7 +270,7 @@ img{
     color: #000;
     margin: 3rem 0;
     box-shadow: 0 0 16px -4px rgba(0, 0, 0, 0.75);
-    display: ;
+    display: absolute;
     animation: fadeIn 2s;
 }
 @keyframes fadeIn{

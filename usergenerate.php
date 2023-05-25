@@ -9,7 +9,7 @@ include "usernavbar.php";
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TPGS || Homepage</title>
+	<title>TPGS || Itinerary</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -45,6 +45,7 @@ include "usernavbar.php";
 	<link rel="stylesheet" href="css/cs-select.css">
 	<link rel="stylesheet" href="css/cs-skin-border.css">
 	<link rel="stylesheet" href="css/usergenerate.css">
+	<link rel="stylesheet" href="css/style.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -89,13 +90,10 @@ include "usernavbar.php";
 				Hotel
 			  </button>
 			  <button class="button-value" onclick="filterProduct('RESTAURANT')">
-			    RESTAURANT
+			    Food & Beverage
 			  </button>
 			  <button class="button-value" onclick="filterProduct('DESTINATION')">
-				DESTINATION
-			  </button>
-			  <button class="button-value" onclick="filterProduct('TRANSPORT')">
-				TRANSPORT
+				Location
 			  </button>
 			</div>
 			<div id="products"></div>
