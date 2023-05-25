@@ -23,7 +23,7 @@ $result = mysqli_fetch_assoc($check);
         --gray:#575757;
         --lightgray:#848484;
         --lightgray2:rgb(127,183,126,0.1);
-        --black:#0000000f;
+        --black:#393e46;
 
         --shadow:0px 2px 8px 0px var(--lightgray);
     }
@@ -209,7 +209,7 @@ $result = mysqli_fetch_assoc($check);
                             Help Desk
                         </a>
                     </li>
-                    <hr></hr>
+                    <hr>
                     <li class="profile-dropdown-list-item">
                         <a href="#">
                             <i class="fa-solid fa-arrow-right-from-bracket"> </i>
