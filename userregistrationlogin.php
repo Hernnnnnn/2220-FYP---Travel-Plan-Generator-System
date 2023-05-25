@@ -35,7 +35,7 @@ if (isset($_POST["submit"])) {
                 echo '<script>
                         setTimeout(function(){
                             window.location.href = "userhomepage.php?email='.$email.'";
-                        }, 5000);
+                        }, 2000);
                     </script>';
             } else {
                 echo "<div class='popup'>

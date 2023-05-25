@@ -1,3 +1,24 @@
 {
-    "livePreview.defaultPreviewPath": "/index.html"
+    "livePreview.defaultPreviewPath": "/index.html",
+    
+  // Enables use of editor history in language detection. This causes automatic language detection to favor languages that have been recently opened and allows for automatic language detection to operate with smaller inputs.
+  "workbench.editor.historyBasedLanguageDetection": true,
+
+  // Controls the format of the label for an editor.
+  //  - default: Show the name of the file. When tabs are enabled and two files have the same name in one group the distinguishing sections of each file's path are added. When tabs are disabled, the path relative to the workspace folder is shown if the editor is active.
+  //  - short: Show the name of the file followed by its directory name.
+  //  - medium: Show the name of the file followed by its path relative to the workspace folder.
+  //  - long: Show the name of the file followed by its absolute path.
+  "workbench.editor.labelFormat": "default",
+
+  // Controls whether the language in a text editor is automatically detected unless the language has been explicitly set by the language picker. This can also be scoped by language so you can specify which languages you do not want to be switched off of. This is useful for languages like Markdown that often contain other languages that might trick language detection into thinking it's the embedded language and not Markdown.
+  "workbench.editor.languageDetection": true,
+
+  // When enabled, shows a Status bar Quick Fix when the editor language doesn't match detected content language.
+  "workbench.editor.languageDetectionHints": {
+    "untitledEditors": true,
+    "notebookEditors": true
+  },
+   // When enabled, a language detection model that takes into account editor history will be given higher precedence.
+   "workbench.editor.preferHistoryBasedLanguageDetection": true,
 }
