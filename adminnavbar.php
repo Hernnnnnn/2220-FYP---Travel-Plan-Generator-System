@@ -279,7 +279,7 @@
 					
 					<nav class="nav-bar" >
 						<ul>
-							<li ><a class="active" href="dashboard.php?email=<?php echo $re['email']?>"><i class="fa fa-home"></i> Home</a></li>
+							<li ><a class="active" href="admindashboard.php?email=<?php echo $re['email']?>"><i class="fa fa-home"></i> Home</a></li>
 							<li>
 								<a href="adminmanageuser.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
 							</li>
