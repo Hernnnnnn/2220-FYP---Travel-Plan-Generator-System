@@ -5,7 +5,7 @@ if(!$_SESSION['email'])
     header("Location:adminloginpage.php");
 }
 include 'dataconnection.php';
-    $email = $_GET['email'];
+    // $email = $_GET['email'];
 ?>
 
 <!DOCTYPE html>
