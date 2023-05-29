@@ -10,7 +10,7 @@
   padding-top: 20px;
   box-shadow: 0 0 16px -4px rgba(0, 0, 0, 0.75);
   border: 1px solid;
-
+ 
  
 }
 
@@ -88,9 +88,7 @@ box-shadow: 0 0 16px -4px rgba(0, 0, 0, 0.75);
  
 
 }
-.add:hover{
-  color: aqua;
-}
+
 
 .delete{
   cursor: pointer;
