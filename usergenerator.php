@@ -1,3 +1,14 @@
+<?php
+include('dataconnection.php');
+$sql ="SELECT * FROM usergenerator";
+$r =$conn ->query($sql);
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 	<html class="no-js">
 	<head>
@@ -119,10 +130,10 @@
 				Hotel
 			  </button>
 			  <button class="button-value" onclick="filterProduct('RESTAURANT')">
-			    Food & Beverage
+				RESTAURANT
 			  </button>
 			  <button class="button-value" onclick="filterProduct('DESTINATION')">
-				Location
+				DESTINATION
 			  </button>
 			  <div class="search-wrapper">
 				<input type="text" name="search" placeholder="Search here" >
@@ -134,18 +145,20 @@
 			</div>
 		
 		  </div>
-
+<?php 
+ while($row=mysqli_fetch_assoc($r)){
+?>
 
 		  <div class="container_product">
 			
 			<div class="card">
 				<div class="card-image">
-					<img src="images/KLCCC.jpg" alt="...">
+					<img src="<?php echo $row["des_img"]; ?>" alt="...">
 					<i class="bx bx-star"></i>
 				</div>
 				<div class="card-content">
-					<h3>Training Shoes</h3>
-					<p>This shoes are comfortable and made for sport lovers.</p>
+					<h3><?php echo $row["des_Name"]; ?></h3>
+					<p></p>
 					<button class="btn">
 						Add To Cart
 					</button>
@@ -155,12 +168,12 @@
 			
 			<div class="card">
 				<div class="card-image">
-					<img src="images/KLCCC.jpg" alt="...">
+					<img src="<?php echo $row["des_img"]; ?>" alt="...">
 					<i class="bx bx-star"></i>
 				</div>
 				<div class="card-content">
-					<h3>Training Shoes</h3>
-					<p>This shoes are comfortable and made for sport lovers.</p>
+					<h3><?php echo $row["des_Name"]; ?></h3>
+					<p></p>
 					<button class="btn">
 						Add To Cart
 					</button>
@@ -171,12 +184,12 @@
 			
 			<div class="card">
 				<div class="card-image">
-					<img src="images/KLCCC.jpg" alt="...">
+					<img src="<?php echo $row["des_img"]; ?>" alt="...">
 					<i class="bx bx-star"></i>
 				</div>
 				<div class="card-content">
-					<h3>Training Shoes</h3>
-					<p>This shoes are comfortable and made for sport lovers.</p>
+					<h3><?php echo $row["des_Name"]; ?></h3>
+					<p></p>
 					<button class="btn">
 						Add To Cart
 					</button>
@@ -185,12 +198,12 @@
 
 			<div class="card">
 				<div class="card-image">
-					<img src="images/KLCCC.jpg" alt="...">
+					<img src="<?php echo $row["des_img"]; ?>" alt="...">
 					<i class="bx bx-star"></i>
 				</div>
 				<div class="card-content">
-					<h3>Training Shoes</h3>
-					<p>This shoes are comfortable and made for sport lovers.</p>
+					<h3><?php echo $row["des_Name"]; ?></h3>
+					<p></p>
 					<button class="btn">
 						Add To Cart
 					</button>
@@ -198,12 +211,12 @@
 			</div> 
 			<div class="card">
 				<div class="card-image">
-					<img src="images/KLCCC.jpg" alt="...">
+					<img src="<?php echo $row["des_img"]; ?>" alt="...">
 					<i class="bx bx-star"></i>
 				</div>
 				<div class="card-content">
-					<h3>Training Shoes</h3>
-					<p>This shoes are comfortable and made for sport lovers.</p>
+					<h3><?php echo $row["des_Name"]; ?></h3>
+					<p></p>
 					<button class="btn">
 						Add To Cart
 					</button>
@@ -211,12 +224,12 @@
 			</div> 
 			<div class="card">
 				<div class="card-image">
-					<img src="images/KLCCC.jpg" alt="...">
+					<img src="<?php echo $row["des_img"]; ?>" alt="...">
 					<i class="bx bx-star"></i>
 				</div>
 				<div class="card-content">
-					<h3>Training Shoes</h3>
-					<p>This shoes are comfortable and made for sport lovers.</p>
+					<h3><?php echo $row["des_Name"]; ?></h3>
+					<p></p>
 					<button class="btn">
 						Add To Cart
 					</button>
@@ -224,12 +237,12 @@
 			</div> 
 			<div class="card">
 				<div class="card-image">
-					<img src="images/KLCCC.jpg" alt="...">
+					<img src="<?php echo $row["des_img"]; ?>" alt="...">
 					<i class="bx bx-star"></i>
 				</div>
 				<div class="card-content">
-					<h3>Training Shoes</h3>
-					<p>This shoes are comfortable and made for sport lovers.</p>
+					<h3><?php echo $row["des_Name"]; ?></h3>
+					<p></p>
 					<button class="btn">
 						Add To Cart
 					</button>
@@ -237,21 +250,24 @@
 			</div> 
 			<div class="card">
 				<div class="card-image">
-					<img src="images/KLCCC.jpg" alt="...">
+					<img src="<?php echo $row["des_img"]; ?>" alt="...">
 					<i class="bx bx-star"></i>
 				</div>
 				<div class="card-content">
-					<h3>Training Shoes</h3>
-					<p>This shoes are comfortable and made for sport lovers.</p>
+					<h3><?php echo $row["des_Name"]; ?></h3>
+					<p></p>
 					<button class="btn">
 						Add To Cart
 					</button>
 				</div>
 			</div> 	
 		  </div>
-        
+        <?php
+		}
+		?>
 		
 		<script src="drop.js"></script>
 		<script src="searchbar.js"></script>
+
 	</body>
 	</html>
