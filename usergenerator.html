@@ -50,51 +50,69 @@
 	<body>
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-
-		<div class="sidenav">
-			<a href="#Itinerary">Itinerary</a>
 			
-			<button class="dropdown-btn"><i class="fas fa-table"></i>Day 1
-			  <i class="fa fa-caret-down"></i>
-			</button>
-			<div class="dropdown-container">
-			  <a href="#">add places </a>
-			  <a href="#">add places</a>
-			  <a href="#">add places</a>
+		<div class="sidenav">
+			<button class="add">Add Trip</button>
+
+			<div class="container_calendar">
+				<div class="calendar">
+					<h3>Day 1</h3>
+					</div>
+					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+					<div class="add_destination">
+						<h4>add destination</h4>
+				
+					</div>
+			
+			</div>
+        	<div class="line"></div>
+			<div class="container_calendar">
+				<div class="calendar">
+					<h3>Day 1</h3>
+					</div>
+				<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+					<div class="add_destination">
+						<h4>add destination</h4>
+					</div>
 			</div>
 
-			<button class="dropdown-btn"><i class="fas fa-table"></i>Day 2<i class="fa fa-caret-down"></i>
-			  </button>
-			  <div class="dropdown-container">
-				<a href="#">add places</a>
-				<a href="#">add places</a>
-				<a href="#">add places</a>
-			  </div>
+			
+			<div class="container_calendar">
+				<div class="calendar">
+					<h3>Day 1</h3>
+					</div>
+					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+					<div class="add_destination">
+						<h4>add destination</h4>
+					</div>
+			</div>
 
-			  <button class="dropdown-btn"><i class="fas fa-table"></i>Day 3
-				<i class="fa fa-caret-down"></i>
-			  </button>
-			  <div class="dropdown-container">
-				<a href="#">add places</a>
-				<a href="#">add places</a>
-				<a href="#">add places</a>
-			  </div>
-		
+
+			<div class="container_calendar">
+				<div class="calendar">
+					<h3>Day 1</h3>
+					</div>
+					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+					<div class="add_destination">
+						<h4>add destination</h4>
+					</div>
+			</div>
+		<button class="delete">delete</button>
+		<button class="print">Print</button>
+	
 		  </div>
 		  
-		  <div class="main">
-		
-		  </div>
+	
+
+
+
+
+
+
+
 
 		  <div class="wrapper">
-			<div id="search-container">
-			  <input
-				type="search"
-				id="search-input"
-				placeholder="Search product name here.."
-			  />
-			  <button id="search">Search</button>
-			</div>
+			
 			<div id="buttons">
 			  <button class="button-value" onclick="filterProduct('all')">All</button>
 			  <button class="button-value" onclick="filterProduct('Hotel')">
@@ -106,8 +124,15 @@
 			  <button class="button-value" onclick="filterProduct('DESTINATION')">
 				Location
 			  </button>
+			  <div class="search-wrapper">
+				<input type="text" name="search" placeholder="Search here" >
+	
+				<button type="submit" name="submit"><span class="fa fa-search"></span></button>
+					
+					
+				</div>
 			</div>
-			<div id="products"></div>
+		
 		  </div>
 
 
