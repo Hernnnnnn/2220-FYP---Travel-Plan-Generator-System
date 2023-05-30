@@ -208,7 +208,7 @@
         }
         .nav-bar.active
         {
-            height: 520px;
+            height: 350px;
         }
         .nav-bar ul 
         {
@@ -286,15 +286,6 @@
 							<!-- <li><a href="flight.html"></a></li> -->
 							<li>
 								<a href="adminmanagelocation.php?email=<?php echo $re['email']?>"><span class="fa fa-globe"></span> Location's details</a>
-							</li>
-							<li>
-								<a href="car.html">Car</a>
-							</li>
-							<li>
-								<a href="blog.html">Blog</a>
-							</li>
-							<li>
-								<a href="contact.html">Contact</a>
 							</li>
 							<li>
 								<a href="adminlogoutpage.php"><i class='fas fa-sign-out-alt'></i>Log out</a>
