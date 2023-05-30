@@ -4,8 +4,10 @@
   --gray:#575757;
   --lightgray:#848484;
   --lightgray2:rgb(127,183,126,0.1);
+  --darkgray:#2E3238;
   --black:#393e46;
   --green:#00AD7C;
+  --yellow:#FFEA61;
 
   --shadow:0px 2px 8px 0px var(--lightgray);
 }
@@ -44,6 +46,7 @@
   background-color: var(--secondary);
   padding: 0 8%;
   z-index: 999; /* Added to ensure the navbar is displayed above other content */
+  box-shadow: var(--shadow);
 }
 
 .usernav {
@@ -172,22 +175,134 @@
 
 
 
+/* hot tour */
+.hot {
+  max-width: 100%;
+  padding: 10px 20px 20px 20px;
+  align-items: center;
+  background:var(--secondary);
+}
+
+.hot h1 {
+  text-align: center;
+  padding-bottom: 2rem;
+  color:var(--gray);
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.hot span {
+  position: relative;
+  z-index: 0;
+}
+
+.tourline {
+  border: none;
+  margin: 0 auto;
+  margin-top: 10px;
+  height: 6px;
+  width: 320px;
+  background-color: var(--primary);
+}
+
+.hot .tourbox-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(30rem,1fr));
+  gap: 1.5rem;
+}
+
+.hot .tourbox-container .tour-box{
+  background-color: var(--secondary);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.hot .tourbox-container .tour-box .image{
+  height: 25rem;
+  width: 100%;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.hot .tourbox-container .tour-box .image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.hot .tourbox-container .tour-box .image h3{
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
+  font-size: 1.25rem;
+  color: var(--secondary);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+  font-weight: lighter;
+  padding: 0.5rem 1rem;
+}
+
+.hot .tourbox-container .tour-box .image h3 i{
+  color:var(--primary);
+}
+
+.hot .tourbox-container .tour-box .content{
+  padding: 1.5rem;
+  padding-top: 0;
+}
+
+.hot .tourbox-container .tour-box .content p{
+  font-size: 1rem;
+  margin-top: -15px;
+  color: var(--lightgray);
+  line-height: 1.7;
+}
+
+.hot .tourbox-container .tour-box .content .btn{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight:700;
+  margin-top: 10px;
+  color: var(--secondary);
+  background: var(--primary);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition:0.3s;
+}
+
+.hot .tourbox-container .tour-box .content .btn:hover{
+  background: var(--darkgray);
+}
+
+
+
+
+
+
+
+
 /* review */
-.review{
-  display:grid;
-  height:100% ;
-  place-items:center;
+.review {
+  display: grid;
+  height: 100%;
+  place-items: center;
 }
 
 .centertitle {
   max-width: 100%;
-  line-height:50px;
-  font-size:1.125rem;
-  font-weight:600;
-  text-transform:uppercase;
-  text-align:center;
-  color:var(--secondary);
-  background:var(--green);
+  line-height: 50px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--secondary);
+  background: var(--green); 
+  height: 60px;
 }
 
 hr.underlinetitle {
@@ -201,19 +316,27 @@ hr.underlinetitle {
 
 .review-content {
   max-width: 100%;
-  padding: 0 20px;
-  display: flex;
+  padding: 0 20px 20px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px; 
   align-items: center;
   justify-content: space-between;
-  height: 25vh;
-  background:var(--green);
+  height: auto;
+  background: var(--green);
 }
 
-.review-content .box{
-  background:var(--secondary);
-  border-radius:3px;
-  padding:25px;
-  width:calc(33% - 10px);
+.review-content .box {
+  background: var(--secondary);
+  border-radius: 3px;
+  padding: 25px;
+  width: 100%; /* Set the width to 100% to occupy equal space */
+}
+
+@media (max-width: 768px) {
+  .review-content {
+    grid-template-columns: 1fr; /* Display boxes in a single column on smaller screens */
+  }
 }
 
 .review-content .box i.quote{
@@ -322,7 +445,7 @@ hr.underline {
 .left .content .social a i{
   height:40px;
   width:40px;
-  background:#2E3238;
+  background:var(--darkgray);
   line-height:40px;
   text-align:center;
   font-size:18px;
@@ -336,7 +459,7 @@ hr.underline {
 
 .center .content .fa-solid{
   font-size:1.4375rem;
-  background:#2E3238;
+  background:var(--darkgray);
   height:45px;
   width:45px;
   line-height:45px;
@@ -373,7 +496,7 @@ hr.underline {
 .right form input, .right form textarea{
   width:100%;
   font-size:1.0625rem;
-  background:var(--black);
+  background:var(--secondary);
   padding-left:10px;
   border:1px solid var(--lightgray);
 }
@@ -397,6 +520,7 @@ hr.underline {
   border:none;
   outline:none;
   background:var(--primary);
+  color:var(--secondary);
   font-size:1.0625rem;
   font-weight:500;
   cursor:pointer;
@@ -404,14 +528,14 @@ hr.underline {
 }
 
 .right form .btn button:hover{
-  background:#2E3238;
+  background:var(--darkgray);
 }
 
 .bottom{
   text-align:center;
   padding:5px;
   font-size:0.9375rem;
-  background:#2E3238;
+  background:var(--darkgray);
 }
 
 .bottom span,

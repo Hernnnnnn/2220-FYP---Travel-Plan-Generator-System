@@ -15,8 +15,7 @@ include('dataconnection.php');
 
 <body class="review">
     <div class="centertitle">
-        <h2>Our Team</h2>
-        <hr class="underlinetitle">
+        <h2>Our Team<hr class="underlinetitle"> </h2>
     </div>
     <div class="review-content">
         <div class="box">

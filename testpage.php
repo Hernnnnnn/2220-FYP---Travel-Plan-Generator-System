@@ -1,12 +1,7 @@
 <?php
 include('dataconnection.php');
 $email = $_GET['email'];
-$query = "SELECT 'loc_name', 'loc_image', 'loc_video' from location";
-$result = mysqli_query($conn, $query);
 
-if (!$result) {
-    die('Error: ' . mysqli_error($conn));
-}
 ?>
 
 <!DOCTYPE html>
@@ -21,35 +16,38 @@ if (!$result) {
 </head>
 
 <body>
-<?php include "usernavbar.php"; ?>
+    <?php include "usernavbar.php"; ?>
     <section class="hot" id="hot">
-        <h1 class="hot">Hot <span>Tours</span> </h1>
-        <div class="box-container">
-            <?php
-            // Check if there are any rows returned
-            if (mysqli_num_rows($result) > 0) {
-                // Loop through the result set and display each location
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $locationname = $row['loc_name'];
-                    $locationimage = $row['loc_image'];
-                    $locationvideo = $row['loc_video'];
-            ?>
-            <div class="box">
-                <div class="image">
-                    <img src="images/<?php echo $locationimage; ?>" alt="">
-                    <h3><i class="fas fa-map-marker-alt"><?php echo $locationname; ?></i></h3>
+    <h1 class="hot">Hot <span>Tours</span><hr class="tourline"> </h1>
+    <div class="tourbox-container">
+        <?php
+        $query = "SELECT * FROM locations";
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $image =  'images/'.$row['image_url']; 
+                $location = $row['name']; 
+                $description = $row['description'];
+        ?>
+                <div class="tour-box">
+                    <div class="image">
+                        <img src="<?php echo $image; ?>">
+                        <h3><i class="fas fa-map-marker-alt"></i> <?php echo $location; ?></h3>
+                    </div>
+                    <div class="content">
+                        <p><?php echo $description; ?></p>
+                        <a href="#" class="btn">View more ></a>
+                    </div>
                 </div>
-            </div>
             <?php
                 }
-            } else {
-                echo "No locations found.";
             }
             ?>
         </div>
     </section>
 
-    <div id="fh5co-tours" class="fh5co-section-gray">
+    <!-- <div id="fh5co-tours" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
@@ -96,7 +94,7 @@ if (!$result) {
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
     <?php include "tpgsteam.php"; ?>
 	<?php include "userfooter.php"; ?>
 </body>
