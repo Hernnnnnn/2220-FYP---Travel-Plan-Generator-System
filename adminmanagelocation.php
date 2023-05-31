@@ -245,21 +245,28 @@ input[type="checkbox"].toggle:disabled + label::after {
     .fa-close
     {
         font-size: 22px;
-        color: #4bb6b7;
+        color: red;
+        font-weight: bold;
     }
 
-    .fa-cog{
+    .glyphicon-apple,.fa-globe{
         font-size: 22px;
         color: #4bb6b7;
     }
 
-    .fa-cog:hover
+    .glyphicon-apple:hover,.fa-globe:hover
     {
-        color: lightblue;
+        color: black;
+        transition: 0.5s;
+        font-size: 30px;
     }
     .fa-close:hover
     {
-        color: red;
+        color: black;
+        transition: 0.5s;
+        font-size: 30px;
+        /* font-weight: bold; */
+
     }
 </style>
 <body >
@@ -326,16 +333,17 @@ input[type="checkbox"].toggle:disabled + label::after {
                     ?>
 
                     <td>
-                    <a class="update" href="adminupdatelocationdetails.php?email=<?php echo $email?>&&id=<?php echo $id?>">Update</a>
-                    </td>
-                    <td>
-                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a>
+                    <a class="update" href="adminupdatelocationdetails.php?email=<?php echo $email?>&&id=<?php echo $id?>">Edit</a>
                     </td>
                     <td class="setting">
                     
                     <a href="adminlocatmoredetailsfood.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="glyphicon glyphicon-apple" style="font-size: 20px;"></span></a>
                     <a href="adminlocatmoredetailsplace.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="fa fa-globe" style="font-size: 25px;"></span></a>
                     </td>
+                    <td>
+                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a>
+                    </td>
+                    
                     
 
                 </tr>

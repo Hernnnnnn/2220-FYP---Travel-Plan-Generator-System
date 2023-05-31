@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin || Manage Place</title>
     <?php
     session_start();
     if(!$_SESSION['email'])
@@ -17,7 +17,7 @@
     include 'adminnavbar.php';
     $email = $_GET['email'];
     $loc=$_GET['localname'];
-    $sql = "SELECT * From `".$loc."place`";
+    $sql = "SELECT * From `".$loc."location`";
 	$r = mysqli_query($conn,$sql);
 	$re = mysqli_fetch_assoc($r);
     ?>
@@ -50,7 +50,7 @@
 
     table thead th {
     border: none;
-    padding: 30px;
+    padding: 20px;
     font-size: 14px;
     color: #fff; 
     background: rgba(0,0,0,0.7);
@@ -238,12 +238,12 @@ input[type="checkbox"].toggle:disabled + label::after {
     }
     .fa-close
     {
-        font-size: 40px;
+        font-size: 35px;
         color: #4bb6b7;
     }
 
     .fa-cog{
-        font-size: 40px;
+        font-size: 35px;
         color: #4bb6b7;
     }
 
@@ -304,7 +304,7 @@ input[type="checkbox"].toggle:disabled + label::after {
                     }
                     else
                     {
-                        $p = "SELECT * From `".$loc."place`";
+                        $p = "SELECT * From `".$loc."location`";
                         $searchKey = "";
                     }
                         

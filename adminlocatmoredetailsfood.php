@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin || Manage Food</title>
     <?php
     session_start();
     if(!$_SESSION['email'])
@@ -49,7 +49,7 @@
 
     table thead th {
     border: none;
-    padding: 10px;
+    padding: 20px;
     font-size: 14px;
     color: #fff; 
     background: rgba(0,0,0,0.7);
@@ -237,12 +237,12 @@ input[type="checkbox"].toggle:disabled + label::after {
     }
     .fa-close
     {
-        font-size: 40px;
-        color: #4bb6b7;
+        font-size: 35px;
+        color: red;
     }
 
     .fa-cog{
-        font-size: 40px;
+        font-size: 35px;
         color: #4bb6b7;
     }
 
@@ -339,7 +339,7 @@ input[type="checkbox"].toggle:disabled + label::after {
             ?>
                 <tr>
                     <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['foodname']?></span></td>
-                    <td><img style="width: 40%;" src="<?php echo $red['foodimage']?>" alt=""></td>
+                    <td><img style="width: 30%;" src="<?php echo $red['foodimage']?>" alt=""></td>
                     <td>
                     <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a></td>
                     <td>

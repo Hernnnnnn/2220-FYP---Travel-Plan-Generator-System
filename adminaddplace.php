@@ -61,7 +61,7 @@ if(!$_SESSION['email'])
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin || Add Place</title>
     <?php
     // session_start();
     if(!$_SESSION['email'])
@@ -120,11 +120,6 @@ if(!$_SESSION['email'])
     .edi-box input[type="file"]
     {
         display: none;
-    }
-    .edi-box textarea
-    {
-        background: transparent;
-        border: 2px solid black;
     }
     label
     {
@@ -200,7 +195,7 @@ if(!$_SESSION['email'])
             <input type="file" id="file" name="image" class="form-control" multiple >
             <br>
             <div class="submit">
-            <input type="submit" name="submit" value="Add Location">
+            <input type="submit" name="submit" value="Add Place">
             </div>
             <br>
             <div class="back">

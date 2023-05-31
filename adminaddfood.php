@@ -28,7 +28,7 @@ if(!$_SESSION['email'])
         {
             $msg = "Please key-in Place's name!";
         }
-        else if($name == $re['foodname'])
+        else if($name == $r['foodname'])
         {
             $msg = "Please key-in <span style='font-weight: bold;'>new</span> location's name!";
             
@@ -195,7 +195,7 @@ if(!$_SESSION['email'])
             <form action="" method="post" enctype="multipart/form-data">
             <?php echo $msg?>
             <br>
-            <label for="">Place's Name:</label>
+            <label for="">Food's Name:</label>
             <input type="text" name="name" id="" value="<?php if(isset($_POST['submit'])){echo $_POST['name'];}?>">
             <br>
             <label for="">Location's Image:</label>
