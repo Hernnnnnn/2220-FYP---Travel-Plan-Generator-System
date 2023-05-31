@@ -1,16 +1,13 @@
-
+<?php
+    include 'dataconnection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin || Location</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Document</title>
     <?php
     session_start();
     if(!$_SESSION['email'])
@@ -19,15 +16,13 @@
 }
     include 'adminnavbar.php';
     $email = $_GET['email'];
-    $sql = "SELECT * From `admin` where email = '$email'";
+    $loc=$_GET['localname'];
+    $sql = "SELECT * From `".$loc."food`";
 	$r = mysqli_query($conn,$sql);
 	$re = mysqli_fetch_assoc($r);
     ?>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  
 </head>
 <style>
-    
     body
     {
     background-image: url(images/image.gif);
@@ -44,15 +39,17 @@
         font-size: 0.9em;
         font-family: sans-serif;
         /* min-width: 400px; */
-        width: 60%;
+        width: 70%;
+        height: 50%;
         margin: auto;
-        margin-top: 100px;
+        margin-top: 20px;
+        margin-bottom: 20px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
 
     table thead th {
     border: none;
-    padding: 26px;
+    padding: 10px;
     font-size: 14px;
     color: #fff; 
     background: rgba(0,0,0,0.7);
@@ -208,7 +205,7 @@ input[type="checkbox"].toggle:disabled + label::after {
         margin: 10px;
         margin-left: 0;
         /* border: 1px solid black; */
-        padding: 10px;
+        padding: 15px;
         border-radius: 25px;
         background-color: #4bb6b7;
         font-weight: bold;
@@ -238,18 +235,14 @@ input[type="checkbox"].toggle:disabled + label::after {
         font-weight: bold;
         
     }
-    /* .setting
-    {
-        padding: 10px;
-    } */
     .fa-close
     {
-        font-size: 22px;
+        font-size: 40px;
         color: #4bb6b7;
     }
 
     .fa-cog{
-        font-size: 22px;
+        font-size: 40px;
         color: #4bb6b7;
     }
 
@@ -261,21 +254,56 @@ input[type="checkbox"].toggle:disabled + label::after {
     {
         color: red;
     }
+    .title
+    {
+        text-align: center;
+        font-size: 45px;
+        /* border-radius: 25px; */
+        background: rgba(0,0,0, 0.7);
+
+        /* margin-left: ;  */
+        color: #fff;
+        padding: 20px;
+        width: 350px;
+        border-radius: 25px;
+        margin: auto;
+        margin-top: 50px;
+    }
+    .back
+    {
+        color: black;
+        /* font-style: italic; */
+        font-weight: bold;
+        text-decoration: underline;
+        float: left;
+        margin-left: 25px;
+    }
+    .back:hover
+    {
+        color: #4bb6b7;
+        font-style: italic;
+    }
+    
 </style>
-<body >
-    <form method="post">
+<body>
+    <div class="set">
+<div class="title"><?php echo $loc?></div>
+
+    </div>
+<div class="grid">
+<form method="post">
             <table>
                 <tr>
                     <?php 
                     if(isset($_POST['search']))
                     {
                         $searchKey=$_POST['search'];
-                        $p = "SELECT * From `location detail` where lName LIKE '%$searchKey%'";
+                        $p = "SELECT * From `".$loc."food` where foodname LIKE '%$searchKey%'";
 
                     }
                     else
                     {
-                        $p = "SELECT * From `location detail`";
+                        $p = "SELECT * From `".$loc."food`";
                         $searchKey = "";
                     }
                         
@@ -283,13 +311,13 @@ input[type="checkbox"].toggle:disabled + label::after {
 
 
                     ?>
-                    <td colspan="7" style="padding: 10px;"><div class="header">
+                    <td colspan="4" style="padding: 10px;"><div class="header">
                     <div class="search-wrapper">
                     <input type="text" name="search" placeholder="Search here" value="<?php echo $searchKey?>">
 
                     <button type="submit" name="submit"><span class="fa fa-search"></span></button>
                     </div>
-                    <a class="addlocat" href="adminaddlocation.php?email=<?php echo $email;?>">Add Location</a>
+                    <a class="addlocat" href="adminaddfood.php?email=<?php echo $email;?>&&localname=<?php echo $loc?>">Add Food</a>
                      </div>
                      </form>
                     </td>
@@ -297,44 +325,25 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <thead>
                 <tr>
                     
-                    <th>Location's Name</th>
-                    <th>Location's Details</th>
-                    <th>Location's Image</th>
-                    <th>Location's Video</th>
-                    <th></th>
+                    <th>Food's Name</th>
+                    <th>Food's Image</th>
                     <th></th>
                     <th></th>
                 </tr>
                 </thead>
             <?php
             // include 'dataconnection.php';
-
-                while($loc = mysqli_fetch_array($query))
+                while($red = mysqli_fetch_assoc($query))
                 {
                     
             ?>
                 <tr>
-                    <td><span style="font-weight: bold; font-size: 15px;"><?php echo $loc['lName']?></span></td>
-                    <td><div class="test"><?php echo $loc['lDetails']?></div></td>
-                    <td><img style="width: 60%;" src="images/<?php echo $loc['lImage']?>" alt=""></td>
+                    <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['foodname']?></span></td>
+                    <td><img style="width: 40%;" src="<?php echo $red['foodimage']?>" alt=""></td>
                     <td>
-                        <?php echo $loc["lVideo"]?>
-                    </td>
-                    <?php 
-                        $id=$loc['id'];
-                        $localname = $loc['lName'];
-                    ?>
-
+                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a></td>
                     <td>
-                    <a class="update" href="adminupdatelocationdetails.php?email=<?php echo $email?>&&id=<?php echo $id?>">Update</a>
-                    </td>
-                    <td>
-                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a>
-                    </td>
-                    <td class="setting">
-                    
-                    <a href="adminlocatmoredetailsfood.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="glyphicon glyphicon-apple" style="font-size: 20px;"></span></a>
-                    <a href="adminlocatmoredetailsplace.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="fa fa-globe" style="font-size: 25px;"></span></a>
+                    <a href="adminlocatmoredetails.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $loc?>"><span class="fa fa-cog"></span></a>
                     </td>
                     
 
@@ -342,14 +351,9 @@ input[type="checkbox"].toggle:disabled + label::after {
             <?php
                 }
             ?>
-            </form>
-            </table>
-            
-</div>
-</div>
-
+            <tr>
+                <td colspan="4"><a class="back"href="adminManagelocation.php?email=<?php echo $email?>">Back to Manage Location</a></td>
+            </tr>
+            </div>
 </body>
-<script>
-
-</script>
 </html>
