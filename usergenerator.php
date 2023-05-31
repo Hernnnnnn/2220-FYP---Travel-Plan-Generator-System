@@ -1,12 +1,48 @@
 <?php
 include('dataconnection.php');
 $sql ="SELECT * FROM usergenerator";
-$r =$conn ->query($sql);
+$result = mysqli_query($conn, $sql);
+
 ?>
 
 
+<?php
+    if (isset($_POST['addbtn'])) {
+        // Get the relevant data from the form
+        $productName = $_POST['product_name'];
+        $productImage = $_POST['product_image'];
 
+        if (empty($productName) || empty($productImage)) {
+            echo "added fail";
+            exit();
+        } else {
+            // Prepare the SQL statement with placeholders
+            $sql = "INSERT INTO userdestination (des_img, des_Name) VALUES (?, ?)";
+            $stmt = $conn->prepare($sql);
 
+            // Bind the values to the prepared statement
+            $stmt->bind_param("ss", $productImage, $productName);
+
+            // Execute the prepared statement
+            if ($stmt->execute()) {
+                echo "added successfully";
+            } else {
+                echo "added fail";
+            }
+        }
+    }
+	// Establish database connection
+	$host = "localhost";
+	$username = "root";
+	$password = "";
+	$database = "tpgs";
+	$connect = mysqli_connect($host, $username, $password, $database);
+
+	// SQL query to select orders and order items
+	$sqlselect = "SELECT des_img, des_Name from usergenarator";
+
+	$result = mysqli_query($connect, $sqlselect);
+?>
 
 
 <!DOCTYPE html>
@@ -68,10 +104,20 @@ $r =$conn ->query($sql);
 			<div class="container_calendar">
 				<div class="calendar">
 					<h3>Day 1</h3>
+					<?php
+						$row = mysqli_fetch_assoc($result);
+					?>
+					<div class="card-image">
+    					<img src="<?php echo $row["des_img"]; ?>" alt="...">
+    					<i class="bx bx-star"></i>
+  					</div>
+					<h3><?php echo $row["des_Name"]; ?></h3>
+
 					</div>
+					
 					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 					<div class="add_destination">
-						<h4>add destination</h4>
+						
 				
 					</div>
 			
@@ -80,6 +126,7 @@ $r =$conn ->query($sql);
 			<div class="container_calendar">
 				<div class="calendar">
 					<h3>Day 1</h3>
+					
 					</div>
 				<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 					<div class="add_destination">
@@ -93,8 +140,8 @@ $r =$conn ->query($sql);
 					<h3>Day 1</h3>
 					</div>
 					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-					<div class="add_destination">
-						<h4>add destination</h4>
+					<div class="add_destination"  >
+						<h4 >add destination</h4>
 					</div>
 			</div>
 
@@ -146,121 +193,36 @@ $r =$conn ->query($sql);
 		
 		  </div>
 <?php 
- while($row=mysqli_fetch_assoc($r)){
+
+
+                    
+
+
+					while($row = mysqli_fetch_assoc($result)){
 ?>
 
 		  <div class="container_product">
 			
-			<div class="card">
-				<div class="card-image">
-					<img src="<?php echo $row["des_img"]; ?>" alt="...">
-					<i class="bx bx-star"></i>
-				</div>
-				<div class="card-content">
-					<h3><?php echo $row["des_Name"]; ?></h3>
-					<p></p>
-					<button class="btn">
-						Add To Cart
-					</button>
-				</div>
-			</div> 
+		  <div class="card">
+  <div class="card-image">
+    <img src="<?php echo $row["des_img"]; ?>" alt="...">
+    <i class="bx bx-star"></i>
+  </div>
+  <div class="card-content">
+    <h3><?php echo $row["des_Name"]; ?></h3>
+    <p></p>
+    <form method="POST">
+      <input type="hidden" name="product_name" value="<?php echo $row["des_Name"]; ?>">
+      <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>">
+      <button class="btn" name="addbtn" type="submit">
+        Add To Cart
+      </button>
+    </form>
+  </div>
+</div>
 
 			
-			<div class="card">
-				<div class="card-image">
-					<img src="<?php echo $row["des_img"]; ?>" alt="...">
-					<i class="bx bx-star"></i>
-				</div>
-				<div class="card-content">
-					<h3><?php echo $row["des_Name"]; ?></h3>
-					<p></p>
-					<button class="btn">
-						Add To Cart
-					</button>
-				</div>
-			</div> 
-
-
-			
-			<div class="card">
-				<div class="card-image">
-					<img src="<?php echo $row["des_img"]; ?>" alt="...">
-					<i class="bx bx-star"></i>
-				</div>
-				<div class="card-content">
-					<h3><?php echo $row["des_Name"]; ?></h3>
-					<p></p>
-					<button class="btn">
-						Add To Cart
-					</button>
-				</div>
-			</div> 
-
-			<div class="card">
-				<div class="card-image">
-					<img src="<?php echo $row["des_img"]; ?>" alt="...">
-					<i class="bx bx-star"></i>
-				</div>
-				<div class="card-content">
-					<h3><?php echo $row["des_Name"]; ?></h3>
-					<p></p>
-					<button class="btn">
-						Add To Cart
-					</button>
-				</div>
-			</div> 
-			<div class="card">
-				<div class="card-image">
-					<img src="<?php echo $row["des_img"]; ?>" alt="...">
-					<i class="bx bx-star"></i>
-				</div>
-				<div class="card-content">
-					<h3><?php echo $row["des_Name"]; ?></h3>
-					<p></p>
-					<button class="btn">
-						Add To Cart
-					</button>
-				</div>
-			</div> 
-			<div class="card">
-				<div class="card-image">
-					<img src="<?php echo $row["des_img"]; ?>" alt="...">
-					<i class="bx bx-star"></i>
-				</div>
-				<div class="card-content">
-					<h3><?php echo $row["des_Name"]; ?></h3>
-					<p></p>
-					<button class="btn">
-						Add To Cart
-					</button>
-				</div>
-			</div> 
-			<div class="card">
-				<div class="card-image">
-					<img src="<?php echo $row["des_img"]; ?>" alt="...">
-					<i class="bx bx-star"></i>
-				</div>
-				<div class="card-content">
-					<h3><?php echo $row["des_Name"]; ?></h3>
-					<p></p>
-					<button class="btn">
-						Add To Cart
-					</button>
-				</div>
-			</div> 
-			<div class="card">
-				<div class="card-image">
-					<img src="<?php echo $row["des_img"]; ?>" alt="...">
-					<i class="bx bx-star"></i>
-				</div>
-				<div class="card-content">
-					<h3><?php echo $row["des_Name"]; ?></h3>
-					<p></p>
-					<button class="btn">
-						Add To Cart
-					</button>
-				</div>
-			</div> 	
+				
 		  </div>
         <?php
 		}
