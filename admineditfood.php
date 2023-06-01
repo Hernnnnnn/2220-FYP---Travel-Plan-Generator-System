@@ -12,7 +12,7 @@ if(!$_SESSION['email'])
     $msg=" ";
     if(isset($_POST['submit']))
     {
-        $sql=mysqli_query($conn,"SELECT * from `".$loc."food` where id = $id");
+        $sql=mysqli_query($conn,"SELECT * from `".$loc."restaurant` where id = $id");
         $rz=mysqli_fetch_assoc($sql);
         $name=$_POST['name'];
         $imageName = $_FILES['image']['name'];
@@ -31,7 +31,7 @@ if(!$_SESSION['email'])
         else
         {
             if(move_uploaded_file($imageTempName,$targetPath))
-                $sql = "UPDATE `".$loc."food` set foodname='$name',foodimage='$targetPath' Where id = '$id'";
+                $sql = "UPDATE `".$loc."restaurant` set foodname='$name',foodimage='$targetPath' Where id = '$id'";
                 $msg = "Edit successfuly!";
                 $result = mysqli_query($conn,$sql);
             }
@@ -176,7 +176,7 @@ if(!$_SESSION['email'])
 <body >
     <div class="container1">
         <?php
-            $sql=mysqli_query($conn,"SELECT * from `".$loc."food` where id = $id");
+            $sql=mysqli_query($conn,"SELECT * from `".$loc."restaurant` where id = $id");
             $rz=mysqli_fetch_assoc($sql); 
         ?>
             

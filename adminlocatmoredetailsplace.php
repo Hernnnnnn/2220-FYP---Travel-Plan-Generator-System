@@ -306,7 +306,7 @@ input[type="checkbox"].toggle:disabled + label::after {
                     if(isset($_POST['search']))
                     {
                         $searchKey=$_POST['search'];
-                        $p = "SELECT * From `".$loc."place` where placename LIKE '%$searchKey%'";
+                        $p = "SELECT * From `".$loc."location` where locationname LIKE '%$searchKey%'";
 
                     }
                     else
@@ -333,8 +333,8 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <thead>
                 <tr>
                     
-                    <th style="padding-right:80px; padding-left:80px;">Place's Name</th>
-                    <th>Place's Image</th>
+                    <th style="padding-right:80px; padding-left:80px;">location's Name</th>
+                    <th>location's Image</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -348,8 +348,8 @@ input[type="checkbox"].toggle:disabled + label::after {
                     
             ?>
                 <tr>
-                    <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['placename']?></span></td>
-                    <td><img style="width: 70%;" src="<?php echo $red['placeimage']?>" alt=""></td>
+                    <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['locationname']?></span></td>
+                    <td><img style="width: 70%;" src="<?php echo $red['locationimage']?>" alt=""></td>
                         <?php 
                             $id = $red['id'];
                         ?>

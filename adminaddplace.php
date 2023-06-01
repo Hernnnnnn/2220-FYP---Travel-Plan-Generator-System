@@ -26,9 +26,9 @@ if(!$_SESSION['email'])
         
         if(!$name)
         {
-            $msg = "Please key-in Place's name!";
+            $msg = "Please key-in location's name!";
         }
-        else if($name == $re['placename'])
+        else if($name == $re['locationname'])
         {
             $msg = "Please key-in <span style='font-weight: bold;'>new</span> location's name!";
             
@@ -42,7 +42,7 @@ if(!$_SESSION['email'])
             if(move_uploaded_file($imageTempName,$targetPath))
         {
             {
-                $sql = "INSERT INTO `".$loc."location`(placename,placeimage) VALUES ('$name','$targetPath')";
+                $sql = "INSERT INTO `".$loc."location`(locationname,locationimage) VALUES ('$name','$targetPath')";
                 $result = mysqli_query($conn,$sql);
             }
 
@@ -61,7 +61,7 @@ if(!$_SESSION['email'])
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin || Add Place</title>
+    <title>Admin || Add location</title>
     <?php
     // session_start();
     if(!$_SESSION['email'])
@@ -182,12 +182,12 @@ if(!$_SESSION['email'])
 <div class="container1">
         
             
-        <h1>Add Place</h1>
+        <h1>Add Location</h1>
             <div class="edi-box">
             <form action="" method="post" enctype="multipart/form-data">
             <?php echo $msg?>
             <br>
-            <label for="">Place's Name:</label>
+            <label for="">Location's Name:</label>
             <input type="text" name="name" id="" value="<?php if(isset($_POST['submit'])){echo $_POST['name'];}?>">
             <br>
             <label for="">Location's Image:</label>
@@ -195,7 +195,7 @@ if(!$_SESSION['email'])
             <input type="file" id="file" name="image" class="form-control" multiple >
             <br>
             <div class="submit">
-            <input type="submit" name="submit" value="Add Place">
+            <input type="submit" name="submit" value="Add Location">
             </div>
             <br>
             <div class="back">

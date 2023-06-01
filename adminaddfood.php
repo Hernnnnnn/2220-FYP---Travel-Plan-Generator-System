@@ -4,7 +4,7 @@ include 'dataconnection.php';
 
 $email = $_GET['email'];
     $loc=$_GET['localname'];
-    $sql = "SELECT * From `".$loc."food`";
+    $sql = "SELECT * From `".$loc."restaurant`";
 	$r = mysqli_query($conn,$sql);
 	$re = mysqli_fetch_assoc($r);
 if(!$_SESSION['email'])
@@ -15,7 +15,7 @@ if(!$_SESSION['email'])
     $msg=" ";
     if(isset($_POST['submit']))
     {
-    $sl = "SELECT * From `".$loc."food`";
+    $sl = "SELECT * From `".$loc."restaurant`";
         $sql=mysqli_query($conn,$sl);
         $r=mysqli_fetch_assoc($sql);
         $name=$_POST['name'];
@@ -42,7 +42,7 @@ if(!$_SESSION['email'])
             if(move_uploaded_file($imageTempName,$targetPath))
         {
             {
-                $sql = "INSERT INTO `".$loc."food`(foodname,foodimage) VALUES ('$name','$targetPath')";
+                $sql = "INSERT INTO `".$loc."restaurant`(foodname,foodimage) VALUES ('$name','$targetPath')";
                 $result = mysqli_query($conn,$sql);
             }
 
@@ -70,7 +70,7 @@ if(!$_SESSION['email'])
     include 'adminnavbar.php';
     $email = $_GET['email'];
     $loc=$_GET['localname'];
-    $sql = "SELECT * From `".$loc."food`";
+    $sql = "SELECT * From `".$loc."restaurant`";
 	$r = mysqli_query($conn,$sql);
 	$re = mysqli_fetch_assoc($r);
     ?>

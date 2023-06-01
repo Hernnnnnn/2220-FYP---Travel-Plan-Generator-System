@@ -17,7 +17,7 @@
     include 'adminnavbar.php';
     $email = $_GET['email'];
     $loc=$_GET['localname'];
-    $sql = "SELECT * From `".$loc."food`";
+    $sql = "SELECT * From `".$loc."restaurant`";
 	$r = mysqli_query($conn,$sql);
 	$re = mysqli_fetch_assoc($r);
     ?>
@@ -303,12 +303,12 @@ input[type="checkbox"].toggle:disabled + label::after {
                     if(isset($_POST['search']))
                     {
                         $searchKey=$_POST['search'];
-                        $p = "SELECT * From `".$loc."food` where foodname LIKE '%$searchKey%'";
+                        $p = "SELECT * From `".$loc."restaurant` where foodname LIKE '%$searchKey%'";
 
                     }
                     else
                     {
-                        $p = "SELECT * From `".$loc."food`";
+                        $p = "SELECT * From `".$loc."restaurant`";
                         $searchKey = "";
                     }
                         
