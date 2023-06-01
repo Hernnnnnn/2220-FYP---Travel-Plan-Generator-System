@@ -70,6 +70,11 @@ $result = mysqli_query($conn, $sql);
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+	
+	
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -104,20 +109,14 @@ $result = mysqli_query($conn, $sql);
 			<div class="container_calendar">
 				<div class="calendar">
 					<h3>Day 1</h3>
-					<?php
-						$row = mysqli_fetch_assoc($result);
-					?>
-					<div class="card-image">
-    					<img src="<?php echo $row["des_img"]; ?>" alt="...">
-    					<i class="bx bx-star"></i>
-  					</div>
-					<h3><?php echo $row["des_Name"]; ?></h3>
+					
 
 					</div>
 					
 					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 					<div class="add_destination">
-						
+					<div id="dragable_product_order">  
+                   </div>
 				
 					</div>
 			
@@ -129,7 +128,7 @@ $result = mysqli_query($conn, $sql);
 					
 					</div>
 				<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-					<div class="add_destination">
+					<div id="add_destination">
 						<h4>add destination</h4>
 					</div>
 			</div>
@@ -212,8 +211,8 @@ $result = mysqli_query($conn, $sql);
     <h3><?php echo $row["des_Name"]; ?></h3>
     <p></p>
     <form method="POST">
-      <input type="hidden" name="product_name" value="<?php echo $row["des_Name"]; ?>">
-      <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>">
+      <input type="hidden" name="product_name"  value="<?php echo $row["des_Name"]; ?>" class="img-responsive product_drag">
+      <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>"class="img-responsive product_drag">
       <button class="btn" name="addbtn" type="submit">
         Add To Cart
       </button>
@@ -230,6 +229,58 @@ $result = mysqli_query($conn, $sql);
 		
 		<script src="drop.js"></script>
 		<script src="searchbar.js"></script>
+		<script>  
+ $(document).ready(function(data){  
+      $('.add_destination ').on('dragover', function(){  
+           $(this).addClass('product_drag_over');  
+           return false;  
+      });  
+      $('.product_drag_area').on('dragleave', function(){  
+           $(this).removeClass('product_drag_over');  
+           return false;  
+      });  
+      $('.product_drag').on('dragstart', function(e){  
+           e.originalEvent.dataTransfer.setData("id", $(this).data("id"));  
+           e.originalEvent.dataTransfer.setData("name", $(this).data("name"));  
+           e.originalEvent.dataTransfer.setData("price", $(this).data("price"));  
+      });  
+      $('.product_drag_area').on('drop', function(e){  
+           e.preventDefault();  
+           $(this).removeClass('product_drag_over');  
+           var id = e.originalEvent.dataTransfer.getData('id');  
+           var name = e.originalEvent.dataTransfer.getData('name');  
+           var price = e.originalEvent.dataTransfer.getData('price');  
+           var action = "add";  
+           $.ajax({  
+                url:"action.php",  
+                method:"POST",  
+                data:{id:id, name:name, price:price, action:action},  
+                success:function(data){  
+                     $('#add_destination').html(data);  
+                }  
+           })  
+      });  
+      $(document).on('click', '.remove_product', function(){  
+           if(confirm("Are you sure you want to remove this product?"))  
+           {  
+                var id = $(this).attr("id");  
+                var action="delete";  
+                $.ajax({  
+                     url:"action.php",  
+                     method:"POST",  
+                     data:{id:id, action:action},  
+                     success:function(data){  
+                          $('#add_destination').html(data);  
+                     }  
+                });  
+           }  
+           else  
+           {  
+                return false;  
+           }  
+      });  
+ });  
+ </script>  
 
 	</body>
 	</html>
