@@ -15,7 +15,7 @@ if(!$_SESSION['email'])
     $msg=" ";
     if(isset($_POST['submit']))
     {
-    $sl = "SELECT * From `".$loc."place`";
+    $sl = "SELECT * From `".$loc."location`";
         $sql=mysqli_query($conn,$sl);
         $r=mysqli_fetch_assoc($sql);
         $name=$_POST['name'];

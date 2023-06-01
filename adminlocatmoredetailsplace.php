@@ -50,7 +50,7 @@
 
     table thead th {
     border: none;
-    padding: 20px;
+    padding: 30px;
     font-size: 14px;
     color: #fff; 
     background: rgba(0,0,0,0.7);
@@ -238,19 +238,22 @@ input[type="checkbox"].toggle:disabled + label::after {
     }
     .fa-close
     {
-        font-size: 35px;
-        color: #4bb6b7;
+        font-size: 30px;
+        color: red;
     }
 
     .fa-cog{
-        font-size: 35px;
+        font-size: 30px;
         color: #4bb6b7;
     }
 
     .fa-cog:hover
     {
-        font-size: 30px;
-        color: red;
+        color: black;
+        font-size: 35px;
+        transition: 0.5s;
+        font-weight: bold;
+
     }
     .fa-close:hover
     {
@@ -258,7 +261,6 @@ input[type="checkbox"].toggle:disabled + label::after {
         transition: 0.5s;
         font-size: 35px;
         /* font-weight: bold; */
-
     }
     .title
     {
@@ -331,7 +333,7 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <thead>
                 <tr>
                     
-                    <th>Place's Name</th>
+                    <th style="padding-right:80px; padding-left:80px;">Place's Name</th>
                     <th>Place's Image</th>
                     <th></th>
                     <th></th>
@@ -347,12 +349,12 @@ input[type="checkbox"].toggle:disabled + label::after {
             ?>
                 <tr>
                     <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['placename']?></span></td>
-                    <td><img style="width: 30%;" src="<?php echo $red['placeimage']?>" alt=""></td>
+                    <td><img style="width: 70%;" src="<?php echo $red['placeimage']?>" alt=""></td>
                     <td>
-                    <a href="adminlocatmoredetails.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $loc?>"><span class="fa fa-cog"></span></a>
+                    <a href="adminlocatmoredetails.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $loc?>"><i class="fa fa-cog"></i></a>
                     </td>
                     <td>
-                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a>
+                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><i class="fa fa-close"></i></a>
                     </td>
                     
                     
