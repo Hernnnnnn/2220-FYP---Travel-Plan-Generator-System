@@ -27,11 +27,6 @@ if(!$_SESSION['email'])
         {
             $msg = "Please key-in location's name!";
         }
-        else if($name == $r['lName'])
-        {
-            $msg = "Please key-in <span style='font-weight: bold;'>new</span> location's name!";
-            
-        }
         else if(!$detail)
         {
             $msg = "Please key-in location's details!";
@@ -209,7 +204,7 @@ if(!$_SESSION['email'])
                 <input type="text" name="name" id="" value="<?php echo $rz['lName']?>">
                 <br>
                 <label for="" >Location's Detail:</label>
-                <textarea name="detail" id="detail" cols="50" rows="5" placeholder="<?php echo $rz['lDetails']?>"></textarea>
+                <textarea name="detail" id="detail" cols="50" rows="5" placeholder=""><?php echo $rz['lDetails']?></textarea>
                 <br>
                 <label for="">Location's Image:</label><img width="30%" src="images/<?php echo $rz['lImage'];?>" alt="">
                 <label for="file"  name="choosei"class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>

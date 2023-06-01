@@ -31,7 +31,7 @@
     background-attachment: fixed;
     }
 
-     table 
+    table 
     {
         overflow-x: scroll;
         border-collapse: collapse;
@@ -41,15 +41,16 @@
         /* min-width: 400px; */
         width: 70%;
         height: 50%;
+        max-width: 800px;
         margin: auto;
         margin-top: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
 
     table thead th {
     border: none;
-    padding: 20px;
+    padding: 30px;
     font-size: 14px;
     color: #fff; 
     background: rgba(0,0,0,0.7);
@@ -321,7 +322,7 @@ input[type="checkbox"].toggle:disabled + label::after {
 
                     <button type="submit" name="submit"><span class="fa fa-search"></span></button>
                     </div>
-                    <a class="addlocat" href="adminaddfood.php?email=<?php echo $email;?>&&localname=<?php echo $loc?>">Add Food</a>
+                    <a class="addlocat" href="adminaddfood.php?email=<?php echo $email;?>&&localname=<?php echo $loc?>">Add Restaurant</a>
                      </div>
                      </form>
                     </td>
@@ -329,8 +330,8 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <thead>
                 <tr>
                     
-                    <th>Food's Name</th>
-                    <th>Food's Image</th>
+                    <th style="padding-right:80px; padding-left:80px;">Restaurant's Name</th>
+                    <th>Restaurant's Image</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -343,12 +344,15 @@ input[type="checkbox"].toggle:disabled + label::after {
             ?>
                 <tr>
                     <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['foodname']?></span></td>
-                    <td><img style="width: 30%;" src="<?php echo $red['foodimage']?>" alt=""></td>
+                    <td><img style="width: 70%;" src="<?php echo $red['foodimage']?>" alt=""></td>
                     <td>
-                    <a href="adminlocatmoredetails.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $loc?>"><span class="fa fa-cog"></span></a>
+                    <?php 
+                            $id = $red['id'];
+                        ?>
+                    <a class="update" href="admineditfood.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $loc?>">Edit</a>
                     </td>
                     <td>
-                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a></td>
+                    <a href="admindelfooddetails.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $loc?>"><span class="fa fa-close"></span></a></td>
                     
                     
 

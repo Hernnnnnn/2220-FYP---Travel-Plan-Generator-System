@@ -350,11 +350,14 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <tr>
                     <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['placename']?></span></td>
                     <td><img style="width: 70%;" src="<?php echo $red['placeimage']?>" alt=""></td>
-                    <td>
-                    <a href="adminlocatmoredetails.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $loc?>"><i class="fa fa-cog"></i></a>
+                        <?php 
+                            $id = $red['id'];
+                        ?>
+                   <td>
+                    <a class="update" href="admineditlocation.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $loc?>">Edit</a>
                     </td>
                     <td>
-                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><i class="fa fa-close"></i></a>
+                    <a href="admindelplacedetails.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $loc?>"><i class="fa fa-close"></i></a>
                     </td>
                     
                     

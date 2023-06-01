@@ -252,6 +252,13 @@
 		box-sizing: border-box;
 		height:150%;
 	}
+	nav ul li.actived
+	{
+		color: #4bb6b7;
+	}
+	.fa-globe:hover{
+		color: #4bb6b7;
+	}
 	
 </style>
 <style>
@@ -279,13 +286,13 @@
 					
 					<nav class="nav-bar" >
 						<ul>
-							<li ><a class="active" href="admindashboard.php?email=<?php echo $re['email']?>"><i class="fa fa-home"></i> Home</a></li>
+							<li ><a class="actived" href="admindashboard.php?email=<?php echo $re['email']?>"><i class="fa fa-home"></i> Home</a></li>
 							<li>
 								<a href="adminmanageuser.php?email=<?php echo $re['email']?>" class="fh5co-sub-ddown"><i class="fa fa-user"></i> User</a>
 							</li>
 							<!-- <li><a href="flight.html"></a></li> -->
 							<li>
-								<a href="adminmanagelocation.php?email=<?php echo $re['email']?>"><span class="fa fa-globe"></span> Location's details</a>
+								<a href="adminmanagelocation.php?email=<?php echo $re['email']?>"><span class="fa fa-map-marker"></span> Location's details</a>
 							</li>
 							<li>
 								<a href="adminlogoutpage.php"><i class='fas fa-sign-out-alt'></i>Log out</a>

@@ -1,58 +1,46 @@
+
 <?php 
 session_start();
-include 'dataconnection.php';
-
-$email = $_GET['email'];
-    $loc=$_GET['localname'];
-    $sql = "SELECT * From `".$loc."food`";
-	$r = mysqli_query($conn,$sql);
-	$re = mysqli_fetch_assoc($r);
 if(!$_SESSION['email'])
 {
     header("Location:adminloginpage.php");
 }
+    include 'dataconnection.php';
     $email = $_GET['email'];
+    $id=$_GET['id'];
+    $loc = $_GET['localname'];
     $msg=" ";
     if(isset($_POST['submit']))
     {
-    $sl = "SELECT * From `".$loc."food`";
-        $sql=mysqli_query($conn,$sl);
-        $r=mysqli_fetch_assoc($sql);
+        $sql=mysqli_query($conn,"SELECT * from `".$loc."location` where id = $id");
+        $rz=mysqli_fetch_assoc($sql);
         $name=$_POST['name'];
         $imageName = $_FILES['image']['name'];
         $imageTempName = $_FILES['image']['tmp_name'];
-        $targetPath = "images/".$loc."/"."FOOD/".$imageName;
+        $targetPath = "images/".$loc."/"."PLACE/".$imageName;
 
-        
         if(!$name)
         {
-            $msg = "Please key-in Place's name!";
-        }
-        else if($name == $r['foodname'])
-        {
-            $msg = "Please key-in <span style='font-weight: bold;'>new</span> location's name!";
-            
+            $msg = "Please key-in location's name!";
         }
         else if(!$imageName)
         {
             $msg = "Please upload location's image!";
         }
+        
         else
         {
             if(move_uploaded_file($imageTempName,$targetPath))
-        {
-            {
-                $sql = "INSERT INTO `".$loc."food`(foodname,foodimage) VALUES ('$name','$targetPath')";
+                $sql = "UPDATE `".$loc."location` set placename='$name',placeimage='$targetPath' Where id = '$id'";
+                $msg = "Edit successfuly!";
                 $result = mysqli_query($conn,$sql);
             }
 
             
         }
-        }
         
         
         
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,22 +48,20 @@ if(!$_SESSION['email'])
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin || Location(edit)</title>
+    
     <?php
-//     session_start();
-//     if(!$_SESSION['email'])
-// {
-//     header("Location:adminloginpage.php");
-// }
     include 'adminnavbar.php';
     $email = $_GET['email'];
-    $loc=$_GET['localname'];
-    $sql = "SELECT * From `".$loc."food`";
+    $sql = "SELECT * From `admin` where email = '$email'";
 	$r = mysqli_query($conn,$sql);
 	$re = mysqli_fetch_assoc($r);
     ?>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  
 </head>
 <style>
+    
     body
     {
     background-image: url(images/image.gif);
@@ -87,8 +73,9 @@ if(!$_SESSION['email'])
     .container1
     {
         margin: auto;
-        margin-top: 5%;
+        margin-top: 3%;
         max-width: 800px;
+        margin-bottom: 3%;
 
     }
     .editbox
@@ -110,7 +97,7 @@ if(!$_SESSION['email'])
     {
         /* text-align: center; */
         background: rgba(255, 255, 255, 0.6);
-        padding-left: 35px;
+        padding-left: 35px;padding-bottom: 20px;
     }
     .edi-box input[type="text"]
     {
@@ -184,34 +171,37 @@ if(!$_SESSION['email'])
         text-decoration: none;
         color: #4bb6b7;
     }
-    
+
 </style>
-<body>
-<div class="container1">
-        
+<body >
+    <div class="container1">
+        <?php
+            $sql=mysqli_query($conn,"SELECT * from `".$loc."location` where id = $id");
+            $rz=mysqli_fetch_assoc($sql); 
+        ?>
             
-        <h1>Add Restaurant</h1>
-            <div class="edi-box">
-            <form action="" method="post" enctype="multipart/form-data">
-            <?php echo $msg?>
-            <br>
-            <label for="">Restaurant's Name:</label>
-            <input type="text" name="name" id="" value="<?php if(isset($_POST['submit'])){echo $_POST['name'];}?>">
-            <br>
-            <label for="">Restaurant's Image:</label>
-            <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
-            <input type="file" id="file" name="image" class="form-control" multiple >
-            <br>
-            <div class="submit">
-            <input type="submit" name="submit" value="Add Restaurant">
-            </div>
-            <br>
-            <div class="back">
-            <a href="adminlocatmoredetailsfood.php?email=<?php echo $email?>&&localname=<?php echo $loc?>">Back to Restaurant's details</a>
-            </div>
-            
-    </form>
+            <h1>Update Location's</h1>
+                <div class="edi-box">
+                <form action="" method="post" enctype="multipart/form-data">
+                <?php echo $msg?>
+                <br>
+                <label for="">Location's Name:</label>
+                <input type="text" name="name" id="" value="<?php echo $rz['placename']?>">
+                <br>
+                <label for="">Location's Image:</label><img width="30%" src="<?php echo $rz['placeimage'];?>" alt="">
+                <label for="file"  name="choosei"class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
+                <input type="file" id="file" name="image" class="form-control" multiple >
+                <br>
+                <div class="submit">
+                <input type="submit" name="submit" value="Update Location">
+                </div>
+                <br>
+                <div class="back">
+                <a href="adminlocatmoredetailsplace.php?email=<?php echo $email?>&&localname=<?php echo $loc?>">Back to Location's details</a>
+                </div>
+                
+        </form>
+        </div>
     </div>
-</div>
 </body>
 </html>
