@@ -46,7 +46,8 @@
         /* min-width: 400px; */
         width: 60%;
         margin: auto;
-        margin-top: 100px;
+        margin-top: 90px;
+        margin-bottom: 50px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
 

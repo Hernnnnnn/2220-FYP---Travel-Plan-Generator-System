@@ -4,7 +4,7 @@ include 'dataconnection.php';
 
 $email = $_GET['email'];
     $loc=$_GET['localname'];
-    $sql = "SELECT * From `".$loc."place`";
+    $sql = "SELECT * From `".$loc."location`";
 	$r = mysqli_query($conn,$sql);
 	$re = mysqli_fetch_assoc($r);
 if(!$_SESSION['email'])
@@ -42,7 +42,7 @@ if(!$_SESSION['email'])
             if(move_uploaded_file($imageTempName,$targetPath))
         {
             {
-                $sql = "INSERT INTO `".$loc."place`(placename,placeimage) VALUES ('$name','$targetPath')";
+                $sql = "INSERT INTO `".$loc."location`(placename,placeimage) VALUES ('$name','$targetPath')";
                 $result = mysqli_query($conn,$sql);
             }
 

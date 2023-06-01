@@ -237,7 +237,7 @@ input[type="checkbox"].toggle:disabled + label::after {
     }
     .fa-close
     {
-        font-size: 35px;
+        font-size: 30px;
         color: red;
     }
 
@@ -252,7 +252,11 @@ input[type="checkbox"].toggle:disabled + label::after {
     }
     .fa-close:hover
     {
-        color: red;
+        color: black;
+        transition: 0.5s;
+        font-size: 35px;
+        /* font-weight: bold; */
+
     }
     .title
     {
@@ -341,10 +345,11 @@ input[type="checkbox"].toggle:disabled + label::after {
                     <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['foodname']?></span></td>
                     <td><img style="width: 30%;" src="<?php echo $red['foodimage']?>" alt=""></td>
                     <td>
-                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a></td>
-                    <td>
                     <a href="adminlocatmoredetails.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $loc?>"><span class="fa fa-cog"></span></a>
                     </td>
+                    <td>
+                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a></td>
+                    
                     
 
                 </tr>
