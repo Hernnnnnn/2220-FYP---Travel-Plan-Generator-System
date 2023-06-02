@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin || Manage Food</title>
+    <title>Admin || Manage restaurant</title>
     <?php
     session_start();
     if(!$_SESSION['email'])
@@ -303,7 +303,7 @@ input[type="checkbox"].toggle:disabled + label::after {
                     if(isset($_POST['search']))
                     {
                         $searchKey=$_POST['search'];
-                        $p = "SELECT * From `".$loc."restaurant` where foodname LIKE '%$searchKey%'";
+                        $p = "SELECT * From `".$loc."restaurant` where restaurantname LIKE '%$searchKey%'";
 
                     }
                     else
@@ -343,8 +343,8 @@ input[type="checkbox"].toggle:disabled + label::after {
                     
             ?>
                 <tr>
-                    <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['foodname']?></span></td>
-                    <td><img style="width: 70%;" src="<?php echo $red['foodimage']?>" alt=""></td>
+                    <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['restaurantname']?></span></td>
+                    <td><img style="width: 70%;" src="<?php echo $red['restaurantimage']?>" alt=""></td>
                     <td>
                     <?php 
                             $id = $red['id'];

@@ -28,7 +28,7 @@ if(!$_SESSION['email'])
         {
             $msg = "Please key-in Place's name!";
         }
-        else if($name == $r['foodname'])
+        else if($name == $r['restaurantname'])
         {
             $msg = "Please key-in <span style='font-weight: bold;'>new</span> location's name!";
             
@@ -42,7 +42,7 @@ if(!$_SESSION['email'])
             if(move_uploaded_file($imageTempName,$targetPath))
         {
             {
-                $sql = "INSERT INTO `".$loc."restaurant`(foodname,foodimage) VALUES ('$name','$targetPath')";
+                $sql = "INSERT INTO `".$loc."restaurant`(restaurantname,restaurantimage) VALUES ('$name','$targetPath')";
                 $result = mysqli_query($conn,$sql);
             }
 

@@ -31,7 +31,7 @@ if(!$_SESSION['email'])
         else
         {
             if(move_uploaded_file($imageTempName,$targetPath))
-                $sql = "UPDATE `".$loc."restaurant` set foodname='$name',foodimage='$targetPath' Where id = '$id'";
+                $sql = "UPDATE `".$loc."restaurant` set restaurantname='$name',restaurantimage='$targetPath' Where id = '$id'";
                 $msg = "Edit successfuly!";
                 $result = mysqli_query($conn,$sql);
             }
@@ -186,9 +186,9 @@ if(!$_SESSION['email'])
                 <?php echo $msg?>
                 <br>
                 <label for="">Restaurant's Name:</label>
-                <input type="text" name="name" id="" value="<?php echo $rz['foodname']?>">
+                <input type="text" name="name" id="" value="<?php echo $rz['restaurantname']?>">
                 <br>
-                <label for="">Restaurant's Image:</label><img width="30%" src="<?php echo $rz['foodimage'];?>" alt="">
+                <label for="">Restaurant's Image:</label><img width="30%" src="<?php echo $rz['restaurantimage'];?>" alt="">
                 <label for="file"  name="choosei"class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
                 <input type="file" id="file" name="image" class="form-control" multiple >
                 <br>
