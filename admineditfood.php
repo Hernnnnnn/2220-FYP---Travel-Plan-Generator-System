@@ -8,54 +8,39 @@ if(!$_SESSION['email'])
     include 'dataconnection.php';
     $email = $_GET['email'];
     $id=$_GET['id'];
+    $loc = $_GET['localname'];
     $msg=" ";
     if(isset($_POST['submit']))
     {
-        $sql=mysqli_query($conn,"SELECT * from `location detail` where id = $id");
+        $sql=mysqli_query($conn,"SELECT * from `".$loc."restaurant` where id = $id");
         $rz=mysqli_fetch_assoc($sql);
         $name=$_POST['name'];
-        $detail=$_POST['detail'];
         $imageName = $_FILES['image']['name'];
         $imageTempName = $_FILES['image']['tmp_name'];
-        $targetPath = "images/".$imageName;
+        $targetPath = "images/".$loc."/"."FOOD/".$imageName;
 
-        $videoName = $_FILES['video']['name'];
-        $videoTempName = $_FILES['video']['tmp_name'];
-        $videoFile_size = $_FILES['video']['size'];
-        $videoTarget = "images/".$videoName;
         if(!$name)
         {
             $msg = "Please key-in location's name!";
-        }
-        else if(!$detail)
-        {
-            $msg = "Please key-in location's details!";
         }
         else if(!$imageName)
         {
             $msg = "Please upload location's image!";
         }
-        else if(!$videoName)
-        {
-            $msg = "Please upload location's video";
-        }
+        
         else
         {
             if(move_uploaded_file($imageTempName,$targetPath))
-        {
-            if(move_uploaded_file($videoTempName,$videoTarget))
-            {
-                $sql = "UPDATE `location detail` set lName='$name',lDetails='$detail',lImage='$imageName',lVideo='$videoName' Where id = '$id'";
+                $sql = "UPDATE `".$loc."restaurant` set restaurantname='$name',restaurantimage='$targetPath' Where id = '$id'";
+                $msg = "Edit successfuly!";
                 $result = mysqli_query($conn,$sql);
             }
 
             
         }
-        }
         
         
         
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -191,39 +176,28 @@ if(!$_SESSION['email'])
 <body >
     <div class="container1">
         <?php
-            $sql=mysqli_query($conn,"SELECT * from `location detail` where id = $id");
+            $sql=mysqli_query($conn,"SELECT * from `".$loc."restaurant` where id = $id");
             $rz=mysqli_fetch_assoc($sql); 
         ?>
             
-            <h1>Update Location's Details</h1>
+            <h1>Update Restaurant's</h1>
                 <div class="edi-box">
                 <form action="" method="post" enctype="multipart/form-data">
                 <?php echo $msg?>
                 <br>
-                <label for="">Location's Name:</label>
-                <input type="text" name="name" id="" value="<?php echo $rz['lName']?>">
+                <label for="">Restaurant's Name:</label>
+                <input type="text" name="name" id="" value="<?php echo $rz['restaurantname']?>">
                 <br>
-                <label for="" >Location's Detail:</label>
-                <textarea name="detail" id="detail" cols="50" rows="5" placeholder=""><?php echo $rz['lDetails']?></textarea>
-                <br>
-                <label for="">Location's Image:</label><img width="30%" src="images/<?php echo $rz['lImage'];?>" alt="">
+                <label for="">Restaurant's Image:</label><img width="30%" src="<?php echo $rz['restaurantimage'];?>" alt="">
                 <label for="file"  name="choosei"class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
                 <input type="file" id="file" name="image" class="form-control" multiple >
                 <br>
-                <br>
-                <label for="">Location's Video:</label>
-                <video width="300px" controls autoplay loop>
-                    <source src="images/<?php echo $rz['lVideo']?>">
-                </video>
-                <label for="video"  class="Choose"><i class="fa fa-camera"></i> Choose a Video</label>
-                <input type="file" id="video" name="video" class="form-control" multiple>
-                <br>
                 <div class="submit">
-                <input type="submit" name="submit" value="Update Location">
+                <input type="submit" name="submit" value="Update Restaurant">
                 </div>
                 <br>
                 <div class="back">
-                <a href="adminmanagelocation.php?email=<?php echo $email?>">Back to Location's details</a>
+                <a href="adminlocatmoredetailsfood.php?email=<?php echo $email?>&&localname=<?php echo $loc?>">Back to Restaurant's details</a>
                 </div>
                 
         </form>

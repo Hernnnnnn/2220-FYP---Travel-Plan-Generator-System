@@ -1,61 +1,49 @@
-
 <?php 
 session_start();
+include 'dataconnection.php';
+
+$email = $_GET['email'];
+    $loc=$_GET['localname'];
+    $sql = "SELECT * From `".$loc."restaurant`";
+	$r = mysqli_query($conn,$sql);
+	$re = mysqli_fetch_assoc($r);
 if(!$_SESSION['email'])
 {
     header("Location:adminloginpage.php");
 }
-    include 'dataconnection.php';
     $email = $_GET['email'];
     $msg=" ";
     if(isset($_POST['submit']))
     {
-        $sql=mysqli_query($conn,"SELECT * from `location detail`");
+    $sl = "SELECT * From `".$loc."restaurant`";
+        $sql=mysqli_query($conn,$sl);
         $r=mysqli_fetch_assoc($sql);
         $name=$_POST['name'];
-        $detail=$_POST['detail'];
         $imageName = $_FILES['image']['name'];
         $imageTempName = $_FILES['image']['tmp_name'];
-        $targetPath = "images/".$imageName;
+        $targetPath = "images/".$loc."/"."FOOD/".$imageName;
 
-        $videoName = $_FILES['video']['name'];
-        $videoTempName = $_FILES['video']['tmp_name'];
-        $videoFile_size = $_FILES['video']['size'];
-        $videoTarget = "images/".$videoName;
+        
         if(!$name)
         {
-            $msg = "Please key-in location's name!";
+            $msg = "Please key-in Place's name!";
         }
-        else if($name == $r['lName'])
+        else if($name == $r['restaurantname'])
         {
             $msg = "Please key-in <span style='font-weight: bold;'>new</span> location's name!";
             
-        }
-        else if(!$detail)
-        {
-            $msg = "Please key-in location's details!";
         }
         else if(!$imageName)
         {
             $msg = "Please upload location's image!";
         }
-        else if(!$videoName)
-        {
-            $msg = "Please upload location's video";
-        }
         else
         {
             if(move_uploaded_file($imageTempName,$targetPath))
         {
-            if(move_uploaded_file($videoTempName,$videoTarget))
             {
-                $sql = "INSERT INTO `location detail`(lName,lDetails,lImage,lVideo) VALUES ('$name','$detail','$imageName','$videoName')";
-                
-                $s="CREATE Table `".$name."location`(`id` int(11) NOT NULL,`locationname` text NOT NULL,`locationimage` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
-                $s1="CREATE Table `".$name."restaurant`(`id` int(11) NOT NULL,`restaurantname` text NOT NULL,`restaurantimage` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
-                mysqli_query($conn,$s);
-                mysqli_query($conn,$s1);
-                mysqli_query($conn,$sql);
+                $sql = "INSERT INTO `".$loc."restaurant`(restaurantname,restaurantimage) VALUES ('$name','$targetPath')";
+                $result = mysqli_query($conn,$sql);
             }
 
             
@@ -72,20 +60,22 @@ if(!$_SESSION['email'])
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin || Location(edit)</title>
-    
+    <title>Document</title>
     <?php
+//     session_start();
+//     if(!$_SESSION['email'])
+// {
+//     header("Location:adminloginpage.php");
+// }
     include 'adminnavbar.php';
     $email = $_GET['email'];
-    $sql = "SELECT * From `admin` where email = '$email'";
+    $loc=$_GET['localname'];
+    $sql = "SELECT * From `".$loc."restaurant`";
 	$r = mysqli_query($conn,$sql);
 	$re = mysqli_fetch_assoc($r);
     ?>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  
 </head>
 <style>
-    
     body
     {
     background-image: url(images/image.gif);
@@ -194,41 +184,34 @@ if(!$_SESSION['email'])
         text-decoration: none;
         color: #4bb6b7;
     }
-
+    
 </style>
-<body >
-    <div class="container1">
+<body>
+<div class="container1">
         
             
-            <h1>Add Location's Details</h1>
-                <div class="edi-box">
-                <form action="" method="post" enctype="multipart/form-data">
-                <?php echo $msg?>
-                <br>
-                <label for="">Location's Name:</label>
-                <input type="text" name="name" id="" value="<?php if(isset($_POST['submit'])){echo $_POST['name'];}?>">
-                <br>
-                <label for="" >Location's Detail:</label>
-                <textarea name="detail" id="detail" cols="50" rows="5" placeholder="<?php if(isset($_POST['submit'])){echo $_POST['detail'];}?>"></textarea>
-                <br>
-                <label for="">Location's Image:</label>
-                <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
-                <input type="file" id="file" name="image" class="form-control" multiple >
-                <br>
-                <label for="">Location's Video:</label>
-                <label for="video"  class="Choose"><i class="fa fa-camera"></i> Choose a Video</label>
-                <input type="file" id="video" name="video" class="form-control" multiple>
-                <br>
-                <div class="submit">
-                <input type="submit" name="submit" value="Add Location">
-                </div>
-                <br>
-                <div class="back">
-                <a href="adminmanagelocation.php?email=<?php echo $email?>">Back to Location's details</a>
-                </div>
-                
-        </form>
-        </div>
+        <h1>Add Restaurant</h1>
+            <div class="edi-box">
+            <form action="" method="post" enctype="multipart/form-data">
+            <?php echo $msg?>
+            <br>
+            <label for="">Restaurant's Name:</label>
+            <input type="text" name="name" id="" value="<?php if(isset($_POST['submit'])){echo $_POST['name'];}?>">
+            <br>
+            <label for="">Restaurant's Image:</label>
+            <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
+            <input type="file" id="file" name="image" class="form-control" multiple >
+            <br>
+            <div class="submit">
+            <input type="submit" name="submit" value="Add Restaurant">
+            </div>
+            <br>
+            <div class="back">
+            <a href="adminlocatmoredetailsfood.php?email=<?php echo $email?>&&localname=<?php echo $loc?>">Back to Restaurant's details</a>
+            </div>
+            
+    </form>
     </div>
+</div>
 </body>
 </html>
