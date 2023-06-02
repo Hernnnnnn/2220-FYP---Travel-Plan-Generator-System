@@ -34,7 +34,7 @@ if (isset($_POST["submit"])) {
 
                 echo '<script>
                         setTimeout(function(){
-                            window.location.href = "userhomepage.php?email='.$email.'";
+                            window.location.href = "testpage.php?email='.$email.'";
                         }, 2000);
                     </script>';
             } else {
