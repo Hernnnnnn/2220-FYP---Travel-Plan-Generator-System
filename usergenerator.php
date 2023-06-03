@@ -39,7 +39,7 @@ $result = mysqli_query($conn, $sql);
 	$connect = mysqli_connect($host, $username, $password, $database);
 
 	// SQL query to select orders and order items
-	$sqlselect = "SELECT des_img, des_Name from usergenarator";
+	$sqlselect = "SELECT des_img, des_Name from usergenerator";
 
 	$result = mysqli_query($connect, $sqlselect);
 ?>
@@ -109,15 +109,14 @@ $result = mysqli_query($conn, $sql);
 			<div class="container_calendar">
 				<div class="calendar">
 					<h3>Day 1</h3>
-					
+				
 
 					</div>
 					
 					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 					<div class="add_destination">
-					<div id="dragable_product_order">  
-                   </div>
-				
+					<h4>add destination</h4>
+					
 					</div>
 			
 			</div>
@@ -197,12 +196,12 @@ $result = mysqli_query($conn, $sql);
                     
 
 
-					while($row = mysqli_fetch_assoc($result)){
+while($row = mysqli_fetch_assoc($result)){
 ?>
 
-		  <div class="container_product">
+<div class="container_product">
 			
-		  <div class="card">
+  <div class="card">
   <div class="card-image">
     <img src="<?php echo $row["des_img"]; ?>" alt="...">
     <i class="bx bx-star"></i>
@@ -211,8 +210,8 @@ $result = mysqli_query($conn, $sql);
     <h3><?php echo $row["des_Name"]; ?></h3>
     <p></p>
     <form method="POST">
-      <input type="hidden" name="product_name"  value="<?php echo $row["des_Name"]; ?>" class="img-responsive product_drag">
-      <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>"class="img-responsive product_drag">
+      <input type="hidden" name="product_name"  value="<?php echo $row["des_Name"]; ?>" >
+      <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>">
       <button class="btn" name="addbtn" type="submit">
         Add To Cart
       </button>
@@ -222,65 +221,44 @@ $result = mysqli_query($conn, $sql);
 
 			
 				
-		  </div>
+</div>
+  
+
+<div class="popup">
+  <div class="popup-content">
+  <form >
+  <label for="days">Choose a day:</label>
+  <select name="days" id="days">
+    <option value="days">Day 1</option>
+    <option value="days">Day 2</option>
+    <option value="days">Day 3</option>
+  </select>
+  <br><br>
+
+  <label for="duration">Duration:</label><br>
+  <input type="text" id="duration" name="duration"><br>
+
+  <a href="#" class="button">submit</a>
+
+  
+</form>
+  </div>
+
+</div>
+
+
+
+
+
+
+
         <?php
 		}
 		?>
 		
 		<script src="drop.js"></script>
 		<script src="searchbar.js"></script>
-		<script>  
- $(document).ready(function(data){  
-      $('.add_destination ').on('dragover', function(){  
-           $(this).addClass('product_drag_over');  
-           return false;  
-      });  
-      $('.product_drag_area').on('dragleave', function(){  
-           $(this).removeClass('product_drag_over');  
-           return false;  
-      });  
-      $('.product_drag').on('dragstart', function(e){  
-           e.originalEvent.dataTransfer.setData("id", $(this).data("id"));  
-           e.originalEvent.dataTransfer.setData("name", $(this).data("name"));  
-           e.originalEvent.dataTransfer.setData("price", $(this).data("price"));  
-      });  
-      $('.product_drag_area').on('drop', function(e){  
-           e.preventDefault();  
-           $(this).removeClass('product_drag_over');  
-           var id = e.originalEvent.dataTransfer.getData('id');  
-           var name = e.originalEvent.dataTransfer.getData('name');  
-           var price = e.originalEvent.dataTransfer.getData('price');  
-           var action = "add";  
-           $.ajax({  
-                url:"action.php",  
-                method:"POST",  
-                data:{id:id, name:name, price:price, action:action},  
-                success:function(data){  
-                     $('#add_destination').html(data);  
-                }  
-           })  
-      });  
-      $(document).on('click', '.remove_product', function(){  
-           if(confirm("Are you sure you want to remove this product?"))  
-           {  
-                var id = $(this).attr("id");  
-                var action="delete";  
-                $.ajax({  
-                     url:"action.php",  
-                     method:"POST",  
-                     data:{id:id, action:action},  
-                     success:function(data){  
-                          $('#add_destination').html(data);  
-                     }  
-                });  
-           }  
-           else  
-           {  
-                return false;  
-           }  
-      });  
- });  
- </script>  
+	
 
 	</body>
 	</html>
