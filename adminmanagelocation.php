@@ -342,7 +342,7 @@ input[type="checkbox"].toggle:disabled + label::after {
                     <a href="adminlocatmoredetailsplace.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="fa fa-globe" style="font-size: 25px;"></span></a>
                     </td>
                     <td>
-                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close"></span></a>
+                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="fa fa-close"></span></a>
                     </td>
                     
                     

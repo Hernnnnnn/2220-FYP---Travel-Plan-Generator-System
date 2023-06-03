@@ -50,7 +50,12 @@ if(!$_SESSION['email'])
             if(move_uploaded_file($videoTempName,$videoTarget))
             {
                 $sql = "INSERT INTO `location detail`(lName,lDetails,lImage,lVideo) VALUES ('$name','$detail','$imageName','$videoName')";
-                $result = mysqli_query($conn,$sql);
+                
+                $s="CREATE Table `".$name."location`(`id` int(11) NOT NULL,`locationname` text NOT NULL,`locationimage` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+                $s1="CREATE Table `".$name."restaurant`(`id` int(11) NOT NULL,`restaurantname` text NOT NULL,`restaurantimage` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+                mysqli_query($conn,$s);
+                mysqli_query($conn,$s1);
+                mysqli_query($conn,$sql);
             }
 
             
