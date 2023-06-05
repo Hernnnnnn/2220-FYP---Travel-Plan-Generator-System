@@ -250,7 +250,7 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <tr>
                     <th>ID</th>
                     <th>Username</th>
-                    <th>Password</th>
+                    <th></th>
                     <th>Email</th>
                     <th>Status</th>
                     <th></th>
@@ -267,7 +267,7 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <tr>
                     <td><?php echo $user['ID']?></td>
                     <td><?php echo $user['username']?></td>
-                    <td><?php echo $user['password']?></td>
+                    <td></td>
                     <td><?php echo $user['email']?></td>
                     <td>
                     <input type='checkbox' class='toggle' name="check" id='check<?php echo $user['ID']?>' <?php if($user['status']==1){echo "checked";}?>>
