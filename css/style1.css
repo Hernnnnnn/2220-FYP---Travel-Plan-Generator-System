@@ -483,45 +483,20 @@ hr.underline {
   margin:10px 0;
 }
 
-.right form .text{
-  font-size:1.0625rem;
-  margin-bottom:2px;
-  color:var(--lightgray);
-}
-
-.right form .msg{
-  margin-top:10px;
-}
-
-.right form input, .right form textarea{
-  width:100%;
-  font-size:1.0625rem;
-  background:var(--secondary);
-  padding-left:10px;
-  border:1px solid var(--lightgray);
-}
-
-.right form input:focus,
-.right form textarea:focus{
-  outline-color:var(--primary);
-}
-
-.right form input{
-  height:35px;
-}
-
 .right form .btn{
   margin-top:10px;
+  text-align: center;
 }
 
 .right form .btn button{
-  height:40px;
-  width:100%;
+  height:80px;
+  width:50%;
   border:none;
+  border-radius:10px;
   outline:none;
   background:var(--primary);
   color:var(--secondary);
-  font-size:1.0625rem;
+  font-size:2.25rem;
   font-weight:500;
   cursor:pointer;
   transition:0.3s;

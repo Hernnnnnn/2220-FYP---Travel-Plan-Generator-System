@@ -80,7 +80,7 @@ include('dataconnection.php');
                         <li id="upper">At least one uppercase character</li>
                         <li id="special">At least one special character</li>
                     </ul>
-            </div>
+                </div>
             <button name="submit" type="submit">Reset</button>
         </form>
         </div>
@@ -88,7 +88,7 @@ include('dataconnection.php');
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-right">
-                    <h1 class="title">Forgotten <br> your password ? </h1>
+                    <h1 class="title">Forgotten <br> your password? </h1>
                     <p>Not a problem</p>
                 </div> 
             </div>
@@ -96,64 +96,6 @@ include('dataconnection.php');
     </div>
 
     <script src="registrationlogin.js"></script>
-
-    <script>
-        let minlength = document.getElementById('length');
-        let digit = document.getElementById('number');
-        let lowercase = document.getElementById('lower');
-        let uppercase = document.getElementById('upper');
-        let specialchar = document.getElementById('special');
-        let spaceerror = document.getElementById('space');
-
-        function checkPassword(data){
-            const length = new RegExp('(?=.{8,})');
-            const number = new RegExp('(?=.*[0-9])');
-            const lower = new RegExp('(?=.*[a-z])');
-            const upper = new RegExp('(?=.*[A-Z])');
-            const special = new RegExp('(?=.*[!@#$%^&*])');
-            const space = new RegExp('(?=.*[\\s])');
-
-            if(length.test(data)){
-                minlength.classList.add('valid');
-            }else{
-                minlength.classList.remove('valid');
-            }
-
-            if(number.test(data)){
-                digit.classList.add('valid');
-            }else{
-                digit.classList.remove('valid');
-            }
-
-            if(lower.test(data)){
-                lowercase.classList.add('valid');
-            }else{
-                lowercase.classList.remove('valid');
-            }
-
-            if(upper.test(data)){
-                uppercase.classList.add('valid');
-            }else{
-                uppercase.classList.remove('valid');
-            }
-
-            if(special.test(data)){
-                specialchar.classList.add('valid');
-            }else{
-                specialchar.classList.remove('valid');
-            }
-
-            if(space.test(data)){
-                spaceerror.classList.add('error');
-            }else{
-                spaceerror.classList.remove('error');
-            }
-        }
-
-    password.addEventListener('input', function(){
-        checkPassword(password.value);
-    });
-    </script>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -189,6 +131,91 @@ include('dataconnection.php');
         }
     });
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let minlength = document.getElementById('length');
+  let digit = document.getElementById('number');
+  let lowercase = document.getElementById('lower');
+  let uppercase = document.getElementById('upper');
+  let specialchar = document.getElementById('special');
+  let spaceerror = document.getElementById('space');
+  let loginPassword = document.getElementById('login-password');
+
+  function checkPassword(data) {
+    const length = new RegExp('(?=.{8,})');
+    const number = new RegExp('(?=.*[0-9])');
+    const lower = new RegExp('(?=.*[a-z])');
+    const upper = new RegExp('(?=.*[A-Z])');
+    const special = new RegExp('(?=.*[!@#$%^&*])');
+    const space = new RegExp('(?=.*[\\s])');
+
+    if (length.test(data)) {
+      minlength.classList.add('valid');
+    } else {
+      minlength.classList.remove('valid');
+    }
+
+    if (number.test(data)) {
+      digit.classList.add('valid');
+    } else {
+      digit.classList.remove('valid');
+    }
+
+    if (lower.test(data)) {
+      lowercase.classList.add('valid');
+    } else {
+      lowercase.classList.remove('valid');
+    }
+
+    if (upper.test(data)) {
+      uppercase.classList.add('valid');
+    } else {
+      uppercase.classList.remove('valid');
+    }
+
+    if (special.test(data)) {
+      specialchar.classList.add('valid');
+    } else {
+      specialchar.classList.remove('valid');
+    }
+
+    if (space.test(data)) {
+      spaceerror.classList.add('error');
+    } else {
+      spaceerror.classList.remove('error');
+    }
+  }
+
+  loginPassword.addEventListener('input', function() {
+    checkPassword(loginPassword.value);
+  });
+
+  const resetForm = document.querySelector('.form-container form');
+  resetForm.addEventListener('submit', function(event) {
+    if (
+      !minlength.classList.contains('valid') ||
+      !digit.classList.contains('valid') ||
+      !lowercase.classList.contains('valid') ||
+      !uppercase.classList.contains('valid') ||
+      !specialchar.classList.contains('valid') ||
+      spaceerror.classList.contains('error')
+    ) {
+      event.preventDefault();
+
+      const popup = document.createElement('div');
+      popup.classList.add('popup');
+      popup.innerHTML = "<h2>Error</h2><p>Please ensure that the password meets the requirements.</p><button class='close'></button>";
+      document.body.appendChild(popup);
+
+      const closeButton = popup.querySelector('.close');
+      closeButton.addEventListener('click', function() {
+        document.body.removeChild(popup);
+      });
+    }
+  });
+});
+</script>
 </body>
 </html>
 
@@ -198,7 +225,7 @@ include('dataconnection.php');
         $psw = $_POST["pass"];
 
         $token = $_SESSION['token'];
-        $Email = $_GET['mail'];
+        $Email = $_GET['email'];
 
         $hash = password_hash($psw, PASSWORD_DEFAULT);
 
