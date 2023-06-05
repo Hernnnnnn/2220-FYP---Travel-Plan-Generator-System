@@ -2,11 +2,6 @@
 session_start();
 include('dataconnection.php');
 include "usernavbar.php";
-$email = $_SESSION['email'];
-$sql = "SELECT * From `login` where email = '$email'";
-$r = mysqli_query($conn,$sql);
-$re = mysqli_fetch_assoc($r);
-?>
 ?>
 
 <!DOCTYPE html>
@@ -17,304 +12,178 @@ $re = mysqli_fetch_assoc($r);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TPGS || Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style1.css">
 </head>
-<style media="screen">
-    .upload{
-      width: 140px;
-      position: relative;
-      margin: auto;
-      text-align: center;
-    }
-    .upload img{
-      border-radius: 50%;
-      border: 8px solid #DCDCDC;
-      width: 125px;
-      height: 125px;
-    }
-    .upload .rightRound{
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      background: #00B4FF;
-      width: 32px;
-      height: 32px;
-      line-height: 33px;
-      text-align: center;
-      border-radius: 50%;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .upload .leftRound{
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      background: red;
-      width: 32px;
-      height: 32px;
-      line-height: 33px;
-      text-align: center;
-      border-radius: 50%;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .upload .fa{
-      color: white;
-    }
-    .upload input{
-      position: absolute;
-      transform: scale(2);
-      opacity: 0;
-    }
-    .upload input::-webkit-file-upload-button, .upload input[type=submit]{
-      cursor: pointer;
-    }
-  </style>
-<style>
-    *
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    font-family: sans-serif;
-}
-body
-{
-    background-image: url(images/image.gif);
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-.wrapper
-{
-    /* position: relative; */
-    margin: auto;
-    margin-top: 150px;
-    max-width: 650px;
-    height: 350px;
-    display: flex;
-    box-shadow: 0 1px 20px 0 rgba(75, 182, 183,0.9);
-}
-.wrapper .left
-{
-    width: 35%;
-    background: rgba(0,0,0,0.7);
-    padding: 40px 25px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    text-align: center;
-}
-.wrapper .left img
-{
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-.wrapper .left h4
-{
-    margin-bottom: 10px;
-    color: #fff;
 
-}
-.wrapper .left p
-{
-    font-size: 15px;
-    color: #fff;
-
-}
-
-.wrapper .right
-{
-    width: 65%;
-    background: rgba(255, 255, 255, 0.7);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding: 30px 25px;
-}
-.wrapper .right .info
-{
-    margin-bottom: 25px;
-}
-
-.wrapper .right .info h3
-{
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom:  1px solid black;
-    color: #343c4e;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    
-}
-.wrapper .right .info_data
-{
-    display: flex;
-    justify-content: space-between;
-}
-.wrapper .right .info_data 
-{
-    width: 45%;
-}
-.wrapper .right .info_data .data h4
-{
-    color: #353c4e;
-    margin-bottom: 5px;
-}
-.wrapper .right .info_data .data p
-{
-    font-size: 15px;
-    margin-bottom: 10px;
-    color: #6c757d;
-}
-.settingimg
-{
-    width: 20px;
-    display: block;
-    position: absolute;
-    /* right: 2px; */
-    /* text-align: center; */
-    margin-left: 350px;
-}
-input[type="submit"]
-{
-    border: none;
-    width: 190px;
-    height: 50px;
-    padding: 5px 20px;
-    margin-top: 20px;
-    /* margin-left: 100px; */
-    background: #4bb6b7;
-    border-radius: 30px;
-    font-size: 20px;
-    color: white;
-    
-}
-input[type="submit"]:hover
-{
-    background-color: #6c757d;
-    color: white;
-}
-.success
-{
-    color: #2d6a4f;
-    background-color: #52b788;
-    /* font-weight: bold; */
-    margin-bottom: 10px;
-    padding: 8px;
-    width: 370px;
-    /* font-size: 10pt; */
-    border-radius: 10px;
-    /* text-transform: uppercase; */
-    text-align: center;
-}
-.error
-{
-    color: #d43838;
-    background-color: #fcd1d1;
-    /* font-weight: bold; */
-    margin-bottom: 10px;
-    padding: 8px;
-    width: 370px;
-    /* font-size: 10pt; */
-    border-radius: 10px;
-    /* text-transform: uppercase; */
-    text-align: center;
-}
-
-</style>
-<body >
-            <!-- <div class="wrapper">
-                <div class="left">
-                    
-                    <img src="images/<?php echo $re['image']?>" alt="login" width="100">
-                    <h4><?php echo $re['username']?></h4>
-                    <p>I love TPGS</p>
-                </div>
-                <div class="right">
-                <a href="userprofile.php?email=<?php echo $re['email'];?>"><img src="images/back.png" class="settingimg" ></a>
-                    <div class="info">
-                        <h3>Edit Information</h3>
-                        <div class="info_data">
-                            <div class="data">
-                    <?php echo $msg;?>
-
-                                <h4>Email</h4>
-                                <p><?php echo $re['email']?></p>
-                                <div class="data">
-                                    <form action="" method="post">
-                                    <h4>Image</h4>
-                                    <input type="file" id="file" name="image" class="form-control" multiple>
-                                    <br>
-                                    <input type="submit" value="Submit" name="submit">
-                                    
-                                    </form>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-</div>
-</div> -->
-<form class="form" id = "form" action="" enctype="multipart/form-data" method="post">
-      <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
-      <div class="upload">
-        <img src="images/<?php echo $user['image']; ?>" id = "image">
-
-        <div class="rightRound" id = "upload">
-          <input type="file" name="fileImg" id = "fileImg" accept=".jpg, .jpeg, .png">
-          <i class = "fa fa-camera"></i>
-        </div>
-
-        <div class="leftRound" id = "cancel" style = "display: none;">
-          <i class = "fa fa-times"></i>
-        </div>
-        <div class="rightRound" id = "confirm" style = "display: none;">
-          <input type="submit">
-          <i class = "fa fa-check"></i>
-        </div>
-      </div>
-    </form>
-
-    <script type="text/javascript">
-      document.getElementById("fileImg").onchange = function(){
-        document.getElementById("image").src = URL.createObjectURL(fileImg.files[0]); // Preview new image
-
-        document.getElementById("cancel").style.display = "block";
-        document.getElementById("confirm").style.display = "block";
-
-        document.getElementById("upload").style.display = "none";
-      }
-
-      var userImage = document.getElementById('image').src;
-      document.getElementById("cancel").onclick = function(){
-        document.getElementById("image").src = userImage; // Back to previous image
-
-        document.getElementById("cancel").style.display = "none";
-        document.getElementById("confirm").style.display = "none";
-
-        document.getElementById("upload").style.display = "block";
-      }
-    </script>
-
-    <?php
-    if(isset($_FILES["fileImg"]["name"])){
-      $id = $_POST["id"];
-
-      $src = $_FILES["fileImg"]["tmp_name"];
-      $imageName = uniqid() . $_FILES["fileImg"]["name"];
-
-      $target = "images/" . $imageName;
-
-      move_uploaded_file($src, $target);
-
-      $query = "UPDATE tb_user SET image = '$imageName' WHERE id = $id";
-      mysqli_query($conn, $query);
-
-      header("Location: userhomepage.php?email=".$email);
-    }
-    ?>
+<body>
+	<!-- Header -->
+	<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(images/image.gif); background-size: cover; background-position: center top;">
+		<!-- Mask -->
+		<span class="mask bg-gradient-default opacity-8"></span>
+		<!-- Header container -->
+		<div class="container-fluid d-flex align-items-center">
+			<div class="row">
+			<div class="col">
+				<h1 class="display-2 text-white">Hello <?php echo $result['username']; ?></h1>
+				<p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+				<a href="#!" class="btn btn-info">Edit profile</a>
+			</div>
+			</div>
+		</div>
+		</div>
+		<!-- Page content -->
+		<div class="container-fluid mt--7">
+		<div class="row">
+			<div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+			<div class="card card-profile shadow">
+				<div class="row justify-content-center">
+				<div class="col-lg-3 order-lg-2">
+					<div class="card-profile-image">
+					<a href="#">
+						<img src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg" class="rounded-circle">
+					</a>
+					</div>
+				</div>
+				</div>
+				<div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+				<div class="d-flex justify-content-between">
+					<a href="#" class="btn btn-sm btn-info mr-4">Connect</a>
+					<a href="#" class="btn btn-sm btn-default float-right">Message</a>
+				</div>
+				</div>
+				<div class="card-body pt-0 pt-md-4">
+				<div class="row">
+					<div class="col">
+					<div class="card-profile-stats d-flex justify-content-center mt-md-5">
+						<div>
+						<span class="heading">22</span>
+						<span class="description">Friends</span>
+						</div>
+						<div>
+						<span class="heading">10</span>
+						<span class="description">Photos</span>
+						</div>
+						<div>
+						<span class="heading">89</span>
+						<span class="description">Comments</span>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="text-center">
+					<h3>
+					Jessica Jones<span class="font-weight-light">, 27</span>
+					</h3>
+					<div class="h5 font-weight-300">
+					<i class="ni location_pin mr-2"></i>Bucharest, Romania
+					</div>
+					<div class="h5 mt-4">
+					<i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+					</div>
+					<div>
+					<i class="ni education_hat mr-2"></i>University of Computer Science
+					</div>
+					<hr class="my-4">
+					<p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
+					<a href="#">Show more</a>
+				</div>
+				</div>
+			</div>
+			</div>
+			<div class="col-xl-8 order-xl-1">
+			<div class="card bg-secondary shadow">
+				<div class="card-header bg-white border-0">
+				<div class="row align-items-center">
+					<div class="col-8">
+					<h3 class="mb-0">My account</h3>
+					</div>
+					<div class="col-4 text-right">
+					<a href="#!" class="btn btn-sm btn-primary">Settings</a>
+					</div>
+				</div>
+				</div>
+				<div class="card-body">
+				<form>
+					<h6 class="heading-small text-muted mb-4">User information</h6>
+					<div class="pl-lg-4">
+					<div class="row">
+						<div class="col-lg-6">
+						<div class="form-group focused">
+							<label class="form-control-label" for="input-username">Username</label>
+							<input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+						</div>
+						</div>
+						<div class="col-lg-6">
+						<div class="form-group">
+							<label class="form-control-label" for="input-email">Email address</label>
+							<input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+						</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+						<div class="form-group focused">
+							<label class="form-control-label" for="input-first-name">First name</label>
+							<input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+						</div>
+						</div>
+						<div class="col-lg-6">
+						<div class="form-group focused">
+							<label class="form-control-label" for="input-last-name">Last name</label>
+							<input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+						</div>
+						</div>
+					</div>
+					</div>
+					<hr class="my-4">
+					<!-- Address -->
+					<h6 class="heading-small text-muted mb-4">Contact information</h6>
+					<div class="pl-lg-4">
+					<div class="row">
+						<div class="col-md-12">
+						<div class="form-group focused">
+							<label class="form-control-label" for="input-address">Address</label>
+							<input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+						</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4">
+						<div class="form-group focused">
+							<label class="form-control-label" for="input-city">City</label>
+							<input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+						</div>
+						</div>
+						<div class="col-lg-4">
+						<div class="form-group focused">
+							<label class="form-control-label" for="input-country">Country</label>
+							<input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+						</div>
+						</div>
+						<div class="col-lg-4">
+						<div class="form-group">
+							<label class="form-control-label" for="input-country">Postal code</label>
+							<input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+						</div>
+						</div>
+					</div>
+					</div>
+					<hr class="my-4">
+					<!-- Description -->
+					<h6 class="heading-small text-muted mb-4">About me</h6>
+					<div class="pl-lg-4">
+					<div class="form-group focused">
+						<label>About Me</label>
+						<textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+					</div>
+					</div>
+				</form>
+				</div>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<?php include "userfooter.php"; ?>
 </body>
-
-
 </html>

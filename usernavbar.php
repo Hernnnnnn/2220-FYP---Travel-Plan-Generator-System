@@ -40,21 +40,14 @@ $result = mysqli_fetch_assoc($check);
 
                 <ul class="profile-dropdown-list">
                     <li class="profile-dropdown-list-item">
-                        <a href="#">
+                        <a href="usereditprofile.php?email=<?php echo $email; ?>">
                             <i class="fa-regular fa-user"> </i>
                             Edit Profile
                         </a>
                     </li>
 
                     <li class="profile-dropdown-list-item">
-                        <a href="#">
-                            <i class="fa-solid fa-sliders"></i> </i>
-                            Settings
-                        </a>
-                    </li>
-
-                    <li class="profile-dropdown-list-item">
-                        <a href="#">
+                        <a href="usercontactus.php?email=<?php echo $email; ?>">
                             <i class="fa-regular fa-circle-question"> </i>
                             Help Desk
                         </a>
