@@ -10,9 +10,11 @@ if(!$_SESSION['email'])
     $msg=" ";
     if(isset($_POST['submit']))
     {
-        $sql=mysqli_query($conn,"SELECT * from `location detail`");
+        $sql=mysqli_query($conn,"SELECT * from `locations`");
         $r=mysqli_fetch_assoc($sql);
         $name=$_POST['name'];
+        $dlink = $_POST['dlink'];
+        $llink = $_POST['llink'];
         $detail=$_POST['detail'];
         $imageName = $_FILES['image']['name'];
         $imageTempName = $_FILES['image']['tmp_name'];
@@ -26,7 +28,7 @@ if(!$_SESSION['email'])
         {
             $msg = "Please key-in location's name!";
         }
-        else if($name == $r['lName'])
+        else if($name == $r['name'])
         {
             $msg = "Please key-in <span style='font-weight: bold;'>new</span> location's name!";
             
@@ -49,7 +51,7 @@ if(!$_SESSION['email'])
         {
             if(move_uploaded_file($videoTempName,$videoTarget))
             {
-                $sql = "INSERT INTO `location detail`(lName,lDetails,lImage,lVideo) VALUES ('$name','$detail','$imageName','$videoName')";
+                $sql = "INSERT INTO `locations`(name,description,image_url,video_url,direction_link,locationdetail_link) VALUES ('$name','$detail','$imageName','$videoName','$dlink','$llink')";
                 
                 $s="CREATE Table `".$name."location`(`id` int(11) NOT NULL,`locationname` text NOT NULL,`locationimage` text NOT NULL,`locationlink` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
                 $s1="CREATE Table `".$name."restaurant`(`id` int(11) NOT NULL,`restaurantname` text NOT NULL,`restaurantimage` text NOT NULL,`restaurantlink` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
@@ -211,6 +213,12 @@ if(!$_SESSION['email'])
                 <label for="" >Location's Detail:</label>
                 <textarea name="detail" id="detail" cols="50" rows="5" placeholder="<?php if(isset($_POST['submit'])){echo $_POST['detail'];}?>"></textarea>
                 <br>
+                <label for="">Direction Link:</label>
+                <input type="text" name="dlink">
+                <br>
+                <label for="">Location Link:</label>
+                <input type="text" name="llink">
+                <br>
                 <label for="">Location's Image:</label>
                 <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
                 <input type="file" id="file" name="image" class="form-control" multiple >
@@ -219,6 +227,7 @@ if(!$_SESSION['email'])
                 <label for="video"  class="Choose"><i class="fa fa-camera"></i> Choose a Video</label>
                 <input type="file" id="video" name="video" class="form-control" multiple>
                 <br>
+                
                 <div class="submit">
                 <input type="submit" name="submit" value="Add Location">
                 </div>

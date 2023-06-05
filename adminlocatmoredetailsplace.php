@@ -333,9 +333,10 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <thead>
                 <tr>
                     
-                    <th style="padding-right:80px; padding-left:80px;">location's Name</th>
-                    <th>location's Image</th>
+                    <th style="padding-right:80px; padding-left:80px;">Location's Name</th>
+                    <th>Location's Image</th>
                     <th></th>
+                    <th>Link</th>
                     <th></th>
                 </tr>
                 </thead>
