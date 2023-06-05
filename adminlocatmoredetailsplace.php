@@ -319,7 +319,7 @@ input[type="checkbox"].toggle:disabled + label::after {
 
 
                     ?>
-                    <td colspan="4" style="padding: 10px;"><div class="header">
+                    <td colspan="5" style="padding: 10px;"><div class="header">
                     <div class="search-wrapper">
                     <input type="text" name="search" placeholder="Search here" value="<?php echo $searchKey?>">
 
@@ -333,9 +333,10 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <thead>
                 <tr>
                     
-                    <th style="padding-right:80px; padding-left:80px;">location's Name</th>
-                    <th>location's Image</th>
+                    <th style="padding-right:80px; padding-left:80px;">Location's Name</th>
+                    <th>Location's Image</th>
                     <th></th>
+                    <th>Link</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -350,6 +351,8 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <tr>
                     <td><span style="font-weight: bold; font-size: 19px;"><?php echo $red['locationname']?></span></td>
                     <td><img style="width: 70%;" src="<?php echo $red['locationimage']?>" alt=""></td>
+                    <td><?php echo $red['locationlink']?></td>
+                    <td>
                         <?php 
                             $id = $red['id'];
                         ?>
@@ -367,7 +370,7 @@ input[type="checkbox"].toggle:disabled + label::after {
                 }
             ?>
             <tr>
-                <td colspan="4"><a class="back"href="adminManagelocation.php?email=<?php echo $email?>">Back to Manage Location</a></td>
+                <td colspan="5"><a class="back"href="adminManagelocation.php?email=<?php echo $email?>">Back to Manage Location</a></td>
             </tr>
 
             </div>

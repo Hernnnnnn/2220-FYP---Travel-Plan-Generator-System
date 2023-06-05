@@ -1,4 +1,11 @@
-
+<?php
+    session_start();
+    if(!$_SESSION['email'])
+{
+    header("Location:adminloginpage.php");
+}
+?>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,18 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <?php
-    session_start();
-    if(!$_SESSION['email'])
-{
-    header("Location:adminloginpage.php");
-}
-    include 'adminnavbar.php';
-    $email = $_GET['email'];
-    $sql = "SELECT * From `admin` where email = '$email'";
-	$r = mysqli_query($conn,$sql);
-	$re = mysqli_fetch_assoc($r);
-    ?>
+    
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   
 </head>
@@ -41,7 +37,7 @@
         overflow-x: scroll;
         border-collapse: collapse;
         margin: 25px 0;
-        font-size: 0.9em;
+        /* font-size: 20px; */
         font-family: sans-serif;
         /* min-width: 400px; */
         width: 60%;
@@ -53,7 +49,7 @@
 
     table thead th {
     border: none;
-    padding: 26px;
+    padding: 50px;
     font-size: 14px;
     color: #fff; 
     background: rgba(0,0,0,0.7);
@@ -78,7 +74,7 @@
     {
         background: rgba(255, 255, 255, 0.7);
         text-align: center;
-        padding-bottom: 15px;
+        padding-bottom: 20px;
         padding-top: 15px;
 
     }
@@ -243,33 +239,60 @@ input[type="checkbox"].toggle:disabled + label::after {
     {
         padding: 10px;
     } */
-    .fa-close
-    {
-        font-size: 22px;
-        color: red;
-        font-weight: bold;
-    }
+    
 
-    .glyphicon-apple,.fa-globe{
+    /* .glyphicon-apple,.fa-globe{
         font-size: 22px;
         color: #4bb6b7;
     }
 
-    .glyphicon-apple:hover,.fa-globe:hover
+    .glyphicon-apple:hover
     {
         color: black;
         transition: 0.5s;
         font-size: 30px;
+    }
+    .fa-globe:hover
+    {
+        color: black;
+        transition: 0.5s;
+        font-size: 30px; 
+    }
+    .fa-close
+    {
+        font-size: 30px;
+        color: red;
+        font-weight: bold;
     }
     .fa-close:hover
     {
         color: black;
         transition: 0.5s;
-        font-size: 30px;
+        font-size: 50px;
         /* font-weight: bold; */
 
+    .icon
+    {
+        font-size: 25px;
+    }
+    .icon:hover
+    {
+        font-size: 35px;
+        color: black;
+        transition: 0.5s;
+    }
+    .image2
+    {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 </style>
+<?php include 'adminnavbar.php';
+    $email = $_GET['email'];
+    $sql = "SELECT * From `admin` where email = '$email'";
+	$r = mysqli_query($conn,$sql);
+	$re = mysqli_fetch_assoc($r);
+    ?>
 <body >
     <form method="post">
             <table>
@@ -278,12 +301,12 @@ input[type="checkbox"].toggle:disabled + label::after {
                     if(isset($_POST['search']))
                     {
                         $searchKey=$_POST['search'];
-                        $p = "SELECT * From `location detail` where lName LIKE '%$searchKey%'";
+                        $p = "SELECT * From `locations` where `name` LIKE '%$searchKey%'";
 
                     }
                     else
                     {
-                        $p = "SELECT * From `location detail`";
+                        $p = "SELECT * From `locations`";
                         $searchKey = "";
                     }
                         
@@ -291,7 +314,7 @@ input[type="checkbox"].toggle:disabled + label::after {
 
 
                     ?>
-                    <td colspan="7" style="padding: 10px;"><div class="header">
+                    <td colspan="9" style="padding: 10px;"><div class="header">
                     <div class="search-wrapper">
                     <input type="text" name="search" placeholder="Search here" value="<?php echo $searchKey?>">
 
@@ -309,6 +332,8 @@ input[type="checkbox"].toggle:disabled + label::after {
                     <th>Location's Details</th>
                     <th>Location's Image</th>
                     <th>Location's Video</th>
+                    <th>Derection Link</th>
+                    <th>Location's Details Link</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -322,27 +347,28 @@ input[type="checkbox"].toggle:disabled + label::after {
                     
             ?>
                 <tr>
-                    <td><span style="font-weight: bold; font-size: 15px;"><?php echo $loc['lName']?></span></td>
-                    <td><div class="test"><?php echo $loc['lDetails']?></div></td>
-                    <td><img style="width: 60%;" src="images/<?php echo $loc['lImage']?>" alt=""></td>
+                    <td><span style="font-weight: bold; font-size: 15px;"><?php echo $loc['name']?></span></td>
+                    <td><div class="test"><?php echo $loc['description']?></div></td>
+                    <td class="image2"><img style="width: 60%;" src="images/<?php echo $loc['image_url']?>" alt=""></td>
                     <td>
-                        <?php echo $loc["lVideo"]?>
+                        <?php echo $loc["video_url"]?>
                     </td>
                     <?php 
                         $id=$loc['id'];
-                        $localname = $loc['lName'];
+                        $localname = $loc['name'];
                     ?>
-
+                    <td><?php echo $loc['direction_link']?></td>
+                    <td><?php echo $loc['locationdetail_link']?></td>
                     <td>
                     <a class="update" href="adminupdatelocationdetails.php?email=<?php echo $email?>&&id=<?php echo $id?>">Edit</a>
                     </td>
                     <td class="setting">
                     
-                    <a href="adminlocatmoredetailsfood.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="glyphicon glyphicon-apple" style="font-size: 20px;"></span></a>
-                    <a href="adminlocatmoredetailsplace.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="fa fa-globe" style="font-size: 25px;"></span></a>
+                    <a class="icon"href="adminlocatmoredetailsfood.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="glyphicon glyphicon-apple"></span></a>
+                    <a class="icon" href="adminlocatmoredetailsplace.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="fa fa-globe" ></span></a>
                     </td>
                     <td>
-                    <a href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="fa fa-close"></span></a>
+                    <a class="icon" href="admindellocat.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="fa fa-close" ></span></a>
                     </td>
                     
                     

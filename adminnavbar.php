@@ -256,9 +256,7 @@
 	{
 		color: #4bb6b7;
 	}
-	.fa-globe:hover{
-		color: #4bb6b7;
-	}
+	
 	
 </style>
 <style>
