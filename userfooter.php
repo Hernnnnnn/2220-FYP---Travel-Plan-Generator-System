@@ -54,17 +54,9 @@ include('dataconnection.php');
                 <h2>Contact Us</h2>
                 <hr class="underline">
                 <div class="content">
-                    <form action="#">
-                        <div class="email">
-                            <div class="text">Email *</div>
-                            <input type="email" required>
-                        </div>
-                        <div class="msg">
-                            <div class="text">Message *</div>
-                            <textarea rows="2" cols="25" required></textarea>
-                        </div>
+                    <form action="usercontactus.php?email=">
                         <div class="btn">
-                            <button type="submit">Send</button>
+                            <button type="submit">Need Help?</button>
                         </div>
                     </form>
                 </div>
