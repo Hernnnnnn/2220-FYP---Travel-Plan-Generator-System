@@ -123,7 +123,7 @@ $result = mysqli_query($conn, $sql);
         	<div class="line"></div>
 			<div class="container_calendar">
 				<div class="calendar">
-					<h3>Day 1</h3>
+					<h3>Day 2</h3>
 					
 					</div>
 				<hr style="height:2px;border-width:0;color:gray;background-color:gray">
@@ -135,7 +135,7 @@ $result = mysqli_query($conn, $sql);
 			
 			<div class="container_calendar">
 				<div class="calendar">
-					<h3>Day 1</h3>
+					<h3>Day 3</h3>
 					</div>
 					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 					<div class="add_destination"  >
@@ -146,7 +146,7 @@ $result = mysqli_query($conn, $sql);
 
 			<div class="container_calendar">
 				<div class="calendar">
-					<h3>Day 1</h3>
+					<h3>Day 4</h3>
 					</div>
 					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 					<div class="add_destination">
@@ -224,27 +224,7 @@ while($row = mysqli_fetch_assoc($result)){
 </div>
   
 
-<div class="popup">
-  <div class="popup-content">
-  <form >
-  <label for="days">Choose a day:</label>
-  <select name="days" id="days">
-    <option value="days">Day 1</option>
-    <option value="days">Day 2</option>
-    <option value="days">Day 3</option>
-  </select>
-  <br><br>
 
-  <label for="duration">Duration:</label><br>
-  <input type="text" id="duration" name="duration"><br>
-
-  <a href="#" class="button">submit</a>
-
-  
-</form>
-  </div>
-
-</div>
 
 
 
