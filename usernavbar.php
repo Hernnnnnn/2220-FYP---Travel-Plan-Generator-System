@@ -61,7 +61,7 @@ $result = mysqli_fetch_assoc($check);
                     </li>
                     <hr>
                     <li class="profile-dropdown-list-item">
-                        <a href="#">
+                        <a href="userregistrationlogin.php">
                             <i class="fa-solid fa-arrow-right-from-bracket"> </i>
                             Log out
                         </a>
