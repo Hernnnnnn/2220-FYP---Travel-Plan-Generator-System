@@ -332,7 +332,7 @@ input[type="checkbox"].toggle:disabled + label::after {
                     
                     <th style="padding-right:80px; padding-left:80px;">Restaurant's Name</th>
                     <th>Restaurant's Image</th>
-                    <th></th>
+                    <th>Link</th>
                     <th></th>
                     <th></th>
                 </tr>

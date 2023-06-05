@@ -5,7 +5,7 @@ session_start();
 	$id=$_GET['id'];
 	$email = $_GET['email'];
 	$loc=$_GET['localname'];
-	mysqli_query($conn,"DELETE from `location detail` where id='$id'");
+	mysqli_query($conn,"DELETE from `locations` where id='$id'");
 	$s="DROP TABLE `".$loc."location`";
 	$s1="DROP TABLE `".$loc."restaurant`";
 	mysqli_query($conn,$s);

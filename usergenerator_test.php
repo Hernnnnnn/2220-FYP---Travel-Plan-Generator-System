@@ -3,36 +3,83 @@ session_start();
 
 include('dataconnection.php');
 $host = "localhost";
+$msg =" ";
 	$username = "root";
 	$password = "";
 	$database = "tpgs";
+  $id = $_POST['id'];
 $connect =mysqli_connect("localhost","root","","tpgs");
 if(isset($_POST['add_to_cart'])){
-    if (isset($_SESSION['cart'])) {
 
-        $session_array_id=array_column($_SESSION['cart'],"id");
-
-        if(!in_array($_GET['id'],$session_array_id)){
-            $session_array =array(
-                'id' =>$GET['id'],
-                "name" =>$_POST['name'],
-                "price" =>$_POST['price'],
-                "quantity" => $_POST['quantity']
-            );
-        };
-    }
-    else{
-        $session_array =array(
-            'id' =>$GET['id'],
-            "name" =>$_POST['name'],
-            "price" =>$_POST['price'],
-            "quantity" => $_POST['quantity']
-        );
-        $_SESSION['cart'][]=$session_array;
-    }
+  $q = "SELECT * from `usergenerator` where des_id = $id";
+  $query = mysqli_query($conn,$q);
+  $rz = mysqli_fetch_assoc($query);
+    $msg = "<div class='popup'>
+    <div class='popup-content'>
+    <form method='post'>
+  <img src='images/close.png' alt='Close' class='close'>
+    <label for='days'>Choose a day:</label>
+    <select name='days' id='days'>
+      <option value='days'> 1</option>
+      <option value='days'> 2</option>
+      <option value='days'> 3</option>
+    </select>
+    <br><br>
+  
+    <label for='duration'>Duration:</label><br>
+    <input type='text' id='duration' name='duration'><br>
+  
+    <a href='useradddestination.php' class='button'>submit</a>
+  
+    
+  </form>
+    </div>
+  
+  </div>
+  ";
 }
 
 ?>
+
+
+<?php
+  //   if (isset($_POST['add_to_cart'])) {
+  //       // Get the relevant data from the form
+  //       $productName = $_POST['product_name'];
+  //       $productImage = $_POST['product_image'];
+
+  //       if (empty($productName) || empty($productImage)) {
+  //           echo "added fail";
+  //           exit();
+  //       } else {
+  //           // Prepare the SQL statement with placeholders
+  //           $sql = "INSERT INTO userdestination (des_img, des_Name) VALUES (?, ?)";
+  //           $stmt = $conn->prepare($sql);
+
+  //           // Bind the values to the prepared statement
+  //           $stmt->bind_param("ss", $productImage, $productName);
+
+  //           // Execute the prepared statement
+  //           if ($stmt->execute()) {
+  //               echo "added successfully";
+  //           } else {
+  //               echo "added fail";
+  //           }
+  //       }
+  //   }
+	// // Establish database connection
+	// $host = "localhost";
+	// $username = "root";
+	// $password = "";
+	// $database = "tpgs";
+	// $connect = mysqli_connect($host, $username, $password, $database);
+
+	// // SQL query to select orders and order items
+	// $sqlselect = "SELECT des_img, des_Name from usergenerator";
+
+	// $result = mysqli_query($connect, $sqlselect);
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -111,20 +158,6 @@ if(isset($_POST['add_to_cart'])){
      color: gray;
      padding-left: 20px;
  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
  .container_product {
@@ -268,7 +301,7 @@ background-attachment: fixed;
 }
 
 
-/* .popup{
+ .popup{
   background:rgba(0, 0, 0, 0.6) ;
   width: 100%;
   height: 100%;
@@ -323,7 +356,32 @@ transition: 0.4s;
 .button:hover{
     background: #34495e;
     color: #fff;
-} */
+} 
+
+.buttons{
+background:#fff;
+padding:10px 15px;
+color: #34495e;
+font-weight: bolder;
+text-transform: uppercase;
+font-size: 18px;
+border-radius: 5px;
+margin:10%;
+transition: 0.4s;
+
+}
+
+.close{
+  position: absolute;
+  top:-15px;
+  right: -15px;
+  background:#fff;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.75);
+  cursor:pointer;
+}
 </style>
 <body>
 
@@ -364,12 +422,14 @@ transition: 0.4s;
                         while ($row = mysqli_fetch_array($result)){?>
 
                         <div class="col-md-4 ">
-                            <form method="post" action="index.php?id=<?php $row['des_id'] ?>">
-                            <img src="<?=$row['des_img']?>" style ='height:150px;'>
-                            <h5><?= $row['des_Name']; ?></h5> 
+                            <form method="post">
+                            <img src="<?php echo $row['des_img']?>" style ='height:150px;'>
+                            <h5 ><?php echo $row['des_Name']; ?></h5> 
+                            <input type="hidden" name="id" value="<?php echo $row['des_id']?>">
+                            <input type="hidden" name="product_name"  value="<?php echo $row["des_Name"]; ?>" >
+                            <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>">
 
-                            <input type="submit"  id="button" class="btn btn-warning btn-block my-3" value="Add To Cart">
-                            
+                            <input type="button" onclick="show()" class="btn btn-warning btn-block" name="add_to_cart" value="Add to Cart">
 
                             </form>
                         </div>
@@ -406,7 +466,7 @@ transition: 0.4s;
         	<div class="line"></div>
 			<div class="container_calendar">
 				<div class="calendar">
-					<h3>Day 1</h3>
+					<h3>Day 2</h3>
 					
 					</div>
 				<hr style="height:2px;border-width:0;color:gray;background-color:gray">
@@ -418,7 +478,7 @@ transition: 0.4s;
 			
 			<div class="container_calendar">
 				<div class="calendar">
-					<h3>Day 1</h3>
+					<h3>Day 3</h3>
 					</div>
 					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 					<div class="add_destination"  >
@@ -429,7 +489,7 @@ transition: 0.4s;
 
 			<div class="container_calendar">
 				<div class="calendar">
-					<h3>Day 1</h3>
+					<h3>Day 4</h3>
 					</div>
 					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 					<div class="add_destination">
@@ -448,35 +508,24 @@ transition: 0.4s;
         </div>
 
 
-<!-- <div class="popup">
-  <div class="popup-content">
-  <form >
+ 
+<?php echo $msg?>
 
-  <label for="days">Choose a day:</label>
-  <select name="days" id="days">
-    <option value="days">Day 1</option>
-    <option value="days">Day 2</option>
-    <option value="days">Day 3</option>
-  </select>
-  <br><br>
-
-  <label for="duration">Duration:</label><br>
-  <input type="text" id="duration" name="duration"><br>
-
-  <a href="#" class="button">submit</a>
-
-  
-</form>
-  </div>
-
-</div> -->
-
-<!-- <script>
-    document.getElementById("button"),addEventListener("click",function({
-        document.querySelector(".popup").style.display="flex";
-    }))
-    </script> -->
+ 
 
 
 </body>
+<script>
+
+  function show()
+  {
+    document.querySelector('.popup').style.display = 'flex'
+  }
+
+
+document.querySelector('.close').addEventListener('click',function(){
+  document.querySelector('.popup').style.display='none';
+})
+
+</script>
 </html>
