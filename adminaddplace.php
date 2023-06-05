@@ -19,6 +19,7 @@ if(!$_SESSION['email'])
         $sql=mysqli_query($conn,$sl);
         $r=mysqli_fetch_assoc($sql);
         $name=$_POST['name'];
+        $link = $_POST['link'];
         $imageName = $_FILES['image']['name'];
         $imageTempName = $_FILES['image']['tmp_name'];
         $targetPath = "images/".$loc."/"."PLACE/".$imageName;
@@ -42,7 +43,7 @@ if(!$_SESSION['email'])
             if(move_uploaded_file($imageTempName,$targetPath))
         {
             {
-                $sql = "INSERT INTO `".$loc."location`(locationname,locationimage) VALUES ('$name','$targetPath')";
+                $sql = "INSERT INTO `".$loc."location`(locationname,locationimage,locationlink) VALUES ('$name','$targetPath','$link')";
                 $result = mysqli_query($conn,$sql);
             }
 
@@ -193,6 +194,9 @@ if(!$_SESSION['email'])
             <label for="">Location's Image:</label>
             <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
             <input type="file" id="file" name="image" class="form-control" multiple >
+            <br>
+            <label for="">Link:</label>
+            <input type="text" name="link" id="" value="<?php if(isset($_POST['submit'])){echo $_POST['link'];}?>">
             <br>
             <div class="submit">
             <input type="submit" name="submit" value="Add Location">

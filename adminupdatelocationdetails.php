@@ -126,11 +126,11 @@ if(!$_SESSION['email'])
     {
         display: none;
     }
-    .edi-box textarea
+    /* .edi-box textarea
     {
         background: transparent;
         border: 2px solid black;
-    }
+    } */
     label
     {
         padding-right: 20px;
@@ -195,16 +195,13 @@ if(!$_SESSION['email'])
             $rz=mysqli_fetch_assoc($sql); 
         ?>
             
-            <h1>Update Location's Details</h1>
+            <h1>Update <?php echo $rz['lName']?>'s Details</h1>
                 <div class="edi-box">
                 <form action="" method="post" enctype="multipart/form-data">
                 <?php echo $msg?>
                 <br>
-                <label for="">Location's Name:</label>
-                <input type="text" name="name" id="" value="<?php echo $rz['lName']?>">
-                <br>
                 <label for="" >Location's Detail:</label>
-                <textarea name="detail" id="detail" cols="50" rows="5" placeholder=""><?php echo $rz['lDetails']?></textarea>
+                <textarea name="detail" id="detail" cols="60" rows="5" placeholder=""><?php echo $rz['lDetails']?></textarea>
                 <br>
                 <label for="">Location's Image:</label><img width="30%" src="images/<?php echo $rz['lImage'];?>" alt="">
                 <label for="file"  name="choosei"class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
@@ -215,7 +212,7 @@ if(!$_SESSION['email'])
                 <video width="300px" controls autoplay loop>
                     <source src="images/<?php echo $rz['lVideo']?>">
                 </video>
-                <label for="video"  class="Choose"><i class="fa fa-camera"></i> Choose a Video</label>
+                
                 <input type="file" id="video" name="video" class="form-control" multiple>
                 <br>
                 <div class="submit">
