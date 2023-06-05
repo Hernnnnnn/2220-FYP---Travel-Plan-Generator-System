@@ -54,7 +54,7 @@ include('dataconnection.php');
                 <h2>Contact Us</h2>
                 <hr class="underline">
                 <div class="content">
-                    <form action="usercontactus.php?email=">
+                    <form action="usercontactus.php?email=<?php echo $email; ?>" method="post">
                         <div class="btn">
                             <button type="submit">Need Help?</button>
                         </div>
