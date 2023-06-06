@@ -2,41 +2,41 @@
 session_start();
 
 include('dataconnection.php');
-$host = "localhost";
-$msg =" ";
-	$username = "root";
-	$password = "";
-	$database = "tpgs";
-  $id = $_POST['id'];
-$connect =mysqli_connect("localhost","root","","tpgs");
-if(isset($_POST['add_to_cart'])){
 
+$msg =" ";
+if(isset($_POST['add_to_cart'])){
+  $id = mysqli_real_escape_string($conn,$_POST['id']);
   $q = "SELECT * from `usergenerator` where des_id = $id";
+  $day = mysqli_real_escape_string($conn,$_POST['des_day']);
   $query = mysqli_query($conn,$q);
   $rz = mysqli_fetch_assoc($query);
-    $msg = "<div class='popup'>
-    <div class='popup-content'>
-    <form method='post'>
-  <img src='images/close.png' alt='Close' class='close'>
-    <label for='days'>Choose a day:</label>
-    <select name='days' id='days'>
-      <option value='days'> 1</option>
-      <option value='days'> 2</option>
-      <option value='days'> 3</option>
-    </select>
-    <br><br>
+  $image = mysqli_real_escape_string($conn,$_POST['product_image']);
+  $name = $rz['des_Name'];
+  $q1 = "INSERT INTO `userdestination`(des_Name,des_img,des_day) VALUES ('$name','$image','$day')";
+  $q2 = mysqli_query($conn,$q1);
+
+//     $msg = "<div class='popup'>
+//     <div class='popup-content'>
+//     <form method='post'>
+//   <img src='images/close.png' alt='Close' class='close'>
+//     <label for='days'>Choose a day:</label>
+//     <select name='days' id='days'>
+//       <option value='days'> 1</option>
+//       <option value='days'> 2</option>
+//       <option value='days'> 3</option>
+//     </select>
+//     <br><br>
   
-    <label for='duration'>Duration:</label><br>
-    <input type='text' id='duration' name='duration'><br>
+//     <label for='duration'>Duration:</label><br>
+//     <input type='text' id='duration' name='duration'><br>
   
-    <a href='useradddestination.php' class='button'>submit</a>
+//     <a href='useradddestination.php?id=' class='button'>submit</a>
   
-    
-  </form>
-    </div>
+//   </form>
+//     </div>
   
-  </div>
-  ";
+//   </div>
+//   ";
 }
 
 ?>
@@ -300,7 +300,7 @@ background-repeat: no-repeat;
 background-attachment: fixed;
 }
 
-
+/* 
  .popup{
   background:rgba(0, 0, 0, 0.6) ;
   width: 100%;
@@ -323,22 +323,22 @@ background-attachment: fixed;
 
 
 
-}
+} */
 
-input{
-    margin: 10px auto;
-    margin-bottom: 20px;
-  
-    width: 50%;
-    padding:5px;
-    border-radius: #fff;
-    position:relative;
-}
-
-
+  /* input{
+      margin: 10px auto;
+      margin-bottom: 20px;
+    
+      width: 50%;
+      padding:5px;
+      border-radius: #fff;
+      position:relative;
+  } */
 
 
-.button{
+
+
+/* .button{
 background:#fff;
 padding:10px 15px;
 color: #34495e;
@@ -356,7 +356,7 @@ transition: 0.4s;
 .button:hover{
     background: #34495e;
     color: #fff;
-} 
+}  */
 
 .buttons{
 background:#fff;
@@ -382,6 +382,17 @@ transition: 0.4s;
   box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.75);
   cursor:pointer;
 }
+#submit
+{
+      margin: 10px auto;
+      margin-bottom: 20px;
+      width: 100%;
+      padding:5px;
+      border-radius: #fff;
+      position:relative;
+}
+
+
 </style>
 <body>
 
@@ -425,11 +436,11 @@ transition: 0.4s;
                             <form method="post">
                             <img src="<?php echo $row['des_img']?>" style ='height:150px;'>
                             <h5 ><?php echo $row['des_Name']; ?></h5> 
-                            <input type="hidden" name="id" value="<?php echo $row['des_id']?>">
+                            <input type="number" name="des_day"  value="0">
                             <input type="hidden" name="product_name"  value="<?php echo $row["des_Name"]; ?>" >
                             <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>">
-
-                            <input type="button" onclick="show()" class="btn btn-warning btn-block" name="add_to_cart" value="Add to Cart">
+                            <input type="hidden" name="id" value="<?php echo $row['des_id']?>">
+                            <input type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to Cart">
 
                             </form>
                         </div>
@@ -441,61 +452,34 @@ transition: 0.4s;
 
 </div>
 </div>
-
-
-                    </div>
+</div>
                     <div class="sidenav">
                         <h2 class="text-center">Location</h2>
 
                         <button class="add">Add Trip</button>
+<?php
+                        $query ="SELECT * FROM  userdestination";
+                        $result = mysqli_query($conn,$query);
+                        while ($r = mysqli_fetch_array($result)){?>
+
+                    
 
 			<div class="container_calendar">
 				<div class="calendar">
-					<h3>Day 1</h3>
-				
+					<h3>Day <?php echo $r['des_id']?></h3>
+                        
 
 					</div>
 					
 					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 					<div class="add_destination">
-					<h4>add destination</h4>
+					<p><?php echo $r['des_Name']?></p>
 					
 					</div>
 			
 			</div>
         	<div class="line"></div>
-			<div class="container_calendar">
-				<div class="calendar">
-					<h3>Day 2</h3>
-					
-					</div>
-				<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-					<div id="add_destination">
-						<h4>add destination</h4>
-					</div>
-			</div>
-
-			
-			<div class="container_calendar">
-				<div class="calendar">
-					<h3>Day 3</h3>
-					</div>
-					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-					<div class="add_destination"  >
-						<h4 >add destination</h4>
-					</div>
-			</div>
-
-
-			<div class="container_calendar">
-				<div class="calendar">
-					<h3>Day 4</h3>
-					</div>
-					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-					<div class="add_destination">
-						<h4>add destination</h4>
-					</div>
-			</div>
+			<?php }?>
 		<button class="delete">delete</button>
 		<button class="print">Print</button>
 	
