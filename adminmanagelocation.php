@@ -217,6 +217,23 @@ input[type="checkbox"].toggle:disabled + label::after {
         background: rgba(255, 255, 255, 0.4);
         font-weight: bold;
     }
+    .update1
+    {
+        color: white;
+        margin: 10px;
+        margin-left: 0;
+        /* border: 1px solid black; */
+        padding: 10px;
+        border-radius: 25px;
+        background-color: #ed4337;
+        font-weight: bold;
+    }
+    .update1:hover
+    {
+        color: black;
+        background: rgba(255, 255, 255, 0.4);
+        font-weight: bold;
+    }
     .addlocat
     {
         margin-top: auto;
@@ -235,42 +252,7 @@ input[type="checkbox"].toggle:disabled + label::after {
         font-weight: bold;
         
     }
-    /* .setting
-    {
-        padding: 10px;
-    } */
     
-
-    /* .glyphicon-apple,.fa-globe{
-        font-size: 22px;
-        color: #4bb6b7;
-    }
-
-    .glyphicon-apple:hover
-    {
-        color: black;
-        transition: 0.5s;
-        font-size: 30px;
-    }
-    .fa-globe:hover
-    {
-        color: black;
-        transition: 0.5s;
-        font-size: 30px; 
-    }
-    .fa-close
-    {
-        font-size: 30px;
-        color: red;
-        font-weight: bold;
-    }
-    .fa-close:hover
-    {
-        color: black;
-        transition: 0.5s;
-        font-size: 50px;
-        /* font-weight: bold; */
-
     .icon
     {
         font-size: 25px;
@@ -286,6 +268,86 @@ input[type="checkbox"].toggle:disabled + label::after {
         padding-top: 20px;
         padding-bottom: 20px;
     }
+    .center
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .popup
+    {
+        width: 350px;
+        height: 280px;
+        padding: 30px 20px;
+        background: #f5f5f5;
+        border-radius: 10px;
+        box-sizing: border-box;
+        z-index: 2;
+        text-align: center;
+        opacity: 0;
+        top: -200%;
+        transform: translate(-50%,-50%) scale(0.5);
+        transition: opacity 300ms ease-in-out,top 1000ms ease-in-out,transform 1000ms ease-in-out;
+    }
+
+    .popup.active
+    {
+        opacity: 1;
+        top: 50%;
+        transform: translate(-50%,-50%) scale(1);
+        transition: transform 3000ms cubic-bezier(0.18,0.89,0.43,1.19);
+    }
+
+    .popup .icon
+    {
+        margin: 5x 0px;
+        width: 50px;
+        height: 50px;
+        border: 2px solid #34f234;
+        text-align: center;
+        display: inline-block;
+        border-radius: 50%;
+        line-height: 60px;
+    }
+    .popup .icon i
+    {
+        font-size: 30px;
+        color: #34f234;
+        font-weight: bold;
+    }
+
+    .popup .title
+    {
+        margin: 5px 0px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .popup .dismiss-btn
+    {
+        margin-top: 15px;
+    }
+
+    .popup .dismiss-btn button
+    {
+        padding: 10px 20px;
+        background: #111;
+        color: #f5f5f5;
+        border: 2px solid #111;
+        font-size: 16px;
+        font-weight: 600;
+        outline: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 3000ms ease-in-out;
+    }
+
+    .popup .dismiss-btn button:hover
+    {
+        color: #111;
+        background: #f5f5f5;
+    }
 </style>
 <?php include 'adminnavbar.php';
     $email = $_GET['email'];
@@ -294,6 +356,19 @@ input[type="checkbox"].toggle:disabled + label::after {
 	$re = mysqli_fetch_assoc($r);
     ?>
 <body >
+    <div class="popup center">
+        <div class="icon">
+            <i class="fa fa-check"></i>
+        </div>
+        <div class="title">
+            Success!!
+        </div>
+        <!-- <div class="dismiss-btn">
+            <button id="dismiss-popup-btn">
+                Dimiss
+            </button>
+        </div> -->
+    </div>
     <form method="post">
             <table>
                 <tr>
@@ -314,13 +389,13 @@ input[type="checkbox"].toggle:disabled + label::after {
 
 
                     ?>
-                    <td colspan="9" style="padding: 10px;"><div class="header">
+                    <td colspan="10" style="padding: 10px;"><div class="header">
                     <div class="search-wrapper">
                     <input type="text" name="search" placeholder="Search here" value="<?php echo $searchKey?>">
 
                     <button type="submit" name="submit"><span class="fa fa-search"></span></button>
                     </div>
-                    <a class="addlocat" href="adminaddlocation.php?email=<?php echo $email;?>">Add Location</a>
+                    <a class="addlocat" href="adminaddlocation.php?email=<?php echo $email;?>">Add State</a>
                      </div>
                      </form>
                     </td>
@@ -328,12 +403,13 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <thead>
                 <tr>
                     
-                    <th>Location's Name</th>
-                    <th>Location's Details</th>
-                    <th>Location's Image</th>
-                    <th>Location's Video</th>
+                    <th>State's Name</th>
+                    <th>State's Details</th>
+                    <th>State's Image</th>
+                    <th>State's Video</th>
                     <th>Derection Link</th>
-                    <th>Location's Details Link</th>
+                    <th>State's Details Link</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -362,6 +438,19 @@ input[type="checkbox"].toggle:disabled + label::after {
                     <td>
                     <a class="update" href="adminupdatelocationdetails.php?email=<?php echo $email?>&&id=<?php echo $id?>">Edit</a>
                     </td>
+                    <td>
+                    <?php
+                   $status = $loc["option"];
+                    if($status==1)
+                    {
+                        echo '<a class="update" id="open-popup-btn" onclick="show()"  href="admineditoption.php?email='.$email.'&&id='.$id.'&&option='.$status.'">Update</a>';
+                    }
+                    else if($status==0)
+                    {
+                        echo '<a onclick="show()" class="update1" href="admineditoption.php?email='.$email.'&&id='.$id.'&&option='.$status.'">Update</a>';
+                    }
+                    ?>
+                    </td>
                     <td class="setting">
                     
                     <a class="icon"href="adminlocatmoredetailsfood.php?email=<?php echo $email?>&&id=<?php echo $id?>&&localname=<?php echo $localname?>"><span class="glyphicon glyphicon-apple"></span></a>
@@ -385,6 +474,17 @@ input[type="checkbox"].toggle:disabled + label::after {
 
 </body>
 <script>
+    function show()
+    {
+        {
+        document.getElementsByClassName("popup")[0].classList.add("active");
+    }
+}   
+    document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
+        document.getElementsByClassName("popup")[0].classList.remove("active");
+    })
 
+    
 </script>
+
 </html>
