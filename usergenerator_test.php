@@ -440,7 +440,7 @@ transition: 0.4s;
                             <input type="hidden" name="product_name"  value="<?php echo $row["des_Name"]; ?>" >
                             <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>">
                             <input type="hidden" name="id" value="<?php echo $row['des_id']?>">
-                            <input type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to Cart">
+                            <input type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to plan">
 
                             </form>
                         </div>
@@ -454,7 +454,7 @@ transition: 0.4s;
 </div>
 </div>
                     <div class="sidenav">
-                        <h2 class="text-center">Location</h2>
+                        <h2 class="text-center">Time Table</h2>
 
                         <button class="add">Add Trip</button>
 <?php
