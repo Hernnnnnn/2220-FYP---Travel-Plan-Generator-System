@@ -29,6 +29,10 @@ if(!$_SESSION['email'])
         {
             $msg = "Please key-in location's details!";
         }
+        else if(!$dlink)
+        {
+            $msg = "<div class='error'>Please key-in link!</div>";
+        }
         else if(!$imageName)
         {
             $msg = "Please upload location's image!";
@@ -37,7 +41,7 @@ if(!$_SESSION['email'])
         {
             $msg = "Please upload location's video";
         }
-        else
+        else if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) 
         {
             if(move_uploaded_file($imageTempName,$targetPath))
         {
@@ -47,6 +51,13 @@ if(!$_SESSION['email'])
                 $result = mysqli_query($conn,$sql);
             }            
         }
+        }
+        else if (!isset($_FILES['image']['name']) || $_FILES['image']['name'] === "") {
+            // User didn't upload a new image and image name is empty
+            $msg = "<div class='error'>Please upload location's image!</div>";
+        } else {
+            // User didn't upload a new image, but image name is not empty
+            echo 'No new image uploaded. Keeping the old image.';
         }
         
         
@@ -191,7 +202,7 @@ if(!$_SESSION['email'])
             $rz=mysqli_fetch_assoc($sql); 
         ?>
             
-            <h1>Update <?php echo $rz['name']?>'s Details</h1>
+            <h1>Edit <?php echo $rz['name']?>'s Details</h1>
                 <div class="edi-box">
                 <form action="" method="post" enctype="multipart/form-data">
                 <?php echo $msg?>
@@ -207,7 +218,7 @@ if(!$_SESSION['email'])
                 <br>
                 <label for="">Location's Image:</label><img width="30%" src="images/<?php echo $rz['image_url'];?>" alt="">
                 <label for="file"  name="choosei"class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
-                <input type="file" id="file" name="image" class="form-control" multiple >
+                <input type="file" id="file" name="image" class="form-control" multiple value="images/<?php echo $rz['image_url'];?>">
                 <br>
                 <br>
                 <label for="">Location's Video:</label>

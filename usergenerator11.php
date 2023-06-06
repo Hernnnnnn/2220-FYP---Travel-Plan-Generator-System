@@ -1,7 +1,7 @@
 <?php
 session_start();
+
 include('dataconnection.php');
-include "usernavbar.php";
 
 $msg =" ";
 if(isset($_POST['add_to_cart'])){
@@ -94,86 +94,73 @@ if(isset($_POST['add_to_cart'])){
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <style>
-:root{
-  --primary:#4bb6b7;
-  --secondary:#FFFFFF;
-  --gray:#575757;
-  --lightgray:#848484;
-  --lightgray2:rgb(127,183,126,0.1);
-  --darkgray:#2E3238;
-  --black:#393e46;
-  --green:#00AD7C;
-  --yellow:#FFEA61;
-
-  --shadow:0px 2px 8px 0px var(--lightgray);
-}
-
-.wrapper {
-  width: 95%;
-  margin: 20px;
-  text-align: right;
-  padding: 20px;
-}
+    
+  .wrapper {
+    width: 95%;
+    margin: 20px;
+    text-align: right;
+    padding: 20px;
+   
+  }
  
-/*FILTER*/
-.button-value {
-  border: 1px solid #000000;
-  padding: 1em 2.2em;
-  border-radius: 3em;
-  background-color: transparent;
-  color: #000000;
-  cursor: pointer;
-  margin: 1px;
-}
+ /*FILTER*/
+  .button-value {
+    border: 1px solid #000000;
+    padding: 1em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #000000;
+    cursor: pointer;
+    margin: 1px;
+  }
+  .active {
+    background-color: #000000;
+    color: #ffffff;
+  }
 
-.active {
-  background-color: #000000;
-  color: #ffffff;
-}
+ /*dehui的searchbar*/
 
-/*dehui的searchbar*/
+ .search-wrapper
+ {
+     border: 1px solid black;
+     border-radius: 30px;
+     height: 50px;
+   
+     /* align-items: center; */
+     overflow-x: hidden;
+     /* margin: auto; */
+     width: 300px;
+     float: left;
+     margin: 3px;
+ }
+ .search-wrapper button
+ {
+     display: inline-block;
+     padding: 0rem .5rem;
+     color: black;
+     border: none;
+     background-color: transparent;
+     margin-right: 15px;
+ }
 
-.search-wrapper
-{
-  border: 1px solid black;
-  border-radius: 30px;
-  height: 50px;
-
-  /* align-items: center; */
-  overflow-x: hidden;
-  /* margin: auto; */
-  width: 300px;
-  float: left;
-  margin: 3px;
-}
-.search-wrapper button
-{
-  display: inline-block;
-  padding: 0rem .5rem;
-  color: black;
-  border: none;
-  background-color: transparent;
-  margin-right: 15px;
-}
-
-.search-wrapper span
-{
-  font-size: 15px;
-  margin-left: 10px;
-}
-.search-wrapper input
-{
-  height: 100%;
-  padding: .5rem;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: gray;
-  padding-left: 20px;
-}
+ .search-wrapper span
+ {
+     font-size: 15px;
+     margin-left: 10px;
+ }
+ .search-wrapper input
+ {
+     height: 100%;
+     padding: .5rem;
+     border: none;
+     outline: none;
+     background: transparent;
+     color: gray;
+     padding-left: 20px;
+ }
 
 
-.container_product {
+ .container_product {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -185,9 +172,12 @@ if(isset($_POST['add_to_cart'])){
   display: grid;
   grid-template-columns:15% 15% 15% ;
   grid-gap: 2px;
+
+
 }
 
-/* .card .card-content button {
+
+.card .card-content button {
   cursor: pointer;
   color: #fff;
   width: 100%;
@@ -237,77 +227,69 @@ if(isset($_POST['add_to_cart'])){
       margin-top: 1em;
     }
   
-  } */
+  }
 
-.sidenav {
-  background-color: #f0eeee;
-  width: 50%;
+  .sidenav {
+ background-color: #f0eeee;
+width: 50%;
+
 }
 
 .container_calendar {
-  background-color: #ffffff;
-  padding:20px;
-  width: 85%;
-  margin: 60px;
-  box-shadow: 0 0 16px -4px rgba(0, 0, 0, 0.75);
+background-color: #ffffff;
+padding:20px;
+width: 85%;
+margin: 60px;
+box-shadow: 0 0 16px -4px rgba(0, 0, 0, 0.75);
 }
 
-.add{
+
+ .add{
   cursor: pointer;
+  color: #fff;
   width: 15%;
   height: 50px;
   font-size: 20px;
   font-weight: 600;
   border-radius: 5px;
-  color: var(--secondary);
-  background: var(--primary);
+  background: linear-gradient(45deg, #fabd14, #eb9616  );
   /* float: right; */
   /* margin-right:60px ; */
   margin-left: 80%;
-  transition: 0.5s;
-  text-decoration: none;
+
+ 
+
 }
 
-.add:hover{
-  background: var(--darkgray);
-}
 
 .delete{
   cursor: pointer;
+  color: #fff;
   width: 15%;
   height: 50px;
+  font-size: 20px;
   font-weight: 600;
   border-radius: 5px;
-  color: var(--secondary);
-  background: var(--primary);
+  background: linear-gradient(45deg, #fabd14, #eb9616  );
   float: left;
   margin-left:60px;
-  padding: 0.6rem 0.8rem;
-  font-size: 0.9rem;
-  transition: 0.5s;
-  font-weight: 700;
-}
+  
 
-.delete:hover{
-  background: var(--darkgray);
 }
 
 .print{
   cursor: pointer;
+  color: #fff;
   width: 15%;
   height: 50px;
   font-size: 20px;
   font-weight: 600;
   border-radius: 5px;
-  color: var(--secondary);
-  background: var(--primary);
+  background: linear-gradient(45deg, #fabd14, #eb9616  );
   float: right;
   margin-right:60px;
-  transition: 0.5s;
-}
 
-.print:hover{
-  background: var(--darkgray);
+  
 }
 
 body
@@ -369,27 +351,24 @@ margin:25px;
 transition: 0.4s;
 
 
-}*/
+}
 
 .button:hover{
-  background: var(--darkgray);
-}  
+    background: #34495e;
+    color: #fff;
+}  */
 
 .buttons{
-  display: inline-block;
-  width: calc(50% - 5px);
-  text-align: center;
-  padding: 0.6rem 0.8rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-top: 8px;
-  margin-right: 5px;
-  color: var(--secondary);
-  background: var(--primary);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.5s;
+background:#fff;
+padding:10px 15px;
+color: #34495e;
+font-weight: bolder;
+text-transform: uppercase;
+font-size: 18px;
+border-radius: 5px;
+margin:10%;
+transition: 0.4s;
+
 }
 
 .close{
@@ -413,114 +392,7 @@ transition: 0.4s;
       position:relative;
 }
 
-/* hot tour */
-.hot {
-  max-width: 100%;
-  padding: 10px 20px 20px 20px;
-  align-items: center;
-  background:var(--secondary);
-}
 
-.hot h1 {
-  text-align: center;
-  padding-bottom: 1.5rem;
-  color:var(--gray);
-  font-size: 2rem;
-  text-transform: uppercase;
-}
-
-.hot span {
-  position: relative;
-  z-index: 0;
-}
-
-.tourline {
-  border: none;
-  margin: 0 auto;
-  margin-top: 10px;
-  height: 6px;
-  width: 230px;
-  background-color: var(--primary);
-}
-
-.hot .tourbox-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(25rem,1fr));
-  gap: 1rem;
-}
-
-.hot .tourbox-container .tour-box{
-  background-color: var(--secondary);
-  border-radius: 0.5rem;
-  box-shadow: var(--shadow);
-}
-
-.hot .tourbox-container .tour-box .image{
-  height: 18rem;
-  width: 100%;
-  padding: 1rem;
-  position: relative;
-}
-
-.hot .tourbox-container .tour-box .image img{
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 0.5rem;
-}
-
-.hot .tourbox-container .tour-box .image h3{
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  font-size: 1rem;
-  color: var(--secondary);
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 0.5rem;
-  font-weight: lighter;
-  padding: 0.3rem 0.5rem;
-}
-
-.hot .tourbox-container .tour-box .image h3 i{
-  color:var(--primary);
-}
-
-.hot .tourbox-container .tour-box .content{
-  padding: 1.5rem;
-  padding-top: 0;
-}
-
-.hot .tourbox-container .tour-box .content p{
-  font-size: 0.9rem;
-  margin-top: -10px;
-  color: var(--lightgray);
-  line-height: 1.5;
-}
-
-.hot .tourbox-container .tour-box .content .btn {
-  display: inline-block;
-  width: calc(50% - 5px);
-  text-align: center;
-  padding: 0.6rem 0.8rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-top: 8px;
-  margin-right: 5px;
-  color: var(--secondary);
-  background: var(--primary);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.5s;
-}
-
-.hot .tourbox-container .tour-box .content .btn:last-child {
-  margin-right: 0;
-}
-
-.hot .tourbox-container .tour-box .content .btn:hover {
-  background: var(--darkgray);
-}
 </style>
 <body>
 
@@ -547,36 +419,38 @@ transition: 0.4s;
                 <div class="row">
                      <div class="col-md-6">
                         <h2 class="text-center"></h2>
+<div class="col-md-12">
+    <div class="row">
+         
 
-      <section class="hot" id="hot">
-      <div class="tourbox-container">
-          <?php
-          $query = "SELECT * FROM locations";
-          $result = mysqli_query($conn, $query);
+                        <?php
+                        $query ="SELECT * FROM  usergenerator";
+                        $result = mysqli_query($conn,$query);
 
-          if ($result) {
-              while ($row = mysqli_fetch_assoc($result)) {
-                  $image =  'images/'.$row['image_url']; 
-                  $location = $row['name']; 
-                  $description = $row['description'];
-          ?>
-                  <div class="tour-box">
-                      <div class="image">
-                          <img src="<?php echo $image; ?>">
-                          <h3><i class="fas fa-map-marker-alt"></i> <?php echo $location; ?></h3>
-                      </div>
-                      <div class="content">
-                          <p><?php echo $description; ?></p>
-                          <input type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to Cart">
-                      </div>
-                  </div>
-              <?php
-                  }
-              }
-              ?>
-          </div>
-      </section>
 
+
+
+                        while ($row = mysqli_fetch_assoc($result)){?>
+
+                        <div class="col-md-4 ">
+                            <form method="post">
+                            <img src="<?php echo $row['des_img']?>" style ='height:150px;'>
+                            <h5 ><?php echo $row['des_Name']; ?></h5> 
+                            <input type="number" name="des_day"  value="0">
+                            <input type="hidden" name="product_name"  value="<?php echo $row["des_Name"]; ?>" >
+                            <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>">
+                            <input type="hidden" name="id" value="<?php echo $row['des_id']?>">
+                            <input type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to plan">
+
+                            </form>
+                        </div>
+
+                        <?php
+                        
+                        }
+                        ?>
+
+</div>
 </div>
 </div>
                     <div class="sidenav">
