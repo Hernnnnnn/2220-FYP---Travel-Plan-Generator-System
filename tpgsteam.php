@@ -20,11 +20,11 @@ include('dataconnection.php');
     <div class="review-content">
         <div class="box">
             <i class="fas fa-quote-left quote"></i>
-            <p>I am Nicholas Wong Ding Xuan.</p>
+            <p>I am Nicholas Wong Ding Xuan and my student ID is 1211201289</p>
             <div class="content">
                 <div class="info">
                     <div class="user">Nicholas Wong Ding Xuan</div>
-                    <div class="studid"></div>
+                    <div class="studid">1211201289</div>
                         <div class="stars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
