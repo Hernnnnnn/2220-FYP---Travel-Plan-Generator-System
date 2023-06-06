@@ -13,6 +13,14 @@ include "usernavbar.php";
     <title>TPGS || State</title>
     <link rel="stylesheet" href="css/style1.css">
 </head>
+<style>
+	body{
+    background-image: url(images/image.gif);
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    }
+</style>
 <body>
     
 </body>
