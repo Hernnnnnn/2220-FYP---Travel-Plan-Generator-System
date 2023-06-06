@@ -11,7 +11,7 @@ if(isset($_POST['add_to_cart'])){
   $query = mysqli_query($conn,$q);
   $rz = mysqli_fetch_assoc($query);
   $image = mysqli_real_escape_string($conn,$_POST['product_image']);
-  $name = $rz['des_Name'];
+  $name =  mysqli_real_escape_string($conn,$_POST['product_name']);
   $q1 = "INSERT INTO `userdestination`(des_Name,des_img,des_day) VALUES ('$name','$image','$day')";
   $q2 = mysqli_query($conn,$q1);
 
@@ -240,7 +240,9 @@ if(isset($_POST['add_to_cart'])){
 
 .sidenav {
   background-color: #f0eeee;
-  width: 50%;
+  width: 40%;
+ 
+ 
 }
 
 .container_calendar {
@@ -413,11 +415,16 @@ transition: 0.4s;
 }
 
 /* hot tour */
+.container-fluid{
+  width:40%;
+}
+
 .hot {
   max-width: 100%;
   padding: 10px 20px 20px 20px;
   align-items: center;
-  /* background:var(--secondary); */
+  background:none;
+  
 }
 
 .hot h1 {
@@ -440,12 +447,14 @@ transition: 0.4s;
   height: 6px;
   width: 230px;
   background-color: var(--primary);
+ 
 }
 
 .hot .tourbox-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(25rem,1fr));
-  gap: 1rem;
+  grid-template-columns:50% 50% ;
+  grid-gap: 35px;
+  
 }
 
 .hot .tourbox-container .tour-box{
@@ -465,7 +474,7 @@ transition: 0.4s;
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-radius: 0.5rem;
+  border-radius: 0.5rem;  
 }
 
 .hot .tourbox-container .tour-box .image h3{
@@ -520,6 +529,10 @@ transition: 0.4s;
 .hot .tourbox-container .tour-box .content .btn:hover {
   background: var(--darkgray);
 }
+input{
+width: 100%;
+padding: 5px;
+}
 </style>
 <body>
 
@@ -541,49 +554,45 @@ transition: 0.4s;
 					
 				</div>
 			</div>
-        <div class="container-fluid">
-            <div class="col-md-12">
-                <div class="row">
-                     <div class="col-md-6">
-                        <h2 class="text-center"></h2>
-
+      <div class="container-fluid">
       <section class="hot" id="hot">
       <div class="tourbox-container">
           <?php
-          $query = "SELECT * FROM locations";
+          $query = "SELECT * FROM usergenerator";
           $result = mysqli_query($conn, $query);
 
           if ($result) {
               while ($row = mysqli_fetch_assoc($result)) {
-                  $image =  'images/'.$row['image_url']; 
-                  $location = $row['name']; 
-                  $description = $row['description'];
+                 
           ?>
                   <div class="tour-box">
+                  <form method="post">
                       <div class="image">
-                          <img src="<?php echo $image; ?>">
-                          <h3><i class="fas fa-map-marker-alt"></i> <?php echo $location; ?></h3>
+                          <img src="<?php echo $row['des_img']; ?>">
+                          <h3><i class="fas fa-map-marker-alt"></i> <?php echo $row['des_Name']; ?></h3>
                       </div>
                       <div class="content">
-                          <p><?php echo $description; ?></p>
+                      <input type="hidden" name="product_name"  value="<?php echo $row["des_Name"]; ?>" >
+                            <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>">
+                            <input type="hidden" name="id" value="<?php echo $row['des_id']?>">
+                      <input type="number" name="des_day"  value="0">
                           <input type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to Cart">
                       </div>
                   </div>
+              </form>
               <?php
                   }
               }
               ?>
           </div>
       </section>
-
-</div>
-</div>
+  </div>
                     <div class="sidenav">
                         <h2 class="text-center">Itinerary</h2>
 
                         <button class="add">Add Trip</button>
 <?php
-                        $query ="SELECT * FROM  usergenerator";
+                        $query ="SELECT * FROM  `userdestination`";
                         $result = mysqli_query($conn,$query);
                         while ($r = mysqli_fetch_array($result)){?>
 
