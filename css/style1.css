@@ -812,7 +812,7 @@ hr {
   border-radius: 10px;
 }
 
-.card-header {
+.accdet {
   background-color: var(--secondary);
   color: var(--primary);
   font-weight: bold;
@@ -838,17 +838,17 @@ hr {
   border-radius: 5px;
 }
 
-.btn-primary {
+.upbtn-primary {
   background-color: var(--primary);
   color: var(--secondary);
   border: none;
 }
 
-.btn-primary:hover {
+.upbtn-primary:hover {
   background-color: var(--darkgray);
 }
 
-.btn-primary:focus {
+.upbtn-primary:focus {
   box-shadow: none;
   outline: none;
 }

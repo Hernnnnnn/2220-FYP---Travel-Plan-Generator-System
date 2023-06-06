@@ -12,6 +12,7 @@ include "usernavbar.php";
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>TPGS || Edit Profile</title>
+	<link rel="stylesheet" href="css/style1.css">
 </head>
 <style>
 	body{
@@ -36,15 +37,15 @@ include "usernavbar.php";
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
-                    <button class="btn btn-primary" type="button">Upload new image</button>
+                    <button class="upbtn btn-primary" type="button">Upload new image</button>
                 </div>
             </div>
         </div>
         <div class="col-xl-8">
             <!-- Account details card-->
             <div class="card mb-4">
-                <div class="card-header">Account Details</div>
-                <div class="card-body">
+                <div class="accdet">Account Details</div>
+                <div class="acc">
                     <form>
                         <!-- Form Group (username)-->
                         <div class="mb-3">
@@ -79,7 +80,7 @@ include "usernavbar.php";
                             </div>
                         </div>
                         <!-- Save changes button-->
-                        <button class="btn btn-primary" type="button">Save changes</button>
+                        <button class="upbtn btn-primary" type="button">Save changes</button>
                     </form>
                 </div>
             </div>
