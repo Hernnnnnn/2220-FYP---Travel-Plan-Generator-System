@@ -185,9 +185,9 @@
 
 .hot h1 {
   text-align: center;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
   color:var(--gray);
-  font-size: 3rem;
+  font-size: 2rem;
   text-transform: uppercase;
 }
 
@@ -201,14 +201,14 @@
   margin: 0 auto;
   margin-top: 10px;
   height: 6px;
-  width: 320px;
+  width: 230px;
   background-color: var(--primary);
 }
 
 .hot .tourbox-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(30rem,1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill,minmax(25rem,1fr));
+  gap: 1rem;
 }
 
 .hot .tourbox-container .tour-box{
@@ -218,9 +218,9 @@
 }
 
 .hot .tourbox-container .tour-box .image{
-  height: 25rem;
+  height: 18rem;
   width: 100%;
-  padding: 1.5rem;
+  padding: 1rem;
   position: relative;
 }
 
@@ -233,14 +233,14 @@
 
 .hot .tourbox-container .tour-box .image h3{
   position: absolute;
-  top: 2.5rem;
-  left: 2.5rem;
-  font-size: 1.25rem;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-size: 1rem;
   color: var(--secondary);
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0.5rem;
   font-weight: lighter;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.5rem;
 }
 
 .hot .tourbox-container .tour-box .image h3 i{
@@ -253,31 +253,37 @@
 }
 
 .hot .tourbox-container .tour-box .content p{
-  font-size: 1rem;
-  margin-top: -15px;
+  font-size: 0.9rem;
+  margin-top: -10px;
   color: var(--lightgray);
-  line-height: 1.7;
+  line-height: 1.5;
 }
 
-.hot .tourbox-container .tour-box .content .btn{
+.hot .tourbox-container .tour-box .content .btn {
   display: inline-block;
-  width: 100%;
+  width: calc(50% - 5px); /* Adjusted width to accommodate both buttons */
   text-align: center;
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
-  font-weight:700;
-  margin-top: 10px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 8px;
+  margin-right: 5px; /* Added margin between the buttons */
   color: var(--secondary);
   background: var(--primary);
   border-radius: 0.5rem;
   cursor: pointer;
   text-decoration: none;
-  transition:0.3s;
+  transition: 0.5s;
 }
 
-.hot .tourbox-container .tour-box .content .btn:hover{
+.hot .tourbox-container .tour-box .content .btn:last-child {
+  margin-right: 0; /* Remove margin on the last button */
+}
+
+.hot .tourbox-container .tour-box .content .btn:hover {
   background: var(--darkgray);
 }
+
 
 
 
@@ -392,12 +398,13 @@ hr.underlinetitle {
 
 
 /* footer */
-footer{
-  bottom:0px;
-  width:100%;
-  line-height:20px;
-  color:var(--secondary);
-  background:var(--black);
+footer {
+  position: relative;
+  margin-top: 50px; /* Adjust this value as needed */
+  width: 100%;
+  line-height: 20px;
+  color: var(--secondary);
+  background: var(--black);
 }
 
 .footer-content{
@@ -784,3 +791,93 @@ form .ratebtn button {
 form .ratebtn button:hover {
   background: var(--darkgray);
 }
+
+
+
+
+
+
+/* edit profile */ 
+.editcon {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: var(--secondary);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.editcon h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.profile-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.profile-details {
+  flex: 1;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.profile-image-btn {
+  margin-top: 10px;
+}
+
+.upbtn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--secondary);
+  background-color: var(--primary);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upbtn:hover {
+  background: var(--darkgray);
+}
+

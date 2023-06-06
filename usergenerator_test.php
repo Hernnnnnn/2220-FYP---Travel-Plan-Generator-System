@@ -91,7 +91,7 @@ if(isset($_POST['add_to_cart'])){
     <link rel="stylesheet" href="usergenerator_test.css">
     <LINK rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <style>
     
@@ -430,7 +430,7 @@ transition: 0.4s;
 
 
 
-                        while ($row = mysqli_fetch_array($result)){?>
+                        while ($row = mysqli_fetch_assoc($result)){?>
 
                         <div class="col-md-4 ">
                             <form method="post">

@@ -36,7 +36,12 @@ $email = $_GET['email'];
                     </div>
                     <div class="content">
                         <p><?php echo $description; ?></p>
-                        <a href="#" class="btn">View more ></a>
+						<?php 
+							$direction_link = $row['direction_link'];
+							$locationdetail_link = $row['locationdetail_link'];						
+						?>
+                        <a href="<?php echo $direction_link; ?>" class="btn">Direction ></a>
+                        <a href="<?php echo $locationdetail_link; ?>" class="btn">View more ></a>
                     </div>
                 </div>
             <?php
