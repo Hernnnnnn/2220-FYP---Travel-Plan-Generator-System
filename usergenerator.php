@@ -89,7 +89,7 @@ if(isset($_POST['add_to_cart'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="usergenerator_test.css">
-    <LINK rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <!-- <LINK rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
@@ -418,7 +418,7 @@ transition: 0.4s;
   max-width: 100%;
   padding: 10px 20px 20px 20px;
   align-items: center;
-  background:var(--secondary);
+  /* background:var(--secondary); */
 }
 
 .hot h1 {
@@ -532,7 +532,7 @@ transition: 0.4s;
 				RESTAURANT
 			  </button>
 			  <button class="button-value" onclick="filterProduct('DESTINATION')">
-				DESTINATION
+				LOCATION
 			  </button>
 			  <div class="search-wrapper">
 				<input type="text" name="search" placeholder="Search here" >
@@ -580,7 +580,7 @@ transition: 0.4s;
 </div>
 </div>
                     <div class="sidenav">
-                        <h2 class="text-center">Time Table</h2>
+                        <h2 class="text-center">Itinerary</h2>
 
                         <button class="add">Add Trip</button>
 <?php
