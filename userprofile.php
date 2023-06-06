@@ -4,7 +4,7 @@ include('dataconnection.php');
 include "usernavbar.php";
 
 if(isset($_POST['submit'])){
-    $rating = $_POST['rating'];
+    $rating = $_POST['rating']; 
     $feedback = $_POST['feedback'];
     $username = $_SESSION['username'];
 
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
                 <label for="rate-2" class="fas fa-star"></label>
                 <input type="radio" name="rate" id="rate-1">
                 <label for="rate-1" class="fas fa-star"></label>
-                <form action="#">
+                <form action="userrating.php" method="post">
                     <header></header>
                     <div class="textarea">
                         <textarea cols="30" placeholder="Describe your experience..."></textarea>

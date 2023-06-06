@@ -569,7 +569,7 @@ hr.underline {
 }
 
 .wrapper .left .editprofbtn {
-  margin-top:60px;
+  margin-top:30px;
   text-align: center;
 }
 
@@ -581,7 +581,7 @@ hr.underline {
   outline:none;
   background:var(--primary);
   color:var(--secondary);
-  font-size:1.25rem;
+  font-size:1.025rem;
   font-weight:500;
   cursor:pointer;
   transition:0.3s;
@@ -647,7 +647,7 @@ hr.underline {
     color: var(--lightgray);
 }
 
-.wrapper .center{
+.wrapper .center {
   text-align: center;
   position: relative;
   width: 100%;
@@ -661,18 +661,18 @@ hr.underline {
   border-radius: 5px;
 }
 
-.wrapper .afterpost{
+.wrapper .afterpost {
   display: none;
 }
 
-.wrapper .thanks{
+.wrapper .thanks {
   font-size: 25px;
   color: var(--black);
   font-weight: 500;
 }
 
-.wrapper .editrate{
-  position:absolute;
+.wrapper .editrate {
+  position: absolute;
   top: 5px;
   right: 10px;
   font-size: 16px;
@@ -681,15 +681,15 @@ hr.underline {
   cursor: pointer;
 }
 
-.wrapper .editrate:hover{
+.wrapper .editrate:hover {
   text-decoration: underline;
 }
 
-.wrapper .star-widget input{
+.wrapper .star-widget input {
   display: none;
 }
 
-.star-widget label{
+.star-widget label {
   font-size: 40px;
   color: var(--primary);
   padding: 10px;
@@ -698,44 +698,48 @@ hr.underline {
 }
 
 input:not(:checked) ~ label:hover,
-input:not(:checked) ~ label:hover ~ label{
+input:not(:checked) ~ label:hover ~ label {
   color: var(--yellow);
 }
 
-input:checked ~ label{
+input:checked ~ label {
   color: var(--yellow);
 }
 
-input#rate-5:checked ~ label{
+input#rate-5:checked ~ label {
   color: var(--yellow);
   text-shadow: 0 0 20px var(--yellow);
 }
 
-#rate-1:checked ~ form header:before{
+#rate-1:checked ~ form header:before {
   content: "I just hate it 😠";
 }
-#rate-2:checked ~ form header:before{
+
+#rate-2:checked ~ form header:before {
   content: "I don't like it 😒";
 }
-#rate-3:checked ~ form header:before{
+
+#rate-3:checked ~ form header:before {
   content: "It is awesome 😄";
 }
-#rate-4:checked ~ form header:before{
+
+#rate-4:checked ~ form header:before {
   content: "I just like it 😎";
 }
-#rate-5:checked ~ form header:before{
+
+#rate-5:checked ~ form header:before {
   content: "I just love it 😍";
 }
 
-.wrapper form{
+.wrapper form {
   display: none;
 }
 
-input:checked ~ form{
+input:checked ~ form {
   display: block;
 }
 
-form header{
+form header {
   width: 100%;
   font-size: 25px;
   color: var(--primary);
@@ -745,13 +749,13 @@ form header{
   transition: all 0.2s ease;
 }
 
-form .textarea{
+form .textarea {
   height: 100px;
   width: 100%;
   overflow: hidden;
 }
 
-form .textarea textarea{
+form .textarea textarea {
   height: 100%;
   width: 100%;
   outline: none;
@@ -762,21 +766,21 @@ form .textarea textarea{
   font-size: 17px;
 }
 
-form .ratebtn button{
-  height:50px;
-  width:100%;
-  border:none;
-  border-radius:10px;
-  outline:none;
-  background:var(--primary);
-  color:var(--secondary);
-  font-size:1.25rem;
-  font-weight:500;
-  cursor:pointer;
-  transition:0.3s;
+form .ratebtn button {
+  height: 50px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: var(--primary);
+  color: var(--secondary);
+  font-size: 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
   margin-top: 20px;
 }
 
-form .ratebtn button:hover{
-  background:var(--darkgray);
+form .ratebtn button:hover {
+  background: var(--darkgray);
 }
