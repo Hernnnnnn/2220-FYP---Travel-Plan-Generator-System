@@ -34,7 +34,7 @@ include('dataconnection.php');
                         </div>
                 </div>
                 <div class="image">
-                    <img src="images/user.png">
+                    <img src="images/nicholas.jpg">
                 </div>
             </div>
         </div>
