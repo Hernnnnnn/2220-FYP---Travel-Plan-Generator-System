@@ -398,12 +398,13 @@ hr.underlinetitle {
 
 
 /* footer */
-footer{
-  bottom:0px;
-  width:100%;
-  line-height:20px;
-  color:var(--secondary);
-  background:var(--black);
+footer {
+  position: relative;
+  margin-top: 50px; /* Adjust this value as needed */
+  width: 100%;
+  line-height: 20px;
+  color: var(--secondary);
+  background: var(--black);
 }
 
 .footer-content{
@@ -798,43 +799,42 @@ form .ratebtn button:hover {
 
 /* edit profile */ 
 .editcon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 1000px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 10px 50px;
+  padding: 50px;
   background-color: var(--secondary);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .editcon h1 {
   text-align: center;
+  margin-bottom: 20px;
   color: var(--primary);
-  margin-bottom: 30px;
-  font-size: 28px;
 }
 
 .profile-section {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .profile-image {
-  flex: 0 0 200px;
+  width: 200px;
+  margin-right: 20px;
 }
 
 .profile-image img {
   width: 100%;
+  height: auto;
   border-radius: 50%;
 }
 
 .profile-details {
   flex: 1;
-  margin-left: 30px;
 }
 
 .form-group {
@@ -843,35 +843,41 @@ form .ratebtn button:hover {
 
 label {
   display: block;
-  margin-bottom: 8px;
   font-weight: bold;
-  color: var(--darkgray);
-  font-size: 16px;
+  margin-bottom: 5px;
 }
 
 input[type="text"],
 input[type="email"] {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 20px;
-  font-size: 16px;
+input[type="file"] {
+  display: none;
+}
+
+.profile-image-btn {
+  margin-top: 10px;
+}
+
+.upbtn {
+  display: block;
+  width: 100%;
+  padding: 10px;
   font-weight: bold;
+  text-align: center;
   color: var(--secondary);
   background-color: var(--primary);
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
 
-.btn:hover {
-  background-color: var(--darkgray);
+.upbtn:hover {
+  background: var(--darkgray);
 }
 

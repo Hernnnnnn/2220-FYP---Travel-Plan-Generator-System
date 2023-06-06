@@ -42,17 +42,18 @@ include "usernavbar.php";
 					<div class="form-group">
 						<label for="profile-image">Profile Image</label>
 						<input type="file" id="profile-image" name="profile_image" onchange="previewImage(event)">
+						<button class="upbtn profile-image-btn">Choose File</button>
 					</div>
 					<div class="form-group">
 						<label for="email">Email</label>
 						<input type="email" id="email" name="email" value="<?php echo $result['email'] ?>">
 					</div>
-					<button type="submit" class="btn">Update Profile</button>
+					<button type="submit" class="upbtn">Update Profile</button>
 				</form>
 			</div>
 		</div>
 	</div>
-	<?php include "userfooter.php"; ?>
 
+	<?php include "userfooter.php"; ?>
 </body>
 </html>
