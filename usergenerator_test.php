@@ -419,7 +419,7 @@ transition: 0.4s;
 
 
 
-                        while ($row = mysqli_fetch_array($result)){?>
+                        while ($row = mysqli_fetch_assoc($result)){?>
 
                         <div class="col-md-4 ">
                             <form method="post">

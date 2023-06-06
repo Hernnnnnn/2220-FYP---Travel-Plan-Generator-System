@@ -36,6 +36,7 @@ if(isset($_POST['submit'])){
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>TPGS || User Profile</title>
+    <link rel="stylesheet" href="css/style1.css">
 </head>
 <style>
 	body{
@@ -91,7 +92,7 @@ if(isset($_POST['submit'])){
                 <form action="userrating.php" method="post">
                     <header></header>
                     <div class="textarea">
-                        <textarea cols="30" placeholder="Describe your experience..."></textarea>
+                        <textarea cols="30" name="feedback" placeholder="Describe your experience..."></textarea>
                     </div>
                     <div class="ratebtn">
                         <button name="submit" type="submit" class="ratebtn">Post</button>

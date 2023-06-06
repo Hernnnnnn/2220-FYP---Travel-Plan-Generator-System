@@ -39,6 +39,7 @@ if (isset($_POST['update'])) {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>TPGS || User Profile</title>
+    <link rel="stylesheet" href="css/style1.css">
 </head>
 <style>
 	body{
@@ -58,9 +59,9 @@ if (isset($_POST['update'])) {
 			<form action=" " method="post" enctype="multipart/form-data">
 				<input type="file" name="image">
 				<input type="submit" name="update" value="Change Picture" class="editprofbtn">
-			</form>
+			<!-- </form>
 
-			<form action="userprofile.php" method="post">
+			<form action="userprofile.php" method="post"> -->
 				<input type="email" name="email" value="<?php echo $result['email']?>" required>
 				<input type="text" name="phone_number" value="<?php echo $result['phone_number']?>" required>
 				<input type="submit" name="update" value="Update Profile" class="editprofbtn">
