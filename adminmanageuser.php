@@ -212,8 +212,101 @@ input[type="checkbox"].toggle:disabled + label::after {
         background: rgba(255, 255, 255, 0.4);
         font-weight: bold;
     }
+    .center
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .popup
+    {
+        width: 350px;
+        height: 280px;
+        padding: 30px 20px;
+        background: #f5f5f5;
+        border-radius: 10px;
+        box-sizing: border-box;
+        z-index: 2;
+        text-align: center;
+        opacity: 0;
+        top: -200%;
+        transform: translate(-50%,-50%) scale(0.5);
+        transition: opacity 300ms ease-in-out,top 1000ms ease-in-out,transform 1000ms ease-in-out;
+    }
+
+    .popup.active
+    {
+        opacity: 1;
+        top: 50%;
+        transform: translate(-50%,-50%) scale(1);
+        transition: transform 3000ms cubic-bezier(0.18,0.89,0.43,1.19);
+    }
+
+    .popup .icon
+    {
+        margin: 5x 0px;
+        width: 50px;
+        height: 50px;
+        border: 2px solid #34f234;
+        text-align: center;
+        display: inline-block;
+        border-radius: 50%;
+        line-height: 60px;
+    }
+    .popup .icon i
+    {
+        font-size: 30px;
+        color: #34f234;
+        font-weight: bold;
+    }
+
+    .popup .title
+    {
+        margin: 5px 0px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .popup .dismiss-btn
+    {
+        margin-top: 15px;
+    }
+
+    .popup .dismiss-btn button
+    {
+        padding: 10px 20px;
+        background: #111;
+        color: #f5f5f5;
+        border: 2px solid #111;
+        font-size: 16px;
+        font-weight: 600;
+        outline: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 3000ms ease-in-out;
+    }
+
+    .popup .dismiss-btn button:hover
+    {
+        color: #111;
+        background: #f5f5f5;
+    }
 </style>
 <body >
+<div class="popup center">
+        <div class="icon">
+            <i class="fa fa-check"></i>
+        </div>
+        <div class="title">
+            Success!!
+        </div>
+        <!-- <div class="dismiss-btn">
+            <button id="dismiss-popup-btn">
+                Dimiss
+            </button>
+        </div> -->
+    </div>
     <form method="post">
             <table>
                 <tr>
@@ -282,11 +375,11 @@ input[type="checkbox"].toggle:disabled + label::after {
                    $status = $user["status"];
                     if($status==1)
                     {
-                        echo '<a class="update" href="admineditstatus.php?email='.$email.'&&id='.$id.'&&status='.$status.'">Update</a>';
+                        echo '<a onclick="show()" class="update" href="admineditstatus.php?email='.$email.'&&id='.$id.'&&status='.$status.'">Update</a>';
                     }
                     else if($status==0)
                     {
-                        echo '<a class="update" href="admineditstatus.php?email='.$email.'&&id='.$id.'&&status='.$status.'">Update</a>';
+                        echo '<a onclick="show()" class="update" href="admineditstatus.php?email='.$email.'&&id='.$id.'&&status='.$status.'">Update</a>';
                     }
                     ?>
                     </td>
@@ -304,6 +397,16 @@ input[type="checkbox"].toggle:disabled + label::after {
 
 </body>
 <script>
+    function show()
+    {
+        {
+        document.getElementsByClassName("popup")[0].classList.add("active");
+    }
+}   
+    document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
+        document.getElementsByClassName("popup")[0].classList.remove("active");
+    })
 
+    
 </script>
 </html>
