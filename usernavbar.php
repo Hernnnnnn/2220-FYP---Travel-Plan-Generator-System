@@ -22,7 +22,7 @@ $result = mysqli_fetch_assoc($check);
             <h2>TPGS</h2>
                 <ul class="navbar-list">
                     <li><a href="userhomepage.php?email=<?php echo $email; ?>">Home</a></li>
-                    <li><a href="#">Itinerary</a></li>
+                    <li><a href="usergenerator.php?email=<?php echo $email; ?>">Itinerary</a></li>
                     <li><a href="?email=<?php echo $email; ?>">Location</a></li>
                     <li><a href="?email=<?php echo $email; ?>">About</a></li>
                 </ul>
