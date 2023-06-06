@@ -12,7 +12,6 @@ $result = mysqli_fetch_assoc($check);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TPGS || Navbar</title>
     <link rel="stylesheet" href="css/style1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
@@ -40,21 +39,14 @@ $result = mysqli_fetch_assoc($check);
 
                 <ul class="profile-dropdown-list">
                     <li class="profile-dropdown-list-item">
-                        <a href="#">
+                        <a href="userprofile.php?email=<?php echo $email; ?>">
                             <i class="fa-regular fa-user"> </i>
                             Edit Profile
                         </a>
                     </li>
 
                     <li class="profile-dropdown-list-item">
-                        <a href="#">
-                            <i class="fa-solid fa-sliders"></i> </i>
-                            Settings
-                        </a>
-                    </li>
-
-                    <li class="profile-dropdown-list-item">
-                        <a href="#">
+                        <a href="usercontactus.php?email=<?php echo $email; ?>">
                             <i class="fa-regular fa-circle-question"> </i>
                             Help Desk
                         </a>

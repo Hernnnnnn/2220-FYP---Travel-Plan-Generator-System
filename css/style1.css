@@ -540,3 +540,247 @@ hr.underline {
       margin:5px 0;
   }
 }
+
+
+
+
+
+
+
+
+/* profile */ 
+.wrapper{
+    margin: auto;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    max-width: 650px;
+    height: 350px;
+    display: flex;
+    box-shadow: 0 1px 20px 0 var(--shadow);
+}
+
+.wrapper .left{
+    width: 35%;
+    background: rgba(0,0,0,0.7);
+    padding: 40px 25px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+}
+
+.wrapper .left .editprofbtn {
+  margin-top:30px;
+  text-align: center;
+}
+
+.wrapper .left .editprofbtn {
+  height:50px;
+  width:75%;
+  border:none;
+  border-radius:10px;
+  outline:none;
+  background:var(--primary);
+  color:var(--secondary);
+  font-size:1.025rem;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.wrapper .left .editprofbtn:hover {
+  background:var(--darkgray);
+}
+
+.wrapper .left img{
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.wrapper .left h4{
+    margin-bottom: 10px;
+    color: var(--secondary);
+}
+
+.wrapper .left p{
+    font-size: 15px;
+    color: var(--secondary);
+}
+
+.wrapper .right{
+    width: 65%;
+    background: rgba(255, 255, 255, 0.7);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 30px 25px;
+}
+
+.wrapper .right .info{
+    margin-bottom: 25px;
+}
+
+.wrapper .right .info h3{
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom:  1px solid var(--black);
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.wrapper .right .info_data{
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper .right .info_data .data{
+    width: 45%;
+}
+
+.wrapper .right .info_data .data h4{
+    color: var(--gray);
+    margin-bottom: 5px;
+}
+
+.wrapper .right .info_data .data p{
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: var(--lightgray);
+}
+
+.wrapper .center {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: var(--secondary);
+  padding: 20px 30px;
+  place-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.wrapper .afterpost {
+  display: none;
+}
+
+.wrapper .thanks {
+  font-size: 25px;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.wrapper .editrate {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 16px;
+  color: var(--black);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.wrapper .editrate:hover {
+  text-decoration: underline;
+}
+
+.wrapper .star-widget input {
+  display: none;
+}
+
+.star-widget label {
+  font-size: 40px;
+  color: var(--primary);
+  padding: 10px;
+  float: right;
+  transition: all 0.2s ease;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label {
+  color: var(--yellow);
+}
+
+input:checked ~ label {
+  color: var(--yellow);
+}
+
+input#rate-5:checked ~ label {
+  color: var(--yellow);
+  text-shadow: 0 0 20px var(--yellow);
+}
+
+#rate-1:checked ~ form header:before {
+  content: "I just hate it 😠";
+}
+
+#rate-2:checked ~ form header:before {
+  content: "I don't like it 😒";
+}
+
+#rate-3:checked ~ form header:before {
+  content: "It is awesome 😄";
+}
+
+#rate-4:checked ~ form header:before {
+  content: "I just like it 😎";
+}
+
+#rate-5:checked ~ form header:before {
+  content: "I just love it 😍";
+}
+
+.wrapper form {
+  display: none;
+}
+
+input:checked ~ form {
+  display: block;
+}
+
+form header {
+  width: 100%;
+  font-size: 25px;
+  color: var(--primary);
+  font-weight: 500;
+  margin: 5px 0 20px 0;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+form .textarea {
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+
+form .textarea textarea {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: var(--black);
+  border: 1px solid var(--black);
+  background: var(--secondary);
+  padding: 10px;
+  font-size: 17px;
+}
+
+form .ratebtn button {
+  height: 50px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: var(--primary);
+  color: var(--secondary);
+  font-size: 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+}
+
+form .ratebtn button:hover {
+  background: var(--darkgray);
+}

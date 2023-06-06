@@ -2,319 +2,87 @@
 session_start();
 include('dataconnection.php');
 include "usernavbar.php";
-$email = $_SESSION['email'];
-$sql = "SELECT * From `login` where email = '$email'";
-$r = mysqli_query($conn,$sql);
-$re = mysqli_fetch_assoc($r);
-?>
+
+if (isset($_POST['update'])) {
+    $prof = $_FILES['image'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone_number'];
+
+    $username = $_SESSION['username'];
+
+    if (!empty($prof['name'])) {
+        $profName = $prof['name'];
+        $profTmpName = $prof['tmp_name'];
+        $profError = $prof['error'];
+
+        $targetPath = "images/" . $profName;
+        move_uploaded_file($profTmpName, $targetPath);
+
+        $updateQuery = "UPDATE login SET image = '$targetPath' WHERE username = '$username'";
+        mysqli_query($conn, $updateQuery);
+    }
+
+    $updateQuery = "UPDATE login SET email = '$email', phone_number = '$phone' WHERE username = '$username'";
+
+    if (mysqli_query($conn, $updateQuery)) {
+        echo "Profile updated successfully.";
+    } else {
+        echo "Error updating profile: " . mysqli_error($conn);
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TPGS || Profile</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TPGS || User Profile</title>
 </head>
-<style media="screen">
-    .upload{
-      width: 140px;
-      position: relative;
-      margin: auto;
-      text-align: center;
-    }
-    .upload img{
-      border-radius: 50%;
-      border: 8px solid #DCDCDC;
-      width: 125px;
-      height: 125px;
-    }
-    .upload .rightRound{
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      background: #00B4FF;
-      width: 32px;
-      height: 32px;
-      line-height: 33px;
-      text-align: center;
-      border-radius: 50%;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .upload .leftRound{
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      background: red;
-      width: 32px;
-      height: 32px;
-      line-height: 33px;
-      text-align: center;
-      border-radius: 50%;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .upload .fa{
-      color: white;
-    }
-    .upload input{
-      position: absolute;
-      transform: scale(2);
-      opacity: 0;
-    }
-    .upload input::-webkit-file-upload-button, .upload input[type=submit]{
-      cursor: pointer;
-    }
-  </style>
 <style>
-    *
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    font-family: sans-serif;
-}
-body
-{
+	body{
     background-image: url(images/image.gif);
     background-size: cover; 
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
-.wrapper
-{
-    /* position: relative; */
-    margin: auto;
-    margin-top: 150px;
-    max-width: 650px;
-    height: 350px;
-    display: flex;
-    box-shadow: 0 1px 20px 0 rgba(75, 182, 183,0.9);
-}
-.wrapper .left
-{
-    width: 35%;
-    background: rgba(0,0,0,0.7);
-    padding: 40px 25px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    text-align: center;
-}
-.wrapper .left img
-{
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-.wrapper .left h4
-{
-    margin-bottom: 10px;
-    color: #fff;
-
-}
-.wrapper .left p
-{
-    font-size: 15px;
-    color: #fff;
-
-}
-
-.wrapper .right
-{
-    width: 65%;
-    background: rgba(255, 255, 255, 0.7);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding: 30px 25px;
-}
-.wrapper .right .info
-{
-    margin-bottom: 25px;
-}
-
-.wrapper .right .info h3
-{
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom:  1px solid black;
-    color: #343c4e;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    
-}
-.wrapper .right .info_data
-{
-    display: flex;
-    justify-content: space-between;
-}
-.wrapper .right .info_data 
-{
-    width: 45%;
-}
-.wrapper .right .info_data .data h4
-{
-    color: #353c4e;
-    margin-bottom: 5px;
-}
-.wrapper .right .info_data .data p
-{
-    font-size: 15px;
-    margin-bottom: 10px;
-    color: #6c757d;
-}
-.settingimg
-{
-    width: 20px;
-    display: block;
-    position: absolute;
-    /* right: 2px; */
-    /* text-align: center; */
-    margin-left: 350px;
-}
-input[type="submit"]
-{
-    border: none;
-    width: 190px;
-    height: 50px;
-    padding: 5px 20px;
-    margin-top: 20px;
-    /* margin-left: 100px; */
-    background: #4bb6b7;
-    border-radius: 30px;
-    font-size: 20px;
-    color: white;
-    
-}
-input[type="submit"]:hover
-{
-    background-color: #6c757d;
-    color: white;
-}
-.success
-{
-    color: #2d6a4f;
-    background-color: #52b788;
-    /* font-weight: bold; */
-    margin-bottom: 10px;
-    padding: 8px;
-    width: 370px;
-    /* font-size: 10pt; */
-    border-radius: 10px;
-    /* text-transform: uppercase; */
-    text-align: center;
-}
-.error
-{
-    color: #d43838;
-    background-color: #fcd1d1;
-    /* font-weight: bold; */
-    margin-bottom: 10px;
-    padding: 8px;
-    width: 370px;
-    /* font-size: 10pt; */
-    border-radius: 10px;
-    /* text-transform: uppercase; */
-    text-align: center;
-}
-
+    }
 </style>
-<body >
-            <!-- <div class="wrapper">
-                <div class="left">
-                    
-                    <img src="images/<?php echo $re['image']?>" alt="login" width="100">
-                    <h4><?php echo $re['username']?></h4>
-                    <p>I love TPGS</p>
-                </div>
-                <div class="right">
-                <a href="userprofile.php?email=<?php echo $re['email'];?>"><img src="images/back.png" class="settingimg" ></a>
-                    <div class="info">
-                        <h3>Edit Information</h3>
-                        <div class="info_data">
-                            <div class="data">
-                    <?php echo $msg;?>
+<body>
+	<div class="wrapper" style="align-items: center; height: 60%;">
+		<div class="left">
+			<img src="images/<?php echo $result['image']?>" width="100">
+			<h4><?php echo $result['username']?></h4>
+			<p>User of Travel Plan Generator</p>
 
-                                <h4>Email</h4>
-                                <p><?php echo $re['email']?></p>
-                                <div class="data">
-                                    <form action="" method="post">
-                                    <h4>Image</h4>
-                                    <input type="file" id="file" name="image" class="form-control" multiple>
-                                    <br>
-                                    <input type="submit" value="Submit" name="submit">
-                                    
-                                    </form>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+			<form action=" " method="post" enctype="multipart/form-data">
+				<input type="file" name="image">
+				<input type="submit" name="update" value="Change Picture" class="editprofbtn">
+			</form>
+
+			<form action="userprofile.php" method="post">
+				<input type="email" name="email" value="<?php echo $result['email']?>" required>
+				<input type="text" name="phone_number" value="<?php echo $result['phone_number']?>" required>
+				<input type="submit" name="update" value="Update Profile" class="editprofbtn">
+			</form>
+		</div>
+		
+		<div class="right" style="height: 68%;">
+        <div class="info">
+            <h3>Information</h3>
+            <div class="info_data">
+                <div class="data">
+                    <h4>Email</h4>
+                    <input type="email" name="email" value="<?php echo $result['email']?>" required>
+                </div>
+                <div class="data">
+                    <h4>Phone</h4>
+                    <input type="text" name="phone" value="<?php echo $result['phone_number']?>" required>
                 </div>
             </div>
+        </div>
+    </div>
 </div>
-</div> -->
-<form class="form" id = "form" action="" enctype="multipart/form-data" method="post">
-      <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
-      <div class="upload">
-        <img src="images/<?php echo $user['image']; ?>" id = "image">
-
-        <div class="rightRound" id = "upload">
-          <input type="file" name="fileImg" id = "fileImg" accept=".jpg, .jpeg, .png">
-          <i class = "fa fa-camera"></i>
-        </div>
-
-        <div class="leftRound" id = "cancel" style = "display: none;">
-          <i class = "fa fa-times"></i>
-        </div>
-        <div class="rightRound" id = "confirm" style = "display: none;">
-          <input type="submit">
-          <i class = "fa fa-check"></i>
-        </div>
-      </div>
-    </form>
-
-    <script type="text/javascript">
-      document.getElementById("fileImg").onchange = function(){
-        document.getElementById("image").src = URL.createObjectURL(fileImg.files[0]); // Preview new image
-
-        document.getElementById("cancel").style.display = "block";
-        document.getElementById("confirm").style.display = "block";
-
-        document.getElementById("upload").style.display = "none";
-      }
-
-      var userImage = document.getElementById('image').src;
-      document.getElementById("cancel").onclick = function(){
-        document.getElementById("image").src = userImage; // Back to previous image
-
-        document.getElementById("cancel").style.display = "none";
-        document.getElementById("confirm").style.display = "none";
-
-        document.getElementById("upload").style.display = "block";
-      }
-    </script>
-
-    <?php
-    if(isset($_FILES["fileImg"]["name"])){
-      $id = $_POST["id"];
-
-      $src = $_FILES["fileImg"]["tmp_name"];
-      $imageName = uniqid() . $_FILES["fileImg"]["name"];
-
-      $target = "images/" . $imageName;
-
-      move_uploaded_file($src, $target);
-
-      $query = "UPDATE tb_user SET image = '$imageName' WHERE id = $id";
-      mysqli_query($conn, $query);
-
-      header("Location: userhomepage.php?email=".$email);
-    }
-    ?>
+	<?php include "userfooter.php"; ?>
 </body>
-
-
 </html>
