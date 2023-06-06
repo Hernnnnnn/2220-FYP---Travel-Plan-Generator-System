@@ -21,6 +21,95 @@ include "usernavbar.php";
     background-repeat: no-repeat;
     background-attachment: fixed;
     }
+
+	/* Container */
+.container-xl {
+    max-width: 1140px;
+    padding: 0 15px;
+  }
+  
+  /* Profile picture card */
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  /* Profile picture card header */
+  .card-header {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  /* Profile picture card body */
+  .card-body {
+    text-align: center;
+  }
+  
+  /* Profile picture image */
+  .profimg {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  
+  /* Profile picture help block */
+  .small {
+    font-size: 12px;
+    color: #777;
+  }
+  
+  /* Profile picture upload button */
+  .upbtn {
+    background-color: #42b983;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Account details card */
+  .accdet {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Account details form */
+  .acc {
+    margin-bottom: 15px;
+  }
+  
+  /* Form Group (username) */
+  .mb-3 {
+    margin-bottom: 15px;
+  }
+  
+  /* Form Row */
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  /* Form Group (first name) */
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  /* Save changes button */
+  .upbtn {
+    background-color: #42b983;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 </style>
 <body>
 <body>
