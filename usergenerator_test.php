@@ -580,7 +580,7 @@ transition: 0.4s;
 </div>
 </div>
                     <div class="sidenav">
-                        <h2 class="text-center">Location</h2>
+                        <h2 class="text-center">Time Table</h2>
 
                         <button class="add">Add Trip</button>
 <?php
