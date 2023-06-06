@@ -53,7 +53,7 @@ include "usernavbar.php";
 	<link rel="stylesheet" href="css/userlocationdetail.css">
 	<link rel="stylesheet" href="css/userlocation.css">
 	<link rel="stylesheet" href="swiper-bundle.min.css" >
-	<link rel="stylesheet" href="sw.css" >
+	<link rel="stylesheet" href="swiper.css" >
     
 
 
