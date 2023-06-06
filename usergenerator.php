@@ -87,9 +87,8 @@ if(isset($_POST['add_to_cart'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TPGS || Itinerary</title>
     <link rel="stylesheet" href="usergenerator_test.css">
-    <!-- <LINK rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
@@ -584,30 +583,30 @@ transition: 0.4s;
 
                         <button class="add">Add Trip</button>
 <?php
-                        $query ="SELECT * FROM  userdestination";
+                        $query ="SELECT * FROM  usergenerator";
                         $result = mysqli_query($conn,$query);
                         while ($r = mysqli_fetch_array($result)){?>
 
                     
 
-			<div class="container_calendar">
-				<div class="calendar">
-					<h3>Day <?php echo $r['des_id']?></h3>
-                        
+                          <div class="container_calendar">
+                            <div class="calendar">
+                              <h3>Day <?php echo $r['des_id']?></h3>
+                                            
 
-					</div>
-					
-					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
-					<div class="add_destination">
-					<p><?php echo $r['des_Name']?></p>
-					
-					</div>
-			
-			</div>
-        	<div class="line"></div>
-			<?php }?>
-		<button class="delete">delete</button>
-		<button class="print">Print</button>
+                              </div>
+                              
+                              <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                              <div class="add_destination">
+                              <p><?php echo $r['des_Name']?></p>
+                              
+                              </div>
+                          
+                          </div>
+                              <div class="line"></div>
+                          <?php }?>
+                        <button class="delete">Delete</button>
+                        <button class="print">Print</button>
 	
 
                       

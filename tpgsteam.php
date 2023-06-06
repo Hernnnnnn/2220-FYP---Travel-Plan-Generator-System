@@ -8,7 +8,6 @@ include('dataconnection.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TPGS || Review</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="css/style1.css"/>
 </head>
@@ -20,7 +19,7 @@ include('dataconnection.php');
     <div class="review-content">
         <div class="box">
             <i class="fas fa-quote-left quote"></i>
-            <p>I am Nicholas Wong Ding Xuan and my student ID is 1211201289</p>
+            <p>I am Nicholas Wong Ding Xuan and my student ID is 1211201289.</p>
             <div class="content">
                 <div class="info">
                     <div class="user">Nicholas Wong Ding Xuan</div>
