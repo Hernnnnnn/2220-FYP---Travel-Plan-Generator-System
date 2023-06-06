@@ -23,36 +23,46 @@ include "usernavbar.php";
 </style>
 <body>
 <body>
-	<div class="editcon">
-		<h1>Edit User Profile</h1>
-		<div class="profile-section">
-			<div class="profile-image">
-				<img id="preview-image" src="images/<?php echo $result['image'] ?>" alt="Profile Image">
-			</div>
-			<div class="profile-details">
-				<form action="userprofile.php?email=<?php echo $email; ?>" method="post" enctype="multipart/form-data">
-					<div class="form-group">
-						<label for="username">Username</label>
-						<input type="text" id="username" name="username" value="<?php echo $result['username'] ?>">
-					</div>
-					<div class="form-group">
-						<label for="contact-number">Contact Number</label>
-						<input type="text" id="contact-number" name="contact_number" value="<?php echo $result['phone_number'] ?>">
-					</div>
-					<div class="form-group">
-						<label for="profile-image">Profile Image</label>
-						<input type="file" id="profile-image" name="profile_image" onchange="previewImage(event)">
-						<button class="upbtn profile-image-btn">Choose File</button>
-					</div>
-					<div class="form-group">
-						<label for="email">Email</label>
-						<input type="email" id="email" name="email" value="<?php echo $result['email'] ?>">
-					</div>
-					<button type="submit" class="upbtn">Update Profile</button>
-				</form>
-			</div>
-		</div>
-	</div>
+<div class="editcon">
+  <h1>Edit User Profile</h1>
+  <div class="profile-section">
+  <form action="userprofile.php?email=<?php echo $email; ?>" method="post" enctype="multipart/form-data">
+    <div class="profile-image">
+      <img id="preview-image" src="images/<?php echo $result['image'] ?>" alt="Profile Image">
+      <label for="profile-image" style="text-align:center;">Profile Image</label>
+      <input type="file" id="profile-image" name="profile_image" onchange="previewImage(event)">
+      <button class="upbtn profile-image-btn">Choose File</button>
+    </div>
+    <div class="profile-details">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" value="<?php echo $result['username'] ?>">
+        </div>
+        <div class="form-group">
+          <label for="contact-number">Phone Number</label>
+          <input type="text" id="contact-number" name="contact_number" value="<?php echo $result['phone_number'] ?>">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" value="<?php echo $result['email'] ?>">
+        </div>
+        <button type="submit" class="upbtn">Update Profile</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function previewImage(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var preview = document.getElementById('preview-image');
+      preview.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
+
 
 	<?php include "userfooter.php"; ?>
 </body>

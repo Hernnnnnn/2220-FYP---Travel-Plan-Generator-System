@@ -20,11 +20,6 @@ include('dataconnection.php');
                 <hr class="underline">
                 <div class="content">
                     <p>Our team is formed at Multimedia University Malacca Campus, consisting of Lee Khee Hern, Nicholas Wong Ding Xuan, and Teng De Hui.</p>
-                    <div class="social">
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
                 </div>
             </div>
 

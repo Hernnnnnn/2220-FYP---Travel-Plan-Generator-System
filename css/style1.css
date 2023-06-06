@@ -799,10 +799,11 @@ form .ratebtn button:hover {
 
 /* edit profile */ 
 .editcon {
-  max-width: 600px;
+  max-width: 350px;
+  height: 75%;
   margin: 0 auto;
-  padding: 50px;
-  background-color: var(--secondary);
+  padding: 0 0 20px 0;
+  background-color: #f2f2f2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -814,7 +815,7 @@ form .ratebtn button:hover {
 .editcon h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: var(--primary);
+  color: #333;
 }
 
 .profile-section {
@@ -845,6 +846,8 @@ label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
+  font-size: 18px;
+  color: #333;
 }
 
 input[type="text"],
@@ -853,6 +856,7 @@ input[type="email"] {
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  font-size: 16px;
 }
 
 input[type="file"] {
@@ -861,6 +865,7 @@ input[type="file"] {
 
 .profile-image-btn {
   margin-top: 10px;
+  text-align: center;
 }
 
 .upbtn {
@@ -869,12 +874,14 @@ input[type="file"] {
   padding: 10px;
   font-weight: bold;
   text-align: center;
-  color: var(--secondary);
+  color:var(--secondary);
   background-color: var(--primary);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 16px;
+  text-align: center;
 }
 
 .upbtn:hover {
