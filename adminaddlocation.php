@@ -136,11 +136,6 @@ if(!$_SESSION['email'])
     {
         display: none;
     }
-    .edi-box textarea
-    {
-        /* background: transparent;
-        border: 2px solid black; */
-    }
     label
     {
         padding-right: 20px;
