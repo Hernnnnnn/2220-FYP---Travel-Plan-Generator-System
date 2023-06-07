@@ -1,4 +1,7 @@
 <?php
+
+use Dompdf\Dompdf;
+
 require('vendor/autoload.php');
 include 'dataconnection.php'; 
 
@@ -20,8 +23,10 @@ else
     $html="Data not found";
 }
 // echo $html;
-$mpdf = new \Mpdf\Mpdf();
-$mpdf->WriteHTML($html);
-$file=time()
-$mpdf->output();
+$dompdf = new Dompdf;
+
+$dompdf->loadHtml($html);
+$dompdf->setPaper('A4','portrait');
+$dompdf->render();
+$dompdf->stream('test.pdf');
 ?>
