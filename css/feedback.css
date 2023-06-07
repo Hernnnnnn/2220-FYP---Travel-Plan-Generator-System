@@ -1,0 +1,65 @@
+:root {
+    --primary: #4bb6b7;
+    --secondary: #FFFFFF;
+    --gray: #575757;
+    --lightgray: #848484;
+    --lightgray2: rgba(127, 183, 126, 0.1);
+    --darkgray: #2E3238;
+    --black: #393e46;
+    --green: #00AD7C;
+    --yellow: #FFEA61;
+    --shadow: 0px 2px 8px 0px var(--lightgray);
+}
+
+.container-xxl {
+padding: 20px;
+background-color: none;
+}
+
+.custom_content {
+background-color: var(--secondary);
+padding: 30px;
+border-radius: 5px;
+box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+.custom_content h1 {
+text-align: center;
+color: #fff;
+padding: 15px 0px;
+background-color: #4bb6b7;
+}
+
+.custom_content form label {
+font-weight: bold;
+}
+
+.custom_content form input[type="text"],
+.custom_content form input[type="email"],
+.custom_content form textarea {
+width: 100%;
+padding: 10px;
+margin-bottom: 15px;
+border: 1px solid #ccc;
+border-radius: 5px;
+resize: vertical;
+}
+
+.custom_content form textarea {
+height: 150px;
+}
+
+.custom_content form button[type="submit"] {
+display: block;
+margin: 0 auto;
+padding: 10px 30px;
+background-color: #4bb6b7;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.custom_content form button[type="submit"]:hover {
+background-color: #6c757d;
+}

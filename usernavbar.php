@@ -46,7 +46,7 @@ $result = mysqli_fetch_assoc($check);
                     </li>
 
                     <li class="profile-dropdown-list-item">
-                        <a href="usercontactus.php?email=<?php echo $email; ?>">
+                        <a href="userfeedback.php?email=<?php echo $email; ?>">
                             <i class="fa-regular fa-circle-question"> </i>
                             Help Desk
                         </a>
