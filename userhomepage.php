@@ -21,7 +21,7 @@ $result = mysqli_query($conn, $query);
 $option = "";
 while($row2 = mysqli_fetch_array($result))
 {
-	$option = $option."<option>$row2[name]</option>";
+	$option = $option."<option value = '$row[name]'>$row2[name]</option>";
 }
 ?>
     <?php include "usernavbar.php"; ?>
