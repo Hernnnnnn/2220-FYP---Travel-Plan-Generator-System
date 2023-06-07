@@ -53,13 +53,14 @@ height: 150px;
 display: block;
 margin: 0 auto;
 padding: 10px 30px;
-background-color: #4bb6b7;
-color: #fff;
+background-color: var(--primary);
+color: var(--secondary);
 border: none;
 border-radius: 5px;
 cursor: pointer;
+font-size: 15px;
 }
 
 .custom_content form button[type="submit"]:hover {
-background-color: #6c757d;
+background-color: var(--darkgray);
 }
