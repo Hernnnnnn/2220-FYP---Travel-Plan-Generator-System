@@ -20,10 +20,6 @@ if(!$_SESSION['email'])
         $imageTempName = $_FILES['image']['tmp_name'];
         $targetPath = "images/".$imageName;
 
-        $videoName = $_FILES['video']['name'];
-        $videoTempName = $_FILES['video']['tmp_name'];
-        $videoFile_size = $_FILES['video']['size'];
-        $videoTarget = "images/".$videoName;
         if(!$name)
         {
             $msg = "Please key-in location's name!";
@@ -41,17 +37,11 @@ if(!$_SESSION['email'])
         {
             $msg = "Please upload location's image!";
         }
-        else if(!$videoName)
-        {
-            $msg = "Please upload location's video";
-        }
         else
         {
             if(move_uploaded_file($imageTempName,$targetPath))
         {
-            if(move_uploaded_file($videoTempName,$videoTarget))
-            {
-                $sql = "INSERT INTO `locations`(name,description,image_url,video_url,direction_link,locationdetail_link) VALUES ('$name','$detail','$imageName','$videoName','$dlink','$llink')";
+                $sql = "INSERT INTO `locations`(name,description,image_url,direction_link,locationdetail_link,status) VALUES ('$name','$detail','$imageName','$dlink','$llink',0)";
                 
                 $s="CREATE Table `".$name."location`(`id` int(11) NOT NULL,`locationname` text NOT NULL,`locationimage` text NOT NULL,`locationlink` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
                 $s1="CREATE Table `".$name."restaurant`(`id` int(11) NOT NULL,`restaurantname` text NOT NULL,`restaurantimage` text NOT NULL,`restaurantlink` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
@@ -66,7 +56,7 @@ if(!$_SESSION['email'])
         
         
         
-    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -217,10 +207,6 @@ if(!$_SESSION['email'])
                 <label for="">Location's Image:</label>
                 <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
                 <input type="file" id="file" name="image" class="form-control" multiple >
-                <br>
-                <label for="">Location's Video:</label>
-                <label for="video"  class="Choose"><i class="fa fa-camera"></i> Choose a Video</label>
-                <input type="file" id="video" name="video" class="form-control" multiple>
                 <br>
                 
                 <div class="submit">

@@ -21,10 +21,7 @@ if(!$_SESSION['email'])
         $imageTempName = $_FILES['image']['tmp_name'];
         $targetPath = "images/".$imageName;
 
-        $videoName = $_FILES['video']['name'];
-        $videoTempName = $_FILES['video']['tmp_name'];
-        $videoFile_size = $_FILES['video']['size'];
-        $videoTarget = "images/".$videoName;
+        
         if(!$detail)
         {
             $msg = "Please key-in location's details!";
@@ -37,19 +34,12 @@ if(!$_SESSION['email'])
         {
             $msg = "Please upload location's image!";
         }
-        else if(!$videoName)
-        {
-            $msg = "Please upload location's video";
-        }
         else if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) 
         {
             if(move_uploaded_file($imageTempName,$targetPath))
         {
-            if(move_uploaded_file($videoTempName,$videoTarget))
-            {
-                $sql = "UPDATE `locations` set description='$detail',image_url='$imageName',video_url='$videoName',direction_link = '$dlink',locationdetail_link = '$llink' Where id = '$id'";
-                $result = mysqli_query($conn,$sql);
-            }            
+                $sql = "UPDATE `locations` set description='$detail',image_url='$imageName',direction_link = '$dlink',locationdetail_link = '$llink' Where id = '$id'";
+                $result = mysqli_query($conn,$sql);    
         }
         }
         else if (!isset($_FILES['image']['name']) || $_FILES['image']['name'] === "") {
@@ -220,13 +210,6 @@ if(!$_SESSION['email'])
                 <label for="file"  name="choosei"class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
                 <input type="file" id="file" name="image" class="form-control" multiple value="images/<?php echo $rz['image_url'];?>">
                 <br>
-                <br>
-                <label for="">Location's Video:</label>
-                <video width="300px" controls autoplay loop>
-                    <source src="images/<?php echo $rz['video_url']?>">
-                </video>
-                <label for="video"  class="Choose"><i class="fa fa-camera"></i> Choose a Video</label>
-                <input type="file" id="video" name="video" class="form-control" multiple>
                 <br>
                 <div class="submit">
                 <input type="submit" name="submit" value="Update Location">

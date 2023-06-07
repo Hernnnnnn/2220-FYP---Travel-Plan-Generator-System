@@ -270,7 +270,8 @@ input[type="checkbox"].toggle:disabled + label::after {
     }
     .center
     {
-        position: absolute;
+        position:fixed;
+        display: inline-block;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
@@ -389,7 +390,7 @@ input[type="checkbox"].toggle:disabled + label::after {
 
 
                     ?>
-                    <td colspan="10" style="padding: 10px;"><div class="header">
+                    <td colspan="9" style="padding: 10px;"><div class="header">
                     <div class="search-wrapper">
                     <input type="text" name="search" placeholder="Search here" value="<?php echo $searchKey?>">
 
@@ -398,18 +399,17 @@ input[type="checkbox"].toggle:disabled + label::after {
                     <a class="addlocat" href="adminaddlocation.php?email=<?php echo $email;?>">Add State</a>
                      </div>
                      </form>
-                    </td>
+                    </td> 
                 </tr>
                 <thead>
                 <tr>
                     
-                    <th>States Name</th>
+                    <th>States</th>
                     <th>States Details</th>
                     <th>States Image</th>
                     <th>States Video</th>
                     <th>Derection Link</th>
                     <th>States Details Link</th>
-                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -426,9 +426,6 @@ input[type="checkbox"].toggle:disabled + label::after {
                     <td><span style="font-weight: bold; font-size: 15px;"><?php echo $loc['name']?></span></td>
                     <td><div class="test"><?php echo $loc['description']?></div></td>
                     <td class="image2"><img style="width: 60%;" src="images/<?php echo $loc['image_url']?>" alt=""></td>
-                    <td>
-                        <?php echo $loc["video_url"]?>
-                    </td>
                     <?php 
                         $id=$loc['id'];
                         $localname = $loc['name'];
