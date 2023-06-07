@@ -1,7 +1,7 @@
 <?php
 session_start();
+
 include('dataconnection.php');
-include "usernavbar.php";
 
 $msg =" ";
 if(isset($_POST['add_to_cart'])){
@@ -11,7 +11,7 @@ if(isset($_POST['add_to_cart'])){
   $query = mysqli_query($conn,$q);
   $rz = mysqli_fetch_assoc($query);
   $image = mysqli_real_escape_string($conn,$_POST['product_image']);
-  $name =  mysqli_real_escape_string($conn,$_POST['product_name']);
+  $name = $rz['des_Name'];
   $q1 = "INSERT INTO `userdestination`(des_Name,des_img,des_day) VALUES ('$name','$image','$day')";
   $q2 = mysqli_query($conn,$q1);
 
@@ -87,102 +87,80 @@ if(isset($_POST['add_to_cart'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TPGS || Itinerary</title>
+    <title>Document</title>
     <link rel="stylesheet" href="usergenerator_test.css">
+    <LINK rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    
-    
 </head>
 <style>
-:root{
-  --primary:#4bb6b7;
-  --secondary:#FFFFFF;
-  --gray:#575757;
-  --lightgray:#848484;
-  --lightgray2:rgb(127,183,126,0.1);
-  --darkgray:#2E3238;
-  --black:#393e46;
-  --green:#00AD7C;
-  --yellow:#FFEA61;
-
-  --shadow:0px 2px 8px 0px var(--lightgray);
-}
-
-.wrapper {
-  width: 95%;
-  margin: 20px;
-  text-align: right;
-  padding: 20px;
-}
+    
+  .wrapper {
+    width: 95%;
+    margin: 20px;
+    text-align: right;
+    padding: 20px;
+   
+  }
  
-/*FILTER*/
-.button-value {
-  border: 1px solid #000000;
-  padding: 1em 2.2em;
-  border-radius: 3em;
-  background-color: transparent;
-  color: #000000;
-  cursor: pointer;
-  margin: 1px;
-}
+ /*FILTER*/
+  .button-value {
+    border: 1px solid #000000;
+    padding: 1em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #000000;
+    cursor: pointer;
+    margin: 1px;
+  }
+  .active {
+    background-color: #000000;
+    color: #ffffff;
+  }
 
-.active {
-  background-color: #000000;
-  color: #ffffff;
-}
+ /*dehui的searchbar*/
 
-/*dehui的searchbar*/
+ .search-wrapper
+ {
+     border: 1px solid black;
+     border-radius: 30px;
+     height: 50px;
+   
+     /* align-items: center; */
+     overflow-x: hidden;
+     /* margin: auto; */
+     width: 300px;
+     float: left;
+     margin: 3px;
+ }
+ .search-wrapper button
+ {
+     display: inline-block;
+     padding: 0rem .5rem;
+     color: black;
+     border: none;
+     background-color: transparent;
+     margin-right: 15px;
+ }
 
-.search-wrapper
-{
-  border: 1px solid black;
-  border-radius: 30px;
-  height: 50px;
-
-  align-items: center;
-  overflow-x: hidden;
-  margin: auto;
-  width: 300px;
-  float: left;
-  margin: 3px;
-}
-.search-wrapper button
-{
-  display: inline-block;
-  padding: 0rem .5rem;
-  color: black;
-  border: none;
-  background-color: transparent;
-  margin-right: 15px;
-  float: left;
-  position: absolute;
-  top: 90px;
-  z-index: 999;
-  left: 250px;
-}
-
-.search-wrapper span
-{
-  font-size: 15px;
-  margin-left: 10px;
-}
-.search-wrapper input
-{
-  height: 100%;
-  padding: .5rem;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: gray;
-  padding-left: 20px;
-  margin-top: 5px;
-}
+ .search-wrapper span
+ {
+     font-size: 15px;
+     margin-left: 10px;
+ }
+ .search-wrapper input
+ {
+     height: 100%;
+     padding: .5rem;
+     border: none;
+     outline: none;
+     background: transparent;
+     color: gray;
+     padding-left: 20px;
+ }
 
 
-.container_product {
+ .container_product {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -194,9 +172,12 @@ if(isset($_POST['add_to_cart'])){
   display: grid;
   grid-template-columns:15% 15% 15% ;
   grid-gap: 2px;
+
+
 }
 
-/* .card .card-content button {
+
+.card .card-content button {
   cursor: pointer;
   color: #fff;
   width: 100%;
@@ -246,87 +227,69 @@ if(isset($_POST['add_to_cart'])){
       margin-top: 1em;
     }
   
-  } */
+  }
 
-.sidenav {
-  background-color: #f0eeee;
-  width: 50%;
-  padding-bottom: 90px;
-  padding-top: 20px;
+  .sidenav {
+ background-color: #f0eeee;
+width: 50%;
 
-  
-  
- 
- 
-}
-.sidenav h2{
-text-align: center;
 }
 
 .container_calendar {
-  background-color: #ffffff;
-  padding:20px;
-  width: 85%;
-  margin: 60px;
-  box-shadow: 0 0 16px -4px rgba(0, 0, 0, 0.75);
+background-color: #ffffff;
+padding:20px;
+width: 85%;
+margin: 60px;
+box-shadow: 0 0 16px -4px rgba(0, 0, 0, 0.75);
 }
 
-.add{
+
+ .add{
   cursor: pointer;
+  color: #fff;
   width: 15%;
   height: 50px;
   font-size: 20px;
   font-weight: 600;
   border-radius: 5px;
-  color: var(--secondary);
-  background: var(--primary);
+  background: linear-gradient(45deg, #fabd14, #eb9616  );
   /* float: right; */
   /* margin-right:60px ; */
   margin-left: 80%;
-  transition: 0.5s;
-  text-decoration: none;
+
+ 
+
 }
 
-.add:hover{
-  background: var(--darkgray);
-}
 
 .delete{
   cursor: pointer;
+  color: #fff;
   width: 15%;
   height: 50px;
+  font-size: 20px;
   font-weight: 600;
   border-radius: 5px;
-  color: var(--secondary);
-  background: var(--primary);
+  background: linear-gradient(45deg, #fabd14, #eb9616  );
   float: left;
   margin-left:60px;
-  padding: 0.6rem 0.8rem;
-  font-size: 0.9rem;
-  transition: 0.5s;
-  font-weight: 700;
-}
+  
 
-.delete:hover{
-  background: var(--darkgray);
 }
 
 .print{
   cursor: pointer;
+  color: #fff;
   width: 15%;
   height: 50px;
   font-size: 20px;
   font-weight: 600;
   border-radius: 5px;
-  color: var(--secondary);
-  background: var(--primary);
+  background: linear-gradient(45deg, #fabd14, #eb9616  );
   float: right;
   margin-right:60px;
-  transition: 0.5s;
-}
 
-.print:hover{
-  background: var(--darkgray);
+  
 }
 
 body
@@ -388,27 +351,24 @@ margin:25px;
 transition: 0.4s;
 
 
-}*/
+}
 
 .button:hover{
-  background: var(--darkgray);
-}  
+    background: #34495e;
+    color: #fff;
+}  */
 
 .buttons{
-  display: inline-block;
-  width: calc(50% - 5px);
-  text-align: center;
-  padding: 0.6rem 0.8rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-top: 8px;
-  margin-right: 5px;
-  color: var(--secondary);
-  background: var(--primary);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.5s;
+background:#fff;
+padding:10px 15px;
+color: #34495e;
+font-weight: bolder;
+text-transform: uppercase;
+font-size: 18px;
+border-radius: 5px;
+margin:10%;
+transition: 0.4s;
+
 }
 
 .close{
@@ -432,133 +392,7 @@ transition: 0.4s;
       position:relative;
 }
 
-/* hot tour */
-.container-fluid{
-  width:40%;
-}
 
-.hot {
-  max-width: 100%;
-  padding: 10px 20px 20px 20px;
-  align-items: center;
-  background:none;
-  
-}
-
-.hot h1 {
-  text-align: center;
-  padding-bottom: 1.5rem;
-  color:var(--gray);
-  font-size: 2rem;
-  text-transform: uppercase;
-}
-
-.hot span {
-  position: relative;
-  z-index: 0;
-}
-
-.tourline {
-  border: none;
-  margin: 0 auto;
-  margin-top: 10px;
-  height: 6px;
-  width: 230px;
-  background-color: var(--primary);
- 
-}
-
-.hot .tourbox-container {
-  display: grid;
-  grid-template-columns:50% 50% ;
-  grid-gap: 30px;
-  
-}
-
-.hot .tourbox-container .tour-box{
-  background-color: var(--secondary);
-  border-radius: 0.5rem;
-  box-shadow: var(--shadow);
-}
-
-.hot .tourbox-container .tour-box .image{
-  height: 18rem;
-  width: 100%;
-  padding: 1rem;
-  position: relative;
-}
-
-.hot .tourbox-container .tour-box .image img{
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 0.5rem;  
-}
-
-.hot .tourbox-container .tour-box .image h3{
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  font-size: 1rem;
-  color: var(--secondary);
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 0.5rem;
-  font-weight: lighter;
-  padding: 0.3rem 0.5rem;
-}
-
-.hot .tourbox-container .tour-box .image h3 i{
-  color:var(--primary);
-}
-
-.hot .tourbox-container .tour-box .content{
-  padding: 1.5rem;
-  padding-top: 0;
-}
-
-.hot .tourbox-container .tour-box .content p{
-  font-size: 0.9rem;
-  margin-top: -10px;
-  color: var(--lightgray);
-  line-height: 1.5;
-}
-
-.hot .tourbox-container .tour-box .content .btn {
-  display: inline-block;
-  width: calc(50% - 5px);
-  text-align: center;
-  padding: 0.6rem 0.8rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-top: 8px;
-  margin-right: 5px;
-  color: var(--secondary);
-  background: var(--primary);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.5s;
-}
-
-.hot .tourbox-container .tour-box .content .btn:last-child {
-  margin-right: 0;
-}
-
-.hot .tourbox-container .tour-box .content .btn:hover {
-  background: var(--darkgray);
-}
-input{
-width: 100%;
-padding: 5px;
-}
-.container-fluid
-{
-  position: absolute;
-}
-.sidenav
-{
-  margin-left: 45%;
-}
 </style>
 <body>
 
@@ -570,43 +404,33 @@ padding: 5px;
 				RESTAURANT
 			  </button>
 			  <button class="button-value" onclick="filterProduct('DESTINATION')">
-				LOCATION
+				DESTINATION
 			  </button>
-        <?php 
-                    if(isset($_POST['search']))
-                    {
-                        $searchKey=$_POST['search'];
-                        $p = "SELECT * From `usergenerator` where des_Name LIKE '%$searchKey%'";
-
-                    }
-                    else
-                    {
-                        $p = "SELECT * From `usergenerator`";
-                        $searchKey = "";
-                    }
-                        
-                    $query = mysqli_query($conn,$p);
-
-
-                    ?>
 			  <div class="search-wrapper">
-        <form action="" method="post">
-
 				<input type="text" name="search" placeholder="Search here" >
+	
 				<button type="submit" name="submit"><span class="fa fa-search"></span></button>
-        </form>
 					
 					
 				</div>
 			</div>
-      <div class="container-fluid">
-      <section class="hot" id="hot">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="row">
+                     <div class="col-md-6">
+                        <h2 class="text-center"></h2>
+<div class="col-md-12">
+    <div class="row">
+         
+
+    <section class="hot" id="hot">
       <div class="tourbox-container">
           <?php
-          // $query = "SELECT * FROM usergenerator";
-          // $result = mysqli_query($conn, $query);
+          $query = "SELECT * FROM usergenerator";
+          $result = mysqli_query($conn, $query);
 
-              while ($row = mysqli_fetch_assoc($query)) {
+          if ($result) {
+              while ($row = mysqli_fetch_assoc($result)) {
                  
           ?>
                   <div class="tour-box">
@@ -626,49 +450,39 @@ padding: 5px;
               </form>
               <?php
                   }
-              
+              }
               ?>
           </div>
       </section>
-  </div>
                     <div class="sidenav">
-                        <h2 class="text-center">Itinerary</h2>
+                        <h2 class="text-center">Time Table</h2>
 
                         <button class="add">Add Trip</button>
 <?php
-$no=1;
-                        $query ="SELECT * FROM  `userdestination`";
+                        $query ="SELECT * FROM  userdestination";
                         $result = mysqli_query($conn,$query);
                         while ($r = mysqli_fetch_array($result)){?>
 
                     
 
-                          <div class="container_calendar">
-                            <div class="calendar">
-                              <h3>Day <?php echo $no;?></h3>
-                                  
+			<div class="container_calendar">
+				<div class="calendar">
+					<h3>Day <?php echo $r['des_id']?></h3>
+                        
 
-                              </div>
-                              
-                              <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-                              <div class="add_destination">
-                              <p>
-                                <?php if($r['des_day'] == $no){
-                                  echo $r['des_Name'];
-
-                                } 
-                                ?>
-                            </p>
-                              
-                              </div>
-                          
-                          </div>
-                              <div class="line"></div>
-                          <?php 
-                        $no++;
-                        }?>
-                        <button class="delete">Delete</button>
-                        <button name="print" class="print"><a href="pdf.php">Print</a> </button>
+					</div>
+					
+					<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+					<div class="add_destination">
+					<p><?php echo $r['des_Name']?></p>
+					
+					</div>
+			
+			</div>
+        	<div class="line"></div>
+			<?php }?>
+		<button class="delete">delete</button>
+		<button class="print">Print</button>
 	
 
                       

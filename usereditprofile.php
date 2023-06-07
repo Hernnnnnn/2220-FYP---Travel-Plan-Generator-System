@@ -2,8 +2,27 @@
 session_start();
 include('dataconnection.php');
 include "usernavbar.php";
-?>
 
+$email = $_GET['email'];
+if(isset($_POST['update']))
+{
+    $imageName = $_FILES['image']['name'];
+    $sql = "UPDATE `login` SET image ='$imageName' WHERE email='$email'";
+    $result = mysqli_query($conn,$sql);
+}
+
+$email = $_GET['email'];
+$query = mysqli_query($conn, "SELECT * FROM `login` WHERE email = '$email'");
+$result = mysqli_fetch_assoc($query);
+$msg = '';
+
+if(isset($_POST['update']))
+{
+    $username = $_POST['username'];
+    mysqli_query($conn, "UPDATE `login` SET username ='$username' WHERE email='$email'");
+    $msg = "Information updated successfully!";
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,183 +31,201 @@ include "usernavbar.php";
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>TPGS || Edit Profile</title>
-	<link rel="stylesheet" href="css/style1.css">
 </head>
+
 <style>
-	body{
+:root {
+  --primary: #4bb6b7;
+  --secondary: #FFFFFF;
+  --gray: #575757;
+  --lightgray: #848484;
+  --lightgray2: rgba(127, 183, 126, 0.1);
+  --darkgray: #2E3238;
+  --black: #393e46;
+  --green: #00AD7C;
+  --yellow: #FFEA61;
+  --shadow: 0px 2px 8px 0px var(--lightgray);
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: sans-serif;
+}
+body
+{
     background-image: url(images/image.gif);
     background-size: cover; 
     background-repeat: no-repeat;
     background-attachment: fixed;
-    }
-
-	/* Container */
-.container-xl {
-    max-width: 1140px;
-    padding: 0 15px;
-  }
-  
-  /* Profile picture card */
-  .card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 15px;
-  }
-  
-  /* Profile picture card header */
-  .card-header {
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px;
-  }
-  
-  /* Profile picture card body */
-  .card-body {
-    text-align: center;
-  }
-  
-  /* Profile picture image */
-  .profimg {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-  }
-  
-  /* Profile picture help block */
-  .small {
-    font-size: 12px;
-    color: #777;
-  }
-  
-  /* Profile picture upload button */
-  .upbtn {
-    background-color: #42b983;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  /* Account details card */
-  .accdet {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  /* Account details form */
-  .acc {
-    margin-bottom: 15px;
-  }
-  
-  /* Form Group (username) */
-  .mb-3 {
-    margin-bottom: 15px;
-  }
-  
-  /* Form Row */
-  .row {
+}
+.wrapper
+{
+    /* position: relative; */
+    margin: auto;
+    margin-top: 150px;
+    max-width: 650px;
+    height: 350px;
     display: flex;
-    flex-direction: row;
-  }
-  
-  /* Form Group (first name) */
-  .col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-  
-  /* Save changes button */
-  .upbtn {
-    background-color: #42b983;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 10px 20px;
+    box-shadow: 0 1px 20px 0 rgba(75, 182, 183,0.9);
+}
+.wrapper .left
+{
+    width: 35%;
+    background: rgba(0,0,0,0.7);
+    padding: 40px 25px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+}
+.wrapper .left img
+{
+    margin-bottom: 10px;
     border-radius: 5px;
-    cursor: pointer;
-  }
+}
+.wrapper .left h4
+{
+    margin-bottom: 10px;
+    color: #fff;
+
+}
+.wrapper .left p
+{
+    font-size: 15px;
+    color: #fff;
+
+}
+
+.wrapper .right
+{
+    width: 65%;
+    background: rgba(255, 255, 255, 0.7);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 30px 25px;
+}
+.wrapper .right .info
+{
+    margin-bottom: 25px;
+}
+
+.wrapper .right .info h3
+{
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom:  1px solid black;
+    color: #343c4e;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    
+}
+.wrapper .right .info_data form
+{
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper .right .info_data .data
+{
+    width: 45%;
+}
+.wrapper .right .info_data .data h4
+{
+    color: #353c4e;
+    margin-bottom: 5px;
+}
+.wrapper .right .info_data .data p
+{
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #6c757d;
+}
+.settingimg
+{
+    width: 20px;
+    display: block;
+    position: absolute;
+    /* right: 2px; */
+    /* text-align: center; */
+    margin-left: 350px;
+}
+input[type="submit"]
+{
+    border: none;
+    width: 190px;
+    height: 50px;
+    padding: 5px 20px;
+    margin-top: 20px;
+    /* margin-left: 100px; */
+    background: #4bb6b7;
+    border-radius: 30px;
+    font-size: 20px;
+    color: white;
+    
+}
+input[type="submit"]:hover
+{
+    background-color: #6c757d;
+    color: white;
+}
+.success
+{
+    color: #2d6a4f;
+    background-color: #52b788;
+    /* font-weight: bold; */
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 370px;
+    /* font-size: 10pt; */
+    border-radius: 10px;
+    /* text-transform: uppercase; */
+    text-align: center;
+}
+.error
+{
+    color: #d43838;
+    background-color: #fcd1d1;
+    /* font-weight: bold; */
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 370px;
+    /* font-size: 10pt; */
+    border-radius: 10px;
+    /* text-transform: uppercase; */
+    text-align: center;
+}
 </style>
 <body>
-<body>
-<div class="container-xl px-4 mt-4">
-    <hr class="mt-0 mb-4">
-    <div class="row">
-        <div class="col-xl-4">
-            <!-- Profile picture card-->
-            <div class="card mb-4 mb-xl-0">
-                <div class="card-header">Profile Picture</div>
-                <div class="card-body text-center">
-                    <!-- Profile picture image-->
-                    <img class="profimg rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                    <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                    <!-- Profile picture upload button-->
-                    <button class="upbtn btn-primary" type="button">Upload new image</button>
-                </div>
-            </div>
+    <div class="wrapper">
+        <div class="left">
+            <img src="images/<?php echo $result['image'] ?>" width="100">
+            <h4><?php echo $result['username'] ?></h4>
+            <p>User of Travel Plan Generator</p>
         </div>
-        <div class="col-xl-8">
-            <!-- Account details card-->
-            <div class="card mb-4">
-                <div class="accdet">Account Details</div>
-                <div class="acc">
-                    <form>
-                        <!-- Form Group (username)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
-                        </div>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (first name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputFirstName">First name</label>
-                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie">
-                            </div>
-                            <!-- Form Group (last name)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLastName">Last name</label>
-                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna">
-                            </div>
-                        </div>
-                        <!-- Form Row        -->
-                        <!-- Form Group (email address)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
-                        </div>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
-                            </div>
-                        </div>
-                        <!-- Save changes button-->
-                        <button class="upbtn btn-primary" type="button">Save changes</button>
-                    </form>
+
+        <div class="right">
+            <a href="userprofile.php?email=<?php echo $result['email']; ?>"><img src="images/back.png" class="settingimg"></a>
+            <div class="info">
+                <h3>Edit Information</h3>
+                <div class="info_data">
+                    <div class="data">
+                        <?php echo $msg; ?>
+                        <form action="" method="post">
+                            <h4>Username</h4>
+                            <input type="text" name="username" value="<?php echo $result['username'] ?>">
+                            <input type="submit" name="update" value="Update">
+                        </form> 
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <h4>Choose a new profile picture</h4>
+                            <br>
+                            <input type="file" id="file" name="image" class="form-control" multiple>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<script>
-  function previewImage(event) {
-    var reader = new FileReader();
-    reader.onload = function() {
-      var preview = document.getElementById('preview-image');
-      preview.src = reader.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-  }
-</script>
-
-
-	<?php include "userfooter.php"; ?>
 </body>
 </html>

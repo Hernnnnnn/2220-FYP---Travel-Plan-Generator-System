@@ -77,38 +77,6 @@ if(isset($_POST['submit'])){
 			</div>
 		</div>
 	</div>
-    
-    <div class="wrapper">
-		<div class="center">
-            <div class="afterpost">
-                <div class="thanks">Thanks for rating us!</div>
-                <div class="editrate">EDIT</div>
-            </div>
-            <form action="" method="post">
-			<div class="star-widget">
-                <input type="radio" name="rate" id="rate-5" value="5">
-                <label for="rate-5" class="fas fa-star"></label>
-                <input type="radio" name="rate" id="rate-4" value="4">
-                <label for="rate-4" class="fas fa-star"></label>
-                <input type="radio" name="rate" id="rate-3" value="3">
-                <label for="rate-3" class="fas fa-star"></label>
-                <input type="radio" name="rate" id="rate-2" value="2">
-                <label for="rate-2" class="fas fa-star"></label>
-                <input type="radio" name="rate" id="rate-1" value="1">
-                <label for="rate-1" class="fas fa-star"></label>
-                </form>
-                <form class="rating" method="post">
-                    <header></header>
-                    <div class="textarea">
-                        <textarea cols="30" name="feedback" placeholder="Describe your experience..."></textarea>
-                    </div>
-                    <div class="ratebtn">
-                        <button name="submit" type="submit" class="ratebtn">Post</button>
-                    </div>
-                </form>
-            </div>
-		</div>
-	</div>
 
     <script>
         const ratebtn = document.querySelector(".ratebtn");
