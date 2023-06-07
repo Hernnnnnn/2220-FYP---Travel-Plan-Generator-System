@@ -12,7 +12,7 @@
 }
 
 .container-xxl {
-padding: 20px;
+padding: 200px;
 background-color: none;
 }
 
@@ -27,11 +27,14 @@ box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
 text-align: center;
 color: #fff;
 padding: 15px 0px;
-background-color: #4bb6b7;
+background-color: var(--primary);
 }
 
 .custom_content form label {
-font-weight: bold;
+    margin-top: 5px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
 }
 
 .custom_content form input[type="text"],
@@ -52,14 +55,16 @@ height: 150px;
 .custom_content form button[type="submit"] {
 display: block;
 margin: 0 auto;
-padding: 10px 30px;
+padding: 15px 40px;
 background-color: var(--primary);
 color: var(--secondary);
 border: none;
 border-radius: 5px;
 cursor: pointer;
-font-size: 15px;
-}
+font-size: 18px; 
+font-weight: 600;
+transition: 0.3s;
+}  
 
 .custom_content form button[type="submit"]:hover {
 background-color: var(--darkgray);

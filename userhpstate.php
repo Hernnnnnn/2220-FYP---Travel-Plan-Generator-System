@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('dataconnection.php');
-include "usernavbar.php";
+// include "usernavbar.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,6 @@ include "usernavbar.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TPGS || State</title>
-    <!-- <link rel="stylesheet" href="css/style1.css"> -->
 </head>
 <style>
 	body{
@@ -39,7 +38,7 @@ include "usernavbar.php";
   max-width: 100%;
   padding: 10px 20px 20px 20px;
   align-items: center;
-  background:none;
+  background: none;
 }
 
 .hot h1 {
