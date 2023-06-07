@@ -360,6 +360,8 @@
   margin-top: -10px;
   color: var(--lightgray);
   line-height: 1.5;
+  height: 100px;
+
 }
 
 .hot .tourbox-container .tour-box .content .btn {

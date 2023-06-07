@@ -450,7 +450,17 @@ input[type="checkbox"].toggle:disabled + label::after {
                     
                     
                     <td>
-                    <a class="icon" href="admindelfeedback.php?email=<?php echo $email?>&&id=<?php echo $id?>"><span class="fa fa-close" ></span></a>
+                    <?php
+                   $status = $loc["status"];
+                    if($status==1)
+                    {
+                        echo '<a class="update" id="open-popup-btn" onclick="show()"  href="admineditfeedback.php?email='.$email.'&&id='.$id.'&&option='.$status.'">Hide</a>';
+                    }
+                    else if($status==0)
+                    {
+                        echo '<a onclick="show()" class="update1" href="admineditfeedback.php?email='.$email.'&&id='.$id.'&&option='.$status.'">Unhide</a>';
+                    }
+                    ?>
                     </td>
                     
                     
