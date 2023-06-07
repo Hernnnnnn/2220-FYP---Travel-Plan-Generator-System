@@ -21,7 +21,7 @@ $result = mysqli_query($conn, $query);
 $option = "";
 while($row2 = mysqli_fetch_array($result))
 {
-	$option = $option."<option value = '$row[name]'>$row2[name]</option>";
+	$option = $option."<option value = '$row2[name]'>$row2[name]</option>";
 }
 ?>
     <?php include "usernavbar.php"; ?>
@@ -37,7 +37,7 @@ while($row2 = mysqli_fetch_array($result))
 			<form id="travelForm" action="usergenerator.php" method="GET">
 				<div class="travelplaninput">
 					<h3>Where to</h3>
-					<select type="select" name="destination" class="form-control" required>
+					<select type="select" id="destination" class="form-control" required>
 					<?php 
 					echo $option;
 						?>
@@ -52,7 +52,7 @@ while($row2 = mysqli_fetch_array($result))
 					<input id="endDate" type="date" name="end_date" required>
 				</div>
 				<input type="hidden" name="email" value="<?php echo $result['email']; ?>">
-				<input type="submit" class="travelbtn" value="Generate Now">
+				<input type="submit" class="travelbtn" value="Generate Now" name="submit">
 			</form>
 		</div>
 
