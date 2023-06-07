@@ -21,24 +21,27 @@ $email = $_GET['email'];
 		<img src="images/image.gif" alt="Hero Image">
 		<div class="hero-travelplancontent">
 			<h1>Welcome to TPGS</h1>
-			<p>Discover amazing features and services.</p>
+			<p>Generate your own travel plan now</p>
 		</div>
 
-		<form action="">
-			<div class="travelplaninput">
-				<h3>Where to</h3>
-				<input type="text" placeholder="Enter destination (States)">
-			</div>
-			<div class="travelplaninput">
-				<h3>Start date</h3>
-				<input type="date">
-			</div>
-			<div class="travelplaninput">
-				<h3>End date</h3>
-				<input type="date">
-			</div>
-		</form>
-	</div>
+		<div class="hero-form">
+			<form id="travelForm" action="usergenerator.php" method="GET" onsubmit="return validateForm()">
+				<div class="travelplaninput">
+					<h3>Where to</h3>
+					<input type="text" placeholder="Enter destination (States)" name="destination" required>
+				</div>
+				<div class="travelplaninput">
+					<h3>Start date</h3>
+					<input id="startDate" type="date" name="start_date" required>
+				</div>
+				<div class="travelplaninput">
+					<h3>End date</h3>
+					<input id="endDate" type="date" name="end_date" required>
+				</div>
+				<input type="hidden" name="email" value="<?php echo $result['email']; ?>">
+				<input type="submit" class="travelbtn" value="Generate Now">
+			</form>
+		</div>
 
     <section class="hot" id="hot">
     <h1 class="hot">Hot <span>Tours</span><hr class="tourline"> </h1>
@@ -76,6 +79,26 @@ $email = $_GET['email'];
     </section>
     <?php include "tpgsteam.php"; ?>
 	<?php include "userfooter.php"; ?>
+
+	<script>
+	document.getElementById('travelForm').addEventListener('submit', function(e) {
+		e.preventDefault();
+
+		var startDate = document.getElementById('startDate').value;
+		var endDate = document.getElementById('endDate').value;
+
+		var email = document.querySelector('input[name="email"]').value;
+
+		// Calculate the number of days
+		var start = new Date(startDate);
+		var end = new Date(endDate);
+		var timeDiff = Math.abs(end.getTime() - start.getTime());
+		var numDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+		// Redirect to usergenerator.php with email and number of days
+		window.location.href = 'usergenerator.php?email=' + email + '&num_days=' + numDays;
+	});
+	</script>
 
 </body>
 </html>

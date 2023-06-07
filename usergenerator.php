@@ -295,16 +295,17 @@ text-align: center;
   cursor: pointer;
   width: 15%;
   height: 50px;
+  font-size: 20px;
   font-weight: 600;
   border-radius: 5px;
   color: var(--secondary);
   background: var(--primary);
+  transition: 0.5s;
+  text-decoration: none;
   float: left;
   margin-left:60px;
   padding: 0.6rem 0.8rem;
-  font-size: 0.9rem;
   transition: 0.5s;
-  font-weight: 700;
 }
 
 .delete:hover{
@@ -320,9 +321,14 @@ text-align: center;
   border-radius: 5px;
   color: var(--secondary);
   background: var(--primary);
+  transition: 0.5s;
+  text-decoration: none;
+  margin-left:60px;
+  padding: 0.6rem 0.8rem;
+  transition: 0.5s;
   float: right;
   margin-right:60px;
-  transition: 0.5s;
+  text-decoration:none;
 }
 
 .print:hover{

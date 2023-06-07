@@ -177,9 +177,98 @@
 
 
 
-.travelplan{
-  
+.hero-travelplan {
+  position: relative;
 }
+
+.hero-travelplan img {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+}
+
+.hero-travelplan .hero-travelplancontent {
+  position: absolute;
+  top: 20%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--secondary);
+  z-index: 2;
+}
+
+.hero-travelplan .hero-travelplancontent h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: var(--secondary);
+  text-align: left;
+  text-shadow: 2px 2px 4px var(--darkgray);
+}
+
+.hero-travelplan .hero-travelplancontent p {
+  font-size: 2rem;
+  color: var(--secondary);
+  text-shadow: 2px 2px 4px var(--darkgray);
+}
+
+.hero-travelplan .hero-form {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  background-color: var(--secondary);
+  padding: 30px;
+  border-radius: 5px;
+  text-align: left;
+  z-index: 2;
+  width: 30%;
+  height: 23%;
+}
+
+.hero-travelplan .hero-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.hero-travelplan .travelplaninput {
+  margin-bottom: 20px;
+}
+
+.hero-travelplan .travelplaninput h3 {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+  color: var(--darkgray);
+}
+
+.hero-travelplan .travelplaninput input[type="text"],
+.hero-travelplan .travelplaninput input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--lightgray);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.hero-travelplan .travelbtn {
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: var(--secondary);
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-travelplan .travelbtn:hover {
+  background-color: var(--darkgray);
+}
+
+
+
+
 
 
 
