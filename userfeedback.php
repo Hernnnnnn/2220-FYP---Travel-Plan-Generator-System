@@ -128,8 +128,8 @@ body
                     <div class="col-md-6">
                         <label for="type" class="form-label">Type*</label>
                         <select name="type" class="form-control" required>
-                            <option value="inquiry">Inquiry</option>
                             <option value="feedback">Feedback</option>
+                            <option value="inquiry">Inquiry</option>
                         </select>
                     </div>
                     <div class="col-md-6">
