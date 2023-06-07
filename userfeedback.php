@@ -4,59 +4,51 @@ include('dataconnection.php');
 include "usernavbar.php";
 
 if (isset($_POST['submit'])) {
-    $name = mysqli_real_escape_string($connection, $_POST['name']);
-    $email = mysqli_real_escape_string($connection, $_POST['email']);
-    $product_name = mysqli_real_escape_string($connection, $_POST['product_name']);
-    $product_feedback = mysqli_real_escape_string($connection, $_POST['product_feedback']);
-    $review = mysqli_real_escape_string($connection, $_POST['review']);
+    $type = mysqli_real_escape_string($conn, $_POST['type']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $feedback = mysqli_real_escape_string($conn, $_POST['feedback']);
+    $satisfy = mysqli_real_escape_string($conn, $_POST['review']);
 
-    // $upload_image=$_FILES["file"]["name"];
-    // $folder="http://localhost/project/Feedback/images/";
-    // move_uploaded_file($_FILES["file"]["tmp_name"], "$folder".$_FILES["file"]["name"]);
-    $img_name = $_FILES['file']['name'];
-    $img_size = $_FILES['file']['size'];
-    $tmp_name = $_FILES['file']['tmp_name'];
-    $error = $_FILES['file']['error'];
+    $query = "SELECT email FROM login WHERE email = '$email'";
+    $result = mysqli_query($conn, $query);
+    
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $email = $row['email'];
 
-    if ($error === 0) {
-        if ($img_size > 12500000) {
-            $em = "Sorry, your file is too large.";
-            echo "processsdf";
+        $insertQuery = "INSERT INTO userfeedback (email, type, feedback, review) VALUES ('$email', '$type', '$feedback', '$satisfy')";
+        
+        if (mysqli_query($conn, $insertQuery)) {
+            echo "<div class='popup' style='background-color: #3dec55;'>
+                    <h2>Notification</h2>
+                    <p>Submited!</p>
+                    <button class='close'></button>
+                </div>";
         } else {
-            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-            $img_ex_lc = strtolower($img_ex);
-
-            $allowed_exs = array("jpg", "jpeg", "png");
-
-            if (in_array($img_ex_lc, $allowed_exs)) {
-                $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
-                $img_upload_path = 'uploads/' . $new_img_name;
-                move_uploaded_file($tmp_name, $img_upload_path);
-
-                $sql = "INSERT INTO final_feedback(username,email,product_name,file,product_feedback,review) VALUES('$name','$email','$product_name','$new_img_name','$product_feedback','$review')";
-
-                $result = mysqli_query($connection, $sql);
-                if ($result) {
-                    $_SESSION['success_message'] = "Contact form saved successfully.";
-
-?>
-                    <script>
-                        swal("Good job!", "You clicked the button!", "success");
-                    </script>
-<?php
-                }
-            } else {
-                $em = "You can't upload files of this type";
-                header("Location: index.php?error=$em");
-            }
+            echo "Error: " . mysqli_error($conn);
         }
     } else {
-       
-        echo "error";
+        echo "User not found. Please make sure you are registered.";
     }
-    session_destroy();
 }
+
+mysqli_close($conn);
 ?>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var closeButton = document.querySelector('.popup .close');
+    if (closeButton) {
+        closeButton.addEventListener('click', function() {
+            var popup = this.parentNode;
+            popup.style.display = 'none';
+        });
+
+        setTimeout(function() {
+            closeButton.click();
+        }, 3000);
+    }
+});
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,23 +57,6 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TPGS || Contact Us / Feedback</title>
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="css/feedback.css" >
 </head>
 <style>
@@ -92,30 +67,116 @@ body
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f44336;
+  text-align: center;
+  color: white;
+  padding: 16px;
+  border-radius: 5px;
+  z-index: 1;
+  opacity: 0.9;
+  visibility: visible;
+  animation: popup 0.5s ease-in-out forwards;
+  width: 300px; /* Set your desired width */
+  height: 200px; /* Set your desired height */
+}
+
+.popup .close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.popup .close::before {
+  content: "✕";
+}
+
+.popup .close:hover {
+  color: #ccc;
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    bottom: -50px;
+  }
+  100% {
+    opacity: 0.9;
+    bottom: 30px;
+  }
+}
 </style>
 <body>
 <div class="container-xxl py-4">
     <div class="row ">
         <div class="col-md-10 offset-md-1 custom_content">
             <h1 style="text-align:center;color:white;padding:15px 0px;">Contact Us / Feedback Form</h1>
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
+            <form action="userfeedback.php?email=<?php echo $result['email']?>" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="name" class="form-label">Name*</label>
-                        <input type="text" class="form-control" placeholder="Enter your fullname" name="name" required />
+                        <label for="type" class="form-label">Type*</label>
+                        <select name="type" class="form-control" required>
+                            <option value="inquiry">Inquiry</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
                     </div>
                     <div class="col-md-6">
                         <label for="email" class="form-label">Email*</label>
-                        <input type="email" class="form-control" placeholder="Enter Your Email" name="email" required />
+                        <input type="email" class="form-control" placeholder="Enter your email" name="email" value="<?php echo $result['email']?>" required />
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
                         <label for="name" class="form-label">Message*</label>
-                        <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Send Me Your Message" required></textarea>
+                        <textarea name="feedback" id="" cols="30" rows="7" class="form-control" placeholder="Send Me Your Message" required></textarea>
                     </div>
 
+                </div>
+
+                <div class="row mt-5 offset-md-1">
+                    <div class="form-check col-md-2">
+                        <input class="form-check-input" type="radio" name="review" id="flexRadioDefault1" value="5" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </label>
+                    </div>
+                    <div class="form-check col-md-2">
+                        <input class="form-check-input" type="radio" name="review" id="flexRadioDefault2" value='4'>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+
+                    <div class="form-check col-md-2">
+                        <input class="form-check-input" type="radio" name="review" id="flexRadioDefault3" value='3'>
+                        <label class="form-check-label" for="flexRadioDefault3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </label>
+                    </div>
+                    <div class="form-check col-md-2">
+                        <input class="form-check-input" type="radio" name="review" id="flexRadioDefault4" value='2'>
+                        <label class="form-check-label" for="flexRadioDefault4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </label>
+                    </div>
+                    <div class="form-check col-md-2">
+                        <input class="form-check-input" type="radio" name="review" id="flexRadioDefault5" value='1'>
+                        <label class="form-check-label" for="flexRadioDefault5">
+                            <i class="fas fa-star"></i>
+                        </label>
+                    </div>
                 </div>
 
                 <div class="text-center pt-5 pb-3">
