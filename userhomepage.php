@@ -90,8 +90,10 @@ while($row2 = mysqli_fetch_array($result))
             ?>
         </div>
     </section>
+
     <?php include "tpgsteam.php"; ?>
 	<?php include "userfooter.php"; ?>
+	<?php include "userfeedbackdis.php"; ?>
 
 	<script>
 	document.getElementById('travelForm').addEventListener('submit', function(e) {

@@ -222,7 +222,7 @@
   text-align: left;
   z-index: 2;
   width: 50%;
-  height: 30%;
+  height: auto;
 }
 
 .hero-travelplan .hero-form form {

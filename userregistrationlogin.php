@@ -85,9 +85,8 @@ if (isset($_POST["register"])) {
                   </div>";
         } else {
             $password_hash = password_hash($password, PASSWORD_BCRYPT);
-            $profile_pic = "profile.png";
 
-            $result = mysqli_query($conn, "INSERT INTO login (username, email, password, status, profile_pic) VALUES ('$name','$email', '$password_hash', 0, '$profile_pic')");
+            $result = mysqli_query($conn, "INSERT INTO login (username, email, password, status) VALUES ('$name','$email', '$password_hash', 0)");
 
             if ($result) {
                 $otp = rand(100000, 999999);
