@@ -403,12 +403,12 @@ input[type="checkbox"].toggle:disabled + label::after {
                 <thead>
                 <tr>
                     
-                    <th>State's Name</th>
-                    <th>State's Details</th>
-                    <th>State's Image</th>
-                    <th>State's Video</th>
+                    <th>States Name</th>
+                    <th>States Details</th>
+                    <th>States Image</th>
+                    <th>States Video</th>
                     <th>Derection Link</th>
-                    <th>State's Details Link</th>
+                    <th>States Details Link</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -443,11 +443,11 @@ input[type="checkbox"].toggle:disabled + label::after {
                    $status = $loc["option"];
                     if($status==1)
                     {
-                        echo '<a class="update" id="open-popup-btn" onclick="show()"  href="admineditoption.php?email='.$email.'&&id='.$id.'&&option='.$status.'">Update</a>';
+                        echo '<a class="update" id="open-popup-btn" onclick="show()"  href="admineditoption.php?email='.$email.'&&id='.$id.'&&option='.$status.'">Hot</a>';
                     }
                     else if($status==0)
                     {
-                        echo '<a onclick="show()" class="update1" href="admineditoption.php?email='.$email.'&&id='.$id.'&&option='.$status.'">Update</a>';
+                        echo '<a onclick="show()" class="update1" href="admineditoption.php?email='.$email.'&&id='.$id.'&&option='.$status.'">Wow</a>';
                     }
                     ?>
                     </td>
