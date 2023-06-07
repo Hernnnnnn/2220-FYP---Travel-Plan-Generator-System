@@ -142,8 +142,8 @@ include 'dataconnection.php';
             </div>
             <div class="card-single">
                 <div>
-                    <h1>$60 K</h1>
-                    <span>Income</span>
+                    <h1>50</h1>
+                    <span>Number of Generator</span>
                 </div>
                 <div>
                     <span class="fa fa-shopping-bag"></span>

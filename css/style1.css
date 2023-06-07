@@ -718,35 +718,35 @@ input#rate-5:checked ~ label {
   text-shadow: 0 0 20px var(--yellow);
 }
 
-#rate-1:checked ~ form header:before {
+#rate-1:checked ~ .rating header:before {
   content: "I just hate it 😠";
 }
 
-#rate-2:checked ~ form header:before {
+#rate-2:checked ~ .rating header:before {
   content: "I don't like it 😒";
 }
 
-#rate-3:checked ~ form header:before {
+#rate-3:checked ~ .rating header:before {
   content: "It is awesome 😄";
 }
 
-#rate-4:checked ~ form header:before {
+#rate-4:checked ~ .rating header:before {
   content: "I just like it 😎";
 }
 
-#rate-5:checked ~ form header:before {
+#rate-5:checked ~ .rating header:before {
   content: "I just love it 😍";
 }
 
-.wrapper form {
+.wrapper .rating {
   display: none;
 }
 
-input:checked ~ form {
+input:checked ~ .rating {
   display: block;
 }
 
-form header {
+.rating header {
   width: 100%;
   font-size: 25px;
   color: var(--primary);
@@ -756,13 +756,13 @@ form header {
   transition: all 0.2s ease;
 }
 
-form .textarea {
+.rating .textarea {
   height: 100px;
   width: 100%;
   overflow: hidden;
 }
 
-form .textarea textarea {
+.rating .textarea textarea {
   height: 100%;
   width: 100%;
   outline: none;
@@ -773,7 +773,7 @@ form .textarea textarea {
   font-size: 17px;
 }
 
-form .ratebtn button {
+.rating .ratebtn button {
   height: 50px;
   width: 100%;
   border: none;
@@ -788,6 +788,6 @@ form .ratebtn button {
   margin-top: 20px;
 }
 
-form .ratebtn button:hover {
+.rating .ratebtn button:hover {
   background: var(--darkgray);
 }

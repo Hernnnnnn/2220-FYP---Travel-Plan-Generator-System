@@ -615,7 +615,7 @@ padding: 5px;
                               <div class="line"></div>
                           <?php }?>
                         <button class="delete">Delete</button>
-                        <button class="print">Print</button>
+                        <button name="print" class="print"><a href="pdf.php">Print</a> </button>
 	
 
                       

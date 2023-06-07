@@ -4,28 +4,34 @@ include('dataconnection.php');
 include "usernavbar.php";
 
 if(isset($_POST['submit'])){
-    $rating = $_POST['rating']; 
+    $rating = $_POST['rate']; 
     $feedback = $_POST['feedback'];
-    $username = $_SESSION['username'];
+    $email = $_GET['email'];
 
-    $checkQuery = "SELECT * FROM login WHERE username = '$username'";
-    $checkResult = mysqli_query($conn, $checkQuery);
+    $q = "INSERT INTO rating (email, rating, feedback) VALUES ('$email', '$rating', '$feedback')";
+    $q1 = mysqli_query($conn,$q);
+    
+    
+    // $username = $_SESSION['username'];
 
-    if(mysqli_num_rows($checkResult) > 0) {
-        $updateQuery = "UPDATE login SET rating = '$rating', feedback = '$feedback' WHERE username = '$username'";
-        if(mysqli_query($conn, $updateQuery)){
-            echo "Rating and feedback updated successfully.";
-        } else{
-            echo "Error: " . mysqli_error($conn);
-        }
-    } else {
-        $insertQuery = "INSERT INTO login (username, rating, feedback) VALUES ('$username', '$rating', '$feedback')";
-        if(mysqli_query($conn, $insertQuery)){
-            echo "Rating and feedback added successfully.";
-        } else{
-            echo "Error: " . mysqli_error($conn);
-        }
-    }
+//     $checkQuery = "SELECT * FROM login WHERE email = '$email'";
+//     $checkResult = mysqli_query($conn, $checkQuery);
+
+//     if(mysqli_num_rows($checkResult) > 0) {
+//         $updateQuery = "UPDATE rating SET `rating` = '$rating', feedback = '$feedback' WHERE email = '$email'";
+//         if(mysqli_query($conn, $updateQuery)){
+//             echo "Rating and feedback updated successfully.";
+//         } else{
+//             echo "Error: " . mysqli_error($conn);
+//         }
+//     } else {
+//         $insertQuery = "INSERT INTO rating (email, rating, feedback) VALUES ('$email', '$rating', '$feedback')";
+//         if(mysqli_query($conn, $insertQuery)){
+//             echo "Rating and feedback added successfully.";
+//         } else{
+//             echo "Error: " . mysqli_error($conn);
+//         }
+//     }
 }
 ?>
 
@@ -78,6 +84,7 @@ if(isset($_POST['submit'])){
                 <div class="thanks">Thanks for rating us!</div>
                 <div class="editrate">EDIT</div>
             </div>
+            <form action="" method="post">
 			<div class="star-widget">
                 <input type="radio" name="rate" id="rate-5" value="5">
                 <label for="rate-5" class="fas fa-star"></label>
@@ -89,7 +96,8 @@ if(isset($_POST['submit'])){
                 <label for="rate-2" class="fas fa-star"></label>
                 <input type="radio" name="rate" id="rate-1" value="1">
                 <label for="rate-1" class="fas fa-star"></label>
-                <form action="userrating.php" method="post">
+                </form>
+                <form class="rating" method="post">
                     <header></header>
                     <div class="textarea">
                         <textarea cols="30" name="feedback" placeholder="Describe your experience..."></textarea>
