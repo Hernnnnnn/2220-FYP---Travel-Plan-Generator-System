@@ -213,7 +213,7 @@
 
 .hero-travelplan .hero-form {
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 30%;
   transform: translate(-50%, -50%);
   background-color: var(--secondary);
@@ -221,8 +221,8 @@
   border-radius: 5px;
   text-align: left;
   z-index: 2;
-  width: 30%;
-  height: 23%;
+  width: 50%;
+  height: 50%;
 }
 
 .hero-travelplan .hero-form form {
@@ -241,7 +241,7 @@
   color: var(--darkgray);
 }
 
-.hero-travelplan .travelplaninput input[type="text"],
+.hero-travelplan .travelplaninput select,
 .hero-travelplan .travelplaninput input[type="date"] {
   width: 100%;
   padding: 10px;
@@ -250,7 +250,7 @@
   font-size: 16px;
 }
 
-.hero-travelplan .travelbtn {
+.travelbtn {
   padding: 10px 20px;
   background-color: var(--primary);
   color: var(--secondary);
@@ -260,11 +260,16 @@
   font-size: 1.25rem;
   cursor: pointer;
   transition: 0.3s;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.hero-travelplan .travelbtn:hover {
+.travelbtn:hover {
   background-color: var(--darkgray);
 }
+
 
 
 

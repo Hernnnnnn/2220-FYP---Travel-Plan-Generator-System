@@ -3,12 +3,18 @@ session_start();
 include('dataconnection.php');
 include "usernavbar.php";
 
-$email = $_GET['email'];
 if(isset($_POST['update']))
 {
     $imageName = $_FILES['image']['name'];
-    $sql = "UPDATE `login` SET image ='$imageName' WHERE email='$email'";
-    $result = mysqli_query($conn,$sql);
+    
+    if (!empty($imageName)) {
+        $sql = "UPDATE `login` SET image ='$imageName' WHERE email='$email'";
+        $result = mysqli_query($conn, $sql);
+    } else {
+        $defaultImage = 'images/profile.png';
+        $sql = "UPDATE `login` SET image ='$defaultImage' WHERE email='$email'";
+        $result = mysqli_query($conn, $sql);
+    }
 }
 
 $email = $_GET['email'];

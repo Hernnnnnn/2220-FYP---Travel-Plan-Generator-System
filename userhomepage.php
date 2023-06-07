@@ -25,10 +25,20 @@ $email = $_GET['email'];
 		</div>
 
 		<div class="hero-form">
-			<form id="travelForm" action="usergenerator.php" method="GET" onsubmit="return validateForm()">
+			<form id="travelForm" action="usergenerator.php" method="GET">
 				<div class="travelplaninput">
 					<h3>Where to</h3>
-					<input type="text" placeholder="Enter destination (States)" name="destination" required>
+					<select type="option" name="destination" class="form-control" required>
+						<?php
+						$query = "SELECT name FROM locations";
+						$result = mysqli_query($conn, $query);
+						
+						while ($row = mysqli_fetch_assoc($result)) {
+							$name = $row['name'];
+							echo "<option value='$name'>$name</option>";
+						}
+						?>
+					</select>
 				</div>
 				<div class="travelplaninput">
 					<h3>Start date</h3>
@@ -84,19 +94,18 @@ $email = $_GET['email'];
 	document.getElementById('travelForm').addEventListener('submit', function(e) {
 		e.preventDefault();
 
+		var destination = document.getElementById('destination').value;
 		var startDate = document.getElementById('startDate').value;
 		var endDate = document.getElementById('endDate').value;
 
 		var email = document.querySelector('input[name="email"]').value;
 
-		// Calculate the number of days
 		var start = new Date(startDate);
 		var end = new Date(endDate);
 		var timeDiff = Math.abs(end.getTime() - start.getTime());
 		var numDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-		// Redirect to usergenerator.php with email and number of days
-		window.location.href = 'usergenerator.php?email=' + email + '&num_days=' + numDays;
+		window.location.href = 'usergenerator.php?email=' + email + '&destination=' + destination + '&num_days=' + numDays;
 	});
 	</script>
 
