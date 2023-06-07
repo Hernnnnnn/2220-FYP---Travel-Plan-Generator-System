@@ -20,7 +20,7 @@ $email = $_GET['email'];
     <h1 class="hot">Hot <span>Tours</span><hr class="tourline"> </h1>
     <div class="tourbox-container">
         <?php
-        $query = "SELECT * FROM locations";
+        $query = "SELECT * FROM locations where option = 1";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
