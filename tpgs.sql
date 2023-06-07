@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- 主机： 127.0.0.1
--- 生成日期： 2023-06-06 14:16:44
--- 服务器版本： 10.4.27-MariaDB
--- PHP 版本： 8.2.0
+-- Host: 127.0.0.1
+-- Generation Time: Jun 07, 2023 at 06:59 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库： `tpgs`
+-- Database: `tpgs`
 --
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -33,10 +33,10 @@ CREATE TABLE `admin` (
   `password` text NOT NULL,
   `email` text NOT NULL,
   `image` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`ID`, `username`, `password`, `email`, `image`) VALUES
@@ -46,29 +46,29 @@ INSERT INTO `admin` (`ID`, `username`, `password`, `email`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `kedahlocation`
+-- Table structure for table `kedahlocation`
 --
 
 CREATE TABLE `kedahlocation` (
   `id` int(11) NOT NULL,
   `locationname` text NOT NULL,
   `locationimage` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `kedahrestaurant`
+-- Table structure for table `kedahrestaurant`
 --
 
 CREATE TABLE `kedahrestaurant` (
   `id` int(11) NOT NULL,
   `restaurantname` text NOT NULL,
   `restaurantimage` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `kedahrestaurant`
+-- Dumping data for table `kedahrestaurant`
 --
 
 INSERT INTO `kedahrestaurant` (`id`, `restaurantname`, `restaurantimage`) VALUES
@@ -78,31 +78,31 @@ INSERT INTO `kedahrestaurant` (`id`, `restaurantname`, `restaurantimage`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `kuala lumpurlocation`
+-- Table structure for table `kuala lumpurlocation`
 --
 
 CREATE TABLE `kuala lumpurlocation` (
   `id` int(11) NOT NULL,
   `locationname` text NOT NULL,
   `locationimage` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `kuala lumpurrestaurant`
+-- Table structure for table `kuala lumpurrestaurant`
 --
 
 CREATE TABLE `kuala lumpurrestaurant` (
   `id` int(11) NOT NULL,
   `restaurantname` text NOT NULL,
   `restaurantimage` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `locations`
+-- Table structure for table `locations`
 --
 
 CREATE TABLE `locations` (
@@ -114,10 +114,10 @@ CREATE TABLE `locations` (
   `direction_link` varchar(255) DEFAULT NULL,
   `locationdetail_link` varchar(255) DEFAULT NULL,
   `option` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `locations`
+-- Dumping data for table `locations`
 --
 
 INSERT INTO `locations` (`id`, `name`, `description`, `image_url`, `video_url`, `direction_link`, `locationdetail_link`, `option`) VALUES
@@ -128,7 +128,7 @@ INSERT INTO `locations` (`id`, `name`, `description`, `image_url`, `video_url`, 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `login`
+-- Table structure for table `login`
 --
 
 CREATE TABLE `login` (
@@ -139,19 +139,19 @@ CREATE TABLE `login` (
   `status` int(11) NOT NULL,
   `image` text NOT NULL,
   `phone_number` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `login`
+-- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`ID`, `username`, `email`, `password`, `status`, `image`, `phone_number`) VALUES
-(1, 'Hernnnnnn', 'jlim2468101@gmail.com', '$2y$10$Zkqdhbh/nwSFWWwvt6.0VOlkUUzZafCidcv6pe321ifmrB2Cuy1Au', 1, 'user.png', '0178208893');
+(1, 'Hern', 'jlim2468101@gmail.com', '$2y$10$Zkqdhbh/nwSFWWwvt6.0VOlkUUzZafCidcv6pe321ifmrB2Cuy1Au', 1, '', '0178208893');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `malaccalocation`
+-- Table structure for table `malaccalocation`
 --
 
 CREATE TABLE `malaccalocation` (
@@ -159,12 +159,12 @@ CREATE TABLE `malaccalocation` (
   `locationname` text NOT NULL,
   `locationimage` text NOT NULL,
   `locationlink` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `malaccarestaurant`
+-- Table structure for table `malaccarestaurant`
 --
 
 CREATE TABLE `malaccarestaurant` (
@@ -172,22 +172,36 @@ CREATE TABLE `malaccarestaurant` (
   `restaurantname` text NOT NULL,
   `restaurantimage` text NOT NULL,
   `restaurantlink` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `usergenerator`
+-- Table structure for table `userfeedback`
+--
+
+CREATE TABLE `userfeedback` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `feedback` text NOT NULL,
+  `review` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usergenerator`
 --
 
 CREATE TABLE `usergenerator` (
   `des_id` int(255) NOT NULL,
   `des_Name` varchar(255) NOT NULL,
   `des_img` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `usergenerator`
+-- Dumping data for table `usergenerator`
 --
 
 INSERT INTO `usergenerator` (`des_id`, `des_Name`, `des_img`) VALUES
@@ -198,57 +212,69 @@ INSERT INTO `usergenerator` (`des_id`, `des_Name`, `des_img`) VALUES
 (5, 'KLL', 'images\\Kuala Lumpur\\PLACE\\KLL.jpg');
 
 --
--- 转储表的索引
+-- Indexes for dumped tables
 --
 
 --
--- 表的索引 `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ID`);
 
 --
--- 表的索引 `locations`
+-- Indexes for table `locations`
 --
 ALTER TABLE `locations`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `login`
+-- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`ID`);
 
 --
--- 表的索引 `usergenerator`
+-- Indexes for table `userfeedback`
+--
+ALTER TABLE `userfeedback`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `usergenerator`
 --
 ALTER TABLE `usergenerator`
   ADD PRIMARY KEY (`des_id`);
 
 --
--- 在导出的表使用AUTO_INCREMENT
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用表AUTO_INCREMENT `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- 使用表AUTO_INCREMENT `locations`
+-- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- 使用表AUTO_INCREMENT `login`
+-- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- 使用表AUTO_INCREMENT `usergenerator`
+-- AUTO_INCREMENT for table `userfeedback`
+--
+ALTER TABLE `userfeedback`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `usergenerator`
 --
 ALTER TABLE `usergenerator`
   MODIFY `des_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
