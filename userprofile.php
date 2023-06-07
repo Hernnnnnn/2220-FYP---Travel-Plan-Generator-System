@@ -2,37 +2,6 @@
 session_start();
 include('dataconnection.php');
 include "usernavbar.php";
-
-if(isset($_POST['submit'])){
-    $rating = $_POST['rate']; 
-    $feedback = $_POST['feedback'];
-    $email = $_GET['email'];
-
-    $q = "INSERT INTO rating (email, rating, feedback) VALUES ('$email', '$rating', '$feedback')";
-    $q1 = mysqli_query($conn,$q);
-    
-    
-    // $username = $_SESSION['username'];
-
-//     $checkQuery = "SELECT * FROM login WHERE email = '$email'";
-//     $checkResult = mysqli_query($conn, $checkQuery);
-
-//     if(mysqli_num_rows($checkResult) > 0) {
-//         $updateQuery = "UPDATE rating SET `rating` = '$rating', feedback = '$feedback' WHERE email = '$email'";
-//         if(mysqli_query($conn, $updateQuery)){
-//             echo "Rating and feedback updated successfully.";
-//         } else{
-//             echo "Error: " . mysqli_error($conn);
-//         }
-//     } else {
-//         $insertQuery = "INSERT INTO rating (email, rating, feedback) VALUES ('$email', '$rating', '$feedback')";
-//         if(mysqli_query($conn, $insertQuery)){
-//             echo "Rating and feedback added successfully.";
-//         } else{
-//             echo "Error: " . mysqli_error($conn);
-//         }
-//     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -78,23 +47,6 @@ if(isset($_POST['submit'])){
 		</div>
 	</div>
 
-    <script>
-        const ratebtn = document.querySelector(".ratebtn");
-        const afterpost = document.querySelector(".afterpost");
-        const widget = document.querySelector(".star-widget");
-        const editrate = document.querySelector(".editrate");
-        ratebtn.onclick = () => {
-        widget.style.display = "none";
-        afterpost.style.display = "block";
-        return false;
-        };
-
-        editrate.onclick = () => {
-        widget.style.display = "block";
-        afterpost.style.display = "none";
-        return false;
-        };
-    </script>
 	<?php include "userfooter.php"; ?>
 </body>
 </html>

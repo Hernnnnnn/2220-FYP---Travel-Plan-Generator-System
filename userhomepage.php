@@ -16,6 +16,30 @@ $email = $_GET['email'];
 
 <body>
     <?php include "usernavbar.php"; ?>
+
+	<div class="hero-travelplan">
+		<img src="images/image.gif" alt="Hero Image">
+		<div class="hero-travelplancontent">
+			<h1>Welcome to TPGS</h1>
+			<p>Discover amazing features and services.</p>
+		</div>
+
+		<form action="">
+			<div class="travelplaninput">
+				<h3>Where to</h3>
+				<input type="text" placeholder="Enter destination (States)">
+			</div>
+			<div class="travelplaninput">
+				<h3>Start date</h3>
+				<input type="date">
+			</div>
+			<div class="travelplaninput">
+				<h3>End date</h3>
+				<input type="date">
+			</div>
+		</form>
+	</div>
+
     <section class="hot" id="hot">
     <h1 class="hot">Hot <span>Tours</span><hr class="tourline"> </h1>
     <div class="tourbox-container">
@@ -50,56 +74,8 @@ $email = $_GET['email'];
             ?>
         </div>
     </section>
-
-    <!-- <div id="fh5co-tours" class="fh5co-section-gray">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Hot Tours</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/kuala lumpur.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Kuala Lumpur</h3>
-								<span></span>
-								<span class="price"></span>
-								<a class="btn btn-primary btn-outline" href="userhplocation_kl.php">View more<i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/melaka.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Melaka</h3>
-								<span></span>
-								<span class="price"></span>
-								<a class="btn btn-primary btn-outline" href="userhplocation_mlk.php">View more <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/penang.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Penang</h3>
-								<span></span>
-								<span class="price"></span>
-								<a class="btn btn-primary btn-outline" href="userhplocation_pen.php">View more <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 text-center animate-box">
-						<p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Offers <i class="icon-arrow-right22"></i></a></p>
-					</div>
-				</div>
-			</div>
-		</div> -->
     <?php include "tpgsteam.php"; ?>
 	<?php include "userfooter.php"; ?>
+
 </body>
 </html>
