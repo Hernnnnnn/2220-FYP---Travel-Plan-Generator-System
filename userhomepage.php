@@ -15,6 +15,15 @@ $email = $_GET['email'];
 </head>
 
 <body>
+<?php
+$query = "SELECT name FROM locations";
+$result = mysqli_query($conn, $query);
+$option = "";
+while($row2 = mysqli_fetch_array($result))
+{
+	$option = $option."<option>$row2[name]</option>";
+}
+?>
     <?php include "usernavbar.php"; ?>
 
 	<div class="hero-travelplan">
@@ -28,15 +37,9 @@ $email = $_GET['email'];
 			<form id="travelForm" action="usergenerator.php" method="GET">
 				<div class="travelplaninput">
 					<h3>Where to</h3>
-					<select type="option" name="destination" class="form-control" required>
-						<?php
-						$query = "SELECT name FROM locations";
-						$result = mysqli_query($conn, $query);
-						
-						while ($row = mysqli_fetch_assoc($result)) {
-							$name = $row['name'];
-							echo "<option value='$name'>$name</option>";
-						}
+					<select type="select" name="destination" class="form-control" required>
+					<?php 
+					echo $option;
 						?>
 					</select>
 				</div>
