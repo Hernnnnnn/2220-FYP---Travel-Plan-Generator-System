@@ -1,8 +1,11 @@
 <?php
+
+use Dompdf\Dompdf;
+
 require('vendor/autoload.php');
 include 'dataconnection.php'; 
 
-$res = mysqli_query($conn,"SELECT * from userfeedback");
+$res = mysqli_query($conn,"SELECT * from `userdestination`");
 
 if(mysqli_num_rows($res)>0)
 {
@@ -20,8 +23,10 @@ else
     $html="Data not found";
 }
 // echo $html;
-$mpdf = new \Mpdf\Mpdf();
-$mpdf->WriteHTML($html);
-$file=time()
-$mpdf->output();
+$dompdf = new Dompdf;
+
+$dompdf->loadHtml($html);
+$dompdf->setPaper('A4','portrait');
+$dompdf->render();
+$dompdf->stream('test.pdf');
 ?>
