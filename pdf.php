@@ -5,7 +5,7 @@ use Dompdf\Dompdf;
 require('vendor/autoload.php');
 include 'dataconnection.php'; 
 
-$res = mysqli_query($conn,"SELECT * from userfeedback");
+$res = mysqli_query($conn,"SELECT * from `userdestination`");
 
 if(mysqli_num_rows($res)>0)
 {
