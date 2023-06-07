@@ -241,7 +241,7 @@
   color: var(--darkgray);
 }
 
-.hero-travelplan .travelplaninput select,
+.hero-travelplan select,
 .hero-travelplan .travelplaninput input[type="date"] {
   width: 100%;
   padding: 10px;
@@ -261,9 +261,6 @@
   cursor: pointer;
   transition: 0.3s;
   position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .travelbtn:hover {
