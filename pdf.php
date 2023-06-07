@@ -21,5 +21,7 @@ else
 }
 // echo $html;
 $mpdf = new \Mpdf\Mpdf();
-
+$mpdf->WriteHTML($html);
+$file=time()
+$mpdf->output();
 ?>
