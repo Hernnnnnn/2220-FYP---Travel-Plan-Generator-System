@@ -28,15 +28,15 @@ $email = $_GET['email'];
 			<form id="travelForm" action="usergenerator.php" method="GET">
 				<div class="travelplaninput">
 					<h3>Where to</h3>
-					<select type="option" name="destination" class="form-control" required>
+					<select name="destination" class="form-control" required>
 						<?php
 						$query = "SELECT name FROM locations";
 						$result = mysqli_query($conn, $query);
 						
-						while ($row = mysqli_fetch_assoc($result)) {
-							$name = $row['name'];
-							echo "<option value='$name'>$name</option>";
-						}
+							while ($row1 = mysqli_fetch_assoc($result)) {
+								$name = $row1['name'];
+								echo "<option value='$name'>$name</option>";
+							}
 						?>
 					</select>
 				</div>
