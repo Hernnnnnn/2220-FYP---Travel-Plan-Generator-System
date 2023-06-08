@@ -597,6 +597,11 @@ padding: 5px;
   transition: 0.6s;
   color: black;
 }
+.add a
+{
+    text-decoration: none;
+    color: white;
+}
 </style>
 <body>
 

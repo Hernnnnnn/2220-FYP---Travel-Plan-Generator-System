@@ -144,11 +144,34 @@ include "usernavbar.php";
 </style>
 <body>
 <section class="hot" id="hot">
+<?php 
+                    if(isset($_POST['search']))
+                    {
+                        $searchKey=$_POST['search'];
+                        $p = "SELECT * From `locations` where name LIKE '%$searchKey%'";
+
+                    }
+                    else
+                    {
+                        $p = "SELECT * From `locations`";
+                        $searchKey = "";
+                    }
+                        
+                        $result = mysqli_query($conn,$p);
+
+
+                    ?>
     <h1 class="hot"><span>State</span><hr class="tourline"> </h1>
+    <form action="" method="post">
+    <div class="header">
+                    <div class="search-wrapper">
+                    <input type="text" name="search" placeholder="Search here" value="<?php echo $searchKey?>">
+
+                    <button type="submit" name="submit"><span class="fa fa-search"></span></button>
+                    </div>
+                    </form>
     <div class="tourbox-container">
         <?php
-        $query = "SELECT * FROM locations";
-        $result = mysqli_query($conn, $query);
 
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
