@@ -114,5 +114,10 @@ while($row2 = mysqli_fetch_array($result))
 	});
 	</script>
 
+	<script>
+		var today = new Date().toISOString().split('T')[0];
+		document.getElementById("startDate").setAttribute("min", today);
+		document.getElementById("endDate").setAttribute("min", today);
+	</script>
 </body>
 </html>
