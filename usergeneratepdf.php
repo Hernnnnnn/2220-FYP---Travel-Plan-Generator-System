@@ -7,16 +7,31 @@ include 'dataconnection.php';
     $q = "SELECT * From `generator`";
     $p = mysqli_query($conn,$q);
 
+    $destination ="";
+    date_default_timezone_set('Asia/Kuala_Lumpur');
+    $local_date = date('Y-m-d');
     if(isset($_POST['print']))
     {
+        $a = "INSERT INTO `history`(states,createdtime) VALUES ('$loc','$local_date')";
+        mysqli_query($conn,$a);
         while($r = mysqli_fetch_array($p))
         {
+            $data = $r['destination'];
+           if(!empty($data))
+           {
+                $destination .= $data."\n";
+                echo $destination;
+           }
             $e = "DELETE from `generator`";
             mysqli_query($conn,$e);
             $e1 ="ALTER TABLE `generator` AUTO_INCREMENT = 1";
             mysqli_query($conn,$e1);
            
         }
+        $a1 = "UPDATE `history` set destinations = '$destination' where states = '$loc' AND createdtime = '$local_date'";
+        mysqli_query($conn,$a1);
+        //    echo $destination;
+           
         header("Location: userhomepage.php?email=".$email);
     }
     

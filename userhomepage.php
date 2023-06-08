@@ -108,7 +108,7 @@ while($row2 = mysqli_fetch_array($result))
 		var start = new Date(startDate);
 		var end = new Date(endDate);
 		var timeDiff = Math.abs(end.getTime() - start.getTime());
-		var numDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+		var numDays = Math.ceil((timeDiff / (1000 * 3600 * 24))+1);
 
 		window.location.href = 'usergenerator.php?email=' + email + '&destination=' + destination + '&num_days=' + numDays;
 	});
