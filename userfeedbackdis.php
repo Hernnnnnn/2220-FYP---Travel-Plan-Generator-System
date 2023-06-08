@@ -74,7 +74,20 @@ $result = mysqli_fetch_assoc($check);
         <h2>Client Review<hr class="underlinetitle"> </h2>
     </div>
     <div class="swiper-container review-content">
-        <div class="swiper-wrapper">
+    <div class="swiper-wrapper">
+        <?php
+        include('dataconnection.php');
+        $query = "SELECT * FROM `userfeedback`";
+        $r = mysqli_query($conn, $query);
+
+        while ($vresult = mysqli_fetch_assoc($r)) {
+            $email = $vresult['email'];
+            $sql = "SELECT * FROM `login` WHERE email = '$email'";
+            $check = mysqli_query($conn, $sql);
+            $result = mysqli_fetch_assoc($check);
+
+            $stars = $vresult['review'];
+            ?>
             <div class="swiper-slide">
                 <div class="box">
                     <i class="fas fa-quote-left quote"></i>
@@ -82,14 +95,18 @@ $result = mysqli_fetch_assoc($check);
                     <div class="content">
                         <div class="info">
                             <div class="user"><?php echo $result['username']; ?></div>
-                            <div class="studid">User of  TPGS</div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
+                            <div class="studid">User of TPGS</div>
+                            <div class="stars">
+                                <?php
+                                for ($i = 1; $i <= 5; $i++) {
+                                    if ($i <= $stars) {
+                                        echo '<i class="fas fa-star"></i>';
+                                    } else {
+                                        echo '<i class="fas fa-star-o"></i>';
+                                    }
+                                }
+                                ?>
+                            </div>
                         </div>
                         <div class="image">
                             <img src="<?php echo $result['image']; ?>">
@@ -97,39 +114,9 @@ $result = mysqli_fetch_assoc($check);
                     </div>
                 </div>
             </div>
-        </div>
-
-   
-    <div class="swiper-container revslide">
-        <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="revbox">
-                            <?php
-                            while ($vresult = mysqli_fetch_assoc($r)) { ?>
-                            <img src="<?php echo $result['image']; ?>" alt="">
-                            <h3><?php echo $result['username']; ?></h3>
-                            <p><?php echo $vresult['feedback']; ?></p>
-                            <div class="stardis">
-                                <?php
-                                if (isset($vresult['review'])) {
-                                    $stars = $vresult['review'];
-                                    for ($i = 1; $i <= 5; $i++) {
-                                        if ($i <= $stars) {
-                                            echo "<i class='fa fa-star'></i>";
-                                        } else {
-                                            echo "<i class='fa fa-star-o'></i>";
-                                        }
-                                    }
-                                } else {
-                                    echo "No review available.";
-                                }
-                            }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-        </div>
+        <?php } ?>
     </div>
+</div>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
