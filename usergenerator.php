@@ -28,35 +28,24 @@ $msg =" ";
 if(isset($_POST['add_to_cart'])){
 
   $id = mysqli_real_escape_string($conn,$_POST['id']);
-  $day = mysqli_real_escape_string($conn,$_POST['des_day']);
-  $image = mysqli_real_escape_string($conn,$_POST['product_image']);
+  $day1 = mysqli_real_escape_string($conn,$_POST['des_day']);
   $name =  mysqli_real_escape_string($conn,$_POST['product_name']);
-  $q1 = "UPDATE `generator` set destination='$name' where day =  $day";
+  // $name =  mysqli_real_escape_string($conn,$_POST['product_name1']);
+  $q1 = "UPDATE `generator` set destination='$name' where day =  $day1";
   $q2 = mysqli_query($conn,$q1);
-
-//     $msg = "<div class='popup'>
-//     <div class='popup-content'>
-//     <form method='post'>
-//   <img src='images/close.png' alt='Close' class='close'>
-//     <label for='days'>Choose a day:</label>
-//     <select name='days' id='days'>
-//       <option value='days'> 1</option>
-//       <option value='days'> 2</option>
-//       <option value='days'> 3</option>
-//     </select>
-//     <br><br>
-  
-//     <label for='duration'>Duration:</label><br>
-//     <input type='text' id='duration' name='duration'><br>
-  
-//     <a href='useradddestination.php?id=' class='button'>submit</a>
-  
-//   </form>
-//     </div>
-  
-//   </div>
-//   ";
 }
+
+if(isset($_POST['add_to_cart1'])){
+
+  $id = mysqli_real_escape_string($conn,$_POST['id1']);
+  $day1 = mysqli_real_escape_string($conn,$_POST['des_day1']);
+  $name =  mysqli_real_escape_string($conn,$_POST['product_name1']);
+  // $name =  mysqli_real_escape_string($conn,$_POST['product_name1']);
+  $q1 = "UPDATE `generator` set destination='$name' where day =  $day1";
+  $q2 = mysqli_query($conn,$q1);
+}
+
+
 
 ?>
 
@@ -669,7 +658,6 @@ padding: 5px;
                       </div>
                       <div class="content">
                       <input type="hidden" name="product_name"  value="<?php echo $row["restaurantname"]; ?>" >
-                            <input type="hidden" name="product_image" value="<?php echo $row["restaurantimage"]; ?>">
                             <input type="hidden" name="id" value="<?php echo $row['id']?>">
                             <label style="color
                             :black; font-size:1.2rem; font-weight:600;" class="day" for="">Day:</label>
@@ -689,13 +677,12 @@ padding: 5px;
                           <h3><i class="fas fa-map-marker-alt"></i> <?php echo $row1['locationname']; ?></h3>
                       </div>
                       <div class="content">
-                      <input type="hidden" name="product_name"  value="<?php echo $row1["locationname"]; ?>" >
-                            <input type="hidden" name="product_image" value="<?php echo $row1["locationimage"]; ?>">
-                            <input type="hidden" name="id" value="<?php echo $row1['id']?>">
+                      <input type="hidden" name="product_name1"  value="<?php echo $row1["locationname"]; ?>" >
+                            <input type="hidden" name="id1" value="<?php echo $row1['id']?>">
                             <label style="color
                             :black; font-size:1.2rem; font-weight:600;" class="day" for="">Day:</label>
-                      <input type="number" class="number" name="des_day"  value="0">
-                          <input style="font-size: 1rem; padding:0.6rem 0.8rem;" type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to Itinerary">
+                      <input type="number" class="number" name="des_day1"  value="0">
+                          <input style="font-size: 1rem; padding:0.6rem 0.8rem;" type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart1" value="Add to Itinerary">
                       </div>
                   </div>
               </form>
@@ -719,7 +706,7 @@ $no=1;
                         while ($r = mysqli_fetch_array($result)){?>
 
                     
-
+                          
                           <div class="container_calendar">
                             <div class="calendar">
                             <div class="link"><a href="userdeldestination.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>&id=<?php echo $r['id']?>"><span id="close" class="fa fa-close"></span></a></div>
@@ -746,7 +733,7 @@ $no=1;
                         $no++;
                         }?>
                         <button class="delete">Delete</button>
-                        <button name="print" class="print"><a style="text-decoration: none; color:white;" href="pdf.php">Print</a> </button>
+                        <button name="print" class="print"><a style="text-decoration: none; color:white;" href="usergeneratepdf.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>">Print</a> </button>
                         </form>
 
                       
