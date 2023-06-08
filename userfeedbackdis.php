@@ -1,26 +1,13 @@
 <?php
 include('dataconnection.php');
-$email = $_GET['email'];
+$query = "SELECT * FROM `userfeedback`";
+$r = mysqli_query($conn, $query);
+$rresult = mysqli_fetch_assoc($r);
+
+$email = $rresult['email'];
 $sql = "SELECT * FROM `login` WHERE email = '$email'";
 $check = mysqli_query($conn, $sql);
 $result = mysqli_fetch_assoc($check);
-
-$query = "SELECT * FROM userfeedback WHERE type = 'feedback'";
-$res = mysqli_query($conn, $query);
-$feedback = "";
-
-while ($row = mysqli_fetch_assoc($res)) {
-    $feedback .= "<p>" . $row['feedback'] . "</p>";
-}
-$username = $result['username'];
-$check1 = "SELECT userfeedback.email FROM userfeedback JOIN login ON userfeedback.email = login.username WHERE login.username = '$username'";
-$re = mysqli_query($conn, $check1);
-$row = mysqli_fetch_assoc($re);
-
-$review = $_GET['review'];
-$query1 = "SELECT * FROM userfeedback WHERE review = '$review'";
-$r = mysqli_query($conn, $query1);
-$reviewresult = mysqli_fetch_assoc($r);
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +16,8 @@ $reviewresult = mysqli_fetch_assoc($r);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 <style>
 :root {
@@ -64,44 +53,107 @@ $reviewresult = mysqli_fetch_assoc($r);
 }
 
 .displayrev .revbox h3{
-    color:var(--primary);
+    color:var(--black);
     font-size:2.5rem;
 }
+
+.displayrev .revbox p{
+    color:var(--darkgray);
+    font-size:1.5rem;
+    padding:1rem 0;
+}
+
+.displayrev .revbox .stardis i{
+    color:var(--yellow);
+    font-size:1.7rem;
+}
 </style>
-<body>
-    <section class="displayrev" id="displayrev">
-    <h1 class="hot">Client <span>Review</span><hr class="tourline"> </h1>
-    <div class="revslide">
-        <div class="revwrapper">
-            <div class="revslider">
-                <div class="revbox">
-                    <img src="<?php echo $result['image']; ?>" alt="">
-                    <h3><?php echo $result['username']; ?></h3>
-                    <p><?php echo $feedback; ?></p>
-                    <div class="stardis">
-                        <?php 
-                        if (isset($reviewresult['review'])) {
-                            if ($reviewresult['review'] == 5) {
-                                echo "<span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span>";
-                            } elseif ($reviewresult['review'] == 4) {
-                                echo "<span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span>";
-                            } elseif ($reviewresult['review'] == 3) {
-                                echo "<span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span>";
-                            } elseif ($reviewresult['review'] == 2) {
-                                echo "<span class='fa fa-star'></span><span class='fa fa-star'></span>";
-                            } elseif ($reviewresult['review'] == 1) {
-                                echo "<span class='fa fa-star'></span>";
-                            }
-                        } else {
-                            echo "No review available.";
-                        }
-                        ?>
+
+<body class="review">
+    <div class="centertitle">
+        <h2>Client Review<hr class="underlinetitle"> </h2>
+    </div>
+    <div class="swiper-container review-content">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="box">
+                    <i class="fas fa-quote-left quote"></i>
+                    <p><?php echo $vresult['feedback']; ?></p>
+                    <div class="content">
+                        <div class="info">
+                            <div class="user"><?php echo $result['username']; ?></div>
+                            <div class="studid">User of  TPGS</div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                        </div>
+                        <div class="image">
+                            <img src="<?php echo $result['image']; ?>">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+   
+    <div class="swiper-container revslide">
+        <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="revbox">
+                            <?php
+                            while ($vresult = mysqli_fetch_assoc($r)) { ?>
+                            <img src="<?php echo $result['image']; ?>" alt="">
+                            <h3><?php echo $result['username']; ?></h3>
+                            <p><?php echo $vresult['feedback']; ?></p>
+                            <div class="stardis">
+                                <?php
+                                if (isset($vresult['review'])) {
+                                    $stars = $vresult['review'];
+                                    for ($i = 1; $i <= 5; $i++) {
+                                        if ($i <= $stars) {
+                                            echo "<i class='fa fa-star'></i>";
+                                        } else {
+                                            echo "<i class='fa fa-star-o'></i>";
+                                        }
+                                    }
+                                } else {
+                                    echo "No review available.";
+                                }
+                            }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+        </div>
     </div>
-</section>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    var swiper = new swiper(".revslide", {
+        spaceBetween:20,
+        loop:true,
+        autoplay:{
+            delay:2500,
+            disableOnInteraction:false,
+        },
+        breakpoints:{
+            640:{
+                slidesPerview:1,
+            },
+            768:{
+                slidesPerview:2,
+            },
+            1024:{
+                slidesPerview:3,
+            },
+        }
+    });
+</script>
 </body>
 </html>
 

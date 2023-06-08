@@ -22,8 +22,8 @@ $result = mysqli_fetch_assoc($check);
             <h2>TPGS</h2>
                 <ul class="navbar-list">
                     <li><a href="userhomepage.php?email=<?php echo $email; ?>">Home</a></li>
-                    <li><a href="usergenerator.php?email=<?php echo $email; ?>">Itinerary</a></li>
                     <li><a href="userhpstate.php?email=<?php echo $email; ?>">States</a></li>
+                    <li><a href="userhistory.php?email=<?php echo $email; ?>">History</a></li>
                 </ul>
             <div class="profile-dropdown">
                 <div class="profile-dropdown-btn" onclick="toggle()">
