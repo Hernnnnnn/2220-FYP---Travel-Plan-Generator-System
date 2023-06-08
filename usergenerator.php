@@ -3,16 +3,35 @@ session_start();
 include('dataconnection.php');
 include "usernavbar.php";
 
+$day = $_GET['num_days'];
+$email = $_GET['email'];
+$loc = $_GET['destination'];
+$q1 = "SELECT * from generator";
+$r=mysqli_query($conn,$q1);
+$rz = mysqli_fetch_assoc($r);
+if($day == 0)
+{
+  $q = "INSERT INTO `generator`(day) Values(1)";
+  mysqli_query($conn,$q);
+}
+else if(empty($rz['day']))
+{
+  for($i =1;$i<=$day;$i++)
+  {
+   $q = "INSERT INTO `generator` (day) VaLUes ('$i')";
+   mysqli_query($conn,$q);
+  }
+}
+
+
 $msg =" ";
 if(isset($_POST['add_to_cart'])){
+
   $id = mysqli_real_escape_string($conn,$_POST['id']);
-  $q = "SELECT * from `usergenerator` where des_id = $id";
   $day = mysqli_real_escape_string($conn,$_POST['des_day']);
-  $query = mysqli_query($conn,$q);
-  $rz = mysqli_fetch_assoc($query);
   $image = mysqli_real_escape_string($conn,$_POST['product_image']);
   $name =  mysqli_real_escape_string($conn,$_POST['product_name']);
-  $q1 = "INSERT INTO `userdestination`(des_Name,des_img,des_day) VALUES ('$name','$image','$day')";
+  $q1 = "UPDATE `generator` set destination='$name' where day =  $day";
   $q2 = mysqli_query($conn,$q1);
 
 //     $msg = "<div class='popup'>
@@ -157,7 +176,7 @@ if(isset($_POST['add_to_cart'])){
   border: none;
   background-color: transparent;
   margin-right: 15px;
-  float: left;
+  /* float: left; */
   position: absolute;
   top: 90px;
   z-index: 999;
@@ -485,6 +504,7 @@ transition: 0.4s;
   background-color: var(--secondary);
   border-radius: 0.5rem;
   box-shadow: var(--shadow);
+  height: 95%;
 }
 
 .hot .tourbox-container .tour-box .image{
@@ -527,6 +547,7 @@ transition: 0.4s;
   margin-top: -10px;
   color: var(--lightgray);
   line-height: 1.5;
+  /* height: 50%; */
 }
 
 .hot .tourbox-container .tour-box .content .btn {
@@ -565,6 +586,28 @@ padding: 5px;
 {
   margin-left: 45%;
 }
+.day
+{
+  margin-bottom: 100px;
+}
+.number
+{
+  width: 80%;
+  border-radius: .5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#close
+{
+  float: right;
+  color: red;
+  /* position: absolute; */
+}
+#close:hover{
+  transition: 0.6s;
+  color: black;
+}
 </style>
 <body>
 
@@ -579,19 +622,22 @@ padding: 5px;
 				LOCATION
 			  </button>
         <?php 
+        $loc = $_GET['destination'];
                     if(isset($_POST['search']))
                     {
                         $searchKey=$_POST['search'];
-                        $p = "SELECT * From `usergenerator` where des_Name LIKE '%$searchKey%'";
-
+                        $p = "SELECT * From `".$loc."restaurant` where restaurantname LIKE '%$searchKey%'";
+                        $q = "SELECT * From `".$loc."location` where locationname LIKE '%$searchKey%'";
                     }
                     else
                     {
-                        $p = "SELECT * From `usergenerator`";
+                        $p = "SELECT * From `".$loc."restaurant`";
+                        $q = "SELECT * From `".$loc."location`";
                         $searchKey = "";
                     }
-                        
+                    
                     $query = mysqli_query($conn,$p);
+                    $ss = mysqli_query($conn,$q);
 
 
                     ?>
@@ -618,15 +664,38 @@ padding: 5px;
                   <div class="tour-box">
                   <form method="post">
                       <div class="image">
-                          <img src="<?php echo $row['des_img']; ?>">
-                          <h3><i class="fas fa-map-marker-alt"></i> <?php echo $row['des_Name']; ?></h3>
+                          <img src="<?php echo $row['restaurantimage']; ?>">
+                          <h3><i class="fas fa-map-marker-alt"></i> <?php echo $row['restaurantname']; ?></h3>
                       </div>
                       <div class="content">
-                      <input type="hidden" name="product_name"  value="<?php echo $row["des_Name"]; ?>" >
-                            <input type="hidden" name="product_image" value="<?php echo $row["des_img"]; ?>">
-                            <input type="hidden" name="id" value="<?php echo $row['des_id']?>">
-                      <input type="number" name="des_day"  value="0">
-                          <input type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to Cart">
+                      <input type="hidden" name="product_name"  value="<?php echo $row["restaurantname"]; ?>" >
+                            <input type="hidden" name="product_image" value="<?php echo $row["restaurantimage"]; ?>">
+                            <input type="hidden" name="id" value="<?php echo $row['id']?>">
+                            <label style="color
+                            :black; font-size:1.2rem; font-weight:600;" class="day" for="">Day:</label>
+                      <input type="number" class="number" name="des_day"  value="0">
+                          <input style="font-size: 1rem; padding:0.6rem 0.8rem;" type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to Itinerary">
+                      </div>
+                  </div>
+                  <?php 
+                }
+                while ($row1 = mysqli_fetch_assoc($ss))
+                {
+                ?>
+                  <div class="tour-box">
+                  <form method="post">
+                      <div class="image">
+                          <img src="<?php echo $row1['locationimage']; ?>">
+                          <h3><i class="fas fa-map-marker-alt"></i> <?php echo $row1['locationname']; ?></h3>
+                      </div>
+                      <div class="content">
+                      <input type="hidden" name="product_name"  value="<?php echo $row1["locationname"]; ?>" >
+                            <input type="hidden" name="product_image" value="<?php echo $row1["locationimage"]; ?>">
+                            <input type="hidden" name="id" value="<?php echo $row1['id']?>">
+                            <label style="color
+                            :black; font-size:1.2rem; font-weight:600;" class="day" for="">Day:</label>
+                      <input type="number" class="number" name="des_day"  value="0">
+                          <input style="font-size: 1rem; padding:0.6rem 0.8rem;" type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to Itinerary">
                       </div>
                   </div>
               </form>
@@ -639,11 +708,13 @@ padding: 5px;
   </div>
                     <div class="sidenav">
                         <h2 class="text-center">Itinerary</h2>
+<form action="" method="post">
+                        <button name="addtrip" class="add"><a href="useraddtrip.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>">Add Trip</a></button>
 
-                        <button class="add">Add Trip</button>
+                        
 <?php
 $no=1;
-                        $query ="SELECT * FROM  `userdestination`";
+                        $query ="SELECT * FROM  `generator`";
                         $result = mysqli_query($conn,$query);
                         while ($r = mysqli_fetch_array($result)){?>
 
@@ -651,7 +722,10 @@ $no=1;
 
                           <div class="container_calendar">
                             <div class="calendar">
-                              <h3>Day <?php echo $no;?></h3>
+                            <div class="link"><a href="userdeldestination.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>&id=<?php echo $r['id']?>"><span id="close" class="fa fa-close"></span></a></div>
+
+                              <h3>Day <?php echo $r['day'];?></h3>
+                              <input name="day" type="hidden" value ="<?php echo $r['day'];?>">
                                   
 
                               </div>
@@ -659,13 +733,11 @@ $no=1;
                               <hr style="height:2px;border-width:0;color:gray;background-color:gray">
                               <div class="add_destination">
                               <p>
-                                <?php if($r['des_day'] == $no){
-                                  echo $r['des_Name'];
-
+                                <?php if($r['day'] == $no){
+                                  echo $r['destination'];
                                 } 
                                 ?>
                             </p>
-                              
                               </div>
                           
                           </div>
@@ -674,8 +746,8 @@ $no=1;
                         $no++;
                         }?>
                         <button class="delete">Delete</button>
-                        <button name="print" class="print"><a href="pdf.php">Print</a> </button>
-	
+                        <button name="print" class="print"><a style="text-decoration: none; color:white;" href="pdf.php">Print</a> </button>
+                        </form>
 
                       
                          
