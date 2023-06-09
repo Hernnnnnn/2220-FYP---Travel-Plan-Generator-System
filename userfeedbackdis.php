@@ -178,9 +178,7 @@ hr.underlinetitle {
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 
-<script>
-    var swiper = new swiper(".revslide", {
-        
+<script>     
     var swiper = new Swiper(".review-content", {
         spaceBetween:20,
         loop:true,
