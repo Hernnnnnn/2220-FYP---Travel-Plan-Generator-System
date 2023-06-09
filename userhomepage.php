@@ -92,7 +92,7 @@ while($row2 = mysqli_fetch_array($result))
     </section>
 
     <?php include "tpgsteam.php"; ?>
-	<?php include "userfeedbackdis.php"; ?>
+	<?php include "userfeedbackdis1.php"; ?>
 	<?php include "userfooter.php"; ?>
 
 	<script>

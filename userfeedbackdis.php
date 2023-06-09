@@ -179,6 +179,8 @@ hr.underlinetitle {
 
 
 <script>
+    var swiper = new swiper(".revslide", {
+        
     var swiper = new Swiper(".review-content", {
         spaceBetween:20,
         loop:true,
