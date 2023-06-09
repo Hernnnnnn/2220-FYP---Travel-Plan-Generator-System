@@ -1,139 +1,129 @@
-<?php
-include('dataconnection.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+  <!-- Demo styles -->
+  <style>
+    :root {
+  --primary: #4bb6b7;
+  --secondary: #FFFFFF;
+  --gray: #575757;
+  --lightgray: #848484;
+  --lightgray2: rgba(127, 183, 126, 0.1);
+  --darkgray: #2E3238;
+  --black: #393e46;
+  --green: #00AD7C;
+  --yellow: #FFEA61;
+  --shadow: 0px 2px 8px 0px var(--lightgray);
+}
+
+.displayrev .revslide{
+    padding-bottom:2rem;
+}
+
+.displayrev .revbox{
+    padding:2rem;
+    text-align:center;
+    box-shadow:0 1rem 2rem var(--lightgray2);
+    border-radius:.5rem;
+}
+
+.displayrev .revbox img{
+    height:13rem;
+    width:13rem;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:1rem;
+}
+
+.displayrev .revbox h3{
+    color:var(--black);
+    font-size:2.5rem;
+}
+
+.displayrev .revbox p{
+    color:var(--darkgray);
+    font-size:1.5rem;
+    padding:1rem 0;
+}
+
+.displayrev .revbox .stardis i{
+    color:var(--yellow);
+    font-size:1.7rem;
+}
+    html,
+    body {
+      position: relative;
+      /* height: 100%; */
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 50%;
+      text-align: center;
+    }
+
+    .swiper-slide {
+      /* text-align: center; */
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .swiper-slide img {
+      display: block;
+      /* width: 30%;
+      height: 100%; */
+      object-fit: cover;
+      text-align: center;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+
+    .swiper {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .box
+    {
+        /* text-align: center; */
+    }
+    .image
+    {
+        text-align: center;
+        width: 60%;
+        height: 32%;
+    }
+  </style>
 </head>
-<style>
-:root{
-  --primary:#4bb6b7;
-  --secondary:#FFFFFF;
-  --gray:#575757;
-  --lightgray:#848484;
-  --lightgray2:rgb(127,183,126,0.1);
-  --darkgray:#2E3238;
-  --black:#393e46;
-  --green:#00AD7C;
-  --yellow:#FFEA61;
 
-  --shadow:0px 2px 8px 0px var(--lightgray);
-}
-
-.review {
-  display: grid;
-  height: 100%;
-  place-items: center;
-}
-
-.centertitle {
-  max-width: 100%;
-  line-height: 50px;
-  font-size: 1.125rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--secondary);
-  background: var(--green); 
-  height: 60px;
-}
-
-hr.underlinetitle {
-  border: none;
-  margin: 0 auto;
-  margin-top: -5px;
-  height: 3px;
-  width: 150px;
-  background-color: var(--secondary);
-}
-
-.review-content {
-  max-width: 100%;
-  padding: 0 20px 0 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px; 
-  align-items: center;
-  justify-content: space-between;
-  height: auto;
-  background: var(--green);
-}
-
-.review-content .box {
-  background: var(--secondary);
-  border-radius: 3px;
-  padding: 25px;
-  width: 100%; /* Set the width to 100% to occupy equal space */
-}
-
-@media (max-width: 768px) {
-  .review-content {
-    grid-template-columns: 1fr; /* Display boxes in a single column on smaller screens */
-  }
-}
-
-.review-content .box i.quote{
-  font-size:20px;
-  color:var(--primary);
-}
-
-.review-content .box .content{
-  padding-top:10px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.review-content .box .info .user{
-  font-size:17px;
-  font-weight:600;
-}
-
-.review-content .box .info .studid{
-  font-size:16px;
-  color:var(--lightgray);
-  font-weight:600;
-}
-
-.review-content .box .info .stars{
-  margin-top:2px;
-}
-
-.box .info .stars i{
-  color:var(--primary);
-}
-
-.review-content .box .content .image{
-  height:75px;
-  width:75px;
-  padding:3px;
-  border-radius:50%;
-  background:var(--primary);
-}
-
-.box .content .image img{
-  height:100%;
-  width:100%;
-  object-fit:cover;
-  border-radius:50%;
-  border:2px solid var(--secondary);
-}
-
-</style>
-
-<body class="review">
-    <div class="centertitle">
+<body>
+  <!-- Swiper -->
+  <div class="centertitle">
         <h2>Client Review<hr class="underlinetitle"> </h2>
     </div>
-    <div class="swiper-container review-content">
+  <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-        <?php
+    <?php
+        include('dataconnection.php');
         $query = "SELECT * FROM `userfeedback`";
         $r = mysqli_query($conn, $query);
 
@@ -145,7 +135,7 @@ hr.underlinetitle {
 
             $stars = $vresult['review'];
             ?>
-            <div class="swiper-slide">
+      <div class="swiper-slide">
                 <div class="box">
                     <i class="fas fa-quote-left quote"></i>
                     <p><?php echo $vresult['feedback']; ?></p>
@@ -165,41 +155,38 @@ hr.underlinetitle {
                                 ?>
                             </div>
                         </div>
-                        <div class="image">
+                        <!-- <div class="image">
                             <img src="images/<?php echo $result['image']; ?>">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
-        <?php } ?>
+     <?php }?>
     </div>
-</div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
 
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-
-<script>     
-    var swiper = new Swiper(".review-content", {
-        spaceBetween:20,
-        loop:true,
-        autoplay:{
-            delay:2500,
-            disableOnInteraction:false,
-        },
-        breakpoints:{
-            640:{
-                slidesPerview:3,
-            },
-            768:{
-                slidesPerview:4,
-            },
-            1024:{
-                slidesPerview:5,
-            },
-        }
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
     });
-</script>
+  </script>
 </body>
+
 </html>
-
-
