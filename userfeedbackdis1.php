@@ -1,26 +1,16 @@
-<?php
-include('dataconnection.php');
-$query = "SELECT * FROM `userfeedback`";
-$r = mysqli_query($conn, $query);
-$rresult = mysqli_fetch_assoc($r);
-
-$email = $rresult['email'];
-$sql = "SELECT * FROM `login` WHERE email = '$email'";
-$check = mysqli_query($conn, $sql);
-$result = mysqli_fetch_assoc($check);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-</head>
-<style>
-:root {
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+  <!-- Demo styles -->
+  <style>
+    :root {
   --primary: #4bb6b7;
   --secondary: #FFFFFF;
   --gray: #575757;
@@ -67,15 +57,72 @@ $result = mysqli_fetch_assoc($check);
     color:var(--yellow);
     font-size:1.7rem;
 }
-</style>
+    html,
+    body {
+      position: relative;
+      /* height: 100%; */
+    }
 
-<body class="review">
-    <div class="centertitle">
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 50%;
+      text-align: center;
+    }
+
+    .swiper-slide {
+      /* text-align: center; */
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .swiper-slide img {
+      display: block;
+      /* width: 30%;
+      height: 100%; */
+      object-fit: cover;
+      text-align: center;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+
+    .swiper {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .box
+    {
+        /* text-align: center; */
+    }
+    .image
+    {
+        text-align: center;
+        width: 60%;
+        height: 32%;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Swiper -->
+  <div class="centertitle">
         <h2>Client Review<hr class="underlinetitle"> </h2>
     </div>
-    <div class="swiper-container review-content">
+  <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-        <?php
+    <?php
         include('dataconnection.php');
         $query = "SELECT * FROM `userfeedback`";
         $r = mysqli_query($conn, $query);
@@ -88,7 +135,7 @@ $result = mysqli_fetch_assoc($check);
 
             $stars = $vresult['review'];
             ?>
-            <div class="swiper-slide">
+      <div class="swiper-slide">
                 <div class="box">
                     <i class="fas fa-quote-left quote"></i>
                     <p><?php echo $vresult['feedback']; ?></p>
@@ -108,41 +155,38 @@ $result = mysqli_fetch_assoc($check);
                                 ?>
                             </div>
                         </div>
-                        <div class="image">
+                        <!-- <div class="image">
                             <img src="images/<?php echo $result['image']; ?>">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
-        <?php } ?>
+     <?php }?>
     </div>
-</div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
 
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-<script>
-    var swiper = new swiper(".revslide", {
-        
-        spaceBetween:20,
-        loop:true,
-        autoplay:{
-            delay:2500,
-            disableOnInteraction:false,
-        },
-        breakpoints:{
-            640:{
-                slidesPerview:1,
-            },
-            768:{
-                slidesPerview:2,
-            },
-            1024:{
-                slidesPerview:3,
-            },
-        }
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
     });
-</script>
+  </script>
 </body>
+
 </html>
-
-
