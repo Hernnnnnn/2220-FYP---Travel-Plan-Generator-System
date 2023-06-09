@@ -500,7 +500,6 @@ hr.underlinetitle {
 /* footer */
 footer {
   position: relative;
-  margin-top: 50px; /* Adjust this value as needed */
   width: 100%;
   line-height: 20px;
   color: var(--secondary);
