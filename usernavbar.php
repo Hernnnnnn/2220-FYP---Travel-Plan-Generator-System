@@ -28,7 +28,7 @@ $result = mysqli_fetch_assoc($check);
             <div class="profile-dropdown">
                 <div class="profile-dropdown-btn" onclick="toggle()">
                     <div class="profile-img">
-                        <img src="images/<?php echo $result['image']; ?>" style="width:3rem; height:3rem; border-radius:50%; background-size:cover;" alt=" ">
+                        <img src="<?php echo $result['image']; ?>" style="width:3rem; height:3rem; border-radius:50%; background-size:cover;" alt=" ">
                     </div>
                     <span>
                         <?php echo $result['username']?>
@@ -67,11 +67,9 @@ $result = mysqli_fetch_assoc($check);
         let profileDropdownList = document.querySelector(".profile-dropdown-list");
         let btn = document.querySelector(".profile-dropdown-btn");
 
-        //display or hide profile dropdown list
         const toggle = ()=> profileDropdownList.classList.toggle("active");
 
         window.addEventListener('click',function(e){
-            //hide dropdown list if user click outside dropdown btn
             if(!btn.contains(e.target))profileDropdownList.classList.remove('active');
         });
     </script>

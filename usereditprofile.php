@@ -3,30 +3,68 @@ session_start();
 include('dataconnection.php');
 include "usernavbar.php";
 
-if(isset($_POST['update']))
-{
-    $imageName = $_FILES['image']['name'];
-    
-    if (!empty($imageName)) {
-        $sql = "UPDATE `login` SET image ='$imageName' WHERE email='$email'";
-        $result = mysqli_query($conn, $sql);
+$query = "SELECT * FROM `login`";
+$result = mysqli_query($conn, $query);
+$editres = mysqli_fetch_assoc($result);
+
+if (isset($_POST['update'])) {
+  $username = $_POST['username'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone_number'];
+
+  if ((!empty($username)) && (!empty($email)) && (!empty($phone))) {
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+      $file = $_FILES['image'];
+      
+      $directory = 'uploads/';
+      
+      $newfname = uniqid() . '_' . $file['name'];
+
+      $path = $directory . $newfname;
+      if (move_uploaded_file($file['tmp_name'], $path)) {
+      
+      $update = "UPDATE `login` SET `username`='$username', `email`='$email', `phone_number`='$phone', `image`='$path' WHERE `email`='$email'";
     } else {
-        $defaultImage = 'images/profile.png';
-        $sql = "UPDATE `login` SET image ='$defaultImage' WHERE email='$email'";
-        $result = mysqli_query($conn, $sql);
+      echo "<div class='popup'>
+              <h2>Error</h2>
+              <p>Failed to move the uploaded file.</p>
+              <button class='close'></button>
+            </div>";
+      exit;
     }
-}
+  } else {
+    $update = "UPDATE `login` SET `username`='$username', `email`='$email', `phone_number`='$phone' WHERE `email`='$email'";
+  }
+    
+    $latestprof = mysqli_query($conn, $update);
 
-$email = $_GET['email'];
-$query = mysqli_query($conn, "SELECT * FROM `login` WHERE email = '$email'");
-$result = mysqli_fetch_assoc($query);
-$msg = '';
+    if ($latestprof) {
+      $_SESSION['image'] = $path;
+      echo "<div class='popup' style='background-color: #3dec55;'>
+              <h2>Notification</h2>
+              <p>Profile updated!</p>
+              <button class='close'></button>
+            </div>";
 
-if(isset($_POST['update']))
-{
-    $username = $_POST['username'];
-    mysqli_query($conn, "UPDATE `login` SET username ='$username' WHERE email='$email'");
-    $msg = "Information updated successfully!";
+      echo '<script>
+              setTimeout(function(){
+                  window.location.href = "userprofile.php?email='.$email.'";
+              }, 2000);
+            </script>';
+    } else {
+      echo "<div class='popup'>
+              <h2>Oh ouh</h2>
+              <p>Something went wrong, please try again</p>
+              <button class='close'></button>
+            </div>";
+    }
+  } else {
+    echo "<div class='popup'>
+            <h2>Oh ouh</h2>
+            <p>You are not allowed to leave any of the fields empty</p>
+            <button class='close'></button>
+          </div>";
+  }
 }
 ?>
 
@@ -84,6 +122,7 @@ body {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   text-align: center;
+  height:48vh;
 }
 
 .wrapper .left img {
@@ -107,6 +146,7 @@ body {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 30px 25px;
+  height:48vh;
 }
 
 a.return-link {
@@ -182,51 +222,102 @@ a.return-link:hover {
   color: var(--black);
 }
 
-.success,
-.error {
-  color: var(--black);
-  background-color: var(--green);
-  margin-bottom: 10px;
-  padding: 8px;
-  width: 100%;
-  border-radius: 10px;
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f44336;
   text-align: center;
+  color: white;
+  padding: 16px;
+  border-radius: 5px;
+  z-index: 1;
+  opacity: 0.9;
+  visibility: visible;
+  animation: popup 0.5s ease-in-out forwards;
+  width: 300px; /* Set your desired width */
+  height: 200px; /* Set your desired height */
 }
 
+.popup .close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.popup .close::before {
+  content: "✕";
+}
+
+.popup .close:hover {
+  color: #ccc;
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    bottom: -50px;
+  }
+  100% {
+    opacity: 0.9;
+    bottom: 30px;
+  }
+}
 </style>
 <body>
 <div class="wrapper">
     <div class="left">
-        <img src="images/<?php echo $result['image'] ?>" width="100">
-        <h4><?php echo $result['username'] ?></h4>
+        <img src="<?php echo isset($_SESSION['image']) ? $_SESSION['image'] : 'images/'.$editres['image']; ?>" width="100">
+        <h4><?php echo $editres['username'] ?></h4>
         <p>User of Travel Plan Generator</p>
     </div>
 
     <div class="right">
-        <a href="userprofile.php?email=<?php echo $result['email']; ?>"><img src="images/back.png" class="settingimg">Return</a>
+        <a href="userprofile.php?email=<?php echo $email; ?>"><img src="images/back.png" class="settingimg" style="width:20px; float:right;"></a>
         <div class="info">
             <h3>Edit Information</h3>
             <div class="info_data">
                 <div class="data">
-                    <?php echo $msg; ?>
-                    <form action="" method="post">
-                        <h4>Username</h4>
-                        <input type="text" name="username" value="<?php echo $result['username'] ?>">
-                        <h4>Phone Number</h4>
-                        <input type="text" name="phone_number" value="<?php echo $result['phone_number'] ?>">
-                        <h4>Email</h4>
-                        <input type="email" name="email" value="<?php echo $result['email'] ?>">
-                        <input type="submit" name="update" value="Update">
-                    </form> 
                     <form action="" method="post" enctype="multipart/form-data">
+                        <h4>Username</h4>
+                        <input type="text" name="username" value="<?php echo $editres['username'] ?>">
+                        <h4>Phone Number</h4>
+                        <input type="text" name="phone_number" value="<?php echo $editres['phone_number'] ?>">
+                        <h4>Email</h4>
+                        <input type="email" name="email" value="<?php echo $editres['email'] ?>">
                         <h4>Choose a new profile picture</h4>
                         <br>
-                        <input type="file" id="file" name="image" class="form-control" multiple>
-                    </form>
+                        <input type="file" id="file" name="image" class="form-control" accept=".jpg, .jpeg, .png" multiple>
+                        <input type="submit" name="update" value="Update">
+                    </form> 
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var closeButton = document.querySelector('.popup .close');
+    if (closeButton) {
+        closeButton.addEventListener('click', function() {
+            var popup = this.parentNode;
+            popup.style.display = 'none';
+        });
+
+        setTimeout(function() {
+            closeButton.click();
+        }, 3000);
+    }
+});
+</script>
 </body>
 </html>

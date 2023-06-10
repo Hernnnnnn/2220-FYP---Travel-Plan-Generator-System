@@ -24,6 +24,12 @@ if (isset($_POST['submit'])) {
                     <p>Submited!</p>
                     <button class='close'></button>
                 </div>";
+
+            echo '<script>
+                    setTimeout(function(){
+                        window.location.href = "userhomepage.php?email='.$email.'";
+                    }, 2000);
+                </script>';
         } else {
             echo "Error: " . mysqli_error($conn);
         }
