@@ -80,7 +80,8 @@ $result = mysqli_fetch_assoc($check);
         $query = "SELECT * FROM `userfeedback`";
         $r = mysqli_query($conn, $query);
 
-        while ($vresult = mysqli_fetch_assoc($r)) {
+        while ($vresult = mysqli_fetch_assoc($r)) 
+        {
             $email = $vresult['email'];
             $sql = "SELECT * FROM `login` WHERE email = '$email'";
             $check = mysqli_query($conn, $sql);
