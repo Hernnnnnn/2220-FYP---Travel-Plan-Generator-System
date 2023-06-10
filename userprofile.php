@@ -24,7 +24,7 @@ include "usernavbar.php";
 <body>
 	<div class="wrapper">
 		<div class="left">
-			<img src="images/<?php echo $result['image']?>" width="100">
+			<img src="<?php echo $result['image']?>" width="100">
 			<h4><?php echo $result['username']?></h4>
 			<p>User of Travel Plan Generator</p>
 
@@ -46,7 +46,5 @@ include "usernavbar.php";
 			</div>
 		</div>
 	</div>
-
-	<?php include "userfooter.php"; ?>
 </body>
 </html>

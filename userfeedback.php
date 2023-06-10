@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     
     if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        $email = $row['email'];
+        $email = $row['email'];d
 
         $insertQuery = "INSERT INTO userfeedback (email, type, feedback, review) VALUES ('$email', '$type', '$feedback', '$satisfy')";
         
@@ -24,6 +24,12 @@ if (isset($_POST['submit'])) {
                     <p>Submited!</p>
                     <button class='close'></button>
                 </div>";
+
+            echo '<script>
+                    setTimeout(function(){
+                        window.location.href = "userhomepage.php?email='.$email.'";
+                    }, 2000);
+                </script>';
         } else {
             echo "Error: " . mysqli_error($conn);
         }
@@ -134,7 +140,7 @@ body
                     </div>
                     <div class="col-md-6">
                         <label for="email" class="form-label">Email*</label>
-                        <input type="email" class="form-control" placeholder="Enter your email" name="email" value="<?php echo $result['email']?>" required />
+                        <input type="email" class="form-control" placeholder="Enter your email" name="email" value="<?php echo $result['email']?>" disabled />
                     </div>
                 </div>
 

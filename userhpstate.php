@@ -23,7 +23,7 @@ include "usernavbar.php";
 :root{
   --primary:#4bb6b7;
   --secondary:#FFFFFF;
-  --gray:#575757;
+  --gray:#575757;d
   --lightgray:#848484;
   --lightgray2:rgb(127,183,126,0.1);
   --darkgray:#2E3238;
@@ -38,7 +38,6 @@ include "usernavbar.php";
   max-width: 100%;
   padding: 10px 20px 20px 20px;
   align-items: center;
-  background: none;
 }
 
 .hot h1 {
@@ -140,6 +139,50 @@ include "usernavbar.php";
 
 .hot .tourbox-container .tour-box .content .btn:hover {
   background: var(--darkgray);
+}
+
+.search-wrapper
+{
+  border: 1px solid black;
+  border-radius: 30px;
+  height: 50px;
+  align-items: center;
+  overflow-x: hidden;
+  margin: auto;
+  width: 300px;
+  float: left;
+  margin: 3px;  
+  position: absolute;
+  top: 100px;
+}
+.search-wrapper button
+{
+  display: inline-block;
+  padding: 0rem .5rem;
+  color: black;
+  border: none;
+  background-color: transparent;
+  margin-right: 15px;
+  z-index: 999;
+  left: 250px;
+}
+
+.search-wrapper span
+{
+  font-size: 15px;
+  margin-left: 50px;
+}
+
+.search-wrapper input
+{
+  height: 85%;
+  padding: .5rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: gray;
+  padding-left: 20px;
+  margin-top: 5px;
 }
 </style>
 <body>

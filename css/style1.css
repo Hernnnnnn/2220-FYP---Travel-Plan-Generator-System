@@ -20,9 +20,6 @@
   font-family:"Poppins", sans-serif;
 }
 
-
-
-
 /* navbar */
 .navbar h2{
   font-size:1.8rem;
@@ -189,7 +186,7 @@
 
 .hero-travelplan .hero-travelplancontent {
   position: absolute;
-  top: 10%;
+  top: 15%;
   left: 70%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -213,7 +210,7 @@
 
 .hero-travelplan .hero-form {
   position: absolute;
-  top: 10%;
+  top: 15%;
   left: 30%;
   transform: translate(-50%, -50%);
   background-color: var(--secondary);
@@ -497,10 +494,155 @@ hr.underlinetitle {
 
 
 
+
+
+/* user review */
+.revcentertitle {
+  max-width: 100%;
+  line-height: 50px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--secondary);
+  background: var(--primary); 
+  height: 60px;
+}
+
+hr.revunderlinetitle {
+  border: none;
+  margin: 0 auto;
+  margin-top: -5px;
+  height: 3px;
+  width: 150px;
+  background-color: var(--secondary);
+}
+
+.swiper {
+  width: 97%;
+  height: 30%;
+  text-align: center;
+  padding: 5px 0px 30px 0px;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  background: var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: left;
+}
+
+.swiper-slide .box {
+  background: var(--secondary);
+  border-radius: 3px;
+  padding: 25px;
+  width: 100%;
+}
+
+.swiper-slide .quote {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.swiper-slide p {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.swiper-slide .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.swiper-slide .info .user {
+  font-size: 17px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.swiper-slide .info .studid {
+  font-size: 16px;
+  color: var(--lightgray);
+  font-weight: 600;
+  text-align: left;
+}
+
+.swiper-slide .info .stars {
+  margin-top: 2px;
+  text-align: left;
+}
+
+.swiper-slide .stars i {
+  color: var(--primary);
+}
+
+.swiper-slide .content .image {
+  width: 75px;
+  height: 75px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.swiper-slide .content .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--secondary);
+}
+
+@media (max-width: 768px) {
+  .swiper-slide {
+    flex-direction: column;
+  }
+
+  .swiper-slide .content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .swiper-slide .info .user {
+    margin-bottom: 5px;
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--black);
+  transition: 0.5s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  background-color: var(--secondary);
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: var(--black);
+}
+
+
+
+
+
+
+
+
+
 /* footer */
 footer {
   position: relative;
-  margin-top: 50px; /* Adjust this value as needed */
   width: 100%;
   line-height: 20px;
   color: var(--secondary);
@@ -698,9 +840,14 @@ hr.underline {
   background:var(--darkgray);
 }
 
-.wrapper .left img{
-    margin-bottom: 10px;
-    border-radius: 5px;
+.wrapper .left  img {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 130px;
+  height: 130px;
+  object-fit:cover;
+  border-radius:50%;
+  background:var(--primary);
 }
 
 .wrapper .left h4{
