@@ -140,7 +140,7 @@ body
                     </div>
                     <div class="col-md-6">
                         <label for="email" class="form-label">Email*</label>
-                        <input type="email" class="form-control" placeholder="Enter your email" name="email" value="<?php echo $result['email']?>" required />
+                        <input type="email" class="form-control" placeholder="Enter your email" name="email" value="<?php echo $result['email']?>" disabled />
                     </div>
                 </div>
 
