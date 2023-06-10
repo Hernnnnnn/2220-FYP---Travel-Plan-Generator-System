@@ -38,7 +38,6 @@ include "usernavbar.php";
   max-width: 100%;
   padding: 10px 20px 20px 20px;
   align-items: center;
-  background: none;
 }
 
 .hot h1 {
@@ -147,11 +146,14 @@ include "usernavbar.php";
   border: 1px solid black;
   border-radius: 30px;
   height: 50px;
+  align-items: center;
   overflow-x: hidden;
+  margin: auto;
   width: 300px;
   float: left;
-  top:100px;
+  margin: 3px;  
   position: absolute;
+  top: 100px;
 }
 .search-wrapper button
 {
@@ -161,8 +163,6 @@ include "usernavbar.php";
   border: none;
   background-color: transparent;
   margin-right: 15px;
-  position: absolute;
-  top: 100px;
   z-index: 999;
   left: 250px;
 }
@@ -170,7 +170,7 @@ include "usernavbar.php";
 .search-wrapper span
 {
   font-size: 15px;
-  margin-left: 25px;
+  margin-left: 50px;
 }
 
 .search-wrapper input

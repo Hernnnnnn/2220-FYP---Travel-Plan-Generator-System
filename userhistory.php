@@ -26,11 +26,11 @@
         font-family: sans-serif;
         min-width: 400px;
         width: 70%;
-        height: 50%;
-        max-width: 800px;
+        height: auto;
+        max-width: 90%;
         margin: auto;
         margin-top: 150px;
-        margin-bottom: 10px;
+        margin-bottom: 450px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
 
@@ -61,9 +61,8 @@
     {
         background: rgba(255, 255, 255, 0.7);
         text-align: center;
-        padding-bottom: 15px;
-        padding-top: 15px;
-
+        padding-bottom: 50px;
+        padding-top: 50px;
     }
     th
     {
@@ -165,7 +164,7 @@
                 <tr>
                     <td><span><?php echo $red['id']?></span></td>
                     <td><?php echo $red['states']?></td>
-                    <td style="text-align: left;">
+                    <td style="text-align: center;">
                         <?php echo $red['destinations']?>
                     </td>
                     <td><?php echo $red['createdtime']?></td>
