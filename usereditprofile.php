@@ -3,39 +3,39 @@ session_start();
 include('dataconnection.php');
 include "usernavbar.php";
 
-$query = "SELECT * FROM `login`";
+// Fetch user data based on email
+$email = $_GET['email'];
+$query = "SELECT * FROM `login` WHERE `email`='$email'";
 $result = mysqli_query($conn, $query);
 $editres = mysqli_fetch_assoc($result);
 
 if (isset($_POST['update'])) {
   $username = $_POST['username'];
-  $email = $_POST['email'];
   $phone = $_POST['phone_number'];
 
-  if ((!empty($username)) && (!empty($email)) && (!empty($phone))) {
+  if ((!empty($username)) && (!empty($phone))) {
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
       $file = $_FILES['image'];
-      
+
       $directory = 'uploads/';
-      
+
       $newfname = uniqid() . '_' . $file['name'];
 
       $path = $directory . $newfname;
       if (move_uploaded_file($file['tmp_name'], $path)) {
-      
-      $update = "UPDATE `login` SET `username`='$username', `email`='$email', `phone_number`='$phone', `image`='$path' WHERE `email`='$email'";
+        $update = "UPDATE `login` SET `username`='$username', `phone_number`='$phone', `image`='$path' WHERE `email`='$email'";
+      } else {
+        echo "<div class='popup'>
+                <h2>Error</h2>
+                <p>Failed to move the uploaded file.</p>
+                <button class='close'></button>
+              </div>";
+        exit;
+      }
     } else {
-      echo "<div class='popup'>
-              <h2>Error</h2>
-              <p>Failed to move the uploaded file.</p>
-              <button class='close'></button>
-            </div>";
-      exit;
+      $update = "UPDATE `login` SET `username`='$username', `phone_number`='$phone' WHERE `email`='$email'";
     }
-  } else {
-    $update = "UPDATE `login` SET `username`='$username', `email`='$email', `phone_number`='$phone' WHERE `email`='$email'";
-  }
-    
+
     $latestprof = mysqli_query($conn, $update);
 
     if ($latestprof) {
@@ -275,7 +275,7 @@ a.return-link:hover {
 <body>
 <div class="wrapper">
     <div class="left">
-        <img src="<?php echo isset($_SESSION['image']) ? $_SESSION['image'] : 'images/'.$editres['image']; ?>" width="100">
+        <img src="<?php echo isset($_SESSION['image']) ? $_SESSION['image'] : $editres['image']; ?>" width="100">
         <h4><?php echo $editres['username'] ?></h4>
         <p>User of Travel Plan Generator</p>
     </div>
@@ -292,7 +292,7 @@ a.return-link:hover {
                         <h4>Phone Number</h4>
                         <input type="text" name="phone_number" value="<?php echo $editres['phone_number'] ?>">
                         <h4>Email</h4>
-                        <input type="email" name="email" value="<?php echo $editres['email'] ?>">
+                        <input type="email" name="email" value="<?php echo $editres['email'] ?>" disabled>
                         <h4>Choose a new profile picture</h4>
                         <br>
                         <input type="file" id="file" name="image" class="form-control" accept=".jpg, .jpeg, .png" multiple>

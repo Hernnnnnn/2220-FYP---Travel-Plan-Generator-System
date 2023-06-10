@@ -134,7 +134,7 @@ if(isset($_POST['add_to_cart1'])){
   background-color: transparent;
   color: #000000;
   cursor: pointer;
-  margin: 1px;
+  margin: 5px;
 }
 
 .active {
@@ -320,7 +320,7 @@ text-align: center;
 
 .print{
   cursor: pointer;
-  width: 15%;
+  width: 20%;
   height: 50px;
   font-size: 20px;
   font-weight: 600;
@@ -736,7 +736,7 @@ $no=1;
                         $no++;
                         }?>
                         <button class="delete"><a href="userdelete.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>" style="text-decoration: none; color:white;">Delete</a></button>
-                        <button name="print" class="print"><a style="text-decoration: none; color:white;" href="usergeneratepdf.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>">Print</a> </button>
+                        <button name="print" class="print"><a style="text-decoration: none; color:white;" href="usergeneratepdf.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>">Save & Print</a> </button>
                         </form>
 
                       
