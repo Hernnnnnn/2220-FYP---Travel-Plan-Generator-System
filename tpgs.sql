@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2023 at 06:59 AM
+-- Generation Time: Jun 10, 2023 at 04:46 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -42,6 +42,81 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`ID`, `username`, `password`, `email`, `image`) VALUES
 (1, 'Teng', '456', 'dehui7051@gmail.com', 'dehui.jpg'),
 (2, 'Teng', '456', 'dehui7051@gmail.com', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `generator`
+--
+
+CREATE TABLE `generator` (
+  `id` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
+  `destination` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `generator`
+--
+
+INSERT INTO `generator` (`id`, `day`, `destination`) VALUES
+(1, 1, ''),
+(2, 2, ''),
+(3, 3, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `id` int(11) NOT NULL,
+  `states` text NOT NULL,
+  `destinations` text NOT NULL,
+  `createdtime` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`id`, `states`, `destinations`, `createdtime`) VALUES
+(1, 'Malacca', '777\n', '2023-06-09'),
+(2, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
+(3, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
+(4, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
+(5, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
+(6, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
+(7, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
+(8, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
+(9, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `johorlocation`
+--
+
+CREATE TABLE `johorlocation` (
+  `id` int(11) NOT NULL,
+  `locationname` text NOT NULL,
+  `locationimage` text NOT NULL,
+  `locationlink` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `johorrestaurant`
+--
+
+CREATE TABLE `johorrestaurant` (
+  `id` int(11) NOT NULL,
+  `restaurantname` text NOT NULL,
+  `restaurantimage` text NOT NULL,
+  `restaurantlink` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -113,7 +188,7 @@ CREATE TABLE `locations` (
   `video_url` varchar(255) DEFAULT NULL,
   `direction_link` varchar(255) DEFAULT NULL,
   `locationdetail_link` varchar(255) DEFAULT NULL,
-  `option` varchar(50) DEFAULT NULL
+  `option` varchar(50) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -121,9 +196,10 @@ CREATE TABLE `locations` (
 --
 
 INSERT INTO `locations` (`id`, `name`, `description`, `image_url`, `video_url`, `direction_link`, `locationdetail_link`, `option`) VALUES
-(1, 'Malacca', 'Malacca is a good ', 'melaka.jpg', 'malacca.mp4', 'https://goo.gl/maps/chXMuhti5NhDZK9D9', 'https://en.wikipedia.org/wiki/Malacca', NULL),
-(2, 'Penang', 'Penang is a good place.', 'penang.jpg', 'penang.mp4', NULL, NULL, NULL),
-(3, 'Kuala Lumpur', 'Kuala Lumpur is a nice city.', 'Kuala Lumpur.jpg', 'Kuala Lumpur.mp4', NULL, NULL, NULL);
+(1, 'Malacca', 'Malacca is a good ', 'melaka.jpg', 'malacca.mp4', 'https://goo.gl/maps/chXMuhti5NhDZK9D9', 'https://en.wikipedia.org/wiki/Malacca', '1'),
+(2, 'Penang', 'Penang is a good place.', 'penang.jpg', 'penang.mp4', NULL, NULL, '1'),
+(3, 'Kuala Lumpur', 'Kuala Lumpur is a nice city.', 'Kuala Lumpur.jpg', 'Kuala Lumpur.mp4', NULL, NULL, '0'),
+(8, 'Johor', 'Johor is best', 'penang.mp4', 'malacca.mp4', '', '', '0');
 
 -- --------------------------------------------------------
 
@@ -146,7 +222,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`ID`, `username`, `email`, `password`, `status`, `image`, `phone_number`) VALUES
-(1, 'Hern', 'jlim2468101@gmail.com', '$2y$10$Zkqdhbh/nwSFWWwvt6.0VOlkUUzZafCidcv6pe321ifmrB2Cuy1Au', 1, '', '0178208893');
+(1, 'Jayden', 'jlim2468101@gmail.com', '$2y$10$Zkqdhbh/nwSFWWwvt6.0VOlkUUzZafCidcv6pe321ifmrB2Cuy1Au', 1, 'uploads/648460ee15cd2_3534146.png', '0178208893'),
+(3, 'Hernnnnnn', 'allenleekheehern@gmail.com', '$2y$10$DX2Rv.NixTxHSSl0vPSkcesILhuoWjmpQwsFaUYs1m1vM/Zezw4bm', 1, 'uploads/64846357bcb4c_Hern.jpg', '0178208893');
 
 -- --------------------------------------------------------
 
@@ -161,6 +238,14 @@ CREATE TABLE `malaccalocation` (
   `locationlink` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `malaccalocation`
+--
+
+INSERT INTO `malaccalocation` (`id`, `locationname`, `locationimage`, `locationlink`) VALUES
+(0, 'Jonker Street', 'images/Malacca/PLACE/mlk_jonker street.jpg', ''),
+(0, 'Shore Sky', 'images/Malacca/PLACE/melaka_shore_sky.jpg', '');
+
 -- --------------------------------------------------------
 
 --
@@ -174,6 +259,50 @@ CREATE TABLE `malaccarestaurant` (
   `restaurantlink` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `malaccarestaurant`
+--
+
+INSERT INTO `malaccarestaurant` (`id`, `restaurantname`, `restaurantimage`, `restaurantlink`) VALUES
+(0, 'Hard Rock Cafe', 'images/Malacca/FOOD/food_melaka_Hard Rock Cafe.jpeg', ''),
+(0, 'Pak Putra Restaurant', 'images/Malacca/FOOD/food_melaka_Pak Putra Restaurant.jpg', ''),
+(0, 'Restaurant Ming Huat', 'images/Malacca/FOOD/food_melaka_Restaurant Ming Huat.jpg', ''),
+(0, 'Wild Coriander', 'images/Malacca/FOOD/food_melaka_wild coriander.jpg', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userdestination`
+--
+
+CREATE TABLE `userdestination` (
+  `des_id` int(11) NOT NULL,
+  `des_Name` varchar(255) NOT NULL,
+  `des_img` varchar(255) NOT NULL,
+  `des_day` int(255) NOT NULL,
+  `des_duration` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userdestination`
+--
+
+INSERT INTO `userdestination` (`des_id`, `des_Name`, `des_img`, `des_day`, `des_duration`) VALUES
+(11, '', 'images\\Kuala Lumpur\\PLACE\\KL BATU CABUSr.jpg', 1, 0),
+(12, 'genting highland', 'images\\Kuala Lumpur\\PLACE\\genting-highland.jpg', 3, 0),
+(13, 'genting highland', 'images\\Kuala Lumpur\\PLACE\\genting-highland.jpg', 2, 0),
+(14, 'KL ZOO', 'images\\Kuala Lumpur\\PLACE\\KL ZOO.jpg', 5, 0),
+(15, 'KLCC', 'images\\Kuala Lumpur\\PLACE\\KLCCC.jpg', 10, 0),
+(16, 'KLCC', 'images\\Kuala Lumpur\\PLACE\\KLCCC.jpg', 10, 0),
+(17, 'KLCC', 'images\\Kuala Lumpur\\PLACE\\KLCCC.jpg', 10, 0),
+(18, 'KLCC', 'images\\Kuala Lumpur\\PLACE\\KLCCC.jpg', 10, 0),
+(19, 'BATU CAVU', 'images\\Kuala Lumpur\\PLACE\\KL BATU CABUSr.jpg', 0, 0),
+(20, 'BATU CAVU', 'images\\Kuala Lumpur\\PLACE\\KL BATU CABUSr.jpg', 1, 0),
+(21, 'KLCC', 'images\\Kuala Lumpur\\PLACE\\KLCCC.jpg', 1, 0),
+(22, 'genting highland', 'images\\Kuala Lumpur\\PLACE\\genting-highland.jpg', 1, 0),
+(23, 'genting highland', 'images\\Kuala Lumpur\\PLACE\\genting-highland.jpg', 3, 0),
+(24, 'genting highland', 'images\\Kuala Lumpur\\PLACE\\genting-highland.jpg', 14, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -185,8 +314,21 @@ CREATE TABLE `userfeedback` (
   `email` varchar(255) NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   `feedback` text NOT NULL,
-  `review` int(10) NOT NULL
+  `review` int(10) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userfeedback`
+--
+
+INSERT INTO `userfeedback` (`id`, `email`, `type`, `feedback`, `review`, `status`) VALUES
+(37, 'jlim2468101@gmail.com', 'feedback', 'Sawadikap', 3, '1'),
+(38, 'allenleekheehern@gmail.com', 'feedback', 'hahahaha', 4, '1'),
+(39, 'allenleekheehern@gmail.com', 'feedback', 'nice', 5, '1'),
+(40, 'allenleekheehern@gmail.com', 'feedback', 'gg mah', 5, '1'),
+(41, 'jlim2468101@gmail.com', 'inquiry', 'I hope I can have a job', 1, '1'),
+(42, 'jlim2468101@gmail.com', 'feedback', 'It is nice\r\n', 5, '0');
 
 -- --------------------------------------------------------
 
@@ -222,6 +364,18 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `generator`
+--
+ALTER TABLE `generator`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `locations`
 --
 ALTER TABLE `locations`
@@ -232,6 +386,12 @@ ALTER TABLE `locations`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `userdestination`
+--
+ALTER TABLE `userdestination`
+  ADD PRIMARY KEY (`des_id`);
 
 --
 -- Indexes for table `userfeedback`
@@ -256,22 +416,40 @@ ALTER TABLE `admin`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `generator`
+--
+ALTER TABLE `generator`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `history`
+--
+ALTER TABLE `history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `userdestination`
+--
+ALTER TABLE `userdestination`
+  MODIFY `des_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `userfeedback`
 --
 ALTER TABLE `userfeedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `usergenerator`
