@@ -142,8 +142,6 @@ if(isset($_POST['add_to_cart1'])){
   color: #ffffff;
 }
 
-/*dehui的searchbar*/
-
 .search-wrapper
 {
   border: 1px solid black;
