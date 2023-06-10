@@ -43,8 +43,8 @@ if(!$_SESSION['email'])
         {
                 $sql = "INSERT INTO `locations`(name,description,image_url,direction_link,locationdetail_link,status) VALUES ('$name','$detail','$imageName','$dlink','$llink',0)";
                 
-                $s="CREATE Table `".$name."location`(`id` int(11) NOT NULL,`locationname` text NOT NULL,`locationimage` text NOT NULL,`locationlink` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
-                $s1="CREATE Table `".$name."restaurant`(`id` int(11) NOT NULL,`restaurantname` text NOT NULL,`restaurantimage` text NOT NULL,`restaurantlink` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+                $s="CREATE Table `".$name."location`(`id` int(11) NOT NULL AUTO_INCREMENT,`locationname` text NOT NULL,`locationimage` text NOT NULL,`locationlink` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+                $s1="CREATE Table `".$name."restaurant`(`id` int(11) NOT NULL AUTO_INCREMENT,`restaurantname` text NOT NULL,`restaurantimage` text NOT NULL,`restaurantlink` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
                 mysqli_query($conn,$s);
                 mysqli_query($conn,$s1);
                 mysqli_query($conn,$sql);
