@@ -280,7 +280,7 @@ a.return-link:hover {
 <body>
 <div class="wrapper">
     <div class="left">
-        <img src="<?php echo isset($_SESSION['image']) ? $_SESSION['image'] : $editres['image']; ?>">
+        <img src="<?php echo $editres['image']; ?>">
         <h4><?php echo $editres['username'] ?></h4>
         <p>User of Travel Plan Generator</p>
     </div>
