@@ -840,9 +840,14 @@ hr.underline {
   background:var(--darkgray);
 }
 
-.wrapper .left img{
-    margin-bottom: 10px;
-    border-radius: 5px;
+.wrapper .left  img {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 130px;
+  height: 130px;
+  object-fit:cover;
+  border-radius:50%;
+  background:var(--primary);
 }
 
 .wrapper .left h4{

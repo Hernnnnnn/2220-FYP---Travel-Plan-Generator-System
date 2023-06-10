@@ -125,9 +125,14 @@ body {
   height:48vh;
 }
 
-.wrapper .left img {
+.wrapper .left  img {
   margin-bottom: 10px;
   border-radius: 5px;
+  width: 150px;
+  height: 150px;
+  object-fit:cover;
+  border-radius:50%;
+  background:var(--primary);
 }
 
 .wrapper .left h4 {
@@ -275,7 +280,7 @@ a.return-link:hover {
 <body>
 <div class="wrapper">
     <div class="left">
-        <img src="<?php echo isset($_SESSION['image']) ? $_SESSION['image'] : $editres['image']; ?>" width="100">
+        <img src="<?php echo isset($_SESSION['image']) ? $_SESSION['image'] : $editres['image']; ?>">
         <h4><?php echo $editres['username'] ?></h4>
         <p>User of Travel Plan Generator</p>
     </div>
