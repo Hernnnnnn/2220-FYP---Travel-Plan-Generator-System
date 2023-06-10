@@ -26,21 +26,17 @@ else if(empty($rz['day']))
 
 $msg =" ";
 if(isset($_POST['add_to_cart'])){
-
   $id = mysqli_real_escape_string($conn,$_POST['id']);
   $day1 = mysqli_real_escape_string($conn,$_POST['des_day']);
   $name =  mysqli_real_escape_string($conn,$_POST['product_name']);
-  // $name =  mysqli_real_escape_string($conn,$_POST['product_name1']);
   $q1 = "UPDATE `generator` set destination='$name' where day =  $day1";
   $q2 = mysqli_query($conn,$q1);
 }
-
-if(isset($_POST['add_to_cart1'])){
+else if(isset($_POST['add_to_cart1'])){
 
   $id = mysqli_real_escape_string($conn,$_POST['id1']);
   $day1 = mysqli_real_escape_string($conn,$_POST['des_day1']);
   $name =  mysqli_real_escape_string($conn,$_POST['product_name1']);
-  // $name =  mysqli_real_escape_string($conn,$_POST['product_name1']);
   $q1 = "UPDATE `generator` set destination='$name' where day =  $day1";
   $q2 = mysqli_query($conn,$q1);
 }
@@ -48,45 +44,74 @@ if(isset($_POST['add_to_cart1'])){
 
 
 ?>
-
-
-<?php
-  //   if (isset($_POST['add_to_cart'])) {
-  //       // Get the relevant data from the form
-  //       $productName = $_POST['product_name'];
-  //       $productImage = $_POST['product_image'];
-
-  //       if (empty($productName) || empty($productImage)) {
-  //           echo "added fail";
-  //           exit();
-  //       } else {
-  //           // Prepare the SQL statement with placeholders
-  //           $sql = "INSERT INTO userdestination (des_img, des_Name) VALUES (?, ?)";
-  //           $stmt = $conn->prepare($sql);
-
-  //           // Bind the values to the prepared statement
-  //           $stmt->bind_param("ss", $productImage, $productName);
-
-  //           // Execute the prepared statement
-  //           if ($stmt->execute()) {
-  //               echo "added successfully";
-  //           } else {
-  //               echo "added fail";
-  //           }
-  //       }
-  //   }
-	// // Establish database connection
-	// $host = "localhost";
-	// $username = "root";
-	// $password = "";
-	// $database = "tpgs";
-	// $connect = mysqli_connect($host, $username, $password, $database);
-
-	// // SQL query to select orders and order items
-	// $sqlselect = "SELECT des_img, des_Name from usergenerator";
-
-	// $result = mysqli_query($connect, $sqlselect);
-?>
+<?php 
+        $searchKey="";
+        $loc = $_GET['destination'];
+        $p = "SELECT * From `".$loc."restaurant`";
+        $q = "SELECT * From `".$loc."location`";  
+            $query = mysqli_query($conn,$p);
+                    $ss = mysqli_query($conn,$q);
+                    if(isset($_POST['all']))
+                    {
+                      $p = "SELECT * From `".$loc."restaurant`";
+                      $q = "SELECT * From `".$loc."location`";  
+                      $query = mysqli_query($conn,$p);
+                    $ss = mysqli_query($conn,$q);          
+                    }
+                    else if(isset($_POST['restaurant']))
+                    {
+                      $p = "SELECT * From `".$loc."restaurant`";
+                      $q = "SELECT * From `".$loc."location` where id = 0";
+                      $query = mysqli_query($conn,$p);
+                    $ss = mysqli_query($conn,$q);
+                    }
+                    else if(isset($_POST['location']))
+                    {
+                      $p = "SELECT * From `".$loc."restaurant` where id = 0";
+                      $q = "SELECT * From `".$loc."location` ";
+                      $query = mysqli_query($conn,$p);
+                    $ss = mysqli_query($conn,$q);
+                    }
+                    
+                    if(isset($_POST['search']))
+                      {
+                          $searchKey=$_POST['search'];
+                          $p = "SELECT * From `".$loc."restaurant` where restaurantname LIKE '%$searchKey%'";
+                          $q = "SELECT * From `".$loc."location` where locationname LIKE '%$searchKey%'"; 
+                          $query = mysqli_query($conn,$p);
+                    $ss = mysqli_query($conn,$q);     
+                      } 
+                      else
+                    {
+                        $p = "SELECT * From `".$loc."restaurant`";
+                        $q = "SELECT * From `".$loc."location`";
+                        $searchKey = "";  
+                        $query = mysqli_query($conn,$p);
+                    $ss = mysqli_query($conn,$q);
+                    if(isset($_POST['all']))
+                    {
+                      $p = "SELECT * From `".$loc."restaurant`";
+                      $q = "SELECT * From `".$loc."location`";  
+                      $query = mysqli_query($conn,$p);
+                    $ss = mysqli_query($conn,$q);          
+                    }
+                    else if(isset($_POST['restaurant']))
+                    {
+                      $p = "SELECT * From `".$loc."restaurant`";
+                      $q = "SELECT * From `".$loc."location` where id = 0";
+                      $query = mysqli_query($conn,$p);
+                    $ss = mysqli_query($conn,$q);
+                    }
+                    else if(isset($_POST['location']))
+                    {
+                      $p = "SELECT * From `".$loc."restaurant` where id = 0";
+                      $q = "SELECT * From `".$loc."location` ";
+                      $query = mysqli_query($conn,$p);
+                    $ss = mysqli_query($conn,$q);
+                    }        
+                    } 
+                    
+                    ?>
 
 
 <!DOCTYPE html>
@@ -135,6 +160,7 @@ if(isset($_POST['add_to_cart1'])){
   color: #000000;
   cursor: pointer;
   margin: 5px;
+  /* position:absolute; */
 }
 
 .active {
@@ -142,17 +168,21 @@ if(isset($_POST['add_to_cart1'])){
   color: #ffffff;
 }
 
+.header
+    {
+        display: flex;
+        padding: 1rem;
+        margin: 0;
+    }
 .search-wrapper
 {
   border: 1px solid black;
   border-radius: 30px;
   height: 50px;
-
-  align-items: center;
-  overflow-x: hidden;
-  margin: auto;
+  /* align-items: center; */
+  /* overflow-x: hidden; */
+  /* margin: auto; */
   width: 300px;
-  float: left;
   margin: 3px;
 }
 .search-wrapper button
@@ -163,9 +193,9 @@ if(isset($_POST['add_to_cart1'])){
   border: none;
   background-color: transparent;
   margin-right: 15px;
-  /* float: left; */
+  /* float: right; */
   position: absolute;
-  top: 90px;
+  top: 160px;
   z-index: 999;
   left: 250px;
 }
@@ -178,7 +208,7 @@ if(isset($_POST['add_to_cart1'])){
 .search-wrapper input
 {
   height: 100%;
-  padding: .5rem;
+  padding: .8rem;
   border: none;
   outline: none;
   background: transparent;
@@ -312,6 +342,7 @@ text-align: center;
   margin-left:60px;
   padding: 0.6rem 0.8rem;
   transition: 0.5s;
+  text-align: center;
 }
 
 .delete:hover{
@@ -334,6 +365,7 @@ text-align: center;
   transition: 0.5s;
   float: right;
   margin-right:60px;
+  text-align: center;
   text-decoration:none;
 }
 
@@ -348,59 +380,6 @@ background-size: cover;
 background-repeat: no-repeat;
 background-attachment: fixed;
 }
-
-/* 
- .popup{
-  background:rgba(0, 0, 0, 0.6) ;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.popup-content{
-  height: 250px;
-  width: 500px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  position: relative;
-
-
-
-} */
-
-  /* input{
-      margin: 10px auto;
-      margin-bottom: 20px;
-    
-      width: 50%;
-      padding:5px;
-      border-radius: #fff;
-      position:relative;
-  } */
-
-
-
-
-/* .button{
-background:#fff;
-padding:10px 15px;
-color: #34495e;
-font-weight: bolder;
-text-transform: uppercase;
-font-size: 18px;
-border-radius: 5px;
-box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.75);
-margin:25px;
-transition: 0.4s;
-
-
-}*/
 
 .button:hover{
   background: var(--darkgray);
@@ -604,43 +583,27 @@ padding: 5px;
 <body>
 
 	
-<div id="buttons">
-			  <button class="button-value" onclick="filterProduct('all')">All</button>
+<div id="buttons" class="">
+  <form action="" method="post">
+			  <button class="button-value" name="all">All</button>
 			  
-			  <button class="button-value" onclick="filterProduct('RESTAURANT')">
+			  <button class="button-value" name="restaurant">
 				RESTAURANT
 			  </button>
-			  <button class="button-value" onclick="filterProduct('DESTINATION')">
+			  <button class="button-value" name ="location">
 				LOCATION
-			  </button>
-        <?php 
-        $loc = $_GET['destination'];
-                    if(isset($_POST['search']))
-                    {
-                        $searchKey=$_POST['search'];
-                        $p = "SELECT * From `".$loc."restaurant` where restaurantname LIKE '%$searchKey%'";
-                        $q = "SELECT * From `".$loc."location` where locationname LIKE '%$searchKey%'";
-                    }
-                    else
-                    {
-                        $p = "SELECT * From `".$loc."restaurant`";
-                        $q = "SELECT * From `".$loc."location`";
-                        $searchKey = "";
-                    }
-                    
-                    $query = mysqli_query($conn,$p);
-                    $ss = mysqli_query($conn,$q);
-
-
-                    ?>
-			  <div class="search-wrapper">
+</button>
+  </form>
         <form action="" method="post">
-
-				<input type="text" name="search" placeholder="Search here" >
-				<button type="submit" name="submit"><span class="fa fa-search"></span></button>
-        </form>
+        <div class="header">
+			  <div class="search-wrapper">
+        <!-- <form action="" method="post"> -->
+				<input style="color: black;" type="text" name="search" placeholder="Search here" value="<?php echo $searchKey?>">
+				<button  name="submit"><span class="fa fa-search"></span></button>
+</form>
+        
 					
-					
+</div>
 				</div>
 			</div>
       <div class="container-fluid">
@@ -661,13 +624,14 @@ padding: 5px;
                       </div>
                       <div class="content">
                       <input type="hidden" name="product_name"  value="<?php echo $row["restaurantname"]; ?>" >
-                            <input type="hidden" name="id" value="<?php echo $row['id']?>">
+                      <input type="hidden" name="id" value="<?php echo $row['id']?>">
                             <label style="color
                             :black; font-size:1.2rem; font-weight:600;" class="day" for="">Day:</label>
                       <input type="number" class="number" name="des_day"  value="0">
                           <input style="font-size: 1rem; padding:0.6rem 0.8rem;" type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to Itinerary">
                       </div>
                   </div>
+              </form>
                   <?php 
                 }
                 while ($row1 = mysqli_fetch_assoc($ss))
@@ -735,8 +699,8 @@ $no=1;
                           <?php 
                         $no++;
                         }?>
-                        <a href="userdelete.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>" style="text-decoration: none; color:white;"><button class="delete">Delete</button></a>
-                        <button name="print" class="print"><a style="text-decoration: none; color:white;" href="usergeneratepdf.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>">Save & Print</a> </button>
+                        <a href="userdelete.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>" style="text-decoration: none; color:white;" class="delete">Delete</a>
+                        <a style="text-decoration: none; color:white;" href="usergeneratepdf.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>" class="print">Save & Print</a>
                         </form>
 
                       
