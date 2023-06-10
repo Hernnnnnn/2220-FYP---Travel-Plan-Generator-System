@@ -16,7 +16,7 @@
     <div class="swiper-wrapper">
     <?php
         include('dataconnection.php');
-        $query = "SELECT * FROM `userfeedback` WHERE `type` = 'feedback'";
+        $query = "SELECT * FROM `userfeedback` WHERE `type` = 'feedback' AND `status` = 1";
         $r = mysqli_query($conn, $query);
 
         while ($vresult = mysqli_fetch_assoc($r)) {
