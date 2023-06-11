@@ -12,7 +12,7 @@ include 'dataconnection.php';
     $local_date = date('Y-m-d');
     if(isset($_POST['print']))
     {
-        $a = "INSERT INTO `history`(states,createdtime) VALUES ('$loc','$local_date')";
+        $a = "INSERT INTO `history`(states,createdtime,email) VALUES ('$loc','$local_date','$email')";
         mysqli_query($conn,$a);
         while($r = mysqli_fetch_array($p))
         {

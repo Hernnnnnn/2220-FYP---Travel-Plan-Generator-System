@@ -116,19 +116,19 @@
 </head>
 <body>
 <?php include "usernavbar.php"; ?>
-
 <table>
                 <tr>
                     <?php 
+                    $email = $_GET['email'];
                     if(isset($_POST['search']))
                     {
                         $searchKey=$_POST['search'];
-                        $p = "SELECT * From `history` where states LIKE '%$searchKey%'";
+                        $p = "SELECT * From `history` where states LIKE '%$searchKey%' and email = '$email'";
 
                     }
                     else
                     {
-                        $p = "SELECT * From `history`";
+                        $p = "SELECT * From `history` where email = '$email'";
                         $searchKey = "";
                     }
                         
