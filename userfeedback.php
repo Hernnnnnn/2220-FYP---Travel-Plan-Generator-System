@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     
     if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        $email = $row['email'];d
+        $email = $row['email'];
 
         $insertQuery = "INSERT INTO userfeedback (email, type, feedback, review) VALUES ('$email', '$type', '$feedback', '$satisfy')";
         
