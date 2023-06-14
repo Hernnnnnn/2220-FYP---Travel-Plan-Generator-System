@@ -699,7 +699,7 @@ $no=1;
                           <?php 
                         $no++;
                         }?>
-                        <a href="userdelete.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>" style="text-decoration: none; color:white;" class="delete">Delete</a>
+                        <a href="userdelete.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>" style="text-decoration: none; color:white;" class="delete">Delete Trip</a>
                         <a style="text-decoration: none; color:white;" href="usergeneratepdf.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>" class="print">Save & Print</a>
                         </form>
 
