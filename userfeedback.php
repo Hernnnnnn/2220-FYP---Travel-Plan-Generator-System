@@ -3,9 +3,10 @@ session_start();
 include('dataconnection.php');
 include "usernavbar.php";
 
+$email = $_GET['email'];
+
 if (isset($_POST['submit'])) {
     $type = mysqli_real_escape_string($conn, $_POST['type']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
     $feedback = mysqli_real_escape_string($conn, $_POST['feedback']);
     $satisfy = mysqli_real_escape_string($conn, $_POST['review']);
 

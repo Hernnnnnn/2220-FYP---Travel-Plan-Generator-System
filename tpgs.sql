@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2023 at 04:46 PM
+-- Generation Time: Jun 14, 2023 at 05:17 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -315,20 +315,8 @@ CREATE TABLE `userfeedback` (
   `type` varchar(255) DEFAULT NULL,
   `feedback` text NOT NULL,
   `review` int(10) NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT '0'
+  `status` varchar(20) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `userfeedback`
---
-
-INSERT INTO `userfeedback` (`id`, `email`, `type`, `feedback`, `review`, `status`) VALUES
-(37, 'jlim2468101@gmail.com', 'feedback', 'Sawadikap', 3, '1'),
-(38, 'allenleekheehern@gmail.com', 'feedback', 'hahahaha', 4, '1'),
-(39, 'allenleekheehern@gmail.com', 'feedback', 'nice', 5, '1'),
-(40, 'allenleekheehern@gmail.com', 'feedback', 'gg mah', 5, '1'),
-(41, 'jlim2468101@gmail.com', 'inquiry', 'I hope I can have a job', 1, '1'),
-(42, 'jlim2468101@gmail.com', 'feedback', 'It is nice\r\n', 5, '0');
 
 -- --------------------------------------------------------
 
@@ -449,7 +437,7 @@ ALTER TABLE `userdestination`
 -- AUTO_INCREMENT for table `userfeedback`
 --
 ALTER TABLE `userfeedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `usergenerator`
