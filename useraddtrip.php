@@ -21,7 +21,7 @@ else
     $day;
 }
 
-mysqli_query($conn,"INSERT INTO `generator` (day) VaLUes ('". $d+1 ."')");
+mysqli_query($conn,"INSERT INTO `generator` (id,day) VaLUes ('". $day+1 ."','". $day+1 ."')");
 $day=$day + 1;
 header("location: usergenerator.php?email=".$email."&destination=".$loc."&num_days=".$day);
 
