@@ -164,7 +164,7 @@
                 <tr>
                     <td><span><?php echo $red['id']?></span></td>
                     <td><?php echo $red['states']?></td>
-                    <td style="text-align: center;">
+                    <td style="text-align: center; width: 10vh;">
                         <?php echo $red['destinations']?>
                     </td>
                     <td><?php echo $red['createdtime']?></td>

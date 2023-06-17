@@ -92,9 +92,9 @@ include 'dataconnection.php';
         font-size: 0.9em;
         font-family: sans-serif;
         /* min-width: 400px; */
-        width: 70%;
+        width: 100%;
         height: 50%;
-        max-width: 800px;
+        max-width: 1856px;
         margin: auto;
         margin-top: 20px;
         margin-bottom: 10px;
@@ -273,9 +273,6 @@ include 'dataconnection.php';
             <?php
                 }
             ?>
-            <tr>
-                <td colspan="5"><a class="back"href="adminManagelocation.php?email=<?php echo $email?>">Back to Manage Location</a></td>
-            </tr>
             </table>
 </div>
 </div>
