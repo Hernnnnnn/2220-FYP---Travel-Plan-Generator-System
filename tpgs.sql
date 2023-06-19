@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2023 at 05:18 AM
+-- Generation Time: Jun 17, 2023 at 09:59 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -40,8 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ID`, `username`, `password`, `email`, `image`) VALUES
-(1, 'Teng', '456', 'dehui7051@gmail.com', 'dehui.jpg'),
-(2, 'Teng', '456', 'dehui7051@gmail.com', '');
+(1, 'Teng', '456', 'dehui7051@gmail.com', 'dehui.jpg');
 
 -- --------------------------------------------------------
 
@@ -55,15 +54,6 @@ CREATE TABLE `generator` (
   `destination` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `generator`
---
-
-INSERT INTO `generator` (`id`, `day`, `destination`) VALUES
-(1, 1, ''),
-(2, 2, ''),
-(3, 3, '');
-
 -- --------------------------------------------------------
 
 --
@@ -74,23 +64,9 @@ CREATE TABLE `history` (
   `id` int(11) NOT NULL,
   `states` text NOT NULL,
   `destinations` text NOT NULL,
-  `createdtime` date NOT NULL
+  `createdtime` date NOT NULL,
+  `email` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `history`
---
-
-INSERT INTO `history` (`id`, `states`, `destinations`, `createdtime`) VALUES
-(1, 'Malacca', '777\n', '2023-06-09'),
-(2, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
-(3, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
-(4, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
-(5, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
-(6, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
-(7, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
-(8, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10'),
-(9, 'Malacca', 'Shore Sky\nWild Coriander\nJonker Street\n', '2023-06-10');
 
 -- --------------------------------------------------------
 
@@ -117,38 +93,6 @@ CREATE TABLE `johorrestaurant` (
   `restaurantimage` text NOT NULL,
   `restaurantlink` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kedahlocation`
---
-
-CREATE TABLE `kedahlocation` (
-  `id` int(11) NOT NULL,
-  `locationname` text NOT NULL,
-  `locationimage` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kedahrestaurant`
---
-
-CREATE TABLE `kedahrestaurant` (
-  `id` int(11) NOT NULL,
-  `restaurantname` text NOT NULL,
-  `restaurantimage` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `kedahrestaurant`
---
-
-INSERT INTO `kedahrestaurant` (`id`, `restaurantname`, `restaurantimage`) VALUES
-(6, 'Kenyalang Cafe', 'images/Kedah/FOOD/kenyalang kafe.jpg'),
-(7, 'Nasi Lemak Ong', 'images/Kedah/FOOD/Nasi lemak Ong.jpg');
 
 -- --------------------------------------------------------
 
@@ -196,10 +140,10 @@ CREATE TABLE `locations` (
 --
 
 INSERT INTO `locations` (`id`, `name`, `description`, `image_url`, `video_url`, `direction_link`, `locationdetail_link`, `option`) VALUES
-(1, 'Malacca', 'Malacca is a good ', 'melaka.jpg', 'malacca.mp4', 'https://goo.gl/maps/chXMuhti5NhDZK9D9', 'https://en.wikipedia.org/wiki/Malacca', '1'),
-(2, 'Penang', 'Penang is a good place.', 'penang.jpg', 'penang.mp4', NULL, NULL, '1'),
-(3, 'Kuala Lumpur', 'Kuala Lumpur is a nice city.', 'Kuala Lumpur.jpg', 'Kuala Lumpur.mp4', NULL, NULL, '0'),
-(8, 'Johor', 'Johor is best', 'penang.mp4', 'malacca.mp4', '', '', '0');
+(1, 'Malacca', 'Malacca (Malay: Melaka) is a state in Malaysia located in the southern region of the Malay Peninsula, facing the Strait of Malacca. Its capital is Malacca City, dubbed the Historic City, which has been listed as a UNESCO World Heritage Site since 7 July 2008.', 'melaka.jpg', 'malacca.mp4', 'https://goo.gl/maps/chXMuhti5NhDZK9D9', 'https://en.wikipedia.org/wiki/Malacca', '1'),
+(2, 'Penang', 'Penang is a state in northwest Malaysia comprising mainland Seberang Perai and Penang Island. On the island, the state capital of George Town is home to landmarks such as colonial Fort Cornwallis, the ornate Chinese clan house Khoo Kongsi and the Kapitan Keling Mosque.  ', 'penang.jpg', 'penang.mp4', 'https://goo.gl/maps/LLpT9vKeGNgxvDyX9', 'https://en.wikipedia.org/wiki/Penang', '1'),
+(3, 'Kuala Lumpur', 'Kuala Lumpur (Malaysian pronunciation: [ˈkualə, -a ˈlumpo(r), -ʊ(r)]), officially the Federal Territory of Kuala Lumpur (Malay: Wilayah Persekutuan Kuala Lumpur; ) and colloquially referred to as KL, is a federal territory and the ceremonial, legislative and judicial capital city of Malaysia.', 'kuala lumpur.jpg', 'Kuala Lumpur.mp4', 'https://goo.gl/maps/RQLJZbH5Ajstbx5t8', 'https://en.wikipedia.org/wiki/Kuala_Lumpur', '0'),
+(8, 'Johor', 'Johor (/dʒəˈhɔːr/; Malay pronunciation: [d͡ʒoho(r)]), also spelled as Johore, is a state of Malaysia in the south of the Malay Peninsula. Johor has land borders with the Malaysian states of Pahang to the north and Malacca and Negeri Sembilan to the northwest.', 'Johor.jpg', 'malacca.mp4', 'https://goo.gl/maps/ukqatnd4MzQ37vfM7', 'https://en.wikipedia.org/wiki/Johor', '0');
 
 -- --------------------------------------------------------
 
@@ -223,7 +167,8 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`ID`, `username`, `email`, `password`, `status`, `image`, `phone_number`) VALUES
 (1, 'Jayden', 'jlim2468101@gmail.com', '$2y$10$Zkqdhbh/nwSFWWwvt6.0VOlkUUzZafCidcv6pe321ifmrB2Cuy1Au', 1, 'uploads/648460ee15cd2_3534146.png', '0178208893'),
-(3, 'Hernnnnnn', 'allenleekheehern@gmail.com', '$2y$10$DX2Rv.NixTxHSSl0vPSkcesILhuoWjmpQwsFaUYs1m1vM/Zezw4bm', 1, 'uploads/64846357bcb4c_Hern.jpg', '0178208893');
+(3, 'Hernnnnnn', 'allenleekheehern@gmail.com', '$2y$10$DX2Rv.NixTxHSSl0vPSkcesILhuoWjmpQwsFaUYs1m1vM/Zezw4bm', 1, 'uploads/64846357bcb4c_Hern.jpg', '0178208893'),
+(4, 'Dehui', 'dehui7051@gmail.com', '', 0, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -318,6 +263,15 @@ CREATE TABLE `userfeedback` (
   `status` varchar(20) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `userfeedback`
+--
+
+INSERT INTO `userfeedback` (`id`, `email`, `type`, `feedback`, `review`, `status`) VALUES
+(1, 'allenleekheehern@gmail.com', 'feedback', 'This is just a test', 5, '1'),
+(2, 'allenleekheehern@gmail.com', 'feedback', 'Good Job', 5, '1'),
+(3, 'jlim2468101@gmail.com', 'feedback', 'We did it!!!', 5, '1');
+
 -- --------------------------------------------------------
 
 --
@@ -407,13 +361,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `generator`
 --
 ALTER TABLE `generator`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -425,7 +379,7 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `userdestination`
@@ -437,7 +391,7 @@ ALTER TABLE `userdestination`
 -- AUTO_INCREMENT for table `userfeedback`
 --
 ALTER TABLE `userfeedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `usergenerator`
