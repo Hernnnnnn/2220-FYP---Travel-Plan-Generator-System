@@ -81,7 +81,7 @@
         
             <h1>Admin Login</h1>
             <?php echo $msg;?>
-            <input name="email" type="email" placeholder="Email">
+            <input name="email" type="email" value="<?php if(isset($_POST['submit'])){echo $_POST['email'];}?>" placeholder="Email">
             <div class="password-input">
                 <input name="pass" type="password" id="login-password" placeholder="Password">
                 <span id="login-togglebtn" class="fas fa-eye-slash"></span>

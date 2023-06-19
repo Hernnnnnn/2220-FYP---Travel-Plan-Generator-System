@@ -29,7 +29,8 @@ if(isset($_POST['add_to_cart'])){
   $id = mysqli_real_escape_string($conn,$_POST['id']);
   $day1 = mysqli_real_escape_string($conn,$_POST['des_day']);
   $name =  mysqli_real_escape_string($conn,$_POST['product_name']);
-  $q1 = "UPDATE `generator` set destination='$name' where day =  $day1";
+  $link = mysqli_real_escape_string($conn,$_POST['link']);
+  $q1 = "UPDATE `generator` set destination='$name',link = '$link' where day =  $day1";
   $q2 = mysqli_query($conn,$q1);
 }
 else if(isset($_POST['add_to_cart1'])){
@@ -37,7 +38,9 @@ else if(isset($_POST['add_to_cart1'])){
   $id = mysqli_real_escape_string($conn,$_POST['id1']);
   $day1 = mysqli_real_escape_string($conn,$_POST['des_day1']);
   $name =  mysqli_real_escape_string($conn,$_POST['product_name1']);
-  $q1 = "UPDATE `generator` set destination='$name' where day =  $day1";
+  $link1 = mysqli_real_escape_string($conn,$_POST['link1']);
+
+  $q1 = "UPDATE `generator` set destination='$name',link = '$link1' where day =  $day1";
   $q2 = mysqli_query($conn,$q1);
 }
 
@@ -49,68 +52,68 @@ else if(isset($_POST['add_to_cart1'])){
         $loc = $_GET['destination'];
         $p = "SELECT * From `".$loc."restaurant`";
         $q = "SELECT * From `".$loc."location`";  
+        $query = mysqli_query($conn,$p);
+        $ss = mysqli_query($conn,$q);
+        if(isset($_POST['all']))
+        {
+          $p = "SELECT * From `".$loc."restaurant`";
+          $q = "SELECT * From `".$loc."location`";  
+          $query = mysqli_query($conn,$p);
+        $ss = mysqli_query($conn,$q);          
+        }
+        else if(isset($_POST['restaurant']))
+        {
+          $p = "SELECT * From `".$loc."restaurant`";
+          $q = "SELECT * From `".$loc."location` where id = 0";
+          $query = mysqli_query($conn,$p);
+        $ss = mysqli_query($conn,$q);
+        }
+        else if(isset($_POST['location']))
+        {
+          $p = "SELECT * From `".$loc."restaurant` where id = 0";
+          $q = "SELECT * From `".$loc."location` ";
+          $query = mysqli_query($conn,$p);
+        $ss = mysqli_query($conn,$q);
+        }
+        
+        if(isset($_POST['search']))
+          {
+              $searchKey=$_POST['search'];
+              $p = "SELECT * From `".$loc."restaurant` where restaurantname LIKE '%$searchKey%'";
+              $q = "SELECT * From `".$loc."location` where locationname LIKE '%$searchKey%'"; 
+              $query = mysqli_query($conn,$p);
+        $ss = mysqli_query($conn,$q);     
+          } 
+          else
+        {
+            $p = "SELECT * From `".$loc."restaurant`";
+            $q = "SELECT * From `".$loc."location`";
+            $searchKey = "";  
             $query = mysqli_query($conn,$p);
-                    $ss = mysqli_query($conn,$q);
-                    if(isset($_POST['all']))
-                    {
-                      $p = "SELECT * From `".$loc."restaurant`";
-                      $q = "SELECT * From `".$loc."location`";  
-                      $query = mysqli_query($conn,$p);
-                    $ss = mysqli_query($conn,$q);          
-                    }
-                    else if(isset($_POST['restaurant']))
-                    {
-                      $p = "SELECT * From `".$loc."restaurant`";
-                      $q = "SELECT * From `".$loc."location` where id = 0";
-                      $query = mysqli_query($conn,$p);
-                    $ss = mysqli_query($conn,$q);
-                    }
-                    else if(isset($_POST['location']))
-                    {
-                      $p = "SELECT * From `".$loc."restaurant` where id = 0";
-                      $q = "SELECT * From `".$loc."location` ";
-                      $query = mysqli_query($conn,$p);
-                    $ss = mysqli_query($conn,$q);
-                    }
-                    
-                    if(isset($_POST['search']))
-                      {
-                          $searchKey=$_POST['search'];
-                          $p = "SELECT * From `".$loc."restaurant` where restaurantname LIKE '%$searchKey%'";
-                          $q = "SELECT * From `".$loc."location` where locationname LIKE '%$searchKey%'"; 
-                          $query = mysqli_query($conn,$p);
-                    $ss = mysqli_query($conn,$q);     
-                      } 
-                      else
-                    {
-                        $p = "SELECT * From `".$loc."restaurant`";
-                        $q = "SELECT * From `".$loc."location`";
-                        $searchKey = "";  
-                        $query = mysqli_query($conn,$p);
-                    $ss = mysqli_query($conn,$q);
-                    if(isset($_POST['all']))
-                    {
-                      $p = "SELECT * From `".$loc."restaurant`";
-                      $q = "SELECT * From `".$loc."location`";  
-                      $query = mysqli_query($conn,$p);
-                    $ss = mysqli_query($conn,$q);          
-                    }
-                    else if(isset($_POST['restaurant']))
-                    {
-                      $p = "SELECT * From `".$loc."restaurant`";
-                      $q = "SELECT * From `".$loc."location` where id = 0";
-                      $query = mysqli_query($conn,$p);
-                    $ss = mysqli_query($conn,$q);
-                    }
-                    else if(isset($_POST['location']))
-                    {
-                      $p = "SELECT * From `".$loc."restaurant` where id = 0";
-                      $q = "SELECT * From `".$loc."location` ";
-                      $query = mysqli_query($conn,$p);
-                    $ss = mysqli_query($conn,$q);
-                    }        
-                    } 
-                    
+        $ss = mysqli_query($conn,$q);
+        if(isset($_POST['all']))
+        {
+          $p = "SELECT * From `".$loc."restaurant`";
+          $q = "SELECT * From `".$loc."location`";  
+          $query = mysqli_query($conn,$p);
+        $ss = mysqli_query($conn,$q);          
+        }
+        else if(isset($_POST['restaurant']))
+        {
+          $p = "SELECT * From `".$loc."restaurant`";
+          $q = "SELECT * From `".$loc."location` where id = 0";
+          $query = mysqli_query($conn,$p);
+        $ss = mysqli_query($conn,$q);
+        }
+        else if(isset($_POST['location']))
+        {
+          $p = "SELECT * From `".$loc."restaurant` where id = 0";
+          $q = "SELECT * From `".$loc."location` ";
+          $query = mysqli_query($conn,$p);
+        $ss = mysqli_query($conn,$q);
+        }        
+        } 
+        
                     ?>
 
 
@@ -623,6 +626,7 @@ padding: 5px;
                           <h3><i class="fas fa-map-marker-alt"></i> <?php echo $row['restaurantname']; ?></h3>
                       </div>
                       <div class="content">
+                      <input type="hidden" name="link" value="<?php echo $row['restaurantlink']?>">
                       <input type="hidden" name="product_name"  value="<?php echo $row["restaurantname"]; ?>" >
                       <input type="hidden" name="id" value="<?php echo $row['id']?>">
                             <label style="color
@@ -645,6 +649,7 @@ padding: 5px;
                       </div>
                       <div class="content">
                       <input type="hidden" name="product_name1"  value="<?php echo $row1["locationname"]; ?>" >
+                      <input type="hidden" name="link1" value="<?php echo $row1['locationlink']?>">
                             <input type="hidden" name="id1" value="<?php echo $row1['id']?>">
                             <label style="color
                             :black; font-size:1.2rem; font-weight:600;" class="day" for="">Day:</label>
