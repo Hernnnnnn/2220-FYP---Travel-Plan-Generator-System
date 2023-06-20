@@ -407,9 +407,9 @@ input[type="checkbox"].toggle:disabled + label::after {
                     <th>States</th>
                     <th>States Details</th>
                     <th>States Image</th>
-                    <th>States Video</th>
                     <th>Derection Link</th>
                     <th>States Details Link</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
