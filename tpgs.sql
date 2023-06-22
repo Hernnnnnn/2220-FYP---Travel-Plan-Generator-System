@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 17, 2023 at 09:59 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- 主机： 127.0.0.1
+-- 生成日期： 2023-06-22 17:10:16
+-- 服务器版本： 10.4.27-MariaDB
+-- PHP 版本： 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tpgs`
+-- 数据库： `tpgs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- 表的结构 `admin`
 --
 
 CREATE TABLE `admin` (
@@ -33,31 +33,33 @@ CREATE TABLE `admin` (
   `password` text NOT NULL,
   `email` text NOT NULL,
   `image` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `admin`
+-- 转存表中的数据 `admin`
 --
 
 INSERT INTO `admin` (`ID`, `username`, `password`, `email`, `image`) VALUES
-(1, 'Teng', '456', 'dehui7051@gmail.com', 'dehui.jpg');
+(1, 'Teng', '456', 'dehui7051@gmail.com', 'dehui.jpg'),
+(2, 'Teng', '456', 'dehui7051@gmail.com', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `generator`
+-- 表的结构 `generator`
 --
 
 CREATE TABLE `generator` (
   `id` int(11) NOT NULL,
   `day` int(11) NOT NULL,
-  `destination` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `destination` text NOT NULL,
+  `link` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `history`
+-- 表的结构 `history`
 --
 
 CREATE TABLE `history` (
@@ -66,12 +68,19 @@ CREATE TABLE `history` (
   `destinations` text NOT NULL,
   `createdtime` date NOT NULL,
   `email` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 转存表中的数据 `history`
+--
+
+INSERT INTO `history` (`id`, `states`, `destinations`, `createdtime`, `email`) VALUES
+(1, 'Malacca', 'Hard Rock Cafe\nPak Putra Restaurant\nRestaurant Ming Huat\nShore Sky\n', '2023-06-19', 'dehui7051@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `johorlocation`
+-- 表的结构 `johorlocation`
 --
 
 CREATE TABLE `johorlocation` (
@@ -79,12 +88,12 @@ CREATE TABLE `johorlocation` (
   `locationname` text NOT NULL,
   `locationimage` text NOT NULL,
   `locationlink` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `johorrestaurant`
+-- 表的结构 `johorrestaurant`
 --
 
 CREATE TABLE `johorrestaurant` (
@@ -92,36 +101,68 @@ CREATE TABLE `johorrestaurant` (
   `restaurantname` text NOT NULL,
   `restaurantimage` text NOT NULL,
   `restaurantlink` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kuala lumpurlocation`
+-- 表的结构 `kedahlocation`
+--
+
+CREATE TABLE `kedahlocation` (
+  `id` int(11) NOT NULL,
+  `locationname` text NOT NULL,
+  `locationimage` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `kedahrestaurant`
+--
+
+CREATE TABLE `kedahrestaurant` (
+  `id` int(11) NOT NULL,
+  `restaurantname` text NOT NULL,
+  `restaurantimage` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 转存表中的数据 `kedahrestaurant`
+--
+
+INSERT INTO `kedahrestaurant` (`id`, `restaurantname`, `restaurantimage`) VALUES
+(6, 'Kenyalang Cafe', 'images/Kedah/FOOD/kenyalang kafe.jpg'),
+(7, 'Nasi Lemak Ong', 'images/Kedah/FOOD/Nasi lemak Ong.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `kuala lumpurlocation`
 --
 
 CREATE TABLE `kuala lumpurlocation` (
   `id` int(11) NOT NULL,
   `locationname` text NOT NULL,
   `locationimage` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kuala lumpurrestaurant`
+-- 表的结构 `kuala lumpurrestaurant`
 --
 
 CREATE TABLE `kuala lumpurrestaurant` (
   `id` int(11) NOT NULL,
   `restaurantname` text NOT NULL,
   `restaurantimage` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `locations`
+-- 表的结构 `locations`
 --
 
 CREATE TABLE `locations` (
@@ -133,22 +174,22 @@ CREATE TABLE `locations` (
   `direction_link` varchar(255) DEFAULT NULL,
   `locationdetail_link` varchar(255) DEFAULT NULL,
   `option` varchar(50) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `locations`
+-- 转存表中的数据 `locations`
 --
 
 INSERT INTO `locations` (`id`, `name`, `description`, `image_url`, `video_url`, `direction_link`, `locationdetail_link`, `option`) VALUES
-(1, 'Malacca', 'Malacca (Malay: Melaka) is a state in Malaysia located in the southern region of the Malay Peninsula, facing the Strait of Malacca. Its capital is Malacca City, dubbed the Historic City, which has been listed as a UNESCO World Heritage Site since 7 July 2008.', 'melaka.jpg', 'malacca.mp4', 'https://goo.gl/maps/chXMuhti5NhDZK9D9', 'https://en.wikipedia.org/wiki/Malacca', '1'),
-(2, 'Penang', 'Penang is a state in northwest Malaysia comprising mainland Seberang Perai and Penang Island. On the island, the state capital of George Town is home to landmarks such as colonial Fort Cornwallis, the ornate Chinese clan house Khoo Kongsi and the Kapitan Keling Mosque.  ', 'penang.jpg', 'penang.mp4', 'https://goo.gl/maps/LLpT9vKeGNgxvDyX9', 'https://en.wikipedia.org/wiki/Penang', '1'),
-(3, 'Kuala Lumpur', 'Kuala Lumpur (Malaysian pronunciation: [ˈkualə, -a ˈlumpo(r), -ʊ(r)]), officially the Federal Territory of Kuala Lumpur (Malay: Wilayah Persekutuan Kuala Lumpur; ) and colloquially referred to as KL, is a federal territory and the ceremonial, legislative and judicial capital city of Malaysia.', 'kuala lumpur.jpg', 'Kuala Lumpur.mp4', 'https://goo.gl/maps/RQLJZbH5Ajstbx5t8', 'https://en.wikipedia.org/wiki/Kuala_Lumpur', '0'),
-(8, 'Johor', 'Johor (/dʒəˈhɔːr/; Malay pronunciation: [d͡ʒoho(r)]), also spelled as Johore, is a state of Malaysia in the south of the Malay Peninsula. Johor has land borders with the Malaysian states of Pahang to the north and Malacca and Negeri Sembilan to the northwest.', 'Johor.jpg', 'malacca.mp4', 'https://goo.gl/maps/ukqatnd4MzQ37vfM7', 'https://en.wikipedia.org/wiki/Johor', '0');
+(1, 'Malacca', 'Malacca (Malay: Melaka) is a state in Malaysia located in the southern region of the Malay Peninsula, facing the Strait of Malacca.', 'melaka.jpg', 'malacca.mp4', 'https://goo.gl/maps/chXMuhti5NhDZK9D9', 'https://en.wikipedia.org/wiki/Malacca', '1'),
+(2, 'Penang', 'Penang (Malay: Pulau Pinang) is a Malaysian state located on the northwest coast of Peninsular Malaysia, by the Malacca Strait.', 'penang.jpg', 'penang.mp4', 'https://goo.gl/maps/pAFp1YNmsmKJCHR47', 'https://en.wikipedia.org/wiki/Penang', '1'),
+(3, 'Kuala Lumpur', 'Kuala Lumpur (Malay: Wilayah Persekutuan Kuala Lumpur) and colloquially referred to as KL, is a federal territory and the ceremonial, legislative, and judicial capital city of Malaysia.', 'klcc_55.jpg', 'Kuala Lumpur.mp4', 'https://goo.gl/maps/na1FsRVLjJVLZ9Hs5', 'https://en.wikipedia.org/wiki/Kuala_Lumpur', '0'),
+(8, 'Johor', 'Johor also spelled as Johore, is a state of Malaysia in the south of the Malay Peninsula.', 'Johor.jpg', 'malacca.mp4', 'https://goo.gl/maps/aoLkmJWoLJT1betA6', 'https://en.wikipedia.org/wiki/Johor', '0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- 表的结构 `login`
 --
 
 CREATE TABLE `login` (
@@ -159,21 +200,21 @@ CREATE TABLE `login` (
   `status` int(11) NOT NULL,
   `image` text NOT NULL,
   `phone_number` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `login`
+-- 转存表中的数据 `login`
 --
 
 INSERT INTO `login` (`ID`, `username`, `email`, `password`, `status`, `image`, `phone_number`) VALUES
 (1, 'Jayden', 'jlim2468101@gmail.com', '$2y$10$Zkqdhbh/nwSFWWwvt6.0VOlkUUzZafCidcv6pe321ifmrB2Cuy1Au', 1, 'uploads/648460ee15cd2_3534146.png', '0178208893'),
-(3, 'Hernnnnnn', 'allenleekheehern@gmail.com', '$2y$10$DX2Rv.NixTxHSSl0vPSkcesILhuoWjmpQwsFaUYs1m1vM/Zezw4bm', 1, 'uploads/64846357bcb4c_Hern.jpg', '0178208893'),
-(4, 'Dehui', 'dehui7051@gmail.com', '', 0, '', NULL);
+(3, 'Hernnnnnn', 'allenleekheehern@gmail.com', '$2y$10$DX2Rv.NixTxHSSl0vPSkcesILhuoWjmpQwsFaUYs1m1vM/Zezw4bm', 0, 'uploads/64846357bcb4c_Hern.jpg', '0178208893'),
+(4, 'Teng De Hui', 'dehui7051@gmail.com', '123456', 1, 'uploads/648492166371d_dehui.jpg', '0182027784');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `malaccalocation`
+-- 表的结构 `malaccalocation`
 --
 
 CREATE TABLE `malaccalocation` (
@@ -181,20 +222,20 @@ CREATE TABLE `malaccalocation` (
   `locationname` text NOT NULL,
   `locationimage` text NOT NULL,
   `locationlink` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `malaccalocation`
+-- 转存表中的数据 `malaccalocation`
 --
 
 INSERT INTO `malaccalocation` (`id`, `locationname`, `locationimage`, `locationlink`) VALUES
-(0, 'Jonker Street', 'images/Malacca/PLACE/mlk_jonker street.jpg', ''),
-(0, 'Shore Sky', 'images/Malacca/PLACE/melaka_shore_sky.jpg', '');
+(1, 'Jonker Street', 'images/Malacca/PLACE/mlk_jonker street.jpg', 'https://goo.gl/maps/UJhFvdzMoh3TMFJd9'),
+(2, 'Shore Sky', 'images/Malacca/PLACE/melaka_shore_sky.jpg', 'https://goo.gl/maps/V89MyaB8Ye4xUjbFA');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `malaccarestaurant`
+-- 表的结构 `malaccarestaurant`
 --
 
 CREATE TABLE `malaccarestaurant` (
@@ -202,22 +243,22 @@ CREATE TABLE `malaccarestaurant` (
   `restaurantname` text NOT NULL,
   `restaurantimage` text NOT NULL,
   `restaurantlink` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `malaccarestaurant`
+-- 转存表中的数据 `malaccarestaurant`
 --
 
 INSERT INTO `malaccarestaurant` (`id`, `restaurantname`, `restaurantimage`, `restaurantlink`) VALUES
-(0, 'Hard Rock Cafe', 'images/Malacca/FOOD/food_melaka_Hard Rock Cafe.jpeg', ''),
-(0, 'Pak Putra Restaurant', 'images/Malacca/FOOD/food_melaka_Pak Putra Restaurant.jpg', ''),
-(0, 'Restaurant Ming Huat', 'images/Malacca/FOOD/food_melaka_Restaurant Ming Huat.jpg', ''),
-(0, 'Wild Coriander', 'images/Malacca/FOOD/food_melaka_wild coriander.jpg', '');
+(1, 'Hard Rock Cafe', 'images/Malacca/FOOD/food_melaka_Hard Rock Cafe.jpeg', 'https://goo.gl/maps/yDhbuXpGwzmRcrBbA'),
+(2, 'Pak Putra Restaurant', 'images/Malacca/FOOD/food_melaka_Pak Putra Restaurant.jpg', 'https://goo.gl/maps/FGqrSp97dWCSfVBp8'),
+(3, 'Restaurant Ming Huat', 'images/Malacca/FOOD/food_melaka_Restaurant Ming Huat.jpg', 'https://goo.gl/maps/BQh9184PBNg4wVhJA'),
+(4, 'Wild Coriander', 'images/Malacca/FOOD/food_melaka_wild coriander.jpg', 'https://goo.gl/maps/QewR58htGNoaR7Xg7');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userdestination`
+-- 表的结构 `userdestination`
 --
 
 CREATE TABLE `userdestination` (
@@ -226,10 +267,10 @@ CREATE TABLE `userdestination` (
   `des_img` varchar(255) NOT NULL,
   `des_day` int(255) NOT NULL,
   `des_duration` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `userdestination`
+-- 转存表中的数据 `userdestination`
 --
 
 INSERT INTO `userdestination` (`des_id`, `des_Name`, `des_img`, `des_day`, `des_duration`) VALUES
@@ -251,7 +292,7 @@ INSERT INTO `userdestination` (`des_id`, `des_Name`, `des_img`, `des_day`, `des_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userfeedback`
+-- 表的结构 `userfeedback`
 --
 
 CREATE TABLE `userfeedback` (
@@ -260,32 +301,32 @@ CREATE TABLE `userfeedback` (
   `type` varchar(255) DEFAULT NULL,
   `feedback` text NOT NULL,
   `review` int(10) NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `status` varchar(20) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `userfeedback`
+-- 转存表中的数据 `userfeedback`
 --
 
 INSERT INTO `userfeedback` (`id`, `email`, `type`, `feedback`, `review`, `status`) VALUES
-(1, 'allenleekheehern@gmail.com', 'feedback', 'This is just a test', 5, '1'),
-(2, 'allenleekheehern@gmail.com', 'feedback', 'Good Job', 5, '1'),
-(3, 'jlim2468101@gmail.com', 'feedback', 'We did it!!!', 5, '1');
+(39, 'allenleekheehern@gmail.com', 'feedback', 'nice', 5, '1'),
+(42, 'jlim2468101@gmail.com', 'feedback', 'It is nice😊', 5, '0'),
+(44, 'dehui7051@gmail.com', 'inquiry', 'Nice website, friendly for that who don\'t know how to plan their travel.', 5, '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usergenerator`
+-- 表的结构 `usergenerator`
 --
 
 CREATE TABLE `usergenerator` (
   `des_id` int(255) NOT NULL,
   `des_Name` varchar(255) NOT NULL,
   `des_img` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usergenerator`
+-- 转存表中的数据 `usergenerator`
 --
 
 INSERT INTO `usergenerator` (`des_id`, `des_Name`, `des_img`) VALUES
@@ -296,105 +337,129 @@ INSERT INTO `usergenerator` (`des_id`, `des_Name`, `des_img`) VALUES
 (5, 'KLL', 'images\\Kuala Lumpur\\PLACE\\KLL.jpg');
 
 --
--- Indexes for dumped tables
+-- 转储表的索引
 --
 
 --
--- Indexes for table `admin`
+-- 表的索引 `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `generator`
+-- 表的索引 `generator`
 --
 ALTER TABLE `generator`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `history`
+-- 表的索引 `history`
 --
 ALTER TABLE `history`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `locations`
+-- 表的索引 `locations`
 --
 ALTER TABLE `locations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `login`
+-- 表的索引 `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `userdestination`
+-- 表的索引 `malaccalocation`
+--
+ALTER TABLE `malaccalocation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 表的索引 `malaccarestaurant`
+--
+ALTER TABLE `malaccarestaurant`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 表的索引 `userdestination`
 --
 ALTER TABLE `userdestination`
   ADD PRIMARY KEY (`des_id`);
 
 --
--- Indexes for table `userfeedback`
+-- 表的索引 `userfeedback`
 --
 ALTER TABLE `userfeedback`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usergenerator`
+-- 表的索引 `usergenerator`
 --
 ALTER TABLE `usergenerator`
   ADD PRIMARY KEY (`des_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在导出的表使用AUTO_INCREMENT
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- 使用表AUTO_INCREMENT `admin`
 --
 ALTER TABLE `admin`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `generator`
+-- 使用表AUTO_INCREMENT `generator`
 --
 ALTER TABLE `generator`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `history`
+-- 使用表AUTO_INCREMENT `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `locations`
+-- 使用表AUTO_INCREMENT `locations`
 --
 ALTER TABLE `locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `login`
+-- 使用表AUTO_INCREMENT `login`
 --
 ALTER TABLE `login`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `userdestination`
+-- 使用表AUTO_INCREMENT `malaccalocation`
+--
+ALTER TABLE `malaccalocation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- 使用表AUTO_INCREMENT `malaccarestaurant`
+--
+ALTER TABLE `malaccarestaurant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- 使用表AUTO_INCREMENT `userdestination`
 --
 ALTER TABLE `userdestination`
   MODIFY `des_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `userfeedback`
+-- 使用表AUTO_INCREMENT `userfeedback`
 --
 ALTER TABLE `userfeedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT for table `usergenerator`
+-- 使用表AUTO_INCREMENT `usergenerator`
 --
 ALTER TABLE `usergenerator`
   MODIFY `des_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
