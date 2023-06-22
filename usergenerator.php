@@ -631,7 +631,7 @@ padding: 5px;
                       <input type="hidden" name="id" value="<?php echo $row['id']?>">
                             <label style="color
                             :black; font-size:1.2rem; font-weight:600;" class="day" for="">Day:</label>
-                      <input type="number" class="number" name="des_day"  value="0">
+                      <input type="number" class="number" name="des_day"  min="1" value="0">
                           <input style="font-size: 1rem; padding:0.6rem 0.8rem;" type="submit" class="btn btn-warning btn-block" id="submit" name="add_to_cart" value="Add to Itinerary">
                       </div>
                   </div>
