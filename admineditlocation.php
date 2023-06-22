@@ -15,6 +15,7 @@ if(!$_SESSION['email'])
         $sql=mysqli_query($conn,"SELECT * from `".$loc."location` where id = $id");
         $rz=mysqli_fetch_assoc($sql);
         $name=$_POST['name'];
+        $link = $_POST['link'];
         $imageName = $_FILES['image']['name'];
         $imageTempName = $_FILES['image']['tmp_name'];
         $targetPath = "images/".$loc."/"."PLACE/".$imageName;
@@ -31,7 +32,7 @@ if(!$_SESSION['email'])
         else
         {
             if(move_uploaded_file($imageTempName,$targetPath))
-                $sql = "UPDATE `".$loc."location` set locationname='$name',locationimage='$targetPath' Where id = '$id'";
+                $sql = "UPDATE `".$loc."location` set locationname='$name',locationimage='$targetPath',locationlink = '$link' Where id = '$id'";
                 $msg = "Edit successfuly!";
                 $result = mysqli_query($conn,$sql);
             }
@@ -187,6 +188,9 @@ if(!$_SESSION['email'])
                 <br>
                 <label for="">Location's Name:</label>
                 <input type="text" name="name" id="" value="<?php echo $rz['locationname']?>">
+                <br>
+                <label for="">Link:</label>
+                <input type="text" name="link" id="" value="<?php echo $rz['locationlink']?>">
                 <br>
                 <label for="">Location's Image:</label><img width="30%" src="<?php echo $rz['locationimage'];?>" alt="">
                 <label for="file"  name="choosei"class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>

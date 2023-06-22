@@ -34,7 +34,8 @@ include 'dataconnection.php';
            
         header("Location: userhomepage.php?email=".$email);
     }
-    
+     
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,14 +136,27 @@ include 'dataconnection.php';
         <tr>
             <th>Day</th>
             <th>Locations</th>
+            <th>Places' Link</th>
         </tr>
         <?php 
             while($r = mysqli_fetch_assoc($p))
             {
+                // $r = mysqli_fetch_assoc($p);
+                $z = "SELECT * From `".$loc."location` WHERE locationname = '$r[destination]'";
+                $zx = mysqli_query($conn,$z);
+                $z1 = "SELECT * From `".$loc."restaurant` WHERE restaurantname = '$r[destination]'";
+                $zq = mysqli_query($conn,$z1);
+                $zc = mysqli_fetch_assoc($zx);
+                $zp = mysqli_fetch_assoc($zq);              
+                
         ?>
         <tr>
+            <form action="" method="post">
             <td style="text-align: center;"><?php echo $r['day']?></td>
+            <input type="hidden" name="dis" value="<?php echo $r['destination']?>">
             <td><?php echo $r['destination']?></td>
+            <td><a href="<?php echo $r['link']?>"><?php echo $r['link']?></a></td>
+        </form>
         </tr>
         <?php
         }
@@ -152,7 +166,7 @@ include 'dataconnection.php';
     <button name="print" class="print" id="print" onclick="window.print();" style='margin-left: 40px'>Print Report</button>
     </div>
     <div class="box2">
-    <a href="usergenerator.php?email=<?php echo $email?>&destination=<?php echo $loc?>&num_days=<?php echo $day?>" class="back" id="backbtn"><button name="back">Back To Generator</button></a>
+    <a href="usergenerator.php?email=<?php echo $email?>&&destination=<?php echo $loc?>&&num_days=<?php echo $day?>" class="back" id="backbtn"><button type="button">Back To Generator</button></a>
     </form>
     </div>
     </div>
