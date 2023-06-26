@@ -248,7 +248,7 @@ if (isset($_POST["register"])) {
         <div class="overlay">
             <div class="overlay-panel overlay-left">
                 <h1 class="title">Hello <br> Welcome </h1>
-                    <p>if you don't have an account, login here and have fun</p>
+                    <p>if you already have an account, login here and have fun</p>
                         <button class="ghost" id="loginp">Login
                             <i class="fa-regular fa-arrow-left"></i>
                         </button>
