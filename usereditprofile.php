@@ -294,7 +294,7 @@ a.return-link:hover {
                         <h4>Username</h4>
                         <input type="text" name="username" value="<?php echo $editres['username'] ?>">
                         <h4>Phone Number</h4>
-                        <input type="text" name="phone_number" value="<?php echo $editres['phone_number'] ?>">
+                        <input type="text" name="phone_number" pattern="[0-9]{3}-[0-9]{7,8}" value="<?php echo $editres['phone_number'] ?>" required title="Please enter a phone number in the format 011-1234567 or 011-12345678">
                         <h4>Email</h4>
                         <input type="email" name="email" value="<?php echo $editres['email'] ?>" disabled>
                         <h4>Choose a new profile picture</h4>
