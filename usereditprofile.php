@@ -3,7 +3,6 @@ session_start();
 include('dataconnection.php');
 include "usernavbar.php";
 
-// Fetch user data based on email
 $email = $_GET['email'];
 $query = "SELECT * FROM `login` WHERE `email`='$email'";
 $result = mysqli_query($conn, $query);

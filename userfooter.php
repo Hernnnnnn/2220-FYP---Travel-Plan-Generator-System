@@ -1,5 +1,8 @@
 <?php
 include('dataconnection.php');
+$email = $_GET['email'];
+$query = "SELECT * FROM `login` WHERE `email`='$email'";
+$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
