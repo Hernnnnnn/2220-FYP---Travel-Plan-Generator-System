@@ -76,7 +76,6 @@
         text-align: center;
         padding-bottom: 20px;
         padding-top: 15px;
-
     }
     th
     {
@@ -407,7 +406,7 @@ input[type="checkbox"].toggle:disabled + label::after {
                     <th>States</th>
                     <th>States Details</th>
                     <th>States Image</th>
-                    <th>Derection Link</th>
+                    <th>Direction Link</th>
                     <th>States Details Link</th>
                     <th></th>
                     <th></th>
