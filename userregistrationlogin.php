@@ -137,7 +137,7 @@ if (isset($_POST["register"])) {
     } else {
         echo "<div class='popup'>
                 <h2>Error</h2>
-                <p>Username fields cannot be empty</p>
+                <p>Username or email fields cannot be empty</p>
                 <button class='close'></button>
             </div>";
     }
