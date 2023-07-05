@@ -41,10 +41,20 @@ if(!$_SESSION['email'])
         {
             if(move_uploaded_file($imageTempName,$targetPath))
         {
-                $sql = "INSERT INTO `locations`(name,description,image_url,direction_link,locationdetail_link,status) VALUES ('$name','$detail','$imageName','$dlink','$llink',0)";
+                $sql = "INSERT INTO `locations`(name,description,image_url,direction_link,locationdetail_link,option) VALUES ('$name','$detail','$imageName','$dlink','$llink',0)";
                 
-                $s="CREATE Table `".$name."location`(`id` int(11) NOT NULL AUTO_INCREMENT,`locationname` text NOT NULL,`locationimage` text NOT NULL,`locationlink` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
-                $s1="CREATE Table `".$name."restaurant`(`id` int(11) NOT NULL AUTO_INCREMENT,`restaurantname` text NOT NULL,`restaurantimage` text NOT NULL,`restaurantlink` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+                $s="CREATE Table `".$name."location` (`id` int(11) NOT NULL AUTO_INCREMENT,
+                    `locationname` text NOT NULL,
+                    `locationimage` text NOT NULL,
+                    `locationlink` text NOT NULL,
+                    PRIMARY KEY (`id`)
+                   ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+                $s1="CREATE Table `".$name."restaurant`(`id` int(11) NOT NULL AUTO_INCREMENT,
+                    `restaurantname` text NOT NULL,
+                    `restaurantimage` text NOT NULL,
+                    `restaurantlink` text NOT NULL,
+                    PRIMARY KEY (`id`)
+                   ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
                 mysqli_query($conn,$s);
                 mysqli_query($conn,$s1);
                 mysqli_query($conn,$sql);
