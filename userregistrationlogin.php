@@ -93,7 +93,7 @@ if (isset($_POST["register"])) {
                 $_SESSION['otp'] = $otp;
                 $_SESSION['mail'] = $email;
                 require "phpmailer/PHPMailerAutoload.php";
-                $mail = new PHPMailer(true); // Enable exceptions
+                $mail = new PHPMailer(true);
 
                 try {
                     $mail->isSMTP();
@@ -137,7 +137,7 @@ if (isset($_POST["register"])) {
     } else {
         echo "<div class='popup'>
                 <h2>Error</h2>
-                <p>Username, email or password fields cannot be empty</p>
+                <p>Username fields cannot be empty</p>
                 <button class='close'></button>
             </div>";
     }
@@ -248,7 +248,7 @@ if (isset($_POST["register"])) {
         <div class="overlay">
             <div class="overlay-panel overlay-left">
                 <h1 class="title">Hello <br> Welcome </h1>
-                    <p>if you don't have an account, login here and have fun</p>
+                    <p>if you already have an account, login here and have fun</p>
                         <button class="ghost" id="loginp">Login
                             <i class="fa-regular fa-arrow-left"></i>
                         </button>
